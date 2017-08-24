@@ -1,2 +1,1 @@
-# firebase-localization
-Firebase localization
+# Firebase localization

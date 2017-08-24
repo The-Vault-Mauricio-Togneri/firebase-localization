@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Home</title>
+</head>
+
+<script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+<script>
+	var config = {
+		apiKey: "AIzaSyD97ohSqPCr_8O0byCUMdqpPB9rTf-Qgtk",
+		authDomain: "app-localization-2f645.firebaseapp.com",
+		databaseURL: "https://app-localization-2f645.firebaseio.com",
+		projectId: "app-localization-2f645",
+		storageBucket: "app-localization-2f645.appspot.com",
+		messagingSenderId: "503219174247"
+	};
+	firebase.initializeApp(config);
+
+</script>
+
+<script type="text/javascript">
+	initApp = function () {
+		firebase.auth().onAuthStateChanged(function (user) {
+			if (user) {
+				var displayName = user.displayName;
+				var email = user.email;
+				var emailVerified = user.emailVerified;
+				var photoURL = user.photoURL;
+				var uid = user.uid;
+				var phoneNumber = user.phoneNumber;
+				var providerData = user.providerData;
+				user.getIdToken().then(function (accessToken) {
+					document.getElementById('account-details').textContent = JSON.stringify({
+						email: email
+					}, null, '  ');
+				});
+			} else {
+				document.getElementById('account-details').textContent = 'null';
+			}
+		}, function (error) {
+			console.log(error);
+		});
+	};
+
+	window.addEventListener('load', function () {
+		initApp()
+	});
+
+</script>
+
+<body>
+	<h1>Welcome to my app</h1>
+	<div id="account-details"></div>
+</body>
+
+</html>
