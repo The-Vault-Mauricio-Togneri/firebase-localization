@@ -1,3 +1,5 @@
+"use strict";
+
 const functions = require('firebase-functions');
 
 // https://github.com/firebase/functions-samples

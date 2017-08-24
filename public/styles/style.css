@@ -1,0 +1,20 @@
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
+.mdc-textfield__input
+{
+	padding-left:   3px;
+	padding-top:    8px;
+	padding-bottom: 8px;
+}
+
+.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+	background-color:white;
+ }
+
+ .table-striped > tbody > tr:nth-child(2n) > td, .table-striped > tbody > tr:nth-child(2n) > th {
+	background-color: #F3F3F3;
+ }
