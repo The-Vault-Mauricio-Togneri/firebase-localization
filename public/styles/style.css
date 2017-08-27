@@ -4,6 +4,16 @@ html, body {
 	height: 100%;
 }
 
+*
+{
+	font-family: 'Open Sans', sans-serif;
+}
+
+.custom-icon
+{
+	color: grey;
+}
+
 .mdc-textfield__input
 {
 	padding-left:   3px;
@@ -20,10 +30,18 @@ html, body {
  }
 
  :root {
-    --mdc-theme-primary: #3f51b5;
-    --mdc-theme-primary-light: #6f7dcd;
-    --mdc-theme-primary-dark: #2d3980;
+    --mdc-theme-primary: #2268d8;
+    --mdc-theme-primary-light: #276FE4;
+    --mdc-theme-primary-dark: #144da8;
     --mdc-theme-secondary: #2268d8;
     --mdc-theme-secondary-light: #2268d8;
-    --mdc-theme-secondary-dark: #144da8;
+	--mdc-theme-secondary-dark: #144da8;
+}
+
+.action-button {
+    letter-spacing: 0;
+    line-height: 0;
+	min-width: 0;
+	height: 30px;
+	padding: 0px 5px 0px 5px;
 }

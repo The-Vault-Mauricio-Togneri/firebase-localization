@@ -6,6 +6,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Overview</title>
 
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
 	<!-- Meterial Design -->
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
@@ -42,9 +45,9 @@
 				<th>Language</th>
 				<th>Translated</th>
 				<th>Proofread</th>
-				<th><i class="material-icons">delete</i></th>
-				<th><i class="material-icons">android</i></th>
-				<th><i class="material-icons">face</i></th>
+				<th><i class="material-icons custom-icon">delete</i></th>
+				<th><i class="material-icons custom-icon">android</i></th>
+				<th><img src="img/apple.png" style="width:25px"></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -52,28 +55,78 @@
 				<th scope="row">English, UK</th>
 				<td>100%</td>
 				<td>100%</td>
-				<td><i class="material-icons">close</i></td>
-				<td><i class="material-icons">get_app</i></td>
-				<td><i class="material-icons">get_app</i></td>
+				<td>
+					<button class="mdc-button action-button">
+						<i class="material-icons custom-icon">close</i>
+					</button>
+				<td>
+					<button class="mdc-button action-button">
+						<i class="material-icons custom-icon">get_app</i>
+					</button>
+				</td>
+				<td>
+					<button class="mdc-button action-button">
+						<i class="material-icons custom-icon">get_app</i>
+					</button>
+				</td>
 			</tr>
 			<tr>
 				<th scope="row">French, Switzerland</th>
 				<td>50%</td>
 				<td>40%</td>
-				<td><i class="material-icons">close</i></td>
-				<td><i class="material-icons">get_app</i></td>
-				<td><i class="material-icons">get_app</i></td>
+				<td>
+					<button class="mdc-button action-button">
+						<i class="material-icons custom-icon">close</i>
+					</button>
+				<td>
+					<button class="mdc-button action-button">
+						<i class="material-icons custom-icon">get_app</i>
+					</button>
+				</td>
+				<td>
+					<button class="mdc-button action-button">
+						<i class="material-icons custom-icon">get_app</i>
+					</button>
+				</td>
 			</tr>
 			<tr>
 				<th scope="row">German, Switzerland</th>
 				<td>30%</td>
 				<td>20%</td>
-				<td><i class="material-icons">close</i></td>
-				<td><i class="material-icons">get_app</i></td>
-				<td><i class="material-icons">get_app</i></td>
+				<td>
+					<button class="mdc-button action-button">
+						<i class="material-icons custom-icon">close</i>
+					</button>
+				<td>
+					<button class="mdc-button action-button">
+						<i class="material-icons custom-icon">get_app</i>
+					</button>
+				</td>
+				<td>
+					<button class="mdc-button action-button">
+						<i class="material-icons custom-icon">get_app</i>
+					</button>
+				</td>
 			</tr>
 		</tbody>
 	</table>
+
+	<div class="row">
+		<div class="col">
+			<button class="mdc-button mdc-button--raised mdc-button--primary" style="margin-left: 10px">
+				+ Add Language
+			</button>
+		</div>
+		<div class="col">
+			<button class="mdc-button mdc-button--raised" style="float:right;margin-right:10px;background:#FD2E2E">
+				<i class="material-icons" style="padding-top:5px;padding-right:10px">exit_to_app</i>Logout
+			</button>
+		</div>
+	</div>
+
+	<div style="margin-left:10px;margin-top:20px">
+		<b>API Token:</b> <span style="font-family: Courier">2661e040-e825-40d5-ba61-d73f2d111b10</span>
+	</div>
 
 </body>
 
