@@ -18,3 +18,12 @@ html, body {
  .table-striped > tbody > tr:nth-child(2n) > td, .table-striped > tbody > tr:nth-child(2n) > th {
 	background-color: #F3F3F3;
  }
+
+ :root {
+    --mdc-theme-primary: #3f51b5;
+    --mdc-theme-primary-light: #6f7dcd;
+    --mdc-theme-primary-dark: #2d3980;
+    --mdc-theme-secondary: #2268d8;
+    --mdc-theme-secondary-light: #2268d8;
+    --mdc-theme-secondary-dark: #144da8;
+}
