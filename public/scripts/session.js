@@ -9,12 +9,10 @@ initApp = function () {
 			var phoneNumber = user.phoneNumber;
 			var providerData = user.providerData;
 			user.getIdToken().then(function (accessToken) {
-				//document.getElementById('account-details').textContent = JSON.stringify({
-				//	email: email
-				//}, null, '  ');
+				setupApp();
 			});
 		} else {
-			//document.getElementById('account-details').textContent = 'null';
+			window.location.href='/';
 		}
 	}, function (error) {
 		console.log(error);
@@ -23,29 +21,4 @@ initApp = function () {
 
 window.addEventListener('load', function () {
 	initApp()
-	setupDialogs()
 });
-
-function firebaseLogout()
-{
-	firebase.auth().signOut().then(function() {
-		window.location.href='/';
-	}, function(error) {
-		// handle error
-	});
-}
-
-var logoutDialog;
-
-function setupDialogs()
-{
-	logoutDialog = new mdc.dialog.MDCDialog(document.querySelector('#logut-dialog'));
-	
-	logoutDialog.listen('MDCDialog:accept', function() {
-		firebaseLogout()
-	})
-
-	logoutDialog.listen('MDCDialog:cancel', function() {
-		// nothing
-	})
-}
