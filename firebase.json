@@ -15,6 +15,14 @@
 				"destination": "/index.html"
 			},
 			{
+				"source": "/overview",
+				"destination": "/overview.html"
+			},
+			{
+				"source": "/translations",
+				"destination": "/translations.html"
+			},
+			{
 				"source": "/test",
 				"function": "test"
 			}

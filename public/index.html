@@ -8,39 +8,11 @@
 </head>
 
 <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
-<script>
-	var config = {
-		apiKey: "AIzaSyD97ohSqPCr_8O0byCUMdqpPB9rTf-Qgtk",
-		authDomain: "app-localization-2f645.firebaseapp.com",
-		databaseURL: "https://app-localization-2f645.firebaseio.com",
-		projectId: "app-localization-2f645",
-		storageBucket: "app-localization-2f645.appspot.com",
-		messagingSenderId: "503219174247"
-	};
-	firebase.initializeApp(config);
-
-</script>
+<script src="./scripts/firebase.js"></script>
 
 <script src="https://cdn.firebase.com/libs/firebaseui/2.3.0/firebaseui.js"></script>
 <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.3.0/firebaseui.css" />
-<script type="text/javascript">
-	// FirebaseUI config.
-	var uiConfig = {
-		signInSuccessUrl: 'home.html',
-		signInOptions: [
-			{
-				provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
-				requireDisplayName: false
-			},
-		]
-	};
-
-	// Initialize the FirebaseUI Widget using Firebase.
-	var ui = new firebaseui.auth.AuthUI(firebase.auth());
-	// The start method will wait until the DOM is loaded.
-	ui.start('#firebaseui-auth-container', uiConfig);
-
-</script>
+<script src="./scripts/login.js"></script>
 
 <body>
     <div id="firebaseui-auth-container"></div>
