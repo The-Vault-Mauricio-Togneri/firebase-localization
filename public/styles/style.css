@@ -45,3 +45,14 @@ html, body {
 	height: 30px;
 	padding: 0px 5px 0px 5px;
 }
+
+.logout-button {
+	float:right;
+	margin-right:10px;
+	background:#FD2E2E;
+    letter-spacing: 0;
+    line-height: 0;
+	min-width: 0;
+	height: 30px;
+	padding: 5px 10px 5px 10px;
+}
