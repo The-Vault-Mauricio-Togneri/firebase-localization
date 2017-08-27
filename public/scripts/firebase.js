@@ -5,5 +5,5 @@ var config = {
 	projectId: "app-localization-2f645",
 	storageBucket: "app-localization-2f645.appspot.com",
 	messagingSenderId: "503219174247"
-};
-firebase.initializeApp(config);
+}
+firebase.initializeApp(config)

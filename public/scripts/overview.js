@@ -6,36 +6,36 @@ function setupApp()
 
 function setupDatabase()
 {
-	const dbRef = firebase.database().ref().child('locales');
+	const dbRef = firebase.database().ref().child('locales')
 
 	dbRef.on('value', snap => {
-		constructLocalesTable(snap);
-	});
+		constructLocalesTable(snap)
+	})
 }
 
 function constructLocalesTable(snap)
 {
-	const list = snap.val()
+	const locales = snap.val()
 
 	var oldTableBody = document.getElementById('overview-table-locales')
 	var newTableBody = document.createElement('tbody')
 	newTableBody.id = 'overview-table-locales'
 	
-	for (var i = 0; i < list.length; i++)
+	for (var locale in locales)
 	{
-		newTableBody.appendChild(createLocaleRow(list[i]))
+		newTableBody.appendChild(createLocaleRow(locale, locales[locale]))
 	}
 
 	oldTableBody.parentNode.replaceChild(newTableBody, oldTableBody)
 }
 
-function createLocaleRow(locale)
+function createLocaleRow(key, locale)
 {
 	var tr = document.createElement('tr')
 
 	var tdName = document.createElement('td')
 	tdName.scope = 'row'
-	tdName.innerText = LOCALES[locale.code]
+	tdName.innerText = LOCALES[key] + ' (' + key + ')'
 	tr.appendChild(tdName)
 
 	var tdTranslated = document.createElement('td')
@@ -62,7 +62,7 @@ function createLocaleRow(locale)
 	tdIOS.appendChild(createLocaleButton('get_app'))
 	tr.appendChild(tdIOS)
 
-	return tr;
+	return tr
 }
 
 function createColoredPercentage(value)
@@ -84,7 +84,7 @@ function createColoredPercentage(value)
 
 	span.appendChild(document.createTextNode(value + '%'))
 
-	return span;
+	return span
 }
 
 function createLocaleButton(type)
@@ -99,23 +99,23 @@ function createLocaleButton(type)
 	icon.appendChild(document.createTextNode(type))
 	button.appendChild(icon)
 
-	return button;
+	return button
 }
 
 function firebaseLogout()
 {
 	firebase.auth().signOut().then(function() {
-		window.location.href='/';
+		window.location.href='/'
 	}, function(error) {
 		// handle error
-	});
+	})
 }
 
-var logoutDialog;
+var logoutDialog
 
 function setupDialogs()
 {
-	logoutDialog = new mdc.dialog.MDCDialog(document.querySelector('#logut-dialog'));
+	logoutDialog = new mdc.dialog.MDCDialog(document.querySelector('#logut-dialog'))
 	
 	logoutDialog.listen('MDCDialog:accept', function() {
 		firebaseLogout()
