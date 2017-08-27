@@ -63,16 +63,16 @@
 					<button class="mdc-button action-button">
 						<i class="material-icons custom-icon">close</i>
 					</button>
-				<td>
-					<button class="mdc-button action-button">
+					<td>
+						<button class="mdc-button action-button">
 						<i class="material-icons custom-icon">get_app</i>
 					</button>
-				</td>
-				<td>
-					<button class="mdc-button action-button">
+					</td>
+					<td>
+						<button class="mdc-button action-button">
 						<i class="material-icons custom-icon">get_app</i>
 					</button>
-				</td>
+					</td>
 			</tr>
 			<tr>
 				<th scope="row">French, Switzerland</th>
@@ -82,16 +82,16 @@
 					<button class="mdc-button action-button">
 						<i class="material-icons custom-icon">close</i>
 					</button>
-				<td>
-					<button class="mdc-button action-button">
+					<td>
+						<button class="mdc-button action-button">
 						<i class="material-icons custom-icon">get_app</i>
 					</button>
-				</td>
-				<td>
-					<button class="mdc-button action-button">
+					</td>
+					<td>
+						<button class="mdc-button action-button">
 						<i class="material-icons custom-icon">get_app</i>
 					</button>
-				</td>
+					</td>
 			</tr>
 			<tr>
 				<th scope="row">German, Switzerland</th>
@@ -101,16 +101,16 @@
 					<button class="mdc-button action-button">
 						<i class="material-icons custom-icon">close</i>
 					</button>
-				<td>
-					<button class="mdc-button action-button">
+					<td>
+						<button class="mdc-button action-button">
 						<i class="material-icons custom-icon">get_app</i>
 					</button>
-				</td>
-				<td>
-					<button class="mdc-button action-button">
+					</td>
+					<td>
+						<button class="mdc-button action-button">
 						<i class="material-icons custom-icon">get_app</i>
 					</button>
-				</td>
+					</td>
 			</tr>
 		</tbody>
 	</table>
@@ -118,13 +118,28 @@
 	<button class="mdc-button mdc-button--raised mdc-button--primary" style="margin-left: 10px">
 		+ Add Language
 	</button>
-	<button class="mdc-button mdc-button--raised logout-button" onclick="firebaseLogout()">
+	<button class="mdc-button mdc-button--raised logout-button" onclick="logoutDialog.show()">
 		Logout
 	</button>
 
 	<div style="margin-left:10px;margin-top:20px">
 		<b>API Token:</b> <span style="margin-left:10px;font-family:Courier">2661e040-e825-40d5-ba61-d73f2d111b10</span>
 	</div>
+
+	<aside id="logut-dialog" class="mdc-dialog" role="alertdialog">
+		<div class="mdc-dialog__surface">
+			<header class="mdc-dialog__header">
+				<h2 id="my-mdc-dialog-label" class="mdc-dialog__header__title">
+					Do you want to logout?
+				</h2>
+			</header>
+			<footer class="mdc-dialog__footer">
+				<button type="button" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--cancel">Cancel</button>
+				<button type="button" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept">Logout</button>
+			</footer>
+		</div>
+		<div class="mdc-dialog__backdrop"></div>
+	</aside>
 
 </body>
 

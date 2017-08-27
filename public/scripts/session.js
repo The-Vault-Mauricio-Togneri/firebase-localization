@@ -23,6 +23,7 @@ initApp = function () {
 
 window.addEventListener('load', function () {
 	initApp()
+	setupDialogs()
 });
 
 function firebaseLogout()
@@ -32,4 +33,19 @@ function firebaseLogout()
 	}, function(error) {
 		// handle error
 	});
+}
+
+var logoutDialog;
+
+function setupDialogs()
+{
+	logoutDialog = new mdc.dialog.MDCDialog(document.querySelector('#logut-dialog'));
+	
+	logoutDialog.listen('MDCDialog:accept', function() {
+		firebaseLogout()
+	})
+
+	logoutDialog.listen('MDCDialog:cancel', function() {
+		// nothing
+	})
 }
