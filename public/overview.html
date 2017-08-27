@@ -6,13 +6,16 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Overview</title>
 
+	<!-- Meterial Design -->
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
-	<link href="styles/style.css" rel="stylesheet">
 
+	<!-- Bootstrap -->
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Local -->
+	<link href="styles/style.css" rel="stylesheet">
 	<script src="scripts/firebase.js"></script>
 	<script src="scripts/session.js"></script>
 </head>
@@ -27,57 +30,50 @@
 
 	<section id="dynamic-demo-toolbar">
 		<nav id="dynamic-tab-bar" class="mdc-tab-bar mdc-tab-bar--indicator-accent" role="tablist">
-			<a role="tab" aria-controls="panel-1" class="mdc-tab mdc-tab--active">Overview</a>
-			<a role="tab" aria-controls="panel-2" class="mdc-tab" onclick="window.location.href='/translations'">Translations</a>
+			<a role="tab" class="mdc-tab mdc-tab--active">Overview</a>
+			<a role="tab" class="mdc-tab" onclick="window.location.href='/translations'">Translations</a>
 			<span class="mdc-tab-bar__indicator"></span>
 		</nav>
 	</section>
-	<section>
-		<div class="panels">
-			<div class="panel" role="tabpanel">
 
-				<table class="table">
-					<thead class="thead-default">
-						<tr>
-							<th>Language</th>
-							<th>Translated</th>
-							<th>Proofread</th>
-							<th><i class="material-icons">delete</i></th>
-							<th><i class="material-icons">android</i></th>
-							<th><i class="material-icons">face</i></th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<th scope="row">English, UK</th>
-							<td>100%</td>
-							<td>100%</td>
-							<td><i class="material-icons">close</i></td>
-							<td><i class="material-icons">get_app</i></td>
-							<td><i class="material-icons">get_app</i></td>
-						</tr>
-						<tr>
-							<th scope="row">French, Switzerland</th>
-							<td>50%</td>
-							<td>40%</td>
-							<td><i class="material-icons">close</i></td>
-							<td><i class="material-icons">get_app</i></td>
-							<td><i class="material-icons">get_app</i></td>
-						</tr>
-						<tr>
-							<th scope="row">German, Switzerland</th>
-							<td>30%</td>
-							<td>20%</td>
-							<td><i class="material-icons">close</i></td>
-							<td><i class="material-icons">get_app</i></td>
-							<td><i class="material-icons">get_app</i></td>
-						</tr>
-					</tbody>
-				</table>
-
-			</div>
-		</div>
-	</section>
+	<table class="table table-sm table-hover table-striped">
+		<thead class="thead-default">
+			<tr>
+				<th>Language</th>
+				<th>Translated</th>
+				<th>Proofread</th>
+				<th><i class="material-icons">delete</i></th>
+				<th><i class="material-icons">android</i></th>
+				<th><i class="material-icons">face</i></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th scope="row">English, UK</th>
+				<td>100%</td>
+				<td>100%</td>
+				<td><i class="material-icons">close</i></td>
+				<td><i class="material-icons">get_app</i></td>
+				<td><i class="material-icons">get_app</i></td>
+			</tr>
+			<tr>
+				<th scope="row">French, Switzerland</th>
+				<td>50%</td>
+				<td>40%</td>
+				<td><i class="material-icons">close</i></td>
+				<td><i class="material-icons">get_app</i></td>
+				<td><i class="material-icons">get_app</i></td>
+			</tr>
+			<tr>
+				<th scope="row">German, Switzerland</th>
+				<td>30%</td>
+				<td>20%</td>
+				<td><i class="material-icons">close</i></td>
+				<td><i class="material-icons">get_app</i></td>
+				<td><i class="material-icons">get_app</i></td>
+			</tr>
+		</tbody>
+	</table>
 
 </body>
 

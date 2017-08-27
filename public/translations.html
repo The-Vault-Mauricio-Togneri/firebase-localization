@@ -6,13 +6,16 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Translations</title>
 
+	<!-- Meterial Design -->
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
-	<link href="styles/style.css" rel="stylesheet">
 
+	<!-- Bootstrap -->
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Local -->
+	<link href="styles/style.css" rel="stylesheet">
 	<script src="scripts/firebase.js"></script>
 	<script src="scripts/session.js"></script>
 </head>
@@ -27,210 +30,203 @@
 
 	<section id="dynamic-demo-toolbar">
 		<nav id="dynamic-tab-bar" class="mdc-tab-bar mdc-tab-bar--indicator-accent" role="tablist">
-			<a role="tab" aria-controls="panel-1" class="mdc-tab" onclick="window.location.href='/overview'">Overview</a>
-			<a role="tab" aria-controls="panel-2" class="mdc-tab mdc-tab--active">Translations</a>
+			<a role="tab" class="mdc-tab" onclick="window.location.href='/overview'">Overview</a>
+			<a role="tab" class="mdc-tab mdc-tab--active">Translations</a>
 			<span class="mdc-tab-bar__indicator"></span>
 		</nav>
 	</section>
-	<section>
-		<div class="panels">
-			<div class="panel active" role="tabpanel" style="display:block">
 
-				<table class="table table-sm table-hover table-striped">
-					<thead class="thead-default">
-						<tr>
-							<th>Key</th>
-							<th>English, UK</th>
-							<th><i class="material-icons">done_all</i></th>
-							<th>French, Switzerland</th>
-							<th><i class="material-icons">done_all</i></th>
-							<th>German, Switzerland</th>
-							<th><i class="material-icons">done_all</i></th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<th scope="row">
-								<input type="text" class="mdc-textfield__input" value="button.ok">
-							</th>
-							<td>
-								<input type="text" class="mdc-textfield__input" value="OK EN">
-							</td>
-							<td>
-								<div class="mdc-checkbox">
-									<input type="checkbox" class="mdc-checkbox__native-control">
-									<div class="mdc-checkbox__background">
-										<svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-											<path class="mdc-checkbox__checkmark__path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
-										</svg>
-									</div>
-								</div>
-							</td>
-							<td>
-								<input type="text" class="mdc-textfield__input" value="OK FR">
-							</td>
-							<td>
-								<div class="mdc-checkbox">
-									<input type="checkbox" class="mdc-checkbox__native-control">
-									<div class="mdc-checkbox__background">
-										<svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-											<path class="mdc-checkbox__checkmark__path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
-										</svg>
-									</div>
-								</div>
-							</td>
-							<td>
-								<input type="text" class="mdc-textfield__input" value="OK GE">
-							</td>
-							<td>
-								<div class="mdc-checkbox">
-									<input type="checkbox" class="mdc-checkbox__native-control">
-									<div class="mdc-checkbox__background">
-										<svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-											<path class="mdc-checkbox__checkmark__path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
-										</svg>
-									</div>
-								</div>
-							</td>
-						</tr>
-						<tr>
-							<th scope="row">
-								<input type="text" class="mdc-textfield__input" value="button.cancel">
-							</th>
-							<td>
-								<input type="text" class="mdc-textfield__input" value="CANCEL EN">
-							</td>
-							<td>
-								<div class="mdc-checkbox">
-									<input type="checkbox" class="mdc-checkbox__native-control">
-									<div class="mdc-checkbox__background">
-										<svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-											<path class="mdc-checkbox__checkmark__path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
-										</svg>
-									</div>
-								</div>
-							</td>
-							<td>
-								<input type="text" class="mdc-textfield__input" value="CANCEL FR">
-							</td>
-							<td>
-								<div class="mdc-checkbox">
-									<input type="checkbox" class="mdc-checkbox__native-control">
-									<div class="mdc-checkbox__background">
-										<svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-											<path class="mdc-checkbox__checkmark__path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
-										</svg>
-									</div>
-								</div>
-							</td>
-							<td>
-								<input type="text" class="mdc-textfield__input" value="CANCEL GE">
-							</td>
-							<td>
-								<div class="mdc-checkbox">
-									<input type="checkbox" class="mdc-checkbox__native-control">
-									<div class="mdc-checkbox__background">
-										<svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-											<path class="mdc-checkbox__checkmark__path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
-										</svg>
-									</div>
-								</div>
-							</td>
-						</tr>
-						<tr>
-							<th scope="row">
-								<input type="text" class="mdc-textfield__input" value="button.delete">
-							</th>
-							<td>
-								<input type="text" class="mdc-textfield__input" value="DELETE EN">
-							</td>
-							<td>
-								<div class="mdc-checkbox">
-									<input type="checkbox" class="mdc-checkbox__native-control">
-									<div class="mdc-checkbox__background">
-										<svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-											<path class="mdc-checkbox__checkmark__path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
-										</svg>
-									</div>
-								</div>
-							</td>
-							<td>
-								<input type="text" class="mdc-textfield__input" value="DELETE FR">
-							</td>
-							<td>
-								<div class="mdc-checkbox">
-									<input type="checkbox" class="mdc-checkbox__native-control">
-									<div class="mdc-checkbox__background">
-										<svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-											<path class="mdc-checkbox__checkmark__path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
-										</svg>
-									</div>
-								</div>
-							</td>
-							<td>
-								<input type="text" class="mdc-textfield__input" value="DELETE GE">
-							</td>
-							<td>
-								<div class="mdc-checkbox">
-									<input type="checkbox" class="mdc-checkbox__native-control">
-									<div class="mdc-checkbox__background">
-										<svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-											<path class="mdc-checkbox__checkmark__path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
-										</svg>
-									</div>
-								</div>
-							</td>
-						</tr>
-						<tr>
-							<th scope="row">
-								<input type="text" class="mdc-textfield__input" value="button.remove">
-							</th>
-							<td>
-								<input type="text" class="mdc-textfield__input" value="REMOVE EN">
-							</td>
-							<td>
-								<div class="mdc-checkbox">
-									<input type="checkbox" class="mdc-checkbox__native-control">
-									<div class="mdc-checkbox__background">
-										<svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-											<path class="mdc-checkbox__checkmark__path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
-										</svg>
-									</div>
-								</div>
-							</td>
-							<td>
-								<input type="text" class="mdc-textfield__input" value="REMOVE FR">
-							</td>
-							<td>
-								<div class="mdc-checkbox">
-									<input type="checkbox" class="mdc-checkbox__native-control">
-									<div class="mdc-checkbox__background">
-										<svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-											<path class="mdc-checkbox__checkmark__path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
-										</svg>
-									</div>
-								</div>
-							</td>
-							<td>
-								<input type="text" class="mdc-textfield__input" value="REMOVE GE">
-							</td>
-							<td>
-								<div class="mdc-checkbox">
-									<input type="checkbox" class="mdc-checkbox__native-control">
-									<div class="mdc-checkbox__background">
-										<svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-											<path class="mdc-checkbox__checkmark__path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
-										</svg>
-									</div>
-								</div>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-
-			</div>
-		</div>
-	</section>
+	<table class="table table-sm table-hover table-striped">
+		<thead class="thead-default">
+			<tr>
+				<th>Key</th>
+				<th>English, UK</th>
+				<th><i class="material-icons">done_all</i></th>
+				<th>French, Switzerland</th>
+				<th><i class="material-icons">done_all</i></th>
+				<th>German, Switzerland</th>
+				<th><i class="material-icons">done_all</i></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th scope="row">
+					<input type="text" class="mdc-textfield__input" value="button.ok">
+				</th>
+				<td>
+					<input type="text" class="mdc-textfield__input" value="OK EN">
+				</td>
+				<td>
+					<div class="mdc-checkbox">
+						<input type="checkbox" class="mdc-checkbox__native-control">
+						<div class="mdc-checkbox__background">
+							<svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+								<path class="mdc-checkbox__checkmark__path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
+							</svg>
+						</div>
+					</div>
+				</td>
+				<td>
+					<input type="text" class="mdc-textfield__input" value="OK FR">
+				</td>
+				<td>
+					<div class="mdc-checkbox">
+						<input type="checkbox" class="mdc-checkbox__native-control">
+						<div class="mdc-checkbox__background">
+							<svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+								<path class="mdc-checkbox__checkmark__path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
+							</svg>
+						</div>
+					</div>
+				</td>
+				<td>
+					<input type="text" class="mdc-textfield__input" value="OK GE">
+				</td>
+				<td>
+					<div class="mdc-checkbox">
+						<input type="checkbox" class="mdc-checkbox__native-control">
+						<div class="mdc-checkbox__background">
+							<svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+								<path class="mdc-checkbox__checkmark__path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
+							</svg>
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row">
+					<input type="text" class="mdc-textfield__input" value="button.cancel">
+				</th>
+				<td>
+					<input type="text" class="mdc-textfield__input" value="CANCEL EN">
+				</td>
+				<td>
+					<div class="mdc-checkbox">
+						<input type="checkbox" class="mdc-checkbox__native-control">
+						<div class="mdc-checkbox__background">
+							<svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+								<path class="mdc-checkbox__checkmark__path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
+							</svg>
+						</div>
+					</div>
+				</td>
+				<td>
+					<input type="text" class="mdc-textfield__input" value="CANCEL FR">
+				</td>
+				<td>
+					<div class="mdc-checkbox">
+						<input type="checkbox" class="mdc-checkbox__native-control">
+						<div class="mdc-checkbox__background">
+							<svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+								<path class="mdc-checkbox__checkmark__path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
+							</svg>
+						</div>
+					</div>
+				</td>
+				<td>
+					<input type="text" class="mdc-textfield__input" value="CANCEL GE">
+				</td>
+				<td>
+					<div class="mdc-checkbox">
+						<input type="checkbox" class="mdc-checkbox__native-control">
+						<div class="mdc-checkbox__background">
+							<svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+								<path class="mdc-checkbox__checkmark__path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
+							</svg>
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row">
+					<input type="text" class="mdc-textfield__input" value="button.delete">
+				</th>
+				<td>
+					<input type="text" class="mdc-textfield__input" value="DELETE EN">
+				</td>
+				<td>
+					<div class="mdc-checkbox">
+						<input type="checkbox" class="mdc-checkbox__native-control">
+						<div class="mdc-checkbox__background">
+							<svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+								<path class="mdc-checkbox__checkmark__path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
+							</svg>
+						</div>
+					</div>
+				</td>
+				<td>
+					<input type="text" class="mdc-textfield__input" value="DELETE FR">
+				</td>
+				<td>
+					<div class="mdc-checkbox">
+						<input type="checkbox" class="mdc-checkbox__native-control">
+						<div class="mdc-checkbox__background">
+							<svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+								<path class="mdc-checkbox__checkmark__path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
+							</svg>
+						</div>
+					</div>
+				</td>
+				<td>
+					<input type="text" class="mdc-textfield__input" value="DELETE GE">
+				</td>
+				<td>
+					<div class="mdc-checkbox">
+						<input type="checkbox" class="mdc-checkbox__native-control">
+						<div class="mdc-checkbox__background">
+							<svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+								<path class="mdc-checkbox__checkmark__path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
+							</svg>
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row">
+					<input type="text" class="mdc-textfield__input" value="button.remove">
+				</th>
+				<td>
+					<input type="text" class="mdc-textfield__input" value="REMOVE EN">
+				</td>
+				<td>
+					<div class="mdc-checkbox">
+						<input type="checkbox" class="mdc-checkbox__native-control">
+						<div class="mdc-checkbox__background">
+							<svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+								<path class="mdc-checkbox__checkmark__path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
+							</svg>
+						</div>
+					</div>
+				</td>
+				<td>
+					<input type="text" class="mdc-textfield__input" value="REMOVE FR">
+				</td>
+				<td>
+					<div class="mdc-checkbox">
+						<input type="checkbox" class="mdc-checkbox__native-control">
+						<div class="mdc-checkbox__background">
+							<svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+								<path class="mdc-checkbox__checkmark__path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
+							</svg>
+						</div>
+					</div>
+				</td>
+				<td>
+					<input type="text" class="mdc-textfield__input" value="REMOVE GE">
+				</td>
+				<td>
+					<div class="mdc-checkbox">
+						<input type="checkbox" class="mdc-checkbox__native-control">
+						<div class="mdc-checkbox__background">
+							<svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+								<path class="mdc-checkbox__checkmark__path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
+							</svg>
+						</div>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 
 </body>
 
