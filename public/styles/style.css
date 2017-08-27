@@ -38,7 +38,8 @@ html, body {
 	--mdc-theme-secondary-dark: #144da8;
 }
 
-.action-button {
+.action-button
+{
     letter-spacing: 0;
     line-height: 0;
 	min-width: 0;
@@ -46,13 +47,9 @@ html, body {
 	padding: 0px 5px 0px 5px;
 }
 
-.logout-button {
-	float:right;
-	margin-right:10px;
-	background:#FD2E2E;
-    letter-spacing: 0;
-    line-height: 0;
-	min-width: 0;
-	height: 30px;
-	padding: 5px 10px 5px 10px;
+.logout-button
+{
+	float: right;
+	margin-right: 10px;
+	background: #FD2E2E;
 }

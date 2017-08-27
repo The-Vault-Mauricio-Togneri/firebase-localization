@@ -24,3 +24,12 @@ initApp = function () {
 window.addEventListener('load', function () {
 	initApp()
 });
+
+function firebaseLogout()
+{
+	firebase.auth().signOut().then(function() {
+		window.location.href='/';
+	}, function(error) {
+		// handle error
+	});
+}
