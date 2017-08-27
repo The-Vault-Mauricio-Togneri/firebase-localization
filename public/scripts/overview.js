@@ -35,7 +35,7 @@ function createLocaleRow(locale)
 
 	var tdName = document.createElement('td')
 	tdName.scope = 'row'
-	tdName.innerText = locale.name
+	tdName.innerText = LOCALES[locale.code]
 	tr.appendChild(tdName)
 
 	var tdTranslated = document.createElement('td')
