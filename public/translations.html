@@ -45,12 +45,26 @@
 		</nav>
 	</section>
 
-	<table class="table table-sm table-hover table-striped">
-		<thead class="thead-default" id="translations-table-header">
-		</thead>
-		<tbody id="translations-table-entries">
-		</tbody>
-	</table>
+	<div id="overview-content" style="display:none">
+
+		<table class="table table-sm table-hover table-striped">
+			<thead class="thead-default" id="translations-table-header">
+			</thead>
+			<tbody id="translations-table-entries">
+			</tbody>
+		</table>
+
+	</div>
+
+	<center id="loading-progress">
+		<div role="progressbar" style="position:absolute;top:50%;left:25%;width:50%" class="mdc-linear-progress mdc-linear-progress--indeterminate">
+			<div class="mdc-linear-progress__buffering-dots"></div>
+			<div class="mdc-linear-progress__buffer"></div>
+			<div class="mdc-linear-progress__bar mdc-linear-progress__primary-bar">
+				<span class="mdc-linear-progress__bar-inner"></span>
+			</div>
+		</div>
+	</center>
 
 </body>
 

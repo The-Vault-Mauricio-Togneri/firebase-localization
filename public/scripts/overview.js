@@ -10,6 +10,9 @@ function setupDatabase()
 
 	dbRef.on('value', snap => {
 		constructLocalesTable(snap)
+
+		document.getElementById('loading-progress').style.display = 'none'
+		document.getElementById('overview-content').style.display = 'block'
 	})
 }
 
