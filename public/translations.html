@@ -47,6 +47,58 @@
 
 	<div id="overview-content" style="display:none">
 
+		<div>
+
+			<div class="mdc-form-field" style="margin-left:20px">
+				<div class="mdc-checkbox">
+					<input id="show-translated" type="checkbox" checked class="mdc-checkbox__native-control">
+					<div class="mdc-checkbox__background">
+						<svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+							<path class="mdc-checkbox__checkmark__path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
+						</svg>
+					</div>
+				</div>
+				<label style="padding-top:8px" onclick="ivertCheck('show-translated')">Show translated</label>
+			</div>
+
+			<div class="mdc-form-field" style="margin-left:20px">
+				<div class="mdc-checkbox">
+					<input id="show-not-translated" type="checkbox" checked class="mdc-checkbox__native-control">
+					<div class="mdc-checkbox__background">
+						<svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+							<path class="mdc-checkbox__checkmark__path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
+						</svg>
+					</div>
+				</div>
+				<label style="padding-top:8px" onclick="ivertCheck('show-not-translated')">Show not translated</label>
+			</div>
+
+			<div class="mdc-form-field" style="margin-left:20px">
+				<div class="mdc-checkbox">
+					<input id="show-proofread" type="checkbox" checked class="mdc-checkbox__native-control">
+					<div class="mdc-checkbox__background">
+						<svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+							<path class="mdc-checkbox__checkmark__path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
+						</svg>
+					</div>
+				</div>
+				<label style="padding-top:8px" onclick="ivertCheck('show-proofread')">Show proofread</label>
+			</div>
+
+			<div class="mdc-form-field" style="margin-left:20px">
+				<div class="mdc-checkbox">
+					<input id="show-not-proofread" type="checkbox" checked class="mdc-checkbox__native-control">
+					<div class="mdc-checkbox__background">
+						<svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+							<path class="mdc-checkbox__checkmark__path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
+						</svg>
+					</div>
+				</div>
+				<label style="padding-top:8px" onclick="ivertCheck('show-not-proofread')">Show not proofread</label>
+			</div>
+
+		</div>
+
 		<table class="table table-sm table-hover table-striped">
 			<thead class="thead-default" id="translations-table-header">
 			</thead>

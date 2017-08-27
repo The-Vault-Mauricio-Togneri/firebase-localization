@@ -146,3 +146,9 @@ function onInputUpdated(id, value)
 		}*/
 	});
 }
+
+function ivertCheck(id)
+{
+	var element = document.getElementById(id)
+	element.checked = !element.checked
+}
