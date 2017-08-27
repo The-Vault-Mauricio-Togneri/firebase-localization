@@ -88,44 +88,58 @@ function createEntryRow(key, entry)
 
 	for (var locale in entry.locales)
 	{
-		var localeInfo = entry.locales[locale]
-
-		var tdValue = document.createElement('td')
-		var input = document.createElement('input')
-		input.type = 'text'
-		input.classList.add('mdc-textfield__input')
-		input.value = localeInfo.value
-		tdValue.appendChild(input)
-		tr.appendChild(tdValue)
-	
-		var tdProofread = document.createElement('td')
-		var divCheckbox = document.createElement('div')
-		divCheckbox.classList.add('mdc-checkbox')
-
-		var inputCheckbox = document.createElement('input')
-		inputCheckbox.type = 'checkbox'
-		inputCheckbox.classList.add('mdc-checkbox__native-control')
-		divCheckbox.appendChild(inputCheckbox)
-
-		var divBackground = document.createElement('div')
-		divBackground.classList.add('mdc-checkbox__background')
-		divCheckbox.appendChild(divBackground)
-
-		var svg = document.createElement('svg')
-		svg.classList.add('mdc-checkbox__checkmark')
-		svg.viewBox = '0 0 24 24'
-		divBackground.appendChild(svg)
-
-		var path = document.createElement('path')
-		path.classList.add('mdc-checkbox__checkmark__path')
-		path.fill = 'none'
-		path.stroke = 'white'
-		path.d = 'M1.73,12.91 8.1,19.28 22.79,4.59'
-		svg.appendChild(path)
-
-		tdProofread.appendChild(divCheckbox)
-		tr.appendChild(tdProofread)
+		createEntryInputs(key, locale, entry.locales[locale], tr)
 	}
 
 	return tr
+}
+
+function createEntryInputs(key, locale, entry, tr)
+{
+	var tdValue = document.createElement('td')
+	var input = document.createElement('input')
+	input.id = key + '/locales/' + locale + '/value'
+	input.type = 'text'
+	input.classList.add('mdc-textfield__input')
+	input.value = entry.value
+	input.onblur = function()
+	{
+		onInputUpdated(input.id, input.value)
+	}
+	tdValue.appendChild(input)
+	tr.appendChild(tdValue)
+
+	var tdProofread = document.createElement('td')
+	var divCheckbox = document.createElement('div')
+	divCheckbox.classList.add('mdc-checkbox')
+
+	var inputCheckbox = document.createElement('input')
+	inputCheckbox.id = key + '/locales/' + locale + '/proofread'
+	inputCheckbox.type = 'checkbox'
+	inputCheckbox.checked = entry.proofread
+	inputCheckbox.classList.add('mdc-checkbox__native-control')
+	inputCheckbox.onchange = function()
+	{
+		onInputUpdated(inputCheckbox.id, inputCheckbox.checked)
+	}
+	divCheckbox.appendChild(inputCheckbox)
+
+	var divBackground = document.createElement('div')
+	divBackground.classList.add('mdc-checkbox__background')
+	divBackground.innerHTML = "<svg class=\"mdc-checkbox__checkmark\" viewBox=\"0 0 24 24\"><path class=\"mdc-checkbox__checkmark__path\" fill=\"none\" stroke=\"white\" d=\"M1.73,12.91 8.1,19.28 22.79,4.59\"></path></svg>"
+	divCheckbox.appendChild(divBackground)
+
+	tdProofread.appendChild(divCheckbox)
+	tr.appendChild(tdProofread)
+}
+
+function onInputUpdated(id, value)
+{
+	firebase.database().ref('/translations/' + id).set(value, function(error) {
+		/*if (error) {
+			console.log("Data could not be saved." + error);
+		} else {
+			console.log("Data saved successfully.");
+		}*/
+	});
 }
