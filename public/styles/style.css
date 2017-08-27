@@ -12,6 +12,7 @@ html, body {
 .custom-icon
 {
 	color: grey;
+	font-size: 25px;
 }
 
 .mdc-textfield__input
