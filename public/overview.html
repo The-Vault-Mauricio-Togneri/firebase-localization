@@ -30,6 +30,10 @@
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
 
+	<!-- Select2 -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+
 	<!-- Local styles -->
 	<link href="styles/style.css" rel="stylesheet">
 	<link href="styles/overview.css" rel="stylesheet">
@@ -69,7 +73,7 @@
 			</tbody>
 		</table>
 
-		<button type="button" class="btn btn-primary add-language-button">
+		<button type="button" class="btn btn-primary add-language-button" data-toggle="modal" data-target="#add-language-dialog">
 			<i class="fa fa-plus"></i>
 			Add Language
 		</button>
@@ -86,7 +90,7 @@
 			</span>
 		</div>
 
-		<div id="logout-dialog" class="modal fade" tabindex="-1" role="dialog">
+		<div id="logout-dialog" class="modal fade" role="dialog">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-body">
@@ -100,11 +104,52 @@
 			</div>
 		</div>
 
+		<div id="add-language-dialog" class="modal fade" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Language</h5>
+					</div>
+					<div class="modal-body">
+						<select id="add-language-select" class="js-example-placeholder-single" onchange="enableAddLanguageButtonOk(true)" style="width:100%">
+							<option value=""></option>
+						</select>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+						<button id="add-language-button-ok" type="button" class="btn btn-primary" disabled="true" data-dismiss="modal" onclick="addLanguage()">Add</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
 	</div>
 
 	<center id="loading-progress" class="progress loading-progress">
 		<div class="progress-bar progress-bar-striped indeterminate">
 	</center>
+
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			var data = []
+
+			for (var locale in LOCALES)
+			{
+				data.push({ id: locale, text: LOCALES[locale] })
+			}
+
+			$(".js-example-placeholder-single").select2({
+				placeholder: "Language",
+				data: data
+			})
+
+			$("#add-language-dialog").on('show.bs.modal', function () {
+				enableAddLanguageButtonOk(false)
+				$("#add-language-select").val("").trigger("change.select2");
+    		})
+		})
+	</script>
 
 </body>
 

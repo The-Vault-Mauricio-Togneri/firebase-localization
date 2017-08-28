@@ -115,3 +115,17 @@ function firebaseLogout()
 		// handle error
 	})
 }
+
+function addLanguage()
+{
+	var select = document.getElementById('add-language-select')
+
+	// TODO
+	console.log(select.value)
+}
+
+function enableAddLanguageButtonOk(enabled)
+{
+	var button = document.getElementById('add-language-button-ok')
+	button.disabled = !enabled
+}
