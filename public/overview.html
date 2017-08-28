@@ -105,6 +105,26 @@
 			</div>
 		</div>
 
+		<div id="add-language-dialog" class="modal fade" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Language</h5>
+					</div>
+					<div class="modal-body">
+						<input type="hidden" id="add-language-dialog-code" value="">
+						<select id="add-language-select" class="js-example-placeholder-single" style="width:100%" onchange="enableAddLanguageButtonOk(true)">
+							<option value=""></option>
+						</select>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+						<button id="add-language-button-ok" type="button" class="btn btn-primary" disabled="true" data-dismiss="modal" onclick="addLanguage()">Add</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
 		<div id="delete-language-dialog" class="modal fade" role="dialog">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
@@ -115,25 +135,6 @@
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
 						<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="deleteLanguage()">Delete</button>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div id="add-language-dialog" class="modal fade" role="dialog">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title">Language</h5>
-					</div>
-					<div class="modal-body">
-						<select id="add-language-select" class="js-example-placeholder-single" style="width:100%" onchange="enableAddLanguageButtonOk(true)">
-							<option value=""></option>
-						</select>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-						<button id="add-language-button-ok" type="button" class="btn btn-primary" disabled="true" data-dismiss="modal" onclick="addLanguage()">Add</button>
 					</div>
 				</div>
 			</div>

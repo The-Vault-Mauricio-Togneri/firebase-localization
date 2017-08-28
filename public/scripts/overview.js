@@ -51,6 +51,13 @@ function createLocaleRow(key, locale)
 
 	var tdEdit = document.createElement('td')
 	tdEdit.appendChild(buttonAction('fa-pencil'))
+	tdEdit.onclick = function()
+	{
+		var code = document.getElementById('add-language-dialog-code')
+		code.value = key
+
+		$('#add-language-dialog').modal()
+	}
 	tr.appendChild(tdEdit)
 
 	var tdDelete = document.createElement('td')
@@ -129,9 +136,17 @@ function firebaseLogout()
 function addLanguage()
 {
 	var select = document.getElementById('add-language-select')
+	var code = document.getElementById('add-language-dialog-code')
 
 	// TODO
-	console.log(select.value)
+	if (code.value)
+	{
+		console.log('EDIT: ' + code.value + ' => ' + select.value)
+	}
+	else
+	{
+		console.log('ADD: ' + select.value)
+	}
 }
 
 function enableAddLanguageButtonOk(enabled)
@@ -145,5 +160,5 @@ function deleteLanguage()
 	var code = document.getElementById('delete-language-dialog-code')
 	
 	// TODO
-	console.log(code.value)
+	console.log('DELETE: ' + code.value)
 }

@@ -3,7 +3,7 @@ const LOCALES = {
 	af_NA: "Afrikaans, Namibia",
 	af_ZA: "Afrikaans, South Africa",
 	ak: "Akan",
-	ak_GH: "Akan ,",
+	ak_GH: "Akan",
 	sq: "Albanian",
 	sq_AL: "Albanian, Albania",
 	am: "Amharic",
