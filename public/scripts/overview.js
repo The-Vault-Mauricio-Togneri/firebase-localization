@@ -37,8 +37,8 @@ function createLocaleRow(key, locale)
 
 	var tdName = document.createElement('td')
 	tdName.scope = 'row'
-	tdName.innerText = LOCALES[key] + ' (' + key + ')'
 	tdName.classList.add('align-middle')
+	tdName.appendChild(document.createTextNode(LOCALES[key] + ' (' + key + ')'))
 	tr.appendChild(tdName)
 
 	var tdTranslated = document.createElement('td')
@@ -52,27 +52,39 @@ function createLocaleRow(key, locale)
 	tr.appendChild(tdProofread)
 
 	var tdEdit = document.createElement('td')
-	tdEdit.innerHTML = buttonAction("fa-pencil");
+	tdEdit.appendChild(buttonAction('fa-pencil'))
 	tr.appendChild(tdEdit)
 
 	var tdDelete = document.createElement('td')
-	tdDelete.innerHTML = buttonAction("fa-times");
+	tdDelete.appendChild(buttonAction('fa-times'))
 	tr.appendChild(tdDelete)
 
 	var tdAndroid = document.createElement('td')
-	tdAndroid.innerHTML = buttonAction("fa-arrow-circle-o-down");
+	tdAndroid.appendChild(buttonAction('fa-arrow-circle-o-down'))
 	tr.appendChild(tdAndroid)
 
 	var tdIOS = document.createElement('td')
-	tdIOS.innerHTML = buttonAction("fa-arrow-circle-o-down");
+	tdIOS.appendChild(buttonAction('fa-arrow-circle-o-down'))
 	tr.appendChild(tdIOS)
 
 	return tr
 }
 
-function buttonAction(icon)
+function buttonAction(iconName)
 {
-	return "<button type='button' class='btn btn-outline-light button-action'><i class='fa " + icon + " button-action-icon'></i></button>";
+	var button = document.createElement('button')
+	button.type = 'button'
+	button.classList.add('btn')
+	button.classList.add('btn-outline-light')
+	button.classList.add('button-action')
+
+	var icon = document.createElement('i')
+	icon.classList.add('fa')
+	icon.classList.add('button-action-icon')
+	icon.classList.add(iconName)
+	button.appendChild(icon)
+
+	return button
 }
 
 function createColoredPercentage(value)
