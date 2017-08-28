@@ -8,7 +8,7 @@
 
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-	
+
 	<!-- FontAwesome -->
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
@@ -35,6 +35,7 @@
 	<link href="styles/translations.css" rel="stylesheet">
 
 	<!-- Local scripts -->
+	<script src="scripts/scripts.js"></script>
 	<script src="scripts/locales.js"></script>
 	<script src="scripts/translations.js"></script>
 	<script src="scripts/firebase.js"></script>
@@ -55,25 +56,25 @@
 
 		<div>
 
-			<label class="custom-control custom-checkbox">
+			<label class="custom-control custom-checkbox filter-checkbox">
 				<input type="checkbox" checked="true" class="custom-control-input">
 				<span class="custom-control-indicator"></span>
 				<span class="custom-control-description noselect">Show translated</span>
 			</label>
 
-			<label class="custom-control custom-checkbox">
+			<label class="custom-control custom-checkbox filter-checkbox">
 				<input type="checkbox" checked="true" class="custom-control-input">
 				<span class="custom-control-indicator"></span>
 				<span class="custom-control-description noselect">Show not translated</span>
 			</label>
 
-			<label class="custom-control custom-checkbox">
+			<label class="custom-control custom-checkbox filter-checkbox">
 				<input type="checkbox" checked="true" class="custom-control-input">
 				<span class="custom-control-indicator"></span>
 				<span class="custom-control-description noselect">Show proofread</span>
 			</label>
 
-			<label class="custom-control custom-checkbox">
+			<label class="custom-control custom-checkbox filter-checkbox">
 				<input type="checkbox" checked="true" class="custom-control-input">
 				<span class="custom-control-indicator"></span>
 				<span class="custom-control-description noselect">Show not proofread</span>
@@ -82,10 +83,8 @@
 		</div>
 
 		<table class="table table-sm table-hover table-striped">
-			<thead class="thead-default" id="translations-table-header">
-			</thead>
-			<tbody id="translations-table-entries">
-			</tbody>
+			<thead class="thead-default" id="translations-table-header"></thead>
+			<tbody id="translations-table-entries"></tbody>
 		</table>
 
 	</div>

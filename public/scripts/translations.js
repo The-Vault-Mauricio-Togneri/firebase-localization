@@ -14,9 +14,7 @@ function setupDatabase()
 		
 		dbRef.on('value', snapTranslations => {
 			constructTranslationsTableEntries(snapTranslations)
-
-			document.getElementById('loading-progress').style.display = 'none'
-			document.getElementById('overview-content').style.display = 'block'
+			displayContent()
 		})
 	})
 }
@@ -51,8 +49,9 @@ function createEntryHeader(locales)
 
 		var thLocaleProffIcon = document.createElement('th')
 		var icon = document.createElement('i')
-		icon.classList.add('material-icons')
-		icon.appendChild(document.createTextNode('done_all'))
+		icon.classList.add('fa')
+		icon.classList.add('fa-check')
+		icon.classList.add('translation-checkbox-header')
 		thLocaleProffIcon.appendChild(icon)
 		tr.appendChild(thLocaleProffIcon)
 	}
@@ -84,7 +83,7 @@ function createEntryRow(key, entry)
 	tdKey.scope = 'row'
 	var keyInput = document.createElement('input')
 	keyInput.type = 'text'
-	keyInput.classList.add('mdc-textfield__input')
+	keyInput.classList.add('form-control')
 	keyInput.value = key
 	tdKey.appendChild(keyInput)
 	tr.appendChild(tdKey)
@@ -103,7 +102,7 @@ function createEntryInputs(key, locale, entry, tr)
 	var input = document.createElement('input')
 	input.id = key + '/locales/' + locale + '/value'
 	input.type = 'text'
-	input.classList.add('mdc-textfield__input')
+	input.classList.add('form-control')
 	input.value = entry.value
 	input.onblur = function()
 	{
@@ -113,26 +112,30 @@ function createEntryInputs(key, locale, entry, tr)
 	tr.appendChild(tdValue)
 
 	var tdProofread = document.createElement('td')
-	var divCheckbox = document.createElement('div')
-	divCheckbox.classList.add('mdc-checkbox')
+	tdProofread.classList.add('align-middle')
+	tdProofread.classList.add('translation-checkbox-container')
+
+	var labelCheckbox = document.createElement('label')
+	labelCheckbox.classList.add('custom-control')
+	labelCheckbox.classList.add('custom-checkbox')
+	labelCheckbox.classList.add('translation-checkbox')
 
 	var inputCheckbox = document.createElement('input')
 	inputCheckbox.id = key + '/locales/' + locale + '/proofread'
 	inputCheckbox.type = 'checkbox'
 	inputCheckbox.checked = entry.proofread
-	inputCheckbox.classList.add('mdc-checkbox__native-control')
+	inputCheckbox.classList.add('custom-control-input')
 	inputCheckbox.onchange = function()
 	{
 		onInputUpdated(inputCheckbox.id, inputCheckbox.checked)
 	}
-	divCheckbox.appendChild(inputCheckbox)
+	labelCheckbox.appendChild(inputCheckbox)
 
-	var divBackground = document.createElement('div')
-	divBackground.classList.add('mdc-checkbox__background')
-	divBackground.innerHTML = "<svg class=\"mdc-checkbox__checkmark\" viewBox=\"0 0 24 24\"><path class=\"mdc-checkbox__checkmark__path\" fill=\"none\" stroke=\"white\" d=\"M1.73,12.91 8.1,19.28 22.79,4.59\"></path></svg>"
-	divCheckbox.appendChild(divBackground)
+	var spanCheckbox = document.createElement('span')
+	spanCheckbox.classList.add('custom-control-indicator')
+	labelCheckbox.appendChild(spanCheckbox)
 
-	tdProofread.appendChild(divCheckbox)
+	tdProofread.appendChild(labelCheckbox)
 	tr.appendChild(tdProofread)
 }
 
@@ -140,15 +143,9 @@ function onInputUpdated(id, value)
 {
 	firebase.database().ref('/translations/' + id).set(value, function(error) {
 		/*if (error) {
-			console.log("Data could not be saved." + error);
+			console.log("Data could not be saved." + error)
 		} else {
-			console.log("Data saved successfully.");
+			console.log("Data saved successfully.")
 		}*/
-	});
-}
-
-function ivertCheck(id)
-{
-	var element = document.getElementById(id)
-	element.checked = !element.checked
+	})
 }
