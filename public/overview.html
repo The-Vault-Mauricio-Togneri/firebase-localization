@@ -105,6 +105,21 @@
 			</div>
 		</div>
 
+		<div id="delete-language-dialog" class="modal fade" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-body">
+						Do you want to delete <b id="delete-language-dialog-name"></b>?
+						<input type="hidden" id="delete-language-dialog-code" value="">
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+						<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="deleteLanguage()">Delete</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
 		<div id="add-language-dialog" class="modal fade" role="dialog">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
@@ -131,12 +146,10 @@
 	</center>
 
 	<script type="text/javascript">
-		$(document).ready(function()
-		{
+		$(document).ready(function () {
 			var data = []
 
-			for (var locale in LOCALES)
-			{
+			for (var locale in LOCALES) {
 				data.push({ id: locale, text: LOCALES[locale] })
 			}
 
@@ -148,7 +161,7 @@
 			$("#add-language-dialog").on('show.bs.modal', function () {
 				enableAddLanguageButtonOk(false)
 				$("#add-language-select").val("").trigger("change.select2");
-    		})
+			})
 		})
 	</script>
 

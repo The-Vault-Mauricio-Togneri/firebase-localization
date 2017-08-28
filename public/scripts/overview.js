@@ -55,6 +55,16 @@ function createLocaleRow(key, locale)
 
 	var tdDelete = document.createElement('td')
 	tdDelete.appendChild(buttonAction('fa-times'))
+	tdDelete.onclick = function()
+	{
+		var code = document.getElementById('delete-language-dialog-code')
+		code.value = key
+
+		var name = document.getElementById('delete-language-dialog-name')
+		name.innerHTML = LOCALES[key]
+
+		$('#delete-language-dialog').modal()
+	}
 	tr.appendChild(tdDelete)
 
 	var tdAndroid = document.createElement('td')
@@ -128,4 +138,12 @@ function enableAddLanguageButtonOk(enabled)
 {
 	var button = document.getElementById('add-language-button-ok')
 	button.disabled = !enabled
+}
+
+function deleteLanguage()
+{
+	var code = document.getElementById('delete-language-dialog-code')
+	
+	// TODO
+	console.log(code.value)
 }
