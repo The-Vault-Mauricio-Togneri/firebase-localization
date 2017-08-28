@@ -9,6 +9,24 @@ html, body {
 	font-family: 'Open Sans', sans-serif;
 }
 
+.fa
+{
+	padding-right: 5px;
+}
+
+.button-action
+{
+	cursor: pointer;
+	width: 42px;
+	border: 0px solid transparent;
+}
+
+.button-action-icon
+{
+	color: #888888;
+	font-size: 1em;
+}
+
 .custom-icon
 {
 	color: grey;

@@ -9,6 +9,9 @@
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 
+	<!-- FontAwesome -->
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
 	<!-- Meterial Design -->
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
@@ -30,9 +33,10 @@
 </head>
 
 <!--
-	https://material.io/components/web/catalog/
-	https://getbootstrap.com/docs/4.0/content/tables/
-	https://material.io/icons/
+	https://material.io/components/web/catalog
+	https://getbootstrap.com/docs/4.0/content/tables
+	https://material.io/icons
+	http://fontawesome.io/icons
 -->
 
 <body>
@@ -49,23 +53,26 @@
 		<table class="table table-sm table-hover table-striped">
 			<thead class="thead-default">
 				<tr>
-					<th style="padding-bottom:8px">Language</th>
-					<th style="padding-bottom:8px">Translated</th>
-					<th style="padding-bottom:8px">Proofread</th>
-					<th><i class="material-icons custom-icon" style="color:#276FE4;margin-left:5px">settings</i></th>
-					<th><i class="material-icons custom-icon" style="color:#E64747;margin-left:5px">delete</i></th>
-					<th><i class="material-icons custom-icon" style="color:#A5CA3A;margin-left:5px">android</i></th>
-					<th><img src="img/apple.png" style="margin-left:5px;margin-bottom:6px;margin-top:5px;width:25px"></th>
+					<th style="padding-bottom:5px">Language</th>
+					<th style="padding-bottom:5px">Translated</th>
+					<th style="padding-bottom:5px">Proofread</th>
+					<th><i class="fa fa-cogs" style="color:#276FE4;margin-left:11px;font-size:1.3em"></i></th>
+					<th><i class="fa fa-trash" style="color:#E64747;margin-left:11px;font-size:1.4em"></i></th>
+					<th><i class="fa fa-android" style="color:#A5CA3A;margin-left:11px;font-size:1.6em"></i></th>
+					<th><i class="fa fa-apple" style="color:#333333;margin-left:11px;font-size:1.5em"></i></th>
 				</tr>
 			</thead>
 			<tbody id="overview-table-locales">
 			</tbody>
 		</table>
 
-		<button class="mdc-button mdc-button--raised mdc-button--primary" style="margin-left: 10px">
-			+ Add Language
+		<button type="button" class="btn btn-primary" style="margin-left: 10px">
+			<i class="fa fa-plus"></i>
+			Add Language
 		</button>
-		<button class="mdc-button mdc-button--raised logout-button" onclick="logoutDialog.show()">
+
+		<button type="button" class="btn btn-danger logout-button" style="margin-right: 10px" onclick="logoutDialog.show()">
+			<i class="fa fa-sign-out"></i>
 			Logout
 		</button>
 
