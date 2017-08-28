@@ -17,12 +17,23 @@ exports.test = functions.https.onRequest((request, response) => {
 
 exports.exportAndroid = functions.https.onRequest((request, response) => {
 	var locale = request.query.locale
-	response.set("content-disposition", "attachment; filename=\"strings-" + locale + ".xml\"")
+	response.set("content-disposition", `attachment; filename="strings-${locale}.xml"`)
 
 	var dbRef = admin.database().ref('translations')
 
 	return dbRef.once('value').then(function(snapshot) {
 		response.send(generateAndroid(locale, snapshot.val()))
+	})
+})
+
+exports.exportIOS = functions.https.onRequest((request, response) => {
+	var locale = request.query.locale
+	response.set("content-disposition", `attachment; filename="Localizable-${locale}.strings"`)
+
+	var dbRef = admin.database().ref('translations')
+
+	return dbRef.once('value').then(function(snapshot) {
+		response.send(generateIOS(locale, snapshot.val()))
 	})
 })
 
@@ -33,10 +44,26 @@ function generateAndroid(locale, entries)
 
 	for (var entry in entries)
 	{
-		result += "\t<string name=\"" + entry + "\">" + entries[entry].locales[locale].value + "</string>\n"
+		var value = entries[entry].locales[locale].value
+		
+		result += `\t<string name="${entry}">${value}"</string>\n`
 	}
 
 	result += "</resources>"
+
+	return result
+}
+
+function generateIOS(locale, entries)
+{
+	var result = ''
+
+	for (var entry in entries)
+	{
+		var value = entries[entry].locales[locale].value
+
+		result += `"${entry}" = "${value}";\n`
+	}
 
 	return result
 }
