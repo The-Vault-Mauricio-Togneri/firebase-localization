@@ -76,6 +76,10 @@ function createLocaleRow(key, locale)
 
 	var tdAndroid = document.createElement('td')
 	tdAndroid.appendChild(buttonAction('fa-arrow-circle-o-down'))
+	tdAndroid.onclick = function()
+	{
+		downloadFile('https://us-central1-app-localization-2f645.cloudfunctions.net/exportAndroid?locale=' + key)
+	}
 	tr.appendChild(tdAndroid)
 
 	var tdIOS = document.createElement('td')
