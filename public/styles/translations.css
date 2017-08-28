@@ -1,3 +1,9 @@
+.custom-checkbox
+{
+	cursor: pointer;
+	margin-left: 1em;
+}
+
 .mdc-textfield__input
 {
 	padding-left:   3px;

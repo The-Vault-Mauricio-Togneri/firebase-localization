@@ -1,8 +1,3 @@
-.overview-content
-{
-	display: none;
-}
-
 .locale-table-header-text
 {
 	padding-bottom: 0.35em;
@@ -69,18 +64,6 @@
 	padding-left: 0.7em;
 	padding-right: 0.7em;
 	font-family: 'Courier';
-}
-
-.progress-bar.indeterminate
-{
-	position: relative;
-	animation: progress-indeterminate 1s linear infinite;
-}
-  
-@keyframes progress-indeterminate
-{
-	from { left: -25%; width: 25%; }
-	to { left: 100%; width: 25%;}
 }
 
 .logout-button

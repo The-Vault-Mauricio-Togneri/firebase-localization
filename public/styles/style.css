@@ -20,12 +20,29 @@ html, body
 	cursor: pointer;
 }
 
+.overview-content
+{
+	display: none;
+}
+
 .loading-progress
 {
 	position: absolute;
 	top: 40%;
 	left: 40%;
 	width: 20%;
+}
+
+.progress-bar.indeterminate
+{
+	position: relative;
+	animation: progress-indeterminate 1s linear infinite;
+}
+  
+@keyframes progress-indeterminate
+{
+	from { left: -25%; width: 25%; }
+	to { left: 100%; width: 25%;}
 }
 
 .modal-header
@@ -53,4 +70,13 @@ html, body
     --mdc-theme-secondary: #2268d8;
     --mdc-theme-secondary-light: #2268d8;
 	--mdc-theme-secondary-dark: #144da8;
+}
+
+.noselect
+{
+    -webkit-user-select: none; /* Safari, iOS, and Android */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
 }
