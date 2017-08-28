@@ -23,6 +23,16 @@ html, body
 	width: 20%;
 }
 
+.modal-header
+{
+	border-top: 0px solid transparent;
+}
+
+.modal-footer
+{
+	border-top: 0px solid transparent;
+}
+
 .mdc-textfield__input
 {
 	padding-left:   3px;

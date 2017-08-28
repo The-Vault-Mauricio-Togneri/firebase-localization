@@ -20,8 +20,15 @@
 	<script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
 	<script src="https://cdn.firebase.com/libs/firebaseui/2.3.0/firebaseui.js"></script>
 
+	<!-- JQuery -->
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+	<!-- Popper -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.4/umd/popper.min.js"></script>	
+
 	<!-- Bootstrap -->
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
 
 	<!-- Local styles -->
 	<link href="styles/style.css" rel="stylesheet">
@@ -73,7 +80,7 @@
 			Add Language
 		</button>
 
-		<button type="button" class="btn btn-danger logout-button" style="margin-right: 10px" onclick="logoutDialog.show()">
+		<button type="button" class="btn btn-danger logout-button" style="margin-right:10px" data-toggle="modal" data-target="#logout-dialog">
 			<i class="fa fa-sign-out"></i>
 			Logout
 		</button>
@@ -85,20 +92,20 @@
 			</span>
 		</div>
 
-		<aside id="logut-dialog" class="mdc-dialog" role="alertdialog">
-			<div class="mdc-dialog__surface">
-				<header class="mdc-dialog__header">
-					<h2 id="my-mdc-dialog-label" class="mdc-dialog__header__title">
+		<div id="logout-dialog" class="modal fade" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-body">
 						Do you want to logout?
-					</h2>
-				</header>
-				<footer class="mdc-dialog__footer">
-					<button type="button" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--cancel">Cancel</button>
-					<button type="button" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept">Logout</button>
-				</footer>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+						<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="firebaseLogout()">Logout</button>
+					</div>
+				</div>
 			</div>
-			<div class="mdc-dialog__backdrop"></div>
-		</aside>
+		</div>
+
 	</div>
 
 	<center id="loading-progress" class="progress loading-progress">

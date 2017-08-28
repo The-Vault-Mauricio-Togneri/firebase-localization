@@ -1,6 +1,5 @@
 function setupApp()
 {
-	setupDialogs()
 	setupDatabase()
 }
 
@@ -82,15 +81,15 @@ function createColoredPercentage(value)
 
 	if (value == 100)
 	{
-		span.style.color = 'green'	
+		span.style.color = '#80B66A'	
 	}
 	else if (value >= 50)
 	{
-		span.style.color = 'orange'
+		span.style.color = '#F19803'
 	}
 	else
 	{
-		span.style.color = 'red'
+		span.style.color = '#FF6666'
 	}
 
 	span.appendChild(document.createTextNode(value + '%'))
@@ -104,20 +103,5 @@ function firebaseLogout()
 		window.location.href='/'
 	}, function(error) {
 		// handle error
-	})
-}
-
-var logoutDialog
-
-function setupDialogs()
-{
-	logoutDialog = new mdc.dialog.MDCDialog(document.querySelector('#logut-dialog'))
-	
-	logoutDialog.listen('MDCDialog:accept', function() {
-		firebaseLogout()
-	})
-
-	logoutDialog.listen('MDCDialog:cancel', function() {
-		// nothing
 	})
 }
