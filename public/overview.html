@@ -24,7 +24,7 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
 	<!-- Popper -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.4/umd/popper.min.js"></script>	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.4/umd/popper.min.js"></script>
 
 	<!-- Bootstrap -->
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
@@ -41,13 +41,6 @@
 	<script src="scripts/session.js"></script>
 </head>
 
-<!--
-	https://material.io/components/web/catalog
-	https://getbootstrap.com/docs/4.0/content/tables
-	https://material.io/icons
-	http://fontawesome.io/icons
--->
-
 <body>
 
 	<section id="dynamic-demo-toolbar">
@@ -58,34 +51,34 @@
 		</nav>
 	</section>
 
-	<div id="overview-content" style="display:none">
+	<div id="overview-content" class="overview-content">
 		<table class="table table-sm table-hover table-striped">
 			<thead class="thead-default">
 				<tr>
-					<th style="padding-bottom:5px">Language</th>
-					<th style="padding-bottom:5px">Translated</th>
-					<th style="padding-bottom:5px">Proofread</th>
-					<th><i class="fa fa-cogs" style="color:#276FE4;margin-left:9px;font-size:1.3em"></i></th>
-					<th><i class="fa fa-trash" style="color:#E64747;margin-left:9px;font-size:1.4em"></i></th>
-					<th><i class="fa fa-android" style="color:#A5CA3A;margin-left:9px;font-size:1.6em"></i></th>
-					<th><i class="fa fa-apple" style="color:#333333;margin-left:9px;font-size:1.5em"></i></th>
+					<th class="locale-table-header-text">Language</th>
+					<th class="locale-table-header-text">Translated</th>
+					<th class="locale-table-header-text">Proofread</th>
+					<th><i class="fa fa-cogs locale-table-header-icon locale-table-header-icon-settings"></i></th>
+					<th><i class="fa fa-trash locale-table-header-icon locale-table-header-icon-delete"></i></th>
+					<th><i class="fa fa-android locale-table-header-icon locale-table-header-icon-android"></i></th>
+					<th><i class="fa fa-apple locale-table-header-icon locale-table-header-icon-ios"></i></th>
 				</tr>
 			</thead>
 			<tbody id="overview-table-locales">
 			</tbody>
 		</table>
 
-		<button type="button" class="btn btn-primary" style="margin-left: 10px">
+		<button type="button" class="btn btn-primary add-language-button">
 			<i class="fa fa-plus"></i>
 			Add Language
 		</button>
 
-		<button type="button" class="btn btn-danger logout-button" style="margin-right:10px" data-toggle="modal" data-target="#logout-dialog">
+		<button type="button" class="btn btn-danger logout-button" data-toggle="modal" data-target="#logout-dialog">
 			<i class="fa fa-sign-out"></i>
 			Logout
 		</button>
 
-		<div style="margin-left:10px;margin-top:20px">
+		<div class="token-container">
 			<b>API Token:</b>
 			<span class="alert alert-info token-field">
 				2661e040-e825-40d5-ba61-d73f2d111b10

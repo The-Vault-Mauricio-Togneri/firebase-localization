@@ -1,8 +1,47 @@
+.overview-content
+{
+	display: none;
+}
+
+.locale-table-header-text
+{
+	padding-bottom: 0.35em;
+}
+
+.locale-table-header-icon
+{
+	margin-left: 0.4em;
+}
+
+.locale-table-header-icon-settings
+{
+	color: #276FE4;
+	font-size: 1.3em;
+}
+
+.locale-table-header-icon-delete
+{
+	color: #E64747;
+	font-size: 1.4em;
+}
+
+.locale-table-header-icon-android
+{
+	color: #A5CA3A;
+	font-size: 1.6em;
+}
+
+.locale-table-header-icon-ios
+{
+	color: #333333;
+	font-size: 1.5em;
+}
+
 .button-action
 {
 	cursor: pointer;
 	width: 2.3em;
-	border: 0px solid transparent;
+	border: 0 solid transparent;
 }
 
 .button-action-icon
@@ -11,14 +50,25 @@
 	font-size: 1em;
 }
 
+.add-language-button
+{
+	margin-left: 1em;
+}
+
+.token-container
+{
+	margin-left: 1em;
+	margin-top: 2em;
+}
+
 .token-field
 {
-	margin-left: 10px;
-	padding-top: 6px;
-	padding-bottom: 4px;
-	padding-left: 7px;
-	padding-right: 7px;
-	font-family: Courier;
+	margin-left: 1em;
+	padding-top: 0.5em;
+	padding-bottom: 0.3em;
+	padding-left: 0.7em;
+	padding-right: 0.7em;
+	font-family: 'Courier';
 }
 
 .progress-bar.indeterminate
@@ -36,6 +86,6 @@
 .logout-button
 {
 	float: right;
-	margin-right: 10px;
+	margin-right: 1em;
 	background: #FD2E2E;
 }

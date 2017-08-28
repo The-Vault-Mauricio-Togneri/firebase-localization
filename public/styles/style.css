@@ -12,7 +12,12 @@ html, body
 
 .fa
 {
-	padding-right: 5px;
+	padding-right: 0.5em;
+}
+
+.btn:hover
+{
+	cursor: pointer;
 }
 
 .loading-progress
@@ -25,19 +30,12 @@ html, body
 
 .modal-header
 {
-	border-top: 0px solid transparent;
+	border-top: 0 solid transparent;
 }
 
 .modal-footer
 {
-	border-top: 0px solid transparent;
-}
-
-.mdc-textfield__input
-{
-	padding-left:   3px;
-	padding-top:    8px;
-	padding-bottom: 8px;
+	border-top: 0 solid transparent;
 }
 
 .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
