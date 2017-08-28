@@ -15,6 +15,14 @@ html, body
 	padding-right: 5px;
 }
 
+.loading-progress
+{
+	position: absolute;
+	top: 40%;
+	left: 40%;
+	width: 20%;
+}
+
 .mdc-textfield__input
 {
 	padding-left:   3px;

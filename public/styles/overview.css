@@ -21,6 +21,18 @@
 	font-family: Courier;
 }
 
+.progress-bar.indeterminate
+{
+	position: relative;
+	animation: progress-indeterminate 1s linear infinite;
+}
+  
+@keyframes progress-indeterminate
+{
+	from { left: -25%; width: 25%; }
+	to { left: 100%; width: 25%;}
+}
+
 .logout-button
 {
 	float: right;
