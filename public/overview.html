@@ -24,8 +24,11 @@
 	<!-- Bootstrap -->
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
 
-	<!-- Local -->
+	<!-- Local styles -->
 	<link href="styles/style.css" rel="stylesheet">
+	<link href="styles/overview.css" rel="stylesheet">
+
+	<!-- Local scripts -->
 	<script src="scripts/locales.js"></script>
 	<script src="scripts/overview.js"></script>
 	<script src="scripts/firebase.js"></script>
@@ -56,10 +59,10 @@
 					<th style="padding-bottom:5px">Language</th>
 					<th style="padding-bottom:5px">Translated</th>
 					<th style="padding-bottom:5px">Proofread</th>
-					<th><i class="fa fa-cogs" style="color:#276FE4;margin-left:11px;font-size:1.3em"></i></th>
-					<th><i class="fa fa-trash" style="color:#E64747;margin-left:11px;font-size:1.4em"></i></th>
-					<th><i class="fa fa-android" style="color:#A5CA3A;margin-left:11px;font-size:1.6em"></i></th>
-					<th><i class="fa fa-apple" style="color:#333333;margin-left:11px;font-size:1.5em"></i></th>
+					<th><i class="fa fa-cogs" style="color:#276FE4;margin-left:9px;font-size:1.3em"></i></th>
+					<th><i class="fa fa-trash" style="color:#E64747;margin-left:9px;font-size:1.4em"></i></th>
+					<th><i class="fa fa-android" style="color:#A5CA3A;margin-left:9px;font-size:1.6em"></i></th>
+					<th><i class="fa fa-apple" style="color:#333333;margin-left:9px;font-size:1.5em"></i></th>
 				</tr>
 			</thead>
 			<tbody id="overview-table-locales">
@@ -77,7 +80,10 @@
 		</button>
 
 		<div style="margin-left:10px;margin-top:20px">
-			<b>API Token:</b> <span style="margin-left:10px;font-family:Courier">2661e040-e825-40d5-ba61-d73f2d111b10</span>
+			<b>API Token:</b>
+			<span class="alert alert-info token-field">
+				2661e040-e825-40d5-ba61-d73f2d111b10
+			</span>
 		</div>
 
 		<aside id="logut-dialog" class="mdc-dialog" role="alertdialog">

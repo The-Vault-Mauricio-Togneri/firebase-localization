@@ -98,21 +98,6 @@ function createColoredPercentage(value)
 	return span
 }
 
-function createLocaleButton(type)
-{
-	var button = document.createElement('button')
-	button.classList.add('mdc-button') 
-	button.classList.add('action-button') 
-
-	var icon = document.createElement('i')
-	icon.classList.add('material-icons') 
-	icon.classList.add('custom-icon') 
-	icon.appendChild(document.createTextNode(type))
-	button.appendChild(icon)
-
-	return button
-}
-
 function firebaseLogout()
 {
 	firebase.auth().signOut().then(function() {

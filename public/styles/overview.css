@@ -1,0 +1,29 @@
+.button-action
+{
+	cursor: pointer;
+	width: 2.3em;
+	border: 0px solid transparent;
+}
+
+.button-action-icon
+{
+	color: #888888;
+	font-size: 1em;
+}
+
+.token-field
+{
+	margin-left: 10px;
+	padding-top: 6px;
+	padding-bottom: 4px;
+	padding-left: 7px;
+	padding-right: 7px;
+	font-family: Courier;
+}
+
+.logout-button
+{
+	float: right;
+	margin-right: 10px;
+	background: #FD2E2E;
+}

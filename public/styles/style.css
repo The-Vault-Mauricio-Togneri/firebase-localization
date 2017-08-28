@@ -1,4 +1,5 @@
-html, body {
+html, body
+{
 	margin: 0;
 	padding: 0;
 	height: 100%;
@@ -14,25 +15,6 @@ html, body {
 	padding-right: 5px;
 }
 
-.button-action
-{
-	cursor: pointer;
-	width: 42px;
-	border: 0px solid transparent;
-}
-
-.button-action-icon
-{
-	color: #888888;
-	font-size: 1em;
-}
-
-.custom-icon
-{
-	color: grey;
-	font-size: 25px;
-}
-
 .mdc-textfield__input
 {
 	padding-left:   3px;
@@ -44,31 +26,15 @@ html, body {
 	background-color:white;
  }
 
- .table-striped > tbody > tr:nth-child(2n) > td, .table-striped > tbody > tr:nth-child(2n) > th {
+.table-striped > tbody > tr:nth-child(2n) > td, .table-striped > tbody > tr:nth-child(2n) > th {
 	background-color: #F3F3F3;
- }
+}
 
- :root {
+:root {
     --mdc-theme-primary: #2268d8;
     --mdc-theme-primary-light: #276FE4;
     --mdc-theme-primary-dark: #144da8;
     --mdc-theme-secondary: #2268d8;
     --mdc-theme-secondary-light: #2268d8;
 	--mdc-theme-secondary-dark: #144da8;
-}
-
-.action-button
-{
-    letter-spacing: 0;
-    line-height: 0;
-	min-width: 0;
-	height: 30px;
-	padding: 0px 5px 0px 5px;
-}
-
-.logout-button
-{
-	float: right;
-	margin-right: 10px;
-	background: #FD2E2E;
 }
