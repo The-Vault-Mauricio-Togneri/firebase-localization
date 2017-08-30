@@ -68,7 +68,7 @@ function createLocaleRow(key, locale)
 	tdAndroid.appendChild(buttonAction('fa-arrow-down'))
 	tdAndroid.onclick = function()
 	{
-		downloadFile('https://us-central1-app-localization-2f645.cloudfunctions.net/exportAndroid?locale=' + key)
+		downloadFile('https://us-central1-app-localization-2f645.cloudfunctions.net/api/export/' + key + '/android')
 	}
 	tr.appendChild(tdAndroid)
 
@@ -76,7 +76,7 @@ function createLocaleRow(key, locale)
 	tdIOS.appendChild(buttonAction('fa-arrow-down'))
 	tdIOS.onclick = function()
 	{
-		downloadFile('https://us-central1-app-localization-2f645.cloudfunctions.net/exportIOS?locale=' + key)
+		downloadFile('https://us-central1-app-localization-2f645.cloudfunctions.net/api/export/' + key + '/ios')
 	}
 	tr.appendChild(tdIOS)
 
