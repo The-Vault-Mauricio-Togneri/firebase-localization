@@ -5,9 +5,7 @@ function setupApp()
 
 function setupDatabase()
 {
-	const dbRef = firebase.database().ref().child('locales')
-
-	dbRef.on('value', snap => {
+	localesRef().on('value', snap => {
 		constructLocalesTable(snap)
 		displayContent()
 	})
@@ -44,10 +42,10 @@ function createLocaleRow(key, locale)
 	tdTranslated.classList.add('align-middle')
 	tr.appendChild(tdTranslated)
 
-	var tdProofread = createTag('td')
-	tdProofread.appendChild(createColoredPercentage(locale.proofread))
-	tdProofread.classList.add('align-middle')
-	tr.appendChild(tdProofread)
+	var tdValidated = createTag('td')
+	tdValidated.appendChild(createColoredPercentage(locale.validated))
+	tdValidated.classList.add('align-middle')
+	tr.appendChild(tdValidated)
 
 	var tdEdit = createTag('td')
 	tdEdit.appendChild(buttonAction('fa-pencil'))
@@ -138,7 +136,7 @@ function firebaseLogout()
 
 function openAddLanguageDialog()
 {
-	$('#add-language-select').val('').trigger('change.select2');
+	$('#add-language-select').val('').trigger('change.select2')
 
 	byId('add-language-button-ok').innerHTML = 'Add'
 
@@ -151,7 +149,7 @@ function openEditLanguageDialog(locale)
 {
 	byId('add-language-dialog-code').value = locale
 
-	$('#add-language-select').val(locale).trigger('change.select2');
+	$('#add-language-select').val(locale).trigger('change.select2')
 
 	byId('add-language-button-ok').innerHTML = 'Edit'
 
@@ -160,19 +158,32 @@ function openEditLanguageDialog(locale)
 	$('#add-language-dialog').modal()
 }
 
-function addLanguage()
+function onAddLanguage()
 {
 	var select = byId('add-language-select')
 	var code = byId('add-language-dialog-code')
 
-	// TODO
 	if (code.value)
 	{
 		console.log('EDIT: ' + code.value + ' => ' + select.value)
+
+		var entry = {
+			translated: 0,
+			validated: 0
+		}
+
+		// TODO: how to update the translatins to the new locale?
+		localesEntryRef(select.value).set(entry)
+		localesEntryRef(code.value).remove()
 	}
 	else
 	{
-		console.log('ADD: ' + select.value)
+		var entry = {
+			translated: 0,
+			validated: 0
+		}
+
+		localesEntryRef(select.value).set(entry)
 	}
 }
 
@@ -181,10 +192,9 @@ function enableAddLanguageButtonOk(enabled)
 	byId('add-language-button-ok').disabled = !enabled
 }
 
-function deleteLanguage()
+function onDeleteLanguage()
 {
-	var code = byId('delete-language-dialog-code')
-	
-	// TODO
-	console.log('DELETE: ' + code.value)
+	var locale = byId('delete-language-dialog-code').value
+
+	localesEntryRef(locale).remove()
 }

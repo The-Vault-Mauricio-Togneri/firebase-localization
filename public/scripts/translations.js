@@ -5,14 +5,10 @@ function setupApp()
 
 function setupDatabase()
 {
-	const dbRefLocales = firebase.database().ref().child('locales')
-	
-	dbRefLocales.on('value', snapLocales => {
+	localesRef().on('value', snapLocales => {
 		constructTranslationsTableHeader(snapLocales)
 
-		const dbRef = firebase.database().ref().child('translations')
-		
-		dbRef.on('value', snapTranslations => {
+		translationsRef().on('value', snapTranslations => {
 			constructTranslationsTableEntries(snapTranslations)
 			displayContent()
 		})
@@ -111,9 +107,9 @@ function createEntryInputs(key, locale, entry, tr)
 	tdValue.appendChild(input)
 	tr.appendChild(tdValue)
 
-	var tdProofread = createTag('td')
-	tdProofread.classList.add('align-middle')
-	tdProofread.classList.add('translation-checkbox-container')
+	var tdValidated = createTag('td')
+	tdValidated.classList.add('align-middle')
+	tdValidated.classList.add('translation-checkbox-container')
 
 	var labelCheckbox = createTag('label')
 	labelCheckbox.classList.add('custom-control')
@@ -121,9 +117,9 @@ function createEntryInputs(key, locale, entry, tr)
 	labelCheckbox.classList.add('translation-checkbox')
 
 	var inputCheckbox = createTag('input')
-	inputCheckbox.id = key + '/locales/' + locale + '/proofread'
+	inputCheckbox.id = key + '/locales/' + locale + '/validated'
 	inputCheckbox.type = 'checkbox'
-	inputCheckbox.checked = entry.proofread
+	inputCheckbox.checked = entry.validated
 	inputCheckbox.classList.add('custom-control-input')
 	inputCheckbox.onchange = function()
 	{
@@ -135,13 +131,13 @@ function createEntryInputs(key, locale, entry, tr)
 	spanCheckbox.classList.add('custom-control-indicator')
 	labelCheckbox.appendChild(spanCheckbox)
 
-	tdProofread.appendChild(labelCheckbox)
-	tr.appendChild(tdProofread)
+	tdValidated.appendChild(labelCheckbox)
+	tr.appendChild(tdValidated)
 }
 
 function onInputUpdated(id, value)
 {
-	firebase.database().ref('/translations/' + id).set(value, function(error) {
+	translationsEntryRef(id).set(value, function(error) {
 		/*if (error) {
 			console.log('Data could not be saved.' + error)
 		} else {

@@ -40,6 +40,7 @@
 
 	<!-- Local scripts -->
 	<script src="scripts/scripts.js"></script>
+	<script src="scripts/database.js"></script>
 	<script src="scripts/locales.js"></script>
 	<script src="scripts/overview.js"></script>
 	<script src="scripts/firebase.js"></script>
@@ -63,7 +64,7 @@
 				<tr>
 					<th class="locale-table-header-text">Language</th>
 					<th class="locale-table-header-text">Translated</th>
-					<th class="locale-table-header-text">Proofread</th>
+					<th class="locale-table-header-text">Validated</th>
 					<th><i class="fa fa-cogs locale-table-header-icon locale-table-header-icon-settings"></i></th>
 					<th><i class="fa fa-trash locale-table-header-icon locale-table-header-icon-delete"></i></th>
 					<th><i class="fa fa-android locale-table-header-icon locale-table-header-icon-android"></i></th>
@@ -119,7 +120,7 @@
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-						<button id="add-language-button-ok" type="button" class="btn btn-primary" disabled="true" data-dismiss="modal" onclick="addLanguage()">Add</button>
+						<button id="add-language-button-ok" type="button" class="btn btn-primary" disabled="true" data-dismiss="modal" onclick="onAddLanguage()">Add</button>
 					</div>
 				</div>
 			</div>
@@ -134,7 +135,7 @@
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-						<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="deleteLanguage()">Delete</button>
+						<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="onDeleteLanguage()">Delete</button>
 					</div>
 				</div>
 			</div>
