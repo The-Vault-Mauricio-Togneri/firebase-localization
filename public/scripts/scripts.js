@@ -13,6 +13,14 @@ function createText(content)
 	return document.createTextNode(content);
 }
 
+function removeChildren(element)
+{
+	while (element.firstChild)
+	{
+		element.removeChild(element.firstChild);
+	}
+}
+
 function displayContent()
 {
 	byId('loading-progress').style.display = 'none'

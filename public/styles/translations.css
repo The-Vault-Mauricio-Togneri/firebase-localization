@@ -1,7 +1,19 @@
 .filter-checkbox
 {
 	cursor: pointer;
-	margin-left: 1em;
+	margin-right: 2em;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.filter-header
+{
+	cursor: pointer;
+}
+
+.filter-label
+{
+	padding-right: 1em;
 }
 
 .translation-checkbox-header

@@ -55,32 +55,76 @@
 			</nav>
 		</section>
 
-		<div>
-
-			<label class="custom-control custom-checkbox filter-checkbox">
-				<input type="checkbox" checked="true" class="custom-control-input">
-				<span class="custom-control-indicator"></span>
-				<span class="custom-control-description noselect">Show translated</span>
-			</label>
-
-			<label class="custom-control custom-checkbox filter-checkbox">
-				<input type="checkbox" checked="true" class="custom-control-input">
-				<span class="custom-control-indicator"></span>
-				<span class="custom-control-description noselect">Show not translated</span>
-			</label>
-
-			<label class="custom-control custom-checkbox filter-checkbox">
-				<input type="checkbox" checked="true" class="custom-control-input">
-				<span class="custom-control-indicator"></span>
-				<span class="custom-control-description noselect">Show validated</span>
-			</label>
-
-			<label class="custom-control custom-checkbox filter-checkbox">
-				<input type="checkbox" checked="true" class="custom-control-input">
-				<span class="custom-control-indicator"></span>
-				<span class="custom-control-description noselect">Show not validated</span>
-			</label>
-
+		<div role="tablist" aria-multiselectable="true">
+			<div class="card">
+				<div class="card-header filter-header" data-toggle="collapse" href="#collapseFilter">
+					<i class="fa fa-filter"></i> Filter
+				</div>
+				<div id="collapseFilter" class="collapse">
+					<ul class="list-group list-group-flush">
+						<li class="list-group-item">
+							<div class="input-group">
+								<label class="col-form-label filter-label">By content:</label>
+								<input type="text" class="form-control" placeholder="Keywords">
+							</div>
+						</li>
+						<li class="list-group-item align-items-center">
+							<label class="col-form-label filter-label">By state:</label>
+							<label class="custom-control custom-checkbox filter-checkbox">
+								<input type="checkbox" checked="true" class="custom-control-input">
+								<span class="custom-control-indicator"></span>
+								<span class="custom-control-description noselect">Show translated</span>
+							</label>
+				
+							<label class="custom-control custom-checkbox filter-checkbox">
+								<input type="checkbox" checked="true" class="custom-control-input">
+								<span class="custom-control-indicator"></span>
+								<span class="custom-control-description noselect">Show not translated</span>
+							</label>
+				
+							<label class="custom-control custom-checkbox filter-checkbox">
+								<input type="checkbox" checked="true" class="custom-control-input">
+								<span class="custom-control-indicator"></span>
+								<span class="custom-control-description noselect">Show validated</span>
+							</label>
+				
+							<label class="custom-control custom-checkbox filter-checkbox">
+								<input type="checkbox" checked="true" class="custom-control-input">
+								<span class="custom-control-indicator"></span>
+								<span class="custom-control-description noselect">Show not validated</span>
+							</label>
+						</li>
+						<li class="list-group-item align-items-center">
+							<label class="col-form-label filter-label">By locale:</label>
+							<span id="filter-locale-container">
+								<label class="custom-control custom-checkbox filter-checkbox">
+									<input type="checkbox" checked="true" class="custom-control-input">
+									<span class="custom-control-indicator"></span>
+									<span class="custom-control-description noselect">asdasd</span>
+								</label>
+					
+								<label class="custom-control custom-checkbox filter-checkbox">
+									<input type="checkbox" checked="true" class="custom-control-input">
+									<span class="custom-control-indicator"></span>
+									<span class="custom-control-description noselect">Show not translated</span>
+								</label>
+					
+								<label class="custom-control custom-checkbox filter-checkbox">
+									<input type="checkbox" checked="true" class="custom-control-input">
+									<span class="custom-control-indicator"></span>
+									<span class="custom-control-description noselect">Show validated</span>
+								</label>
+					
+								<label class="custom-control custom-checkbox filter-checkbox">
+									<input type="checkbox" checked="true" class="custom-control-input">
+									<span class="custom-control-indicator"></span>
+									<span class="custom-control-description noselect">Show not validated</span>
+								</label>
+							</span>
+						</li>
+					</ul>
+				</div>
+			</div>
 		</div>
 
 		<table class="table table-sm table-hover table-striped">

@@ -15,16 +15,13 @@ function constructLocalesTable(snap)
 {
 	const locales = snap.val()
 
-	var oldTableBody = byId('overview-table-locales')
-	var newTableBody = createTag('tbody')
-	newTableBody.id = 'overview-table-locales'
+	var tableBody = byId('overview-table-locales')
+	removeChildren(tableBody)
 	
 	for (var locale in locales)
 	{
-		newTableBody.appendChild(createLocaleRow(locale, locales[locale]))
+		tableBody.appendChild(createLocaleRow(locale, locales[locale]))
 	}
-
-	oldTableBody.parentNode.replaceChild(newTableBody, oldTableBody)
 }
 
 function createLocaleRow(key, locale)

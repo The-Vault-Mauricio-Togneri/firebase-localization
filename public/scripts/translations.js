@@ -19,14 +19,9 @@ function constructTranslationsTableHeader(snap)
 {
 	const locales = snap.val()
 	
-	var oldTableHead = byId('translations-table-header')
-	var newTableHead = createTag('thead')
-	newTableHead.id = 'translations-table-header'
-	newTableHead.classList.add('thead-default')
-
-	newTableHead.appendChild(createEntryHeader(locales))
-
-	oldTableHead.parentNode.replaceChild(newTableHead, oldTableHead)
+	var tableHead = byId('translations-table-header')
+	removeChildren(tableHead)
+	tableHead.appendChild(createEntryHeader(locales))
 }
 
 function createEntryHeader(locales)
@@ -37,10 +32,15 @@ function createEntryHeader(locales)
 	thKey.appendChild(createText('Key'))
 	tr.appendChild(thKey)
 
+	var filterLocaleContainer = byId('filter-locale-container')
+	removeChildren(filterLocaleContainer)
+
 	for (var locale in locales)
 	{
+		var localeName = LOCALES[locale] + ' (' + locale + ')'
+
 		var thLocaleName = createTag('th')
-		thLocaleName.appendChild(createText(LOCALES[locale] + ' (' + locale + ')'))
+		thLocaleName.appendChild(createText(localeName))
 		tr.appendChild(thLocaleName)
 
 		var thLocaleProffIcon = createTag('th')
@@ -50,6 +50,31 @@ function createEntryHeader(locales)
 		icon.classList.add('translation-checkbox-header')
 		thLocaleProffIcon.appendChild(icon)
 		tr.appendChild(thLocaleProffIcon)
+
+		//-------------
+
+		var filterLabel = createTag('label')
+		filterLabel.classList.add('custom-control')
+		filterLabel.classList.add('custom-checkbox')
+		filterLabel.classList.add('filter-checkbox')
+
+		var filterInput = createTag('input')
+		filterInput.classList.add('custom-control-input')
+		filterInput.type = 'checkbox'
+		filterInput.checked = true
+		filterLabel.appendChild(filterInput)
+
+		var filterSparIndicator = createTag('span')
+		filterSparIndicator.classList.add('custom-control-indicator')
+		filterLabel.appendChild(filterSparIndicator)
+
+		var filterSpanText = createTag('span')
+		filterSpanText.classList.add('custom-control-description')
+		filterSpanText.classList.add('noselect')
+		filterSpanText.appendChild(createText(localeName))
+		filterLabel.appendChild(filterSpanText)
+
+		filterLocaleContainer.appendChild(filterLabel)
 	}
 
 	return tr
@@ -59,16 +84,13 @@ function constructTranslationsTableEntries(snap)
 {
 	const entries = snap.val()
 
-	var oldTableBody = byId('translations-table-entries')
-	var newTableBody = createTag('tbody')
-	newTableBody.id = 'translations-table-entries'
+	var tableBody = byId('translations-table-entries')
+	removeChildren(tableBody)
 
 	for (var entry in entries)
 	{
-		newTableBody.appendChild(createEntryRow(entry, entries[entry]))
+		tableBody.appendChild(createEntryRow(entry, entries[entry]))
 	}
-
-	oldTableBody.parentNode.replaceChild(newTableBody, oldTableBody)
 }
 
 function createEntryRow(key, entry)
