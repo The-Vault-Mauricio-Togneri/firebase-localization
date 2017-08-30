@@ -1,6 +1,6 @@
 {
 	"name": "firebase-localization",
-	"description": "Cloud Functions for Firebase",
+	"description": "Firebase Localization",
 	"dependencies": {
 		"express": "^4.15.4",
 		"firebase-admin": "^5.2.1",
