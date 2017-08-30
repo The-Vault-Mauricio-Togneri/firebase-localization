@@ -11,7 +11,7 @@ admin.initializeApp({
 	databaseURL: 'https://app-localization-2f645.firebaseio.com'
 })
 
-app.get('/export/:locale/android', (request, response) => {  
+app.get('/export/:locale/android', (request, response) => {
 	var locale = request.param('locale');
 
 	response.set('content-disposition', `attachment; filename="strings-${locale}.xml"`)
@@ -23,7 +23,7 @@ app.get('/export/:locale/android', (request, response) => {
 	})
 });
 
-app.get('/export/:locale/ios', (request, response) => {  
+app.get('/export/:locale/ios', (request, response) => {
 	var locale = request.param('locale');
 
 	response.set("content-disposition", `attachment; filename="Localizable-${locale}.strings"`)
@@ -31,7 +31,7 @@ app.get('/export/:locale/ios', (request, response) => {
 	var dbRef = admin.database().ref('translations')
 
 	return dbRef.once('value').then(function(snapshot) {
-		response.send(generate.io(locale, snapshot.val()))
+		response.send(generate.ios(locale, snapshot.val()))
 	})
 });
 
