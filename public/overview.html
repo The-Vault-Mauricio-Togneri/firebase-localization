@@ -74,7 +74,7 @@
 			</tbody>
 		</table>
 
-		<button type="button" class="btn btn-primary add-language-button" data-toggle="modal" data-target="#add-language-dialog">
+		<button type="button" class="btn btn-primary add-language-button" onclick="openAddLanguageDialog()">
 			<i class="fa fa-plus"></i>
 			Add Language
 		</button>
@@ -157,11 +157,6 @@
 			$(".js-example-placeholder-single").select2({
 				placeholder: "Language",
 				data: data
-			})
-
-			$("#add-language-dialog").on('show.bs.modal', function () {
-				enableAddLanguageButtonOk(false)
-				$("#add-language-select").val("").trigger("change.select2");
 			})
 		})
 	</script>

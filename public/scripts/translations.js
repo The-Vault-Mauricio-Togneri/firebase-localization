@@ -23,8 +23,8 @@ function constructTranslationsTableHeader(snap)
 {
 	const locales = snap.val()
 	
-	var oldTableHead = document.getElementById('translations-table-header')
-	var newTableHead = document.createElement('thead')
+	var oldTableHead = byId('translations-table-header')
+	var newTableHead = createTag('thead')
 	newTableHead.id = 'translations-table-header'
 	newTableHead.classList.add('thead-default')
 
@@ -35,20 +35,20 @@ function constructTranslationsTableHeader(snap)
 
 function createEntryHeader(locales)
 {
-	var tr = document.createElement('tr')
+	var tr = createTag('tr')
 
-	var thKey = document.createElement('th')
-	thKey.appendChild(document.createTextNode('Key'))
+	var thKey = createTag('th')
+	thKey.appendChild(createText('Key'))
 	tr.appendChild(thKey)
 
 	for (var locale in locales)
 	{
-		var thLocaleName = document.createElement('th')
-		thLocaleName.appendChild(document.createTextNode(LOCALES[locale] + ' (' + locale + ')'))
+		var thLocaleName = createTag('th')
+		thLocaleName.appendChild(createText(LOCALES[locale] + ' (' + locale + ')'))
 		tr.appendChild(thLocaleName)
 
-		var thLocaleProffIcon = document.createElement('th')
-		var icon = document.createElement('i')
+		var thLocaleProffIcon = createTag('th')
+		var icon = createTag('i')
 		icon.classList.add('fa')
 		icon.classList.add('fa-check')
 		icon.classList.add('translation-checkbox-header')
@@ -63,8 +63,8 @@ function constructTranslationsTableEntries(snap)
 {
 	const entries = snap.val()
 
-	var oldTableBody = document.getElementById('translations-table-entries')
-	var newTableBody = document.createElement('tbody')
+	var oldTableBody = byId('translations-table-entries')
+	var newTableBody = createTag('tbody')
 	newTableBody.id = 'translations-table-entries'
 
 	for (var entry in entries)
@@ -77,11 +77,11 @@ function constructTranslationsTableEntries(snap)
 
 function createEntryRow(key, entry)
 {
-	var tr = document.createElement('tr')
+	var tr = createTag('tr')
 
-	var tdKey = document.createElement('td')
+	var tdKey = createTag('td')
 	tdKey.scope = 'row'
-	var keyInput = document.createElement('input')
+	var keyInput = createTag('input')
 	keyInput.type = 'text'
 	keyInput.classList.add('form-control')
 	keyInput.value = key
@@ -98,8 +98,8 @@ function createEntryRow(key, entry)
 
 function createEntryInputs(key, locale, entry, tr)
 {
-	var tdValue = document.createElement('td')
-	var input = document.createElement('input')
+	var tdValue = createTag('td')
+	var input = createTag('input')
 	input.id = key + '/locales/' + locale + '/value'
 	input.type = 'text'
 	input.classList.add('form-control')
@@ -111,16 +111,16 @@ function createEntryInputs(key, locale, entry, tr)
 	tdValue.appendChild(input)
 	tr.appendChild(tdValue)
 
-	var tdProofread = document.createElement('td')
+	var tdProofread = createTag('td')
 	tdProofread.classList.add('align-middle')
 	tdProofread.classList.add('translation-checkbox-container')
 
-	var labelCheckbox = document.createElement('label')
+	var labelCheckbox = createTag('label')
 	labelCheckbox.classList.add('custom-control')
 	labelCheckbox.classList.add('custom-checkbox')
 	labelCheckbox.classList.add('translation-checkbox')
 
-	var inputCheckbox = document.createElement('input')
+	var inputCheckbox = createTag('input')
 	inputCheckbox.id = key + '/locales/' + locale + '/proofread'
 	inputCheckbox.type = 'checkbox'
 	inputCheckbox.checked = entry.proofread
@@ -131,7 +131,7 @@ function createEntryInputs(key, locale, entry, tr)
 	}
 	labelCheckbox.appendChild(inputCheckbox)
 
-	var spanCheckbox = document.createElement('span')
+	var spanCheckbox = createTag('span')
 	spanCheckbox.classList.add('custom-control-indicator')
 	labelCheckbox.appendChild(spanCheckbox)
 
@@ -143,9 +143,9 @@ function onInputUpdated(id, value)
 {
 	firebase.database().ref('/translations/' + id).set(value, function(error) {
 		/*if (error) {
-			console.log("Data could not be saved." + error)
+			console.log('Data could not be saved.' + error)
 		} else {
-			console.log("Data saved successfully.")
+			console.log('Data saved successfully.')
 		}*/
 	})
 }

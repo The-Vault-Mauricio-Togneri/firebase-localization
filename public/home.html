@@ -46,12 +46,12 @@
 				var phoneNumber = user.phoneNumber;
 				var providerData = user.providerData;
 				user.getIdToken().then(function (accessToken) {
-					//document.getElementById('account-details').textContent = JSON.stringify({
+					//byId('account-details').textContent = JSON.stringify({
 					//	email: email
 					//}, null, '  ');
 				});
 			} else {
-				//document.getElementById('account-details').textContent = 'null';
+				//byId('account-details').textContent = 'null';
 			}
 		}, function (error) {
 			console.log(error);
