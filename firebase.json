@@ -21,10 +21,6 @@
 			{
 				"source": "/translations",
 				"destination": "/translations.html"
-			},
-			{
-				"source": "/test",
-				"function": "test"
 			}
 		]
 	}
