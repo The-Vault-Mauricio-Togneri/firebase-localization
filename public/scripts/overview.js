@@ -1,5 +1,3 @@
-var localesLoaded = []
-
 function setupApp()
 {
 	setupDatabase()
@@ -9,13 +7,13 @@ function setupDatabase()
 {
 	localesRef().on('value', snap => {
 
-		localesLoaded = []
+		var locales = []
 
 		snap.forEach(function(entry) {
-			localesLoaded.push(new Locale(parseInt(entry.key), entry.val()))
+			locales.push(new Locale(entry.key, entry.val()))
 		})
 
-		constructLocalesTable(localesLoaded)
+		constructLocalesTable(locales)
 		displayContent()
 	})
 }
@@ -55,7 +53,7 @@ function createLocaleRow(locale)
 	tdEdit.appendChild(buttonAction('fa-pencil'))
 	tdEdit.onclick = function()
 	{
-		openEditLanguageDialog(locale.code)
+		openEditLanguageDialog(locale)
 	}
 	tr.appendChild(tdEdit)
 
@@ -63,11 +61,7 @@ function createLocaleRow(locale)
 	tdDelete.appendChild(buttonAction('fa-times'))
 	tdDelete.onclick = function()
 	{
-		byId('delete-language-dialog-code').value = locale.code
-
-		byId('delete-language-dialog-name').innerHTML = locale.name
-
-		$('#delete-language-dialog').modal()
+		openDeleteLanguageDialog(locale)
 	}
 	tr.appendChild(tdDelete)
 
@@ -152,34 +146,36 @@ function openAddLanguageDialog()
 
 function openEditLanguageDialog(locale)
 {
-	byId('add-language-dialog-code').value = locale
-
-	$('#add-language-select').val(locale).trigger('change.select2')
-
+	byId('add-language-dialog-locale').locale = locale
 	byId('add-language-button-ok').innerHTML = 'Edit'
 
 	enableAddLanguageButtonOk(false)
 
+	$('#add-language-select').val(locale.code).trigger('change.select2')
 	$('#add-language-dialog').modal()
+}
+
+function openDeleteLanguageDialog(locale)
+{
+	byId('delete-language-dialog-locale').locale = locale
+	byId('delete-language-dialog-name').innerHTML = locale.name
+	$('#delete-language-dialog').modal()
 }
 
 function onAddLanguage()
 {
 	var selected = byId('add-language-select').value
-	var code = byId('add-language-dialog-code').value
+	var locale = byId('add-language-dialog-locale').locale
 
-	if (code)
+	if (locale)
 	{
-		console.log('EDIT: ' + code + ' => ' + selected)
-
 		var entry = {
-			translated: 0,
-			validated: 0
+			code: selected,
+			translated: locale.translated,
+			validated: locale.validated
 		}
 
-		// TODO: how to update the translations to the new locale?
-		localesEntryRef(selected).set(entry)
-		localesEntryRef(code).remove()
+		localesEntryRef(locale.key).set(entry)
 	}
 	else
 	{
@@ -189,19 +185,7 @@ function onAddLanguage()
 			validated: 0
 		}
 
-		localesEntryRef(nextLocaleId()).set(entry)
-	}
-}
-
-function nextLocaleId()
-{
-	if (localesLoaded.length > 0)
-	{
-		return localesLoaded[localesLoaded.length - 1].index + 1
-	}
-	else
-	{
-		return 0
+		localesRef().push(entry)
 	}
 }
 
@@ -212,9 +196,9 @@ function enableAddLanguageButtonOk(enabled)
 
 function onDeleteLanguage()
 {
-	var locale = byId('delete-language-dialog-code').value
+	var locale = byId('delete-language-dialog-locale').locale
 
-	localesEntryRef(locale).remove()
+	localesEntryRef(locale.key).remove()
 }
 
 function firebaseLogout()
