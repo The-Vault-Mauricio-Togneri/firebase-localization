@@ -6,13 +6,7 @@ function setupApp()
 function setupDatabase()
 {
 	localesRef().on('value', snap => {
-
-		var locales = []
-
-		snap.forEach(function(entry) {
-			locales.push(new Locale(entry.key, entry.val()))
-		})
-
+		var locales = localesFromSnap(snap)
 		constructLocalesTable(locales)
 		displayContent()
 	})
