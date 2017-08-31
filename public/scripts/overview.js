@@ -35,13 +35,13 @@ function createLocaleRow(key, locale)
 	tr.appendChild(tdName)
 
 	var tdTranslated = createTag('td')
-	tdTranslated.appendChild(createColoredPercentage(locale.translated))
 	tdTranslated.classList.add('align-middle')
+	tdTranslated.appendChild(progressBarByPercentage(locale.translated))
 	tr.appendChild(tdTranslated)
 
 	var tdValidated = createTag('td')
-	tdValidated.appendChild(createColoredPercentage(locale.validated))
 	tdValidated.classList.add('align-middle')
+	tdValidated.appendChild(progressBarByPercentage(locale.validated))
 	tr.appendChild(tdValidated)
 
 	var tdEdit = createTag('td')
@@ -100,26 +100,35 @@ function buttonAction(iconName)
 	return button
 }
 
-function createColoredPercentage(value)
+function progressBarByPercentage(value)
 {
-	var span = createTag('span')
+	var divTranslatedProgress = createTag('div')
+	divTranslatedProgress.classList.add('progress')
 
+	var divTranslatedProgressBar = createTag('div')
+	divTranslatedProgressBar.classList.add('progress-bar')
+	divTranslatedProgressBar.style.backgroundColor = colorByPercentage(value)
+	divTranslatedProgressBar.style.width = value + '%'
+	divTranslatedProgressBar.appendChild(createText(value + '%'))
+	divTranslatedProgress.appendChild(divTranslatedProgressBar)
+
+	return divTranslatedProgress
+}
+
+function colorByPercentage(value)
+{
 	if (value == 100)
 	{
-		span.style.color = '#80B66A'	
+		return '#80B66A'	
 	}
 	else if (value >= 50)
 	{
-		span.style.color = '#F19803'
+		return '#F0AD4E'
 	}
 	else
 	{
-		span.style.color = '#FF6666'
+		return '#EA5854'
 	}
-
-	span.appendChild(createText(value + '%'))
-
-	return span
 }
 
 function firebaseLogout()
