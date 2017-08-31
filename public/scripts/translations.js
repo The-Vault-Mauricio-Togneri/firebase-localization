@@ -108,7 +108,7 @@ function createEntryRow(translation)
 	var tdKey = createTag('td')
 	tdKey.scope = 'row'
 	var keyInput = createTag('input')
-	keyInput.id = translation.key + '/key'
+	keyInput.id = translation.key + '/code'
 	keyInput.type = 'text'
 	keyInput.classList.add('form-control')
 	keyInput.value = translation.code
