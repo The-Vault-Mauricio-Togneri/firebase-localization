@@ -1,3 +1,5 @@
+var localesLoaded = []
+
 function setupApp()
 {
 	setupDatabase()
@@ -6,32 +8,37 @@ function setupApp()
 function setupDatabase()
 {
 	localesRef().on('value', snap => {
-		constructLocalesTable(snap)
+
+		localesLoaded = []
+
+		snap.forEach(function(entry) {
+			localesLoaded.push(new Locale(parseInt(entry.key), entry.val()))
+		})
+
+		constructLocalesTable(localesLoaded)
 		displayContent()
 	})
 }
 
-function constructLocalesTable(snap)
+function constructLocalesTable(locales)
 {
-	const locales = snap.val()
-
 	var tableBody = byId('overview-table-locales')
 	removeChildren(tableBody)
 	
 	for (var locale in locales)
 	{
-		tableBody.appendChild(createLocaleRow(locale, locales[locale]))
+		tableBody.appendChild(createLocaleRow(locales[locale]))
 	}
 }
 
-function createLocaleRow(key, locale)
+function createLocaleRow(locale)
 {
 	var tr = createTag('tr')
 
 	var tdName = createTag('td')
 	tdName.scope = 'row'
 	tdName.classList.add('align-middle')
-	tdName.appendChild(createText(LOCALES[key] + ' (' + key + ')'))
+	tdName.appendChild(createText(locale.fullName))
 	tr.appendChild(tdName)
 
 	var tdTranslated = createTag('td')
@@ -48,7 +55,7 @@ function createLocaleRow(key, locale)
 	tdEdit.appendChild(buttonAction('fa-pencil'))
 	tdEdit.onclick = function()
 	{
-		openEditLanguageDialog(key)
+		openEditLanguageDialog(locale.code)
 	}
 	tr.appendChild(tdEdit)
 
@@ -56,9 +63,9 @@ function createLocaleRow(key, locale)
 	tdDelete.appendChild(buttonAction('fa-times'))
 	tdDelete.onclick = function()
 	{
-		byId('delete-language-dialog-code').value = key
+		byId('delete-language-dialog-code').value = locale.code
 
-		byId('delete-language-dialog-name').innerHTML = LOCALES[key]
+		byId('delete-language-dialog-name').innerHTML = locale.name
 
 		$('#delete-language-dialog').modal()
 	}
@@ -68,7 +75,7 @@ function createLocaleRow(key, locale)
 	tdAndroid.appendChild(buttonAction('fa-arrow-down'))
 	tdAndroid.onclick = function()
 	{
-		downloadFile('https://us-central1-app-localization-2f645.cloudfunctions.net/api/export/' + key + '/android')
+		downloadFile('api/export/' + locale.code + '/android')
 	}
 	tr.appendChild(tdAndroid)
 
@@ -76,7 +83,7 @@ function createLocaleRow(key, locale)
 	tdIOS.appendChild(buttonAction('fa-arrow-down'))
 	tdIOS.onclick = function()
 	{
-		downloadFile('https://us-central1-app-localization-2f645.cloudfunctions.net/api/export/' + key + '/ios')
+		downloadFile('api/export/' + locale.code + '/ios')
 	}
 	tr.appendChild(tdIOS)
 
@@ -132,15 +139,6 @@ function colorByPercentage(value)
 	}
 }
 
-function firebaseLogout()
-{
-	firebase.auth().signOut().then(function() {
-		window.location.href='/'
-	}, function(error) {
-		// handle error
-	})
-}
-
 function openAddLanguageDialog()
 {
 	$('#add-language-select').val('').trigger('change.select2')
@@ -167,30 +165,43 @@ function openEditLanguageDialog(locale)
 
 function onAddLanguage()
 {
-	var select = byId('add-language-select')
-	var code = byId('add-language-dialog-code')
+	var selected = byId('add-language-select').value
+	var code = byId('add-language-dialog-code').value
 
-	if (code.value)
+	if (code)
 	{
-		console.log('EDIT: ' + code.value + ' => ' + select.value)
+		console.log('EDIT: ' + code + ' => ' + selected)
 
 		var entry = {
 			translated: 0,
 			validated: 0
 		}
 
-		// TODO: how to update the translatins to the new locale?
-		localesEntryRef(select.value).set(entry)
-		localesEntryRef(code.value).remove()
+		// TODO: how to update the translations to the new locale?
+		localesEntryRef(selected).set(entry)
+		localesEntryRef(code).remove()
 	}
 	else
 	{
 		var entry = {
+			code: selected,
 			translated: 0,
 			validated: 0
 		}
 
-		localesEntryRef(select.value).set(entry)
+		localesEntryRef(nextLocaleId()).set(entry)
+	}
+}
+
+function nextLocaleId()
+{
+	if (localesLoaded.length > 0)
+	{
+		return localesLoaded[localesLoaded.length - 1].index + 1
+	}
+	else
+	{
+		return 0
 	}
 }
 
@@ -204,4 +215,13 @@ function onDeleteLanguage()
 	var locale = byId('delete-language-dialog-code').value
 
 	localesEntryRef(locale).remove()
+}
+
+function firebaseLogout()
+{
+	firebase.auth().signOut().then(function() {
+		window.location.href='/'
+	}, function(error) {
+		// handle error
+	})
 }

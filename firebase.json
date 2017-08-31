@@ -21,6 +21,10 @@
 			{
 				"source": "/translations",
 				"destination": "/translations.html"
+			},
+			{
+				"source": "/api/**",
+				"function": "api"
 			}
 		]
 	}
