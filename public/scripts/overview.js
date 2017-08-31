@@ -163,23 +163,23 @@ function onAddLanguage()
 
 	if (locale)
 	{
-		var entry = {
+		var value = {
 			code: selected,
 			translated: locale.translated,
 			validated: locale.validated
 		}
 
-		localesEntryRef(locale.key).set(entry)
+		localesEntryRef(locale.key).set(value)
 	}
 	else
 	{
-		var entry = {
+		var value = {
 			code: selected,
 			translated: 0,
 			validated: 0
 		}
 
-		localesRef().push(entry)
+		localesRef().push(value)
 	}
 }
 

@@ -32,3 +32,15 @@
 	cursor: pointer;
 	margin: 0em 0em 0em 0.4em;
 }
+
+.button-circle
+{
+	width: 3em;
+	height: 3em;
+	padding: 0px 1em;
+	font-size: 1em;
+	border-radius: 10em;
+	position: absolute;
+	bottom: 1em;
+	right: 1em;
+}

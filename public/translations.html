@@ -53,6 +53,10 @@
 			</li>
 		</ul>
 
+		<button type="button" class="btn btn-success button-circle" onclick="openAddTranslationDialog()">
+			<i class="fa fa-plus"></i>
+		</button>
+
 		<div role="tablist" aria-multiselectable="true">
 			<div class="card">
 				<div class="card-header filter-header" data-toggle="collapse" href="#collapseFilter">
@@ -129,6 +133,34 @@
 			<thead class="thead-default" id="translations-table-header"></thead>
 			<tbody id="translations-table-entries"></tbody>
 		</table>
+
+		<div id="add-translation-dialog" class="modal fade" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Translation</h5>
+					</div>
+					<div class="modal-body">
+						<div class="form-group row">
+							<label for="example-text-input" class="col-3 col-form-label">Key:</label>
+							<div class="col-9">
+								<input class="form-control" id="add-translation-dialog-key" type="text">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="example-search-input" class="col-3 col-form-label">Description:</label>
+							<div class="col-9">
+								<input class="form-control" id="add-translation-dialog-description" type="text">
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+						<button id="add-translation-button-ok" type="button" class="btn btn-success" data-dismiss="modal" onclick="onAddTranslation()">Add</button>
+					</div>
+				</div>
+			</div>
+		</div>
 
 	</div>
 

@@ -1,3 +1,5 @@
+var localesLoaded = []
+
 function setupApp()
 {
 	setupDatabase()
@@ -7,9 +9,9 @@ function setupDatabase()
 {
 	localesRef().once('value', snapLocales => {
 		
-		var locales = localesFromSnap(snapLocales)
-		constructTranslationsTableHeader(locales)
-		constructTranslationsFilter(locales)
+		localesLoaded = localesFromSnap(snapLocales)
+		constructTranslationsTableHeader(localesLoaded)
+		constructTranslationsFilter(localesLoaded)
 
 		translationsRef().once('value', snapTranslations => {
 			var translations = translationsFromSnap(snapTranslations)
@@ -184,4 +186,36 @@ function onInputUpdated(id, value)
 			console.log('Data saved successfully')
 		}
 	})
+}
+
+function openAddTranslationDialog()
+{
+	byId('add-translation-dialog-key').value = ''
+	byId('add-translation-dialog-description').value = ''
+
+	$('#add-translation-dialog').modal()
+}
+
+function onAddTranslation()
+{
+	var key = byId('add-translation-dialog-key').value
+	var description = byId('add-translation-dialog-description').value
+
+	var value = {
+		code: key,
+		description: description,
+		locales: []
+	}
+
+	for (var locale in localesLoaded)
+	{
+		var entry = localesLoaded[locale]
+
+		value.locales[entry.key] = {
+			value: '',
+			validated: false
+		}
+	}
+
+	translationsRef().push(value)
 }
