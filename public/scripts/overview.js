@@ -69,7 +69,7 @@ function createLocaleRow(locale)
 	tdAndroid.appendChild(buttonAction('fa-arrow-down'))
 	tdAndroid.onclick = function()
 	{
-		downloadFile('api/export/' + locale.code + '/android')
+		downloadFile(window.location.hostname + '/api/export/' + locale.code + '/android')
 	}
 	tr.appendChild(tdAndroid)
 
@@ -77,7 +77,7 @@ function createLocaleRow(locale)
 	tdIOS.appendChild(buttonAction('fa-arrow-down'))
 	tdIOS.onclick = function()
 	{
-		downloadFile('api/export/' + locale.code + '/ios')
+		downloadFile(window.location.hostname + '/api/export/' + locale.code + '/ios')
 	}
 	tr.appendChild(tdIOS)
 

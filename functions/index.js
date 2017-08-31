@@ -35,7 +35,10 @@ app.get('/export/:locale/ios', (request, response) => {
 	})
 });
 
-exports.api = functions.https.onRequest(app);
+const api = express();
+api.use('/api', app);
+
+exports.api = functions.https.onRequest(api);
 
 // https://github.com/firebase/functions-samples
 // https://us-central1-app-localization-2f645.cloudfunctions.net/[function]
