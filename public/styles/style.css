@@ -87,12 +87,31 @@ html, body
 
 /* Table */
 
+.thead-default th {
+    color: #444444;
+	background-color: #F0F0F0;
+	height: 2.7em;
+}
+
+.table thead th
+{
+    vertical-align: middle;
+	border-top: 1px solid #E5E5E5;
+	border-bottom: 1px solid #E5E5E5;
+}
+
+.table td, .table th
+{
+	border-top: 0px solid transparent;
+	border-bottom: 1px solid #E9ECEF;
+}
+
 .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
 	background-color:white;
  }
 
 .table-striped > tbody > tr:nth-child(2n) > td, .table-striped > tbody > tr:nth-child(2n) > th {
-	background-color: #F3F3F3;
+	background-color: #F9F9F9;
 }
 
 /* General */

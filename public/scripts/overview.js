@@ -104,6 +104,7 @@ function progressBarByPercentage(value)
 {
 	var divTranslatedProgress = createTag('div')
 	divTranslatedProgress.classList.add('progress')
+	divTranslatedProgress.classList.add('progress-bar-indicator')
 
 	var divTranslatedProgressBar = createTag('div')
 	divTranslatedProgressBar.classList.add('progress-bar')
