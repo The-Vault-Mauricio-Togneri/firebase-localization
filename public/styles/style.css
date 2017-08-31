@@ -3,6 +3,7 @@ html, body
 	margin: 0;
 	padding: 0;
 	height: 100%;
+	background-color: #FAFAFA;
 }
 
 *
@@ -50,6 +51,7 @@ html, body
 /* Navigation tabs */
 .nav-tabs
 {
+	justify-content: center;
 	border: none;
 }
 
