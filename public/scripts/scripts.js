@@ -29,6 +29,8 @@ function displayContent()
 
 function downloadFile(path)
 {
+	console.log('Download: ' + path)
+
 	var a = createTag('A')
 	a.href = path
 	a.download = path.substr(path.lastIndexOf('/') + 1)
