@@ -118,9 +118,8 @@
 			<thead class="thead-default">
 				<tr>
 					<th style="padding-left:10px">Key</th>
-					<th ng-repeat="locale in locales">
-						<span>{{locale.fullName}}</span>
-						<i style="float:right" class="fa fa-check"></i>
+					<th ng-repeat="locale in locales" style="padding-left:10px">
+						{{locale.fullName}}
 					</th>
 				</tr>
 			</thead>
@@ -132,11 +131,8 @@
 					<td ng-repeat="locale in locales">
 						<div class="input-group">
 							<input class="form-control translation-input" type="text" ng-model="translation.locales[locale.key].value" ng-blur="onTranslationValueUpdated(translation, locale, translation.locales[locale.key].value)">
-							<div class="input-group-addon align-middle">
-								<label class="custom-control custom-checkbox translation-checkbox">
-									<input class="custom-control-input" type="checkbox" ng-model="translation.locales[locale.key].validated" ng-click="onTranslationValidatedUpdated(translation, locale, translation.locales[locale.key].validated)">
-									<span class="custom-control-indicator"></span>
-								</label>
+							<div class="input-group-addon translation-checkbox" ng-class="translationValidatedState(translation.locales[locale.key].validated)" ng-click="onTranslationValidatedChanged(translation, locale)">
+								<i class="fa fa-check"></i>
 							</div>
 						</div>
 					</td>

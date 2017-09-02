@@ -17,6 +17,11 @@ html, body
 	padding-right: 0.5em;
 }
 
+.form-control
+{
+	font-size: 1.02em;
+}
+
 .btn:hover
 {
 	cursor: pointer;

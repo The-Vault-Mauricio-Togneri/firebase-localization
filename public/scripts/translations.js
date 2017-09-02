@@ -28,9 +28,11 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 		onNodeUpdated(translation.key + '/locales/' + locale.key + '/value', value)
 	}
 
-	$scope.onTranslationValidatedUpdated = function(translation, locale, value)
+	$scope.onTranslationValidatedChanged = function(translation, locale)
 	{
-		onNodeUpdated(translation.key + '/locales/' + locale.key + '/validated', value)
+		translation.locales[locale.key].validated = !translation.locales[locale.key].validated
+
+		onNodeUpdated(translation.key + '/locales/' + locale.key + '/validated', translation.locales[locale.key].validated)
 	}
 
 	$scope.openAddTranslationDialog = function()
@@ -63,6 +65,11 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 		}
 	
 		translationsRef().push(value)
+	}
+
+	$scope.translationValidatedState = function(value)
+	{
+		return value ? 'translation-checkbox-on' : 'translation-checkbox-off'
 	}
 	
 	function onNodeUpdated(id, value)

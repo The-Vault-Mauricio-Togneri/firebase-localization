@@ -22,12 +22,25 @@
 	border-bottom: 0 solid transparent;
 }
 
-.translation-input
+.translation-checkbox
 {
-	font-size: 14px;
+	cursor: pointer;
+	padding: 0 0 0 0.6em;
 }
 
-.translation-checkbox
+.translation-checkbox-on
+{
+	color: #F0F0F0;
+	background-color: #6CAC54;
+}
+
+.translation-checkbox-off
+{
+	color: #C0C0C0;
+	background-color: #E0E0E0;
+}
+
+.translation-checkbox2
 {
 	cursor: pointer;
 	margin: 0 0 0 0;
