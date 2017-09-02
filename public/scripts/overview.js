@@ -105,6 +105,7 @@ function progressBarByPercentage(value)
 	divTranslatedProgressBar.classList.add('progress-bar')
 	divTranslatedProgressBar.style.backgroundColor = colorByPercentage(value)
 	divTranslatedProgressBar.style.width = value + '%'
+	divTranslatedProgressBar.style.fontSize = '10px'
 	divTranslatedProgressBar.appendChild(createText(value + '%'))
 	divTranslatedProgress.appendChild(divTranslatedProgressBar)
 

@@ -136,6 +136,7 @@ function createEntryInputs(tr, translation, localeKey, locale)
 	input.id = translation.key + '/locales/' + localeKey + '/value'
 	input.type = 'text'
 	input.classList.add('form-control')
+	input.style.fontSize = '14px'
 	input.value = locale.value
 	input.onblur = function()
 	{

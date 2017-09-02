@@ -9,6 +9,7 @@ html, body
 *
 {
 	font-family: 'Open Sans', sans-serif;
+	font-size: 15px;
 }
 
 .fa
@@ -53,6 +54,7 @@ html, body
 {
 	justify-content: center;
 	border: none;
+	background-color: #CCCCCC;
 }
 
 .nav-tabs > li
@@ -63,14 +65,14 @@ html, body
 
 .nav-tabs > li:hover
 {
-	border-bottom: 0.2em solid #83A4D7;
-	color: #83A4D7;
+	border-bottom: 0.2em solid #555555;
+	color: #555555;
 }
 
 .nav-tabs > li.active
 {
-	border-bottom: 0.2em solid #3F7CDD;
-	color: #3F7CDD;
+	border-bottom: 0.2em solid #444444;
+	color: #444444;
 }
 
 /* Modal */
