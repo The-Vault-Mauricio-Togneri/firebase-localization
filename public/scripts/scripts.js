@@ -1,25 +1,25 @@
-"use strict";
+"use strict"
 
 function byId(id)
 {
-	return document.getElementById(id);
+	return document.getElementById(id)
 }
 
 function createTag(type)
 {
-	return document.createElement(type);
+	return document.createElement(type)
 }
 
 function createText(content)
 {
-	return document.createTextNode(content);
+	return document.createTextNode(content)
 }
 
 function removeChildren(element)
 {
 	while (element.firstChild)
 	{
-		element.removeChild(element.firstChild);
+		element.removeChild(element.firstChild)
 	}
 }
 

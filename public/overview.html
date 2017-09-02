@@ -59,7 +59,7 @@
 			</li>
 		</ul>
 
-		<table class="table table-sm">
+		<table class="table table-sm table-striped">
 			<thead class="thead-default">
 				<tr>
 					<th style="padding-left:1em">Language</th>
@@ -71,8 +71,8 @@
 					<th><i class="fa fa-apple locale-table-header-icon locale-table-header-icon-ios"></i></th>
 				</tr>
 			</thead>
-			<tbody ng-repeat="locale in locales">
-				<tr>
+			<tbody>
+				<tr ng-repeat="locale in locales">
 					<td class="align-middle" style="padding-left:1em">{{locale.fullName}}</td>
 					<td class="align-middle">
 						<div class="progress progress-bar-indicator">

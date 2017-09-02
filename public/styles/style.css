@@ -104,25 +104,28 @@ html, body
 .thead-default th {
     color: #444444;
 	background-color: #F2F5F7;
-	border-top: 2px solid #E0E0E0;
 	height: 2.7em;
 }
 
 .table thead th
 {
-    vertical-align: middle;
+	vertical-align: middle;
+	border-top: 1px solid #E0E0E0;
+	border-bottom: 1px solid #E0E0E0;
 }
 
-.table td, .table th
+.table td
 {
-	border-bottom: 2px solid #E9ECEF;
+	border-bottom: 1px solid #E9ECEF;
 }
 
-.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th
+{
 	background-color:white;
- }
+}
 
-.table-striped > tbody > tr:nth-child(2n) > td, .table-striped > tbody > tr:nth-child(2n) > th {
+.table-striped > tbody > tr:nth-child(2n) > td, .table-striped > tbody > tr:nth-child(2n) > th
+{
 	background-color: #F9F9F9;
 }
 
