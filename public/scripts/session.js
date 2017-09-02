@@ -1,6 +1,9 @@
-initApp = function () {
-	firebase.auth().onAuthStateChanged(function (user) {
-		if (user) {
+initApp = function()
+{
+	firebase.auth().onAuthStateChanged(function(user)
+	{
+		if (user)
+		{
 			var displayName = user.displayName
 			var email = user.email
 			var emailVerified = user.emailVerified
@@ -8,17 +11,21 @@ initApp = function () {
 			var uid = user.uid
 			var phoneNumber = user.phoneNumber
 			var providerData = user.providerData
-			user.getIdToken().then(function (accessToken) {
-				setupApp()
+			user.getIdToken().then(function(accessToken)
+			{
+				// TODO
 			})
-		} else {
+		} else
+		{
 			window.location.href='/'
 		}
-	}, function (error) {
+	}, function(error)
+	{
 		console.log(error)
 	})
 }
 
-window.addEventListener('load', function () {
+window.addEventListener('load', function()
+{
 	initApp()
 })

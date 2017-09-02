@@ -7,3 +7,14 @@ var config = {
 	messagingSenderId: "503219174247"
 }
 firebase.initializeApp(config)
+
+function firebaseLogout()
+{
+	firebase.auth().signOut().then(function()
+	{
+		window.location.href = '/'
+	}, function(error)
+	{
+		// handle error
+	})
+}

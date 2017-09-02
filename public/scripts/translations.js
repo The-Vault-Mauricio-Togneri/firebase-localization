@@ -177,7 +177,8 @@ function onInputUpdated(id, value)
 {
 	console.log('Update: ' + id + ' => ' + value)
 
-	translationsEntryRef(id).set(value, function(error) {
+	translationsEntryRef(id).set(value, function(error)
+	{
 		if (error)
 		{
 			console.log('Data could not be saved: ' + error)

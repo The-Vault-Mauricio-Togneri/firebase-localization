@@ -7,7 +7,8 @@ function localesFromSnap(snap)
 {
 	var locales = []
 	
-	snap.forEach(function(entry) {
+	snap.forEach(function(entry)
+	{
 		locales.push(new Locale(entry.key, entry.val()))
 	})
 
@@ -28,7 +29,8 @@ function translationsFromSnap(snap)
 {
 	var translations = []
 	
-	snap.forEach(function(entry) {
+	snap.forEach(function(entry)
+	{
 		translations.push(new Translation(entry.key, entry.val()))
 	})
 

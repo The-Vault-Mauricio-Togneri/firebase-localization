@@ -22,6 +22,18 @@ html, body
 	cursor: pointer;
 }
 
+.btn-danger
+{
+	background: #EA5854;
+	border-color: #E3534F;
+}
+
+.btn-success
+{
+	background: #5F9B48;
+	border-color: #71A55D;
+}
+
 .overview-content
 {
 	display: none;

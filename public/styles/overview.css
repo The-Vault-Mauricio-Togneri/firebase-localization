@@ -11,7 +11,7 @@
 
 .locale-table-header-icon-delete
 {
-	color: #E64747;
+	color: #EA5854;
 	font-size: 1.4em;
 }
 
@@ -30,6 +30,26 @@
 .progress-bar-indicator
 {
 	margin-right: 3em;
+}
+
+.progress-bar-indicator-high
+{
+	background-color: #80B66A
+}
+
+.progress-bar-indicator-medium
+{
+	background-color: #F0AD4E
+}
+
+.progress-bar-indicator-low
+{
+	background-color: #EA5854
+}
+
+.progress-bar-indicator-text
+{
+	font-size: 10px
 }
 
 .button-action

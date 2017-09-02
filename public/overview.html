@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="overviewApp">
 
 <head>
 	<meta charset="utf-8">
@@ -46,12 +46,12 @@
 	<script src="scripts/session.js"></script>
 </head>
 
-<body>
+<body ng-controller="overviewCtrl">
 
 	<div id="overview-content" class="overview-content">
 
 		<ul class="nav nav-tabs">
-			<li class="active" >
+			<li class="active">
 				Overview
 			</li>
 			<li onclick="window.location.href='/translations'">
@@ -71,11 +71,44 @@
 					<th><i class="fa fa-apple locale-table-header-icon locale-table-header-icon-ios"></i></th>
 				</tr>
 			</thead>
-			<tbody id="overview-table-locales">
+			<tbody ng-repeat="locale in locales">
+				<tr>
+					<td scope="row" class="align-middle">{{locale.fullName}}</td>
+					<td class="align-middle">
+						<div class="progress progress-bar-indicator">
+							<div class="progress-bar progress-bar-indicator-text" ng-class="localeProgressColor(locale.translated)" ng-style="localeProgressValue(locale.translated)">{{locale.translated}}%</div>
+						</div>
+					</td>
+					<td class="align-middle">
+						<div class="progress progress-bar-indicator">
+							<div class="progress-bar progress-bar-indicator-text" ng-class="localeProgressColor(locale.validated)" ng-style="localeProgressValue(locale.validated)">{{locale.validated}}%</div>
+						</div>
+					</td>
+					<td>
+						<button type="button" class="btn btn-outline-light button-action" ng-click="openEditLanguageDialog(locale)">
+							<i class="fa button-action-icon fa-pencil"></i>
+						</button>
+					</td>
+					<td>
+						<button type="button" class="btn btn-outline-light button-action" ng-click="openDeleteLanguageDialog(locale)">
+							<i class="fa button-action-icon fa-times"></i>
+						</button>
+					</td>
+					<td>
+						<button type="button" class="btn btn-outline-light button-action" ng-click="exportAndroid(locale)">
+							<i class="fa button-action-icon fa-arrow-down"></i>
+						</button>
+					</td>
+					<td>
+						<button type="button" class="btn btn-outline-light button-action" ng-click="exportIOS(locale)">
+							<i class="fa button-action-icon fa-arrow-down"></i>
+						</button>
+					</td>
+				</tr>
 			</tbody>
 		</table>
 
-		<button type="button" class="btn btn-success add-language-button" onclick="openAddLanguageDialog()">
+		<button type="button" class="btn btn-success add-language-button" ng-click="openAddLanguageDialog()">
 			<i class="fa fa-plus"></i>
 			Add Language
 		</button>
@@ -119,8 +152,8 @@
 						</select>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-						<button id="add-language-button-ok" type="button" class="btn btn-success" disabled="true" data-dismiss="modal" onclick="onAddLanguage()">Add</button>
+						<button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+						<button id="add-language-button-ok" type="button" class="btn btn-success" disabled="true" data-dismiss="modal" ng-click="onAddLanguage()">Add</button>
 					</div>
 				</div>
 			</div>
@@ -135,7 +168,7 @@
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-						<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="onDeleteLanguage()">Delete</button>
+						<button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="onDeleteLanguage()">Delete</button>
 					</div>
 				</div>
 			</div>
@@ -148,11 +181,16 @@
 	</center>
 
 	<script type="text/javascript">
-		$(document).ready(function () {
+		$(document).ready(function()
+		{
 			var data = []
 
-			for (var locale in LOCALES) {
-				data.push({ id: locale, text: LOCALES[locale] })
+			for (var locale in LOCALES)
+			{
+				data.push({
+					id: locale,
+					text: LOCALES[locale]
+				})
 			}
 
 			$(".js-example-placeholder-single").select2({
