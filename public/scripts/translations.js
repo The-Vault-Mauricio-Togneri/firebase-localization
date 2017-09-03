@@ -104,6 +104,16 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 		return value ? 'translation-checkbox-on' : 'translation-checkbox-off'
 	}
 	
+	$scope.displayByState = function(translation)
+	{
+		var translated = ($scope.filter.state.translated ? translation.hasTranslated() : false)
+		var notTranslated = ($scope.filter.state.notTranslated ? translation.hasNotTranslated() : false)
+		var validated = ($scope.filter.state.validated ? translation.hasValidated() : false)
+		var notValidated = ($scope.filter.state.notValidated ? translation.hasNotValidated() : false)
+
+		return translated || notTranslated || validated || notValidated
+	}
+
 	function onNodeUpdated(id, value)
 	{
 		console.log('Update: ' + id + ' => ' + value)

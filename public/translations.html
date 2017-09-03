@@ -85,25 +85,25 @@
 					<li class="list-group-item align-items-center">
 						<label class="col-form-label filter-label">By state:</label>
 						<label class="custom-control custom-checkbox filter-checkbox">
-							<input type="checkbox" checked="true" class="custom-control-input">
+							<input type="checkbox" checked="true" class="custom-control-input" ng-model="filter.state.translated">
 							<span class="custom-control-indicator"></span>
 							<span class="custom-control-description noselect">Show translated</span>
 						</label>
 
 						<label class="custom-control custom-checkbox filter-checkbox">
-							<input type="checkbox" checked="true" class="custom-control-input">
+							<input type="checkbox" checked="true" class="custom-control-input" ng-model="filter.state.notTranslated">
 							<span class="custom-control-indicator"></span>
 							<span class="custom-control-description noselect">Show not translated</span>
 						</label>
 
 						<label class="custom-control custom-checkbox filter-checkbox">
-							<input type="checkbox" checked="true" class="custom-control-input">
+							<input type="checkbox" checked="true" class="custom-control-input" ng-model="filter.state.validated">
 							<span class="custom-control-indicator"></span>
 							<span class="custom-control-description noselect">Show validated</span>
 						</label>
 
 						<label class="custom-control custom-checkbox filter-checkbox">
-							<input type="checkbox" checked="true" class="custom-control-input">
+							<input type="checkbox" checked="true" class="custom-control-input" ng-model="filter.state.notValidated">
 							<span class="custom-control-indicator"></span>
 							<span class="custom-control-description noselect">Show not validated</span>
 						</label>
@@ -122,7 +122,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="translation in translations">
+				<tr ng-repeat="translation in translations" ng-show="displayByState(translation)">
 					<td>
 						<input class="form-control" type="text" ng-model="translation.code" ng-blur="onTranslationKeyUpdated(translation, translation.code)">
 					</td>
