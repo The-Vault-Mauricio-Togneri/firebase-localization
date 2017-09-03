@@ -4,8 +4,6 @@ function Locale(id, locale)
 	this.code = locale.code
 	this.name = LOCALES[locale.code]
 	this.fullName = this.name + ' (' + this.code + ')'
-	this.translated = locale.translated
-	this.validated = locale.validated
 	this.visible = true
 }
 

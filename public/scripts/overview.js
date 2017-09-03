@@ -9,12 +9,63 @@ angular.module('overviewApp', []).controller('overviewCtrl', function($scope)
 	
 	$scope.init = function()
 	{
-		localesRef().on('value', snap =>
-		{
-			$scope.locales = localesFromSnap(snap)
-			$scope.$applyAsync()
-			displayContent()
+		localesRef().once('value', snapLocales =>
+		{	
+			$scope.locales = localesFromSnap(snapLocales)
+
+			translationsRef().once('value', snapTranslations =>
+			{
+				const summary = $scope.summary($scope.locales, translationsFromSnap(snapTranslations))
+
+				for (const index in summary)
+				{
+					const entry = summary[index]
+					$scope.locales[index].translated = parseInt(entry.translated * 100 / entry.total)
+					$scope.locales[index].validated  = parseInt(entry.validated  * 100 / entry.total)
+				}
+
+				$scope.$applyAsync()
+				displayContent()
+			})
 		})
+	}
+
+	$scope.summary = function(locales, translations)
+	{
+		var summary = {}
+
+		for (const index in locales)
+		{
+			summary[index] = {
+				translated: 0,
+				validated: 0,
+				total: 0
+			}
+		}
+
+		for (const translationIndex in translations)
+		{
+			const translation = translations[translationIndex]
+
+			for (const localeIndex in translation.locales)
+			{
+				const locale = translation.locales[localeIndex]
+				
+				summary[localeIndex].total++
+
+				if (locale.value)
+				{
+					summary[localeIndex].translated++
+				}
+
+				if (locale.validated)
+				{
+					summary[localeIndex].validated++
+				}
+			}
+		}
+
+		return summary
 	}
 
 	$scope.localeProgressValue = function(value)
