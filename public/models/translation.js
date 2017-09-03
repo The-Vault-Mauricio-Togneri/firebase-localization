@@ -10,14 +10,14 @@ function Translation(id, translation)
 	this.isArray = translation.isArray
 	this.locales = translation.locales
 
-	for (var index in this.locales)
+	for (const index in this.locales)
 	{
 		this.locales[index].oldValue = this.locales[index].value
 	}
 
 	this.contains = function(text)
 	{
-		for (var index in this.locales)
+		for (const index in this.locales)
 		{
 			if (this.locales[index].value.toLowerCase().includes(text))
 			{
@@ -30,7 +30,7 @@ function Translation(id, translation)
 
 	this.hasValidated = function()
 	{
-		for (var index in this.locales)
+		for (const index in this.locales)
 		{
 			if (this.locales[index].validated)
 			{
@@ -43,7 +43,7 @@ function Translation(id, translation)
 
 	this.hasNotValidated = function()
 	{
-		for (var index in this.locales)
+		for (const index in this.locales)
 		{
 			if (!this.locales[index].validated)
 			{
@@ -56,7 +56,7 @@ function Translation(id, translation)
 
 	this.hasTranslated = function()
 	{
-		for (var index in this.locales)
+		for (const index in this.locales)
 		{
 			if (this.locales[index].value)
 			{
@@ -69,7 +69,7 @@ function Translation(id, translation)
 
 	this.hasNotTranslated = function()
 	{
-		for (var index in this.locales)
+		for (const index in this.locales)
 		{
 			if (!this.locales[index].value)
 			{

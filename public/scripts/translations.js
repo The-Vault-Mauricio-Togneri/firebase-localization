@@ -37,7 +37,7 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 		{	
 			$scope.locales = localesFromSnap(snapLocales)
 
-			for (var index in $scope.locales)
+			for (const index in $scope.locales)
 			{
 				$scope.filter.locale[index] = true
 			}
@@ -100,7 +100,7 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 		$scope.dialog.translation.isPlural    = false
 		$scope.dialog.translation.isArray     = false
 
-		for (var index in $scope.locales)
+		for (const index in $scope.locales)
 		{
 			$scope.dialog.translation.locales[index] = ''
 		}
@@ -119,7 +119,7 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 		$scope.dialog.translation.isPlural    = translation.isPlural
 		$scope.dialog.translation.isArray     = translation.isArray
 
-		for (var index in $scope.locales)
+		for (const index in $scope.locales)
 		{
 			$scope.dialog.translation.locales[index] = translation.locales[index].value
 		}
@@ -164,7 +164,7 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 			locales: {}
 		}
 
-		for (var index in form.locales)
+		for (const index in form.locales)
 		{
 			value.locales[index] = {
 				value: form.locales[index],
@@ -190,7 +190,7 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 
 		// UPDATE $scope.translations
 
-		for (var index in form.locales)
+		for (const index in form.locales)
 		{
 			value.locales[index] = {
 				value: form.locales[index]
