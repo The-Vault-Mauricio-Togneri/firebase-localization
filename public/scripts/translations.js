@@ -1,10 +1,10 @@
 angular.module('translationsApp', []).controller('translationsCtrl', function($scope)
 {
-	$scope.locales = []
-	$scope.translations = []
+	$scope.locales = [] // TODO: MAKE IT AN OBJECT
+	$scope.translations = [] // TODO: MAKE IT AN OBJECT
 	$scope.filter = {
 		content: '',
-		locale: [],
+		locale: {},
 		state: {
 			translated: true,
 			notTranslated: true,
@@ -13,17 +13,18 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 		}
 	}
 
-	$scope.dialog = []
-	$scope.dialog.translation = 
-	{
-		key: '',
-		locales: [],
-		description: '',
-		tags: '',
-		maxLength: '',
-		screenshot: '',
-		isPlural: false,
-		isArray: false
+	$scope.dialog = {
+		translation: {
+			key: '',
+			code: '',
+			locales: {},
+			description: '',
+			tags: '',
+			maxLength: '',
+			screenshot: '',
+			isPlural: false,
+			isArray: false
+		}
 	}
 	
 	$scope.init = function()
@@ -78,6 +79,7 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 	$scope.openAddTranslationDialog = function()
 	{
 		$scope.dialog.translation.key         = ''
+		$scope.dialog.translation.code        = ''
 		$scope.dialog.translation.description = ''
 		$scope.dialog.translation.tags        = ''
 		$scope.dialog.translation.maxLength   = ''
@@ -92,16 +94,46 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 			$scope.dialog.translation.locales[locale.key] = ''
 		}
 	
+		displayTranslationDialog('Add')
+	}
+
+	$scope.openEditTranslationDialog = function(translation)
+	{
+		$scope.dialog.translation.key         = translation.key
+		$scope.dialog.translation.code        = translation.code
+		$scope.dialog.translation.description = translation.description
+		$scope.dialog.translation.tags        = translation.tags
+		$scope.dialog.translation.maxLength   = translation.maxLength
+		$scope.dialog.translation.screenshot  = translation.screenshot
+		$scope.dialog.translation.isPlural    = translation.isPlural
+		$scope.dialog.translation.isArray     = translation.isArray
+
+		for (var index in $scope.locales)
+		{
+			var locale = $scope.locales[index]
+
+			$scope.dialog.translation.locales[locale.key] = translation.locales[locale.key].value
+		}
+	
+		displayTranslationDialog('Edit')
+	}
+
+	function displayTranslationDialog(buttonText)
+	{
+		byId('translation-button-ok').innerHtml = buttonText
+
 		$('#translation-dialog').on('shown.bs.modal', function()
 		{
-			$('#translation-dialog-key').focus()
+			$('#translation-dialog-code').focus()
 		})
+
+		$('#translation-dialog-tabs a:first').tab('show');
 
 		$('#translation-dialog').on('shown.bs.tab', function(event)
 		{
 			if (event.target.href.includes('#translation-dialog-tab-translations'))
 			{
-				$('#translation-dialog-key').focus()
+				$('#translation-dialog-code').focus()
 			}
 			else if (event.target.href.includes('#translation-dialog-tab-properties'))
 			{
@@ -115,25 +147,39 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 	$scope.onAddTranslation = function(form)
 	{
 		var value = {
-			code: form.key,
+			code: form.code,
 			description: form.description,
 			tags: form.tags,
 			maxLength: form.maxLength,
 			screenshot: form.screenshot,
 			isPlural: form.isPlural,
 			isArray: form.isArray,
-			locales: []
+			locales: {}
 		}
-		
-		for (var index in form.locales)
+
+		if (form.key)
 		{
-			value.locales[index] = {
-				value: form.locales[index],
-				validated: false
+			for (var index in form.locales)
+			{
+				value.locales[index] = {
+					value: form.locales[index]
+				}
 			}
+		
+			translationsEntryRef(form.key).set(value)
 		}
-	
-		translationsRef().push(value)
+		else
+		{
+			for (var index in form.locales)
+			{
+				value.locales[index] = {
+					value: form.locales[index],
+					validated: false
+				}
+			}
+		
+			translationsRef().push(value)
+		}
 	}
 
 	$scope.translationValidatedState = function(value)

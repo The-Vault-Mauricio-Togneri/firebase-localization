@@ -22,22 +22,50 @@
 	border-bottom: 0 solid transparent;
 }
 
+.translations-settings-icon:hover
+{
+	background-color: #E2E6E9;
+}
+
+.translations-settings-icon:active
+{
+	background-color: #DCE0E3;
+}
+
+.translations-settings-icon
+{
+	cursor: pointer;
+	padding: 0 0.2em 0 0.6em;
+}
+
 .translation-checkbox
 {
 	cursor: pointer;
 	padding: 0 0 0 0.6em;
 }
 
+.translation-checkbox-on:hover
+{
+	color: #F0F0F0;
+	background-color: #90D875;
+}
+
 .translation-checkbox-on
 {
 	color: #F0F0F0;
-	background-color: #6CAC54;
+	background-color: #7DC263;
 }
 
 .translation-checkbox-off
 {
 	color: #C0C0C0;
 	background-color: #E0E0E0;
+}
+
+.translation-checkbox-off:hover
+{
+	color: #EFEFEF;
+	background-color: #D0D0D0;
 }
 
 .button-circle

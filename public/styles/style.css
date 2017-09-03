@@ -49,6 +49,18 @@ html, body
 	width: 20%;
 }
 
+.button-action
+{
+	cursor: pointer;
+	width: 2.3em;
+	border: 0 solid transparent;
+}
+
+.button-action-icon
+{
+	color: #888888;
+}
+
 /* Loading progress bar */
 
 .progress-bar.indeterminate

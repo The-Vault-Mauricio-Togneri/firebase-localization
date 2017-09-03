@@ -5,7 +5,7 @@ function databaseRef()
 
 function localesFromSnap(snap)
 {
-	var locales = []
+	var locales = [] // TODO: MAKE IT AN OBJECT
 	
 	snap.forEach(function(entry)
 	{
@@ -27,7 +27,7 @@ function localesEntryRef(id)
 
 function translationsFromSnap(snap)
 {
-	var translations = []
+	var translations = [] // TODO: MAKE IT AN OBJECT
 	
 	snap.forEach(function(entry)
 	{

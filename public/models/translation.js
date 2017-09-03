@@ -3,6 +3,11 @@ function Translation(key, translation)
 	this.key = key
 	this.code = translation.code
 	this.description = translation.description
+	this.tags = translation.tags
+	this.maxLength = translation.maxLength
+	this.screenshot = translation.screenshot
+	this.isPlural = translation.isPlural
+	this.isArray = translation.isArray
 	this.locales = translation.locales
 
 	this.contains = function(text)

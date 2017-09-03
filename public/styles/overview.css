@@ -47,18 +47,6 @@
 	background-color: #EA5854;
 }
 
-.button-action
-{
-	cursor: pointer;
-	width: 2.3em;
-	border: 0 solid transparent;
-}
-
-.button-action-icon
-{
-	color: #888888;
-}
-
 .add-language-button
 {
 	margin-left: 1em;
