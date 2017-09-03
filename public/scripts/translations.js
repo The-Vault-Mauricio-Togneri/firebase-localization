@@ -275,7 +275,7 @@ app.controller('translationsCtrl', function($scope, database)
 	{
 		$scope.translations = $scope.translations.sort(function(a, b)
 		{
-			return (a.key < b.key) ? -1 : (a.key > b.key);
+			return (a.key < b.key) ? -1 : (a.key > b.key)
 		})
 	}
 

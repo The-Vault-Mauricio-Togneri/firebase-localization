@@ -1,6 +1,6 @@
 function onLanguageSelected()
 {
-	angular.element($("body")).scope().onLanguageSelected();
+	angular.element($('body')).scope().onLanguageSelected()
 }
 
 app.controller('overviewCtrl', function($scope, database)
