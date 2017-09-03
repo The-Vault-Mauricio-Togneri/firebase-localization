@@ -57,11 +57,17 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 		onNodeUpdated(translation.key + '/code', value)
 	}
 
-	$scope.onTranslationValueUpdated = function(translation, locale, value)
+	$scope.onTranslationValueUpdated = function(translation, locale)
 	{
-		onNodeUpdated(translation.key + '/locales/' + locale.key + '/value', value)
+		const newValue = translation.locales[locale.key].value
+		const oldValue = translation.locales[locale.key].oldValue
 
-		updateTranslationValidated(translation, locale, false)
+		if (newValue != oldValue)
+		{
+			onNodeUpdated(translation.key + '/locales/' + locale.key + '/value', newValue)
+			translation.locales[locale.key].oldValue = newValue
+			updateTranslationValidated(translation, locale, false)
+		}
 	}
 
 	$scope.onTranslationValidatedChanged = function(translation, locale)

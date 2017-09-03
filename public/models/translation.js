@@ -10,6 +10,11 @@ function Translation(key, translation)
 	this.isArray = translation.isArray
 	this.locales = translation.locales
 
+	for (var index in this.locales)
+	{
+		this.locales[index].oldValue = this.locales[index].value
+	}
+
 	this.contains = function(text)
 	{
 		for (var index in this.locales)

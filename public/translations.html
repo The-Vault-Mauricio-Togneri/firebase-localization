@@ -133,7 +133,7 @@
 					</td>
 					<td ng-repeat="locale in locales" ng-show="filter.locale[locale.key]">
 						<div class="input-group">
-							<input class="form-control translation-input" type="text" ng-model="translation.locales[locale.key].value" ng-blur="onTranslationValueUpdated(translation, locale, translation.locales[locale.key].value)">
+							<input class="form-control translation-input" type="text" ng-model="translation.locales[locale.key].value" ng-blur="onTranslationValueUpdated(translation, locale)">
 							<div class="input-group-addon translation-checkbox" ng-class="translationValidatedState(translation.locales[locale.key].validated)" ng-click="onTranslationValidatedChanged(translation, locale)">
 								<i class="fa fa-check"></i>
 							</div>
