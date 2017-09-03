@@ -25,6 +25,30 @@ function localesEntryRef(id)
 	return databaseRef().child('locales/' + id)
 }
 
+function addLocaleRef(value)
+{
+	localesRef().push(value, function(error)
+	{
+		logDatabaseResult(error, 'Add locale => ' + JSON.stringify(value))
+	})
+}
+
+function updateLocaleRef(id, value)
+{
+	localesEntryRef(id).set(value, function(error)
+	{
+		logDatabaseResult(error, 'Update locale (' + id + ') => ' + JSON.stringify(value))
+	})
+}
+
+function removeLocaleRef(id)
+{
+	localesEntryRef(id).remove(function(error)
+	{
+		logDatabaseResult(error, 'Remove locale (' + id + ')')
+	})
+}
+
 function translationsFromSnap(snap)
 {
 	var translations = {}
@@ -45,4 +69,16 @@ function translationsRef()
 function translationsEntryRef(id)
 {
 	return databaseRef().child('/translations/' + id)
+}
+
+function logDatabaseResult(error, label)
+{
+	if (error)
+	{
+		console.log(label + ': FAILED: ' + error)
+	}
+	else
+	{
+		console.log(label + ': OK')
+	}
 }

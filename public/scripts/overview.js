@@ -9,11 +9,11 @@ angular.module('overviewApp', []).controller('overviewCtrl', function($scope)
 
 	$scope.init = function()
 	{
-		localesRef().once('value', snapLocales =>
+		localesRef().on('value', snapLocales =>
 		{	
 			$scope.locales = localesFromSnap(snapLocales)
 
-			translationsRef().once('value', snapTranslations =>
+			translationsRef().on('value', snapTranslations =>
 			{
 				const summary = $scope.summary($scope.locales, translationsFromSnap(snapTranslations))
 
@@ -133,7 +133,7 @@ angular.module('overviewApp', []).controller('overviewCtrl', function($scope)
 	{
 		var locale = byId('delete-language-dialog-locale').locale
 	
-		localesEntryRef(locale.id).remove()
+		removeLocaleRef(locale.id)
 	}
 
 	$scope.onAddLanguage = function()
@@ -144,22 +144,18 @@ angular.module('overviewApp', []).controller('overviewCtrl', function($scope)
 		if (locale)
 		{
 			var value = {
-				code: selected,
-				translated: locale.translated,
-				validated: locale.validated
+				code: selected
 			}
 
-			localesEntryRef(locale.id).set(value)
+			updateLocaleRef(locale.id, value)
 		}
 		else
 		{
 			var value = {
-				code: selected,
-				translated: 0,
-				validated: 0
+				code: selected
 			}
 
-			localesRef().push(value)
+			addLocaleRef(value)
 		}
 	}
 
