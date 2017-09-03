@@ -1,5 +1,7 @@
 "use strict"
 
+var app = angular.module('translationsApp', [])
+
 function byId(id)
 {
 	return document.getElementById(id)

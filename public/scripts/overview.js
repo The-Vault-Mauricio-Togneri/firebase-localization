@@ -3,7 +3,7 @@ function onLanguageSelected()
 	angular.element($("body")).scope().onLanguageSelected();
 }
 
-angular.module('overviewApp', []).controller('overviewCtrl', function($scope)
+app.controller('overviewCtrl', function($scope, database)
 {
 	$scope.locales = {}
 
@@ -21,13 +21,13 @@ angular.module('overviewApp', []).controller('overviewCtrl', function($scope)
 
 	$scope.init = function()
 	{
-		localesRef().on('value', snapLocales =>
+		database.localesRef().on('value', snapLocales =>
 		{	
-			$scope.locales = localesFromSnap(snapLocales)
+			$scope.locales = database.localesFromSnap(snapLocales)
 
-			translationsRef().on('value', snapTranslations =>
+			database.translationsRef().on('value', snapTranslations =>
 			{
-				const summary = $scope.summary($scope.locales, translationsFromSnap(snapTranslations))
+				const summary = $scope.summary($scope.locales, database.translationsFromSnap(snapTranslations))
 
 				for (const index in summary)
 				{
@@ -147,7 +147,7 @@ angular.module('overviewApp', []).controller('overviewCtrl', function($scope)
 			code: byId('language-dialog-select').value
 		}
 
-		addLocaleRef(value)
+		database.addLocaleRef(value)
 	}
 
 	$scope.onEditLanguage = function(form)
@@ -156,7 +156,7 @@ angular.module('overviewApp', []).controller('overviewCtrl', function($scope)
 			code: byId('language-dialog-select').value
 		}
 
-		updateLocaleRef(form.id, value)
+		database.updateLocaleRef(form.id, value)
 	}
 
 	$scope.openDeleteLanguageDialog = function(locale)
@@ -169,7 +169,7 @@ angular.module('overviewApp', []).controller('overviewCtrl', function($scope)
 
 	$scope.onDeleteLanguage = function(id)
 	{
-		removeLocaleRef(id)
+		database.removeLocaleRef(id)
 	}
 
 	$scope.init()

@@ -1,4 +1,4 @@
-angular.module('translationsApp', []).controller('translationsCtrl', function($scope)
+app.controller('translationsCtrl', function($scope, database)
 {
 	$scope.locales = {}
 	$scope.translations = {}
@@ -33,18 +33,18 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 	
 	$scope.init = function()
 	{
-		localesRef().once('value', snapLocales =>
+		database.localesRef().once('value', snapLocales =>
 		{	
-			$scope.locales = localesFromSnap(snapLocales)
+			$scope.locales = database.localesFromSnap(snapLocales)
 
 			for (const index in $scope.locales)
 			{
 				$scope.filter.locale[index] = true
 			}
 	
-			translationsRef().once('value', snapTranslations =>
+			database.translationsRef().once('value', snapTranslations =>
 			{
-				$scope.translations = translationsFromSnap(snapTranslations)
+				$scope.translations = database.translationsFromSnap(snapTranslations)
 				orderTranslations()
 				$scope.$applyAsync()
 				displayContent()
@@ -59,7 +59,7 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 
 	$scope.onTranslationKeyUpdated = function(translation)
 	{
-		updateTranslationRef(translation.id + '/key', translation.key)
+		database.updateTranslationRef(translation.id + '/key', translation.key)
 
 		orderTranslations()
 	}
@@ -71,7 +71,7 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 
 		if (newValue != oldValue)
 		{
-			updateTranslationRef(translation.id + '/locales/' + locale.id + '/value', newValue)
+			database.updateTranslationRef(translation.id + '/locales/' + locale.id + '/value', newValue)
 			translation.locales[locale.id].oldValue = newValue
 
 			if (translation.locales[locale.id].validated)
@@ -89,7 +89,7 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 	function updateTranslationValidated(translation, locale, value)
 	{
 		translation.locales[locale.id].validated = value
-		updateTranslationRef(translation.id + '/locales/' + locale.id + '/validated', value)
+		database.updateTranslationRef(translation.id + '/locales/' + locale.id + '/validated', value)
 	}
 
 	$scope.openAddTranslationDialog = function()
@@ -185,7 +185,7 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 			}
 		}
 	
-		addTranslationRef(value)
+		database.addTranslationRef(value)
 	}
 
 	$scope.onEditTranslation = function(form)
@@ -224,7 +224,7 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 		}
 		
 		orderTranslations()
-		updateTranslationRef(form.id, value)
+		database.updateTranslationRef(form.id, value)
 	}
 
 	function translationById(id)
@@ -250,7 +250,7 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 
 	$scope.onDeleteTranslation = function(id)
 	{
-		removeTranslationRef(id)
+		database.removeTranslationRef(id)
 
 		$('#translation-dialog').modal('hide')
 	}
