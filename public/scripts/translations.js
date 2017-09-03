@@ -102,7 +102,11 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 
 		for (const index in $scope.locales)
 		{
-			$scope.dialog.translation.locales[index] = ''
+			$scope.dialog.translation.locales[index] = {
+				value: '',
+				oldValue: null,
+				validated: false
+			}
 		}
 	
 		openTranslationDialog()
@@ -121,7 +125,11 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 
 		for (const index in $scope.locales)
 		{
-			$scope.dialog.translation.locales[index] = translation.locales[index].value
+			$scope.dialog.translation.locales[index] = {
+				value: translation.locales[index].value,
+				oldValue: translation.locales[index].value,
+				validated: translation.locales[index].validated
+			}
 		}
 	
 		openTranslationDialog()
@@ -166,9 +174,11 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 
 		for (const index in form.locales)
 		{
+			var locale = form.locales[index]
+
 			value.locales[index] = {
-				value: form.locales[index],
-				validated: false
+				value: locale.value,
+				validated: locale.validated
 			}
 		}
 	
@@ -188,13 +198,26 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 			locales: {}
 		}
 
-		// UPDATE $scope.translations
+		var sourceTranslation = $scope.translations[form.id]
+		sourceTranslation.key         = form.key
+		sourceTranslation.description = form.description
+		sourceTranslation.tags        = form.tags
+		sourceTranslation.maxLength   = form.maxLength
+		sourceTranslation.screenshot  = form.screenshot
+		sourceTranslation.isPlural    = form.isPlural
+		sourceTranslation.isArray     = form.isArray
 
 		for (const index in form.locales)
 		{
+			var locale = form.locales[index]
+
 			value.locales[index] = {
-				value: form.locales[index]
+				value: locale.value,
+				validated: locale.validated && (locale.value == locale.oldValue)
 			}
+
+			sourceTranslation.locales[index].value     = value.locales[index].value
+			sourceTranslation.locales[index].validated = value.locales[index].validated
 		}
 		
 		updateTranslationRef(form.id, value)
