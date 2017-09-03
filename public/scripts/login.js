@@ -11,7 +11,32 @@ firebase.auth().onAuthStateChanged(function(user)
 	}
 })
 
-function login()
+app.controller('loginCtrl', function($scope)
+{
+	$scope.form = {
+		email: '',
+		password: '',
+		loading: false,
+		error: ''
+	}
+
+	$scope.login = function(email, password)
+	{
+		$scope.form.error = ''
+		$scope.form.loading = true
+
+		firebase.auth().signInWithEmailAndPassword(email, password)
+		.catch(function(error)
+		{
+			$scope.form.loading = false
+			$scope.$applyAsync()
+	
+			$scope.form.error = error.message
+		})
+	}
+})
+
+function login2()
 {
 	const email = document.getElementById('form.email')
 	const password = document.getElementById('form.password')

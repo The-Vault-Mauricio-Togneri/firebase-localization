@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="translationsApp">
 
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Firebase Localization</title>
+
+	<!-- Angular JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.6/angular.min.js"></script>
 
 	<!-- FontAwesome -->
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -26,32 +29,37 @@
 	<link href="styles/login.css" rel="stylesheet">
 
 	<!-- Local scripts -->
+	<script src="scripts/scripts.js"></script>
 	<script src="scripts/firebase.js"></script>
 
 </head>
 
-<body>
+<body ng-controller="loginCtrl">
+
 	<div class="card" id="form" style="visibility:hidden">
 		<div class="card-header">
 			<b>Login</b>
 		</div>
 		<div class="card-body">
-			<form accept-charset="UTF-8">
-				<div class="form-group">
-					<input class="form-control" placeholder="Email" id="form.email" type="email">
-				</div>
-				<div class="form-group">
-					<input class="form-control" placeholder="Password" id="form.password" type="password">
-				</div>
-				<button type="button" class="btn btn-primary btn-block" id="form.button" onclick="login()">
-					<i id="form.button.normal" class="fa fa-sign-in"></i>
-					<i id="form.button.loading" style="display:none" class="fa fa-circle-o-notch fa-spin"></i>
-					Login
-				</button>
-			</form>
+			<div class="alert alert-danger" ng-show="form.error">
+				<span ng-bind="form.error"></span>
+			</div>
+			<div class="form-group">
+				<input class="form-control" placeholder="Email" ng-keydown="($event.keyCode === 13) && login(form.email, form.password)" ng-disabled="form.loading" ng-model="form.email" type="email">
+			</div>
+			<div class="form-group">
+				<input class="form-control" placeholder="Password" ng-keydown="($event.keyCode === 13) && login(form.email, form.password)" ng-disabled="form.loading" ng-model="form.password" type="password">
+			</div>
+			<button type="button" class="btn btn-primary btn-block" ng-disabled="form.loading" ng-click="login(form.email, form.password)">
+				<i ng-show="!form.loading" class="fa fa-sign-in"></i>
+				<i ng-show="form.loading" class="fa fa-circle-o-notch fa-spin"></i>
+				Login
+			</button>
 		</div>
 	</div>
+
 	<script src="scripts/login.js"></script>
+
 </body>
 
 </html>
