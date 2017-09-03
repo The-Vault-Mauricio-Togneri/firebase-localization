@@ -161,14 +161,24 @@
 						<h5 class="modal-title">Language</h5>
 					</div>
 					<div class="modal-body">
-						<input type="hidden" id="language-dialog-locale" value="">
-						<select id="language-dialog-select" data-placeholder="Select a language" class="js-example-placeholder-single" style="width:100%" onchange="enableAddLanguageButtonOk(true)">
+						<input type="hidden" ng-model="dialog.locale.id">
+						<select id="language-dialog-select" data-placeholder="Select a language" class="js-example-placeholder-single" style="width:100%" onchange="onLanguageSelected()">
 							<option value=""></option>
 						</select>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-						<button id="language-dialog-button-ok" type="button" class="btn btn-success" disabled="true" data-dismiss="modal" ng-click="onAddLanguage()">Add</button>
+						<button type="button" class="btn btn-danger" data-dismiss="modal">
+							<i class="fa fa-ban"></i>
+							Cancel
+						</button>
+						<button type="button" ng-show="!dialog.locale.id" class="btn btn-success" ng-disabled="dialog.locale.buttonDisabled" data-dismiss="modal" ng-click="onAddLanguage(dialog.locale)">
+							<i class="fa fa-plus"></i>
+							Add
+						</button>
+						<button type="button" ng-show="dialog.locale.id" class="btn btn-success" ng-disabled="dialog.locale.buttonDisabled" data-dismiss="modal" ng-click="onEditLanguage(dialog.locale)">
+							<i class="fa fa-check"></i>
+							Edit
+						</button>
 					</div>
 				</div>
 			</div>
