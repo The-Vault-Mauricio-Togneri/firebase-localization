@@ -45,6 +45,7 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 			translationsRef().once('value', snapTranslations =>
 			{
 				$scope.translations = translationsFromSnap(snapTranslations)
+				orderTranslations()
 				$scope.$applyAsync()
 				displayContent()
 			})
@@ -59,6 +60,8 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 	$scope.onTranslationKeyUpdated = function(translation)
 	{
 		updateTranslationRef(translation.id + '/key', translation.key)
+
+		orderTranslations()
 	}
 
 	$scope.onTranslationValueUpdated = function(translation, locale)
@@ -142,7 +145,7 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 			$('#translation-dialog-key').focus()
 		})
 
-		$('#translation-dialog-tabs a:first').tab('show');
+		$('#translation-dialog-tabs a:first').tab('show')
 
 		$('#translation-dialog').on('shown.bs.tab', function(event)
 		{
@@ -198,7 +201,7 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 			locales: {}
 		}
 
-		var sourceTranslation = $scope.translations[form.id]
+		var sourceTranslation = translationById(form.id)
 		sourceTranslation.key         = form.key
 		sourceTranslation.description = form.description
 		sourceTranslation.tags        = form.tags
@@ -220,7 +223,21 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 			sourceTranslation.locales[index].validated = value.locales[index].validated
 		}
 		
+		orderTranslations()
 		updateTranslationRef(form.id, value)
+	}
+
+	function translationById(id)
+	{
+		for (const index in $scope.translations)
+		{
+			if ($scope.translations[index].id == id)
+			{
+				return $scope.translations[index]
+			}
+		}
+
+		return null
 	}
 
 	$scope.openRemoveTranslationDialog = function(translation)
@@ -252,6 +269,14 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 		var byText = ($scope.filter.content ? translation.contains($scope.filter.content.toLowerCase()) : true)
 
 		return (translated || notTranslated || validated || notValidated) && byText
+	}
+
+	function orderTranslations()
+	{
+		$scope.translations = $scope.translations.sort(function(a, b)
+		{
+			return (a.key < b.key) ? -1 : (a.key > b.key);
+		})
 	}
 
 	$scope.init()

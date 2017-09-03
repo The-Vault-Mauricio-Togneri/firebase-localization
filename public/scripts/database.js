@@ -55,11 +55,11 @@ function removeLocaleRef(id)
 
 function translationsFromSnap(snap)
 {
-	var translations = {}
+	var translations = []
 	
 	snap.forEach(function(entry)
 	{
-		translations[entry.key] = new Translation(entry.key, entry.val())
+		translations.push(new Translation(entry.key, entry.val()))
 	})
 
 	return translations
