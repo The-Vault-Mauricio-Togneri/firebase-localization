@@ -34,22 +34,17 @@
 
 .progress-bar-indicator-high
 {
-	background-color: #80B66A
+	background-color: #80B66A;
 }
 
 .progress-bar-indicator-medium
 {
-	background-color: #F0AD4E
+	background-color: #F0AD4E;
 }
 
 .progress-bar-indicator-low
 {
-	background-color: #EA5854
-}
-
-.progress-bar-indicator-text
-{
-	font-size: 10px
+	background-color: #EA5854;
 }
 
 .button-action
@@ -62,7 +57,6 @@
 .button-action-icon
 {
 	color: #888888;
-	font-size: 1em;
 }
 
 .add-language-button

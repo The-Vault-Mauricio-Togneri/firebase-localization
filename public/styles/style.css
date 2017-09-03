@@ -3,13 +3,10 @@ html, body
 	margin: 0;
 	padding: 0;
 	height: 100%;
-	background-color: #FAFAFA;
-}
-
-*
-{
+	font-size: 14px;
+	color: #555555;
 	font-family: 'Open Sans', sans-serif;
-	font-size: 15px;
+	background-color: #FAFAFA;
 }
 
 .fa
@@ -19,7 +16,7 @@ html, body
 
 .form-control
 {
-	font-size: 1.02em;
+	font-size: 1.1em;
 }
 
 .btn:hover
