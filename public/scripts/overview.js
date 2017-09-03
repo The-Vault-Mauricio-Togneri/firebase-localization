@@ -5,7 +5,7 @@ function enableAddLanguageButtonOk(enabled)
 
 angular.module('overviewApp', []).controller('overviewCtrl', function($scope)
 {
-	$scope.locales = [] // TODO: MAKE IT AN OBJECT
+	$scope.locales = {}
 	
 	$scope.init = function()
 	{

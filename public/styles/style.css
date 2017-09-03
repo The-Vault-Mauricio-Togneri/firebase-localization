@@ -81,7 +81,8 @@ html, body
 {
 	justify-content: center;
 	border: none;
-	background-color: #EAEAEA;
+	color: #FAFAFA;
+	background-color: #6E99C4;
 }
 
 .navigation-bar-top > li
@@ -92,14 +93,14 @@ html, body
 
 .navigation-bar-top > li:hover
 {
-	border-bottom: 0.2em solid #555555;
-	color: #555555;
+	border-bottom: 0.2em solid #FAFAFA;
+	color: #FAFAFA;
 }
 
 .navigation-bar-top > li.active
 {
-	border-bottom: 0.2em solid #444444;
-	color: #444444;
+	border-bottom: 0.2em solid #FFFFFF;
+	color: #FFFFFF;
 }
 
 /* Modal */

@@ -5,11 +5,11 @@ function databaseRef()
 
 function localesFromSnap(snap)
 {
-	var locales = [] // TODO: MAKE IT AN OBJECT
+	var locales = {}
 	
 	snap.forEach(function(entry)
 	{
-		locales.push(new Locale(entry.key, entry.val()))
+		locales[entry.key] = new Locale(entry.key, entry.val())
 	})
 
 	return locales
@@ -27,11 +27,11 @@ function localesEntryRef(id)
 
 function translationsFromSnap(snap)
 {
-	var translations = [] // TODO: MAKE IT AN OBJECT
+	var translations = {}
 	
 	snap.forEach(function(entry)
 	{
-		translations.push(new Translation(entry.key, entry.val()))
+		translations[entry.key] = new Translation(entry.key, entry.val())
 	})
 
 	return translations

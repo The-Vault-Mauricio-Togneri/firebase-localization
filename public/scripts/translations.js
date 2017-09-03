@@ -1,7 +1,7 @@
 angular.module('translationsApp', []).controller('translationsCtrl', function($scope)
 {
-	$scope.locales = [] // TODO: MAKE IT AN OBJECT
-	$scope.translations = [] // TODO: MAKE IT AN OBJECT
+	$scope.locales = {}
+	$scope.translations = {}
 	$scope.filter = {
 		content: '',
 		locale: {},
@@ -35,8 +35,7 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 
 			for (var index in $scope.locales)
 			{
-				var locale = $scope.locales[index]
-				$scope.filter.locale[locale.key] = true
+				$scope.filter.locale[index] = true
 			}
 	
 			translationsRef().once('value', snapTranslations =>
@@ -89,9 +88,7 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 
 		for (var index in $scope.locales)
 		{
-			var locale = $scope.locales[index]
-
-			$scope.dialog.translation.locales[locale.key] = ''
+			$scope.dialog.translation.locales[index] = ''
 		}
 	
 		displayTranslationDialog('Add')
@@ -110,9 +107,7 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 
 		for (var index in $scope.locales)
 		{
-			var locale = $scope.locales[index]
-
-			$scope.dialog.translation.locales[locale.key] = translation.locales[locale.key].value
+			$scope.dialog.translation.locales[index] = translation.locales[index].value
 		}
 	
 		displayTranslationDialog('Edit')
