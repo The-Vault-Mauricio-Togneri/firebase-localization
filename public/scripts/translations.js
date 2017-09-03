@@ -40,6 +40,11 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 		byId('add-translation-dialog-key').value = ''
 		byId('add-translation-dialog-description').value = ''
 	
+		$('#add-translation-dialog').on('shown.bs.modal', function()
+		{
+			$('#add-translation-dialog-key').focus()
+		})
+
 		$('#add-translation-dialog').modal()
 	}
 
