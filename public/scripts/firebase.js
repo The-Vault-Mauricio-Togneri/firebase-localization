@@ -13,7 +13,8 @@ function firebaseLogout()
 	firebase.auth().signOut().then(function()
 	{
 		window.location.href = '/'
-	}, function(error)
+	},
+	function(error)
 	{
 		console.log(error)
 	})
