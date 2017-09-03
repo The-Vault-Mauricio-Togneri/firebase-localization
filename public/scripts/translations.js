@@ -66,7 +66,11 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 		{
 			onNodeUpdated(translation.id + '/locales/' + locale.id + '/value', newValue)
 			translation.locales[locale.id].oldValue = newValue
-			updateTranslationValidated(translation, locale, false)
+
+			if (translation.locales[locale.id].validated)
+			{
+				updateTranslationValidated(translation, locale, false)
+			}
 		}
 	}
 
@@ -201,17 +205,17 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 
 	function onNodeUpdated(id, value)
 	{
-		console.log('Update: ' + id + ' => ' + value)
+		const update = 'Update: ' + id + ' => ' + JSON.stringify(value)
 
 		translationsEntryRef(id).set(value, function(error)
 		{
 			if (error)
 			{
-				console.log('Data could not be saved: ' + error)
+				console.log(update + ': FAILED: ' + error)
 			}
 			else
 			{
-				console.log('Data saved successfully')
+				console.log(update + ': OK')
 			}
 		})
 	}
