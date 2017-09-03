@@ -1,6 +1,6 @@
-function Locale(key, locale)
+function Locale(id, locale)
 {
-	this.key = key
+	this.id = id
 	this.code = locale.code
 	this.name = LOCALES[locale.code]
 	this.fullName = this.name + ' (' + this.code + ')'

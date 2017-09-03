@@ -15,8 +15,8 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 
 	$scope.dialog = {
 		translation: {
+			id: '',
 			key: '',
-			code: '',
 			locales: {},
 			description: '',
 			tags: '',
@@ -52,39 +52,39 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 		})
 	}
 
-	$scope.onTranslationKeyUpdated = function(translation, value)
+	$scope.onTranslationKeyUpdated = function(translation)
 	{
-		onNodeUpdated(translation.key + '/code', value)
+		onNodeUpdated(translation.id + '/key', translation.key)
 	}
 
 	$scope.onTranslationValueUpdated = function(translation, locale)
 	{
-		const newValue = translation.locales[locale.key].value
-		const oldValue = translation.locales[locale.key].oldValue
+		const newValue = translation.locales[locale.id].value
+		const oldValue = translation.locales[locale.id].oldValue
 
 		if (newValue != oldValue)
 		{
-			onNodeUpdated(translation.key + '/locales/' + locale.key + '/value', newValue)
-			translation.locales[locale.key].oldValue = newValue
+			onNodeUpdated(translation.id + '/locales/' + locale.id + '/value', newValue)
+			translation.locales[locale.id].oldValue = newValue
 			updateTranslationValidated(translation, locale, false)
 		}
 	}
 
 	$scope.onTranslationValidatedChanged = function(translation, locale)
 	{
-		updateTranslationValidated(translation, locale, !translation.locales[locale.key].validated)
+		updateTranslationValidated(translation, locale, !translation.locales[locale.id].validated)
 	}
 
 	function updateTranslationValidated(translation, locale, value)
 	{
-		translation.locales[locale.key].validated = value
-		onNodeUpdated(translation.key + '/locales/' + locale.key + '/validated', value)
+		translation.locales[locale.id].validated = value
+		onNodeUpdated(translation.id + '/locales/' + locale.id + '/validated', value)
 	}
 
 	$scope.openAddTranslationDialog = function()
 	{
+		$scope.dialog.translation.id          = ''
 		$scope.dialog.translation.key         = ''
-		$scope.dialog.translation.code        = ''
 		$scope.dialog.translation.description = ''
 		$scope.dialog.translation.tags        = ''
 		$scope.dialog.translation.maxLength   = ''
@@ -102,8 +102,8 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 
 	$scope.openEditTranslationDialog = function(translation)
 	{
+		$scope.dialog.translation.id          = translation.id
 		$scope.dialog.translation.key         = translation.key
-		$scope.dialog.translation.code        = translation.code
 		$scope.dialog.translation.description = translation.description
 		$scope.dialog.translation.tags        = translation.tags
 		$scope.dialog.translation.maxLength   = translation.maxLength
@@ -125,7 +125,7 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 
 		$('#translation-dialog').on('shown.bs.modal', function()
 		{
-			$('#translation-dialog-code').focus()
+			$('#translation-dialog-key').focus()
 		})
 
 		$('#translation-dialog-tabs a:first').tab('show');
@@ -134,7 +134,7 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 		{
 			if (event.target.href.includes('#translation-dialog-tab-translations'))
 			{
-				$('#translation-dialog-code').focus()
+				$('#translation-dialog-key').focus()
 			}
 			else if (event.target.href.includes('#translation-dialog-tab-properties'))
 			{
@@ -148,7 +148,7 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 	$scope.onAddTranslation = function(form)
 	{
 		var value = {
-			code: form.code,
+			key: form.key,
 			description: form.description,
 			tags: form.tags,
 			maxLength: form.maxLength,
@@ -158,7 +158,7 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 			locales: {}
 		}
 
-		if (form.key)
+		if (form.id)
 		{
 			for (var index in form.locales)
 			{
@@ -167,7 +167,7 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 				}
 			}
 			
-			onNodeUpdated(form.key, value)
+			onNodeUpdated(form.id, value)
 		}
 		else
 		{

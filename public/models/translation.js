@@ -1,7 +1,7 @@
-function Translation(key, translation)
+function Translation(id, translation)
 {
-	this.key = key
-	this.code = translation.code
+	this.id = id
+	this.key = translation.key
 	this.description = translation.description
 	this.tags = translation.tags
 	this.maxLength = translation.maxLength
@@ -25,7 +25,7 @@ function Translation(key, translation)
 			}
 		}
 
-		return this.code.toLowerCase().includes(text)
+		return this.key.toLowerCase().includes(text)
 	}
 
 	this.hasValidated = function()

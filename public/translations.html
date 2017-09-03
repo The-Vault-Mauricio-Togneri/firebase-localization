@@ -76,7 +76,7 @@
 						<label class="col-form-label filter-label">By language:</label>
 						<span ng-repeat="locale in locales">
 							<label class="custom-control custom-checkbox filter-checkbox">
-								<input type="checkbox" checked="true" ng-model="filter.locale[locale.key]" class="custom-control-input">
+								<input type="checkbox" checked="true" ng-model="filter.locale[locale.id]" class="custom-control-input">
 								<span class="custom-control-indicator"></span>
 								<span class="custom-control-description noselect">{{locale.fullName}}</span>
 							</label>
@@ -116,7 +116,7 @@
 			<thead class="thead-default">
 				<tr>
 					<th style="padding-left:10px">Key</th>
-					<th ng-repeat="locale in locales" ng-show="filter.locale[locale.key]" style="padding-left:10px">
+					<th ng-repeat="locale in locales" ng-show="filter.locale[locale.id]" style="padding-left:10px">
 						{{locale.fullName}}
 					</th>
 				</tr>
@@ -128,13 +128,13 @@
 							<div class="input-group-addon translations-settings-icon" ng-click="openEditTranslationDialog(translation)">
 								<i class="fa fa-cog"></i>
 							</div>
-							<input class="form-control" type="text" ng-model="translation.code" ng-blur="onTranslationKeyUpdated(translation, translation.code)">
+							<input class="form-control" type="text" ng-model="translation.key" ng-blur="onTranslationKeyUpdated(translation)">
 						</div>
 					</td>
-					<td ng-repeat="locale in locales" ng-show="filter.locale[locale.key]">
+					<td ng-repeat="locale in locales" ng-show="filter.locale[locale.id]">
 						<div class="input-group">
-							<input class="form-control translation-input" type="text" ng-model="translation.locales[locale.key].value" ng-blur="onTranslationValueUpdated(translation, locale)">
-							<div class="input-group-addon translation-checkbox" ng-class="translationValidatedState(translation.locales[locale.key].validated)" ng-click="onTranslationValidatedChanged(translation, locale)">
+							<input class="form-control translation-input" type="text" ng-model="translation.locales[locale.id].value" ng-blur="onTranslationValueUpdated(translation, locale)">
+							<div class="input-group-addon translation-checkbox" ng-class="translationValidatedState(translation.locales[locale.id].validated)" ng-click="onTranslationValidatedChanged(translation, locale)">
 								<i class="fa fa-check"></i>
 							</div>
 						</div>
@@ -162,12 +162,12 @@
 							<div class="tab-pane fade show active" id="translation-dialog-tab-translations">
 								<div class="form-group">
 									<label for="example-text-input">Key:</label>
-									<input type="hidden" ng-model="dialog.translation.key">
-									<input class="form-control" id="translation-dialog-code" type="text" ng-model="dialog.translation.code">
+									<input type="hidden" ng-model="dialog.translation.id">
+									<input class="form-control" id="translation-dialog-key" type="text" ng-model="dialog.translation.key">
 								</div>
 								<div class="form-group" ng-repeat="locale in locales">
 									<label for="example-search-input">{{locale.fullName}}</label>
-									<input class="form-control" type="text" ng-model="dialog.translation.locales[locale.key]">
+									<input class="form-control" type="text" ng-model="dialog.translation.locales[locale.id]">
 								</div>
 							</div>
 							<div class="tab-pane fade" id="translation-dialog-tab-properties">

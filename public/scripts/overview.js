@@ -82,7 +82,7 @@ angular.module('overviewApp', []).controller('overviewCtrl', function($scope)
 	{
 		var locale = byId('delete-language-dialog-locale').locale
 	
-		localesEntryRef(locale.key).remove()
+		localesEntryRef(locale.id).remove()
 	}
 
 	$scope.onAddLanguage = function()
@@ -98,7 +98,7 @@ angular.module('overviewApp', []).controller('overviewCtrl', function($scope)
 				validated: locale.validated
 			}
 
-			localesEntryRef(locale.key).set(value)
+			localesEntryRef(locale.id).set(value)
 		}
 		else
 		{

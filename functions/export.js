@@ -8,7 +8,7 @@ module.exports = {
 		for (var index in translations)
 		{
 			const translation = translations[index]
-			const key = translation.code
+			const key = translation.key
 			const value = translation.locales[locale].value
 			
 			result += `\t<string name="${key}">${value}"</string>\n`
@@ -26,7 +26,7 @@ module.exports = {
 		for (var index in translations)
 		{
 			const translation = translations[index]
-			const key = translation.code
+			const key = translation.key
 			const value = translation.locales[locale].value
 	
 			result += `"${key}" = "${value}";\n`
