@@ -178,8 +178,8 @@
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-body">
-						Do you want to delete <b id="delete-language-dialog-name"></b>?
-						<input type="hidden" id="delete-language-dialog-locale" value="">
+						Do you want to delete <b ng-bind="dialog.deleteLocale.name"></b>?
+						<input type="hidden" ng-model="dialog.deleteLocale.id" value="">
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">

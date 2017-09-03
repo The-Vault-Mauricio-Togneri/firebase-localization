@@ -7,6 +7,13 @@ angular.module('overviewApp', []).controller('overviewCtrl', function($scope)
 {
 	$scope.locales = {}
 
+	$scope.dialog = {
+		deleteLocale: {
+			id: '',
+			name: ''
+		}
+	}
+
 	$scope.init = function()
 	{
 		localesRef().on('value', snapLocales =>
@@ -124,16 +131,15 @@ angular.module('overviewApp', []).controller('overviewCtrl', function($scope)
 
 	$scope.openDeleteLanguageDialog = function(locale)
 	{
-		byId('delete-language-dialog-locale').locale = locale
-		byId('delete-language-dialog-name').innerHTML = locale.name
+		$scope.dialog.deleteLocale.id = locale.id
+		$scope.dialog.deleteLocale.name = locale.fullName
+
 		$('#delete-language-dialog').modal()
 	}
 
 	$scope.onDeleteLanguage = function()
 	{
-		var locale = byId('delete-language-dialog-locale').locale
-	
-		removeLocaleRef(locale.id)
+		removeLocaleRef($scope.dialog.deleteLocale.id)
 	}
 
 	$scope.onAddLanguage = function()
