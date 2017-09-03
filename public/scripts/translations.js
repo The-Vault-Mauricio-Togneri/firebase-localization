@@ -101,7 +101,7 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 			$scope.dialog.translation.locales[index] = ''
 		}
 	
-		displayTranslationDialog('Add')
+		displayTranslationDialog()
 	}
 
 	$scope.openEditTranslationDialog = function(translation)
@@ -120,13 +120,11 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 			$scope.dialog.translation.locales[index] = translation.locales[index].value
 		}
 	
-		displayTranslationDialog('Edit')
+		displayTranslationDialog()
 	}
 
-	function displayTranslationDialog(buttonText)
+	function displayTranslationDialog()
 	{
-		byId('translation-button-ok').innerHTML = buttonText
-
 		$('#translation-dialog').on('shown.bs.modal', function()
 		{
 			$('#translation-dialog-key').focus()
@@ -162,29 +160,40 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 			locales: {}
 		}
 
-		if (form.id)
+		for (var index in form.locales)
 		{
-			for (var index in form.locales)
-			{
-				value.locales[index] = {
-					value: form.locales[index]
-				}
+			value.locales[index] = {
+				value: form.locales[index],
+				validated: false
 			}
-			
-			updateTranslationRef(form.id, value)
 		}
-		else
+	
+		addTranslationRef(value)
+	}
+
+	$scope.onEditTranslation = function(form)
+	{
+		var value = {
+			key: form.key,
+			description: form.description,
+			tags: form.tags,
+			maxLength: form.maxLength,
+			screenshot: form.screenshot,
+			isPlural: form.isPlural,
+			isArray: form.isArray,
+			locales: {}
+		}
+
+		// UPDATE $scope.translations
+
+		for (var index in form.locales)
 		{
-			for (var index in form.locales)
-			{
-				value.locales[index] = {
-					value: form.locales[index],
-					validated: false
-				}
+			value.locales[index] = {
+				value: form.locales[index]
 			}
+		}
 		
-			addTranslationRef(value)
-		}
+		updateTranslationRef(form.id, value)
 	}
 
 	$scope.translationValidatedState = function(value)

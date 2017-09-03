@@ -187,22 +187,40 @@
 									<label for="example-search-input">Screenshot link</label>
 									<input class="form-control" id="translation-dialog-screenshot" type="text" ng-model="dialog.translation.screenshot">
 								</div>
-								<label class="custom-control custom-checkbox">
-									<input type="checkbox" class="custom-control-input" ng-model="dialog.translation.isPlural">
-									<span class="custom-control-indicator"></span>
-									<span class="custom-control-description noselect">Is plural</span>
-								</label>
-								<label class="custom-control custom-checkbox">
-									<input type="checkbox" class="custom-control-input" ng-model="dialog.translation.isArray">
-									<span class="custom-control-indicator"></span>
-									<span class="custom-control-description noselect">Is array</span>
-								</label>
+								<div class="form-group">
+									<label class="custom-control custom-checkbox">
+										<input type="checkbox" class="custom-control-input" ng-model="dialog.translation.isPlural">
+										<span class="custom-control-indicator"></span>
+										<span class="custom-control-description noselect">Is plural</span>
+									</label>
+									<label class="custom-control custom-checkbox">
+										<input type="checkbox" class="custom-control-input" ng-model="dialog.translation.isArray">
+										<span class="custom-control-indicator"></span>
+										<span class="custom-control-description noselect">Is array</span>
+									</label>
+								</div>
+								<div class="form-group">
+									<button type="button" class="btn btn-danger" ng-click="">
+										<i class="fa fa-trash"></i>
+										Delete
+									</button>
+								</div>
 							</div>
 						</div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-						<button id="translation-button-ok" type="button" class="btn btn-success" data-dismiss="modal" ng-click="onAddTranslation(dialog.translation)">Add</button>
+						<button type="button" class="btn btn-danger" data-dismiss="modal">
+							<i class="fa fa-ban"></i>
+							Cancel
+						</button>
+						<button type="button" ng-show="!dialog.translation.id" class="btn btn-success" data-dismiss="modal" ng-click="onAddTranslation(dialog.translation)">
+							<i class="fa fa-plus"></i>
+							Add
+						</button>
+						<button type="button" ng-show="dialog.translation.id" class="btn btn-success" data-dismiss="modal" ng-click="onEditTranslation(dialog.translation)">
+							<i class="fa fa-check"></i>
+							Edit
+						</button>
 					</div>
 				</div>
 			</div>
