@@ -3,6 +3,8 @@ function databaseRef()
 	return firebase.database().ref()
 }
 
+// -------------------------------
+
 function localesFromSnap(snap)
 {
 	var locales = {}
@@ -49,6 +51,8 @@ function removeLocaleRef(id)
 	})
 }
 
+// -------------------------------
+
 function translationsFromSnap(snap)
 {
 	var translations = {}
@@ -70,6 +74,32 @@ function translationsEntryRef(id)
 {
 	return databaseRef().child('/translations/' + id)
 }
+
+function addTranslationRef(value)
+{
+	translationsRef().push(value, function(error)
+	{
+		logDatabaseResult(error, 'Add translation => ' + JSON.stringify(value))
+	})
+}
+
+function updateTranslationRef(id, value)
+{
+	translationsEntryRef(id).set(value, function(error)
+	{
+		logDatabaseResult(error, 'Update translation (' + id + ') => ' + JSON.stringify(value))
+	})
+}
+
+function removeTranslationRef(id)
+{
+	translationsEntryRef(id).remove(function(error)
+	{
+		logDatabaseResult(error, 'Remove translation (' + id + ')')
+	})
+}
+
+// -------------------------------
 
 function logDatabaseResult(error, label)
 {

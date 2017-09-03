@@ -54,7 +54,7 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 
 	$scope.onTranslationKeyUpdated = function(translation)
 	{
-		onNodeUpdated(translation.id + '/key', translation.key)
+		updateTranslationRef(translation.id + '/key', translation.key)
 	}
 
 	$scope.onTranslationValueUpdated = function(translation, locale)
@@ -64,7 +64,7 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 
 		if (newValue != oldValue)
 		{
-			onNodeUpdated(translation.id + '/locales/' + locale.id + '/value', newValue)
+			updateTranslationRef(translation.id + '/locales/' + locale.id + '/value', newValue)
 			translation.locales[locale.id].oldValue = newValue
 
 			if (translation.locales[locale.id].validated)
@@ -82,7 +82,7 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 	function updateTranslationValidated(translation, locale, value)
 	{
 		translation.locales[locale.id].validated = value
-		onNodeUpdated(translation.id + '/locales/' + locale.id + '/validated', value)
+		updateTranslationRef(translation.id + '/locales/' + locale.id + '/validated', value)
 	}
 
 	$scope.openAddTranslationDialog = function()
@@ -171,7 +171,7 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 				}
 			}
 			
-			onNodeUpdated(form.id, value)
+			updateTranslationRef(form.id, value)
 		}
 		else
 		{
@@ -183,7 +183,7 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 				}
 			}
 		
-			translationsRef().push(value)
+			addTranslationRef(value)
 		}
 	}
 
@@ -201,23 +201,6 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 		var byText = ($scope.filter.content ? translation.contains($scope.filter.content.toLowerCase()) : true)
 
 		return (translated || notTranslated || validated || notValidated) && byText
-	}
-
-	function onNodeUpdated(id, value)
-	{
-		const update = 'Update: ' + id + ' => ' + JSON.stringify(value)
-
-		translationsEntryRef(id).set(value, function(error)
-		{
-			if (error)
-			{
-				console.log(update + ': FAILED: ' + error)
-			}
-			else
-			{
-				console.log(update + ': OK')
-			}
-		})
 	}
 
 	$scope.init()
