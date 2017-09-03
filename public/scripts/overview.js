@@ -1,6 +1,6 @@
 function enableAddLanguageButtonOk(enabled)
 {
-	byId('add-language-button-ok').disabled = !enabled
+	byId('language-dialog-button-ok').disabled = !enabled
 }
 
 angular.module('overviewApp', []).controller('overviewCtrl', function($scope)
@@ -62,11 +62,11 @@ angular.module('overviewApp', []).controller('overviewCtrl', function($scope)
 
 	function openLanguageDialog(locale, buttonText, initialSelect)
 	{
-		byId('add-language-dialog-locale').locale = locale
-		byId('add-language-button-ok').innerHTML = buttonText
+		byId('language-dialog-locale').locale = locale
+		byId('language-dialog-button-ok').innerHTML = buttonText
 	
-		$('#add-language-select').val(initialSelect).trigger('change.select2')
-		$('#add-language-dialog').modal()
+		$('#language-dialog-select').val(initialSelect).trigger('change.select2')
+		$('#language-dialog').modal()
 
 		enableAddLanguageButtonOk(false)
 	}
@@ -87,8 +87,8 @@ angular.module('overviewApp', []).controller('overviewCtrl', function($scope)
 
 	$scope.onAddLanguage = function()
 	{
-		var selected = byId('add-language-select').value
-		var locale = byId('add-language-dialog-locale').locale
+		var selected = byId('language-dialog-select').value
+		var locale = byId('language-dialog-locale').locale
 
 		if (locale)
 		{

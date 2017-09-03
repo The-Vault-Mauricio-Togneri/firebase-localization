@@ -138,7 +138,7 @@
 			</tbody>
 		</table>
 
-		<div id="add-translation-dialog" class="modal fade">
+		<div id="translation-dialog" class="modal fade">
 			<div class="modal-dialog modal-lg">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -158,37 +158,37 @@
 							<div class="tab-pane fade show active" id="translations">
 								<div class="form-group">
 									<label for="example-text-input">Key:</label>
-									<input class="form-control" id="add-translation-dialog-key" type="text">
+									<input class="form-control" id="translation-dialog-key" type="text">
 								</div>
 								<div class="form-group" ng-repeat="locale in locales">
 									<label for="example-search-input">{{locale.fullName}}</label>
-									<input class="form-control" type="text">
+									<input class="form-control" type="text" id="translation-dialog-value-{{locale.key}}">
 								</div>
 							</div>
 							<div class="tab-pane fade" id="properties">
 								<div class="form-group">
 									<label for="example-search-input">Description:</label>
-									<input class="form-control" id="add-translation-dialog-description" type="text">
+									<input class="form-control" id="translation-dialog-description" type="text">
 								</div>
 								<div class="form-group">
 									<label for="example-search-input">Tags</label>
-									<input class="form-control" id="add-translation-dialog-tags" type="text">
+									<input class="form-control" id="translation-dialog-tags" type="text">
 								</div>
 								<div class="form-group">
 									<label for="example-search-input">Max. lenght</label>
-									<input class="form-control" id="add-translation-dialog-max-length" type="number" min="0">
+									<input class="form-control" id="translation-dialog-max-length" type="number" min="0">
 								</div>
 								<div class="form-group">
 									<label for="example-search-input">Screenshot link</label>
-									<input class="form-control" id="add-translation-dialog-screenshot" type="text">
+									<input class="form-control" id="translation-dialog-screenshot" type="text">
 								</div>
 								<label class="custom-control custom-checkbox">
-									<input type="checkbox" class="custom-control-input">
+									<input type="checkbox" class="custom-control-input" id="translation-dialog-plural">
 									<span class="custom-control-indicator"></span>
 									<span class="custom-control-description noselect">Is plural</span>
 								</label>
 								<label class="custom-control custom-checkbox">
-									<input type="checkbox" class="custom-control-input">
+									<input type="checkbox" class="custom-control-input" id="translation-dialog-array">
 									<span class="custom-control-indicator"></span>
 									<span class="custom-control-description noselect">Is array</span>
 								</label>

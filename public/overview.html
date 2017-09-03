@@ -139,21 +139,21 @@
 			</div>
 		</div>
 
-		<div id="add-language-dialog" class="modal fade">
+		<div id="language-dialog" class="modal fade">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
 						<h5 class="modal-title">Language</h5>
 					</div>
 					<div class="modal-body">
-						<input type="hidden" id="add-language-dialog-locale" value="">
-						<select id="add-language-select" class="js-example-placeholder-single" style="width:100%" onchange="enableAddLanguageButtonOk(true)">
+						<input type="hidden" id="language-dialog-locale" value="">
+						<select id="language-dialog-select" class="js-example-placeholder-single" style="width:100%" onchange="enableAddLanguageButtonOk(true)">
 							<option value=""></option>
 						</select>
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-						<button id="add-language-button-ok" type="button" class="btn btn-success" disabled="true" data-dismiss="modal" ng-click="onAddLanguage()">Add</button>
+						<button id="language-dialog-button-ok" type="button" class="btn btn-success" disabled="true" data-dismiss="modal" ng-click="onAddLanguage()">Add</button>
 					</div>
 				</div>
 			</div>

@@ -37,28 +37,39 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 
 	$scope.openAddTranslationDialog = function()
 	{
-		byId('add-translation-dialog-key').value = ''
-		byId('add-translation-dialog-description').value = ''
-	
-		$('#add-translation-dialog').on('shown.bs.modal', function()
+		byId('translation-dialog-key').value = ''
+		byId('translation-dialog-description').value = ''
+		byId('translation-dialog-tags').value = ''
+		byId('translation-dialog-max-length').value = ''
+		byId('translation-dialog-screenshot').value = ''
+		byId('translation-dialog-plural').checked = false
+		byId('translation-dialog-array').checked = false
+
+		for (var index in $scope.locales)
 		{
-			$('#add-translation-dialog-key').focus()
+			var locale = $scope.locales[index]
+			byId('translation-dialog-value-' + locale.key).value = ''
+		}
+	
+		$('#translation-dialog').on('shown.bs.modal', function()
+		{
+			$('#translation-dialog-key').focus()
 		})
 
-		$('#add-translation-dialog').modal()
+		$('#translation-dialog').modal()
 	}
 
 	$scope.onAddTranslation = function()
 	{
-		var key = byId('add-translation-dialog-key').value
-		var description = byId('add-translation-dialog-description').value
-	
+		var key = byId('translation-dialog-key').value
+		var description = byId('translation-dialog-description').value
+		
 		var value = {
 			code: key,
 			description: description,
 			locales: []
 		}
-	
+		
 		for (var locale in $scope.locales)
 		{
 			var entry = $scope.locales[locale]
