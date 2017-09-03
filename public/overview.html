@@ -77,12 +77,20 @@
 					<td class="align-middle" style="padding-left:1em">{{locale.fullName}}</td>
 					<td class="align-middle">
 						<div class="progress progress-bar-indicator">
-							<div class="progress-bar" ng-class="localeProgressColor(locale.translated)" ng-style="localeProgressValue(locale.translated)">{{locale.translated}}%</div>
+							<div class="progress-bar" ng-class="localeProgressColor(locale.translated)" ng-style="localeProgressValue(locale.translated)">
+								<span ng-show="locale.translated > 0">
+									{{locale.translated}}%
+								</span>
+							</div>
 						</div>
 					</td>
 					<td class="align-middle">
 						<div class="progress progress-bar-indicator">
-							<div class="progress-bar" ng-class="localeProgressColor(locale.validated)" ng-style="localeProgressValue(locale.validated)">{{locale.validated}}%</div>
+							<div class="progress-bar" ng-class="localeProgressColor(locale.validated)" ng-style="localeProgressValue(locale.validated)">
+								<span ng-show="locale.validated > 0">
+									{{locale.validated}}%
+								</span>
+							</div>
 						</div>
 					</td>
 					<td>
@@ -148,7 +156,7 @@
 					</div>
 					<div class="modal-body">
 						<input type="hidden" id="language-dialog-locale" value="">
-						<select id="language-dialog-select" class="js-example-placeholder-single" style="width:100%" onchange="enableAddLanguageButtonOk(true)">
+						<select id="language-dialog-select" data-placeholder="Select a language" class="js-example-placeholder-single" style="width:100%" onchange="enableAddLanguageButtonOk(true)">
 							<option value=""></option>
 						</select>
 					</div>

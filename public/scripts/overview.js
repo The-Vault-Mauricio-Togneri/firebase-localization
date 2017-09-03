@@ -6,7 +6,7 @@ function enableAddLanguageButtonOk(enabled)
 angular.module('overviewApp', []).controller('overviewCtrl', function($scope)
 {
 	$scope.locales = {}
-	
+
 	$scope.init = function()
 	{
 		localesRef().once('value', snapLocales =>
@@ -20,8 +20,8 @@ angular.module('overviewApp', []).controller('overviewCtrl', function($scope)
 				for (const index in summary)
 				{
 					const entry = summary[index]
-					$scope.locales[index].translated = parseInt(entry.translated * 100 / entry.total)
-					$scope.locales[index].validated  = parseInt(entry.validated  * 100 / entry.total)
+					$scope.locales[index].translated = (entry.total > 0) ? parseInt(entry.translated * 100 / entry.total) : 0
+					$scope.locales[index].validated  = (entry.total > 0) ? parseInt(entry.validated  * 100 / entry.total) : 0
 				}
 
 				$scope.$applyAsync()
@@ -115,7 +115,7 @@ angular.module('overviewApp', []).controller('overviewCtrl', function($scope)
 	{
 		byId('language-dialog-locale').locale = locale
 		byId('language-dialog-button-ok').innerHTML = buttonText
-	
+
 		$('#language-dialog-select').val(initialSelect).trigger('change.select2')
 		$('#language-dialog').modal()
 
