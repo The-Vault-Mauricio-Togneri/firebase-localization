@@ -45,9 +45,9 @@
 
 <body ng-controller="translationsCtrl">
 
-	<div id="overview-content" class="overview-content">
+	<div id="overview-content" class="view-gone">
 
-		<ul class="nav nav-tabs">
+		<ul class="nav navigation-bar-top">
 			<li onclick="window.location.href='/overview'">
 				Overview
 			</li>
@@ -142,20 +142,57 @@
 			<div class="modal-dialog modal-lg">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title">Translation</h5>
+						<h5 class="modal-title">Add key</h5>
 					</div>
 					<div class="modal-body">
-						<div class="form-group">
-							<label for="example-text-input">Key:</label>
-							<input class="form-control" id="add-translation-dialog-key" type="text" placeholder="Key">
-						</div>
-						<div class="form-group">
-							<label for="example-search-input">Description:</label>
-							<input class="form-control" id="add-translation-dialog-description" type="text" placeholder="Description">
-						</div>
-						<div class="form-group" ng-repeat="locale in locales">
-							<label for="example-search-input">{{locale.fullName}}</label>
-							<input class="form-control" id="add-translation-dialog-description" type="text">
+
+						<ul class="nav nav-tabs">
+							<li class="nav-item">
+								<a class="nav-link active" data-toggle="tab" href="#translations">Translation</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" data-toggle="tab" href="#properties">Properties</a>
+							</li>
+						</ul>
+						<div class="tab-content">
+							<div class="tab-pane fade show active" id="translations">
+								<div class="form-group">
+									<label for="example-text-input">Key:</label>
+									<input class="form-control" id="add-translation-dialog-key" type="text">
+								</div>
+								<div class="form-group" ng-repeat="locale in locales">
+									<label for="example-search-input">{{locale.fullName}}</label>
+									<input class="form-control" type="text">
+								</div>
+							</div>
+							<div class="tab-pane fade" id="properties">
+								<div class="form-group">
+									<label for="example-search-input">Description:</label>
+									<input class="form-control" id="add-translation-dialog-description" type="text">
+								</div>
+								<div class="form-group">
+									<label for="example-search-input">Tags</label>
+									<input class="form-control" id="add-translation-dialog-tags" type="text">
+								</div>
+								<div class="form-group">
+									<label for="example-search-input">Max. lenght</label>
+									<input class="form-control" id="add-translation-dialog-max-length" type="number" min="0">
+								</div>
+								<div class="form-group">
+									<label for="example-search-input">Screenshot link</label>
+									<input class="form-control" id="add-translation-dialog-screenshot" type="text">
+								</div>
+								<label class="custom-control custom-checkbox">
+									<input type="checkbox" class="custom-control-input">
+									<span class="custom-control-indicator"></span>
+									<span class="custom-control-description noselect">Is plural</span>
+								</label>
+								<label class="custom-control custom-checkbox">
+									<input type="checkbox" class="custom-control-input">
+									<span class="custom-control-indicator"></span>
+									<span class="custom-control-description noselect">Is array</span>
+								</label>
+							</div>
 						</div>
 					</div>
 					<div class="modal-footer">

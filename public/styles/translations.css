@@ -1,14 +1,14 @@
+.filter-header
+{
+	cursor: pointer;
+}
+
 .filter-checkbox
 {
 	cursor: pointer;
 	margin-right: 2em;
 	margin-top: 0;
 	margin-bottom: 0;
-}
-
-.filter-header
-{
-	cursor: pointer;
 }
 
 .filter-label
@@ -40,13 +40,6 @@
 	background-color: #E0E0E0;
 }
 
-.translation-checkbox2
-{
-	cursor: pointer;
-	margin: 0 0 0 0;
-	padding: 0 1em 0 0;
-}
-
 .button-circle
 {
 	width: 3em;
@@ -58,4 +51,9 @@
 	z-index: 999;
 	bottom: 1em;
 	right: 1em;
+}
+
+.tab-pane
+{
+	padding: 1em;
 }

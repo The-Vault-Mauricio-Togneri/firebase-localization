@@ -27,19 +27,19 @@ html, body
 	cursor: pointer;
 }
 
-.btn-danger
-{
-	background: #EA5854;
-	border-color: #E3534F;
-}
-
 .btn-success
 {
 	background: #5F9B48;
 	border-color: #71A55D;
 }
 
-.overview-content
+.btn-danger
+{
+	background: #EA5854;
+	border-color: #E3534F;
+}
+
+.view-gone
 {
 	display: none;
 }
@@ -63,30 +63,31 @@ html, body
 @keyframes progress-indeterminate
 {
 	from { left: -25%; width: 25%; }
-	to { left: 100%; width: 25%;}
+	to   { left: 100%; width: 25%; }
 }
 
 /* Navigation tabs */
-.nav-tabs
+
+.navigation-bar-top
 {
 	justify-content: center;
 	border: none;
 	background-color: #EAEAEA;
 }
 
-.nav-tabs > li
+.navigation-bar-top > li
 {
 	cursor: pointer;
 	padding: 0.5em 1em 0.5em 1em;
 }
 
-.nav-tabs > li:hover
+.navigation-bar-top > li:hover
 {
 	border-bottom: 0.2em solid #555555;
 	color: #555555;
 }
 
-.nav-tabs > li.active
+.navigation-bar-top > li.active
 {
 	border-bottom: 0.2em solid #444444;
 	color: #444444;
