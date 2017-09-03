@@ -51,6 +51,7 @@ exports.api = functions.https.onRequest(api);
 
 // https://github.com/firebase/functions-samples
 // https://us-central1-app-localization-2f645.cloudfunctions.net/[function]
-/*exports.example = functions.https.onRequest((request, response) => {
+/*exports.example = functions.https.onRequest((request, response) =>
+{
 	response.json({property:123})
 })*/
