@@ -32,6 +32,11 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 				displayContent()
 			})
 		})
+
+		$('#collapseFilter').on('shown.bs.collapse', function()
+		{
+			$('#filter-content-input').focus()
+		})
 	}
 
 	$scope.onTranslationKeyUpdated = function(translation, value)
@@ -110,8 +115,9 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 		var notTranslated = ($scope.filter.state.notTranslated ? translation.hasNotTranslated() : false)
 		var validated = ($scope.filter.state.validated ? translation.hasValidated() : false)
 		var notValidated = ($scope.filter.state.notValidated ? translation.hasNotValidated() : false)
+		var byText = ($scope.filter.content ? translation.contains($scope.filter.content.toLowerCase()) : true)
 
-		return translated || notTranslated || validated || notValidated
+		return (translated || notTranslated || validated || notValidated) && byText
 	}
 
 	function onNodeUpdated(id, value)
