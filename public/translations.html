@@ -74,14 +74,12 @@
 					</li>
 					<li class="list-group-item align-items-center">
 						<label class="col-form-label filter-label">By language:</label>
-						<span>
-							<span ng-repeat="locale in locales">
-								<label class="custom-control custom-checkbox filter-checkbox">
-									<input type="checkbox" checked="true" class="custom-control-input">
-									<span class="custom-control-indicator"></span>
-								<span class="custom-control-description noselect">{{locale.fullName}}</span>
-								</label>
-							</span>
+						<span ng-repeat="locale in locales">
+							<label class="custom-control custom-checkbox filter-checkbox">
+								<input type="checkbox" checked="true" class="custom-control-input">
+								<span class="custom-control-indicator"></span>
+						<span class="custom-control-description noselect">{{locale.fullName}}</span>
+						</label>
 						</span>
 					</li>
 					<li class="list-group-item align-items-center">
@@ -140,24 +138,24 @@
 			</tbody>
 		</table>
 
-		<div id="add-translation-dialog" class="modal fade" role="dialog">
-			<div class="modal-dialog" role="document">
+		<div id="add-translation-dialog" class="modal fade">
+			<div class="modal-dialog modal-lg">
 				<div class="modal-content">
 					<div class="modal-header">
 						<h5 class="modal-title">Translation</h5>
 					</div>
 					<div class="modal-body">
-						<div class="form-group row">
-							<label for="example-text-input" class="col-3 col-form-label">Key:</label>
-							<div class="col-9">
-								<input class="form-control" id="add-translation-dialog-key" type="text">
-							</div>
+						<div class="form-group">
+							<label for="example-text-input">Key:</label>
+							<input class="form-control" id="add-translation-dialog-key" type="text" placeholder="Key">
 						</div>
-						<div class="form-group row">
-							<label for="example-search-input" class="col-3 col-form-label">Description:</label>
-							<div class="col-9">
-								<input class="form-control" id="add-translation-dialog-description" type="text">
-							</div>
+						<div class="form-group">
+							<label for="example-search-input">Description:</label>
+							<input class="form-control" id="add-translation-dialog-description" type="text" placeholder="Description">
+						</div>
+						<div class="form-group" ng-repeat="locale in locales">
+							<label for="example-search-input">{{locale.fullName}}</label>
+							<input class="form-control" id="add-translation-dialog-description" type="text">
 						</div>
 					</div>
 					<div class="modal-footer">
