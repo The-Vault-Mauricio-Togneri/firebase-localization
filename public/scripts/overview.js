@@ -167,9 +167,9 @@ angular.module('overviewApp', []).controller('overviewCtrl', function($scope)
 		$('#delete-language-dialog').modal()
 	}
 
-	$scope.onDeleteLanguage = function()
+	$scope.onDeleteLanguage = function(id)
 	{
-		removeLocaleRef($scope.dialog.deleteLocale.id)
+		removeLocaleRef(id)
 	}
 
 	$scope.init()

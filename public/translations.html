@@ -200,7 +200,7 @@
 									</label>
 								</div>
 								<div class="form-group" ng-show="dialog.translation.id">
-									<button type="button" class="btn btn-danger" ng-click="">
+									<button type="button" class="btn btn-danger" ng-click="openRemoveTranslationDialog(dialog.translation)">
 										<i class="fa fa-trash"></i>
 										Delete
 									</button>
@@ -220,6 +220,27 @@
 						<button type="button" ng-show="dialog.translation.id" class="btn btn-success" data-dismiss="modal" ng-click="onEditTranslation(dialog.translation)">
 							<i class="fa fa-check"></i>
 							Edit
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="delete-translation-dialog" class="modal fade">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-body">
+						Do you want to delete <b ng-bind="dialog.deleteTranslation.key"></b>?
+						<input type="hidden" ng-model="dialog.deleteTranslation.id" value="">
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">
+							<i class="fa fa-ban"></i>
+							Cancel
+						</button>
+						<button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="onDeleteTranslation(dialog.deleteTranslation.id)">
+							<i class="fa fa-trash"></i>
+							Delete
 						</button>
 					</div>
 				</div>

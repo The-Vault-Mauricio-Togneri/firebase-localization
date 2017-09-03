@@ -24,6 +24,10 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 			screenshot: '',
 			isPlural: false,
 			isArray: false
+		},
+		deleteTranslation: {
+			id: '',
+			key: ''
 		}
 	}
 	
@@ -101,7 +105,7 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 			$scope.dialog.translation.locales[index] = ''
 		}
 	
-		displayTranslationDialog()
+		openTranslationDialog()
 	}
 
 	$scope.openEditTranslationDialog = function(translation)
@@ -120,10 +124,10 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 			$scope.dialog.translation.locales[index] = translation.locales[index].value
 		}
 	
-		displayTranslationDialog()
+		openTranslationDialog()
 	}
 
-	function displayTranslationDialog()
+	function openTranslationDialog()
 	{
 		$('#translation-dialog').on('shown.bs.modal', function()
 		{
@@ -194,6 +198,21 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 		}
 		
 		updateTranslationRef(form.id, value)
+	}
+
+	$scope.openRemoveTranslationDialog = function(translation)
+	{
+		$scope.dialog.deleteTranslation.id = translation.id
+		$scope.dialog.deleteTranslation.key = translation.key
+
+		$('#delete-translation-dialog').modal()
+	}
+
+	$scope.onDeleteTranslation = function(id)
+	{
+		removeTranslationRef(id)
+
+		$('#translation-dialog').modal('hide')
 	}
 
 	$scope.translationValidatedState = function(value)
