@@ -2,12 +2,28 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 {
 	$scope.locales = []
 	$scope.translations = []
+	$scope.filter = {
+		content: '',
+		locale: [],
+		state: {
+			translated: true,
+			notTranslated: true,
+			validated: true,
+			notValidated: true
+		}
+	}
 	
 	$scope.init = function()
 	{
 		localesRef().once('value', snapLocales =>
 		{	
 			$scope.locales = localesFromSnap(snapLocales)
+
+			for (var index in $scope.locales)
+			{
+				var locale = $scope.locales[index]
+				$scope.filter.locale[locale.key] = true
+			}
 	
 			translationsRef().once('value', snapTranslations =>
 			{
@@ -70,11 +86,11 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 			locales: []
 		}
 		
-		for (var locale in $scope.locales)
+		for (var index in $scope.locales)
 		{
-			var entry = $scope.locales[locale]
+			var locale = $scope.locales[index]
 	
-			value.locales[entry.key] = {
+			value.locales[locale.key] = {
 				value: '',
 				validated: false
 			}

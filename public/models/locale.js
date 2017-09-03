@@ -6,6 +6,7 @@ function Locale(key, locale)
 	this.fullName = this.name + ' (' + this.code + ')'
 	this.translated = locale.translated
 	this.validated = locale.validated
+	this.visible = true
 }
 
 const LOCALES = {

@@ -5,9 +5,9 @@ module.exports = {
 		var result = `<?xml version="1.0" encoding="utf-8"?>\n`
 		result += '<resources>\n'
 	
-		for (var element in translations)
+		for (var index in translations)
 		{
-			const translation = translations[element]
+			const translation = translations[index]
 			const key = translation.code
 			const value = translation.locales[locale].value
 			
@@ -23,9 +23,9 @@ module.exports = {
 	{
 		var result = ''
 	
-		for (var element in translations)
+		for (var index in translations)
 		{
-			const translation = translations[element]
+			const translation = translations[index]
 			const key = translation.code
 			const value = translation.locales[locale].value
 	
