@@ -1,0 +1,21 @@
+html, body
+{
+	margin: 0;
+	padding: 0;
+	font-size: 14px;
+	color: #555555;
+	font-family: 'Open Sans', sans-serif;
+	background-color: #FAFAFA;
+}
+
+.card
+{
+	width: 20%;
+	margin: 0 auto;
+	margin-top: 15%;
+}
+
+.btn
+{
+	cursor: pointer;
+}

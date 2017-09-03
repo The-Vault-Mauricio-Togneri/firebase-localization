@@ -15,6 +15,6 @@ function firebaseLogout()
 		window.location.href = '/'
 	}, function(error)
 	{
-		// handle error
+		console.log(error)
 	})
 }
