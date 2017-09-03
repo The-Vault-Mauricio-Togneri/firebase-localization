@@ -120,7 +120,7 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 
 	function displayTranslationDialog(buttonText)
 	{
-		byId('translation-button-ok').innerHtml = buttonText
+		byId('translation-button-ok').innerHTML = buttonText
 
 		$('#translation-dialog').on('shown.bs.modal', function()
 		{
@@ -165,8 +165,8 @@ angular.module('translationsApp', []).controller('translationsCtrl', function($s
 					value: form.locales[index]
 				}
 			}
-		
-			translationsEntryRef(form.key).set(value)
+			
+			onNodeUpdated(form.key, value)
 		}
 		else
 		{
