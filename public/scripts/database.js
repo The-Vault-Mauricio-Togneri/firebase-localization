@@ -91,7 +91,7 @@ app.service('database', function()
 
 	this.addTranslationRef = function(value)
 	{
-		this.translationsRef().push(value, function(error)
+		return this.translationsRef().push(value, function(error)
 		{
 			logDatabaseResult(error, 'Add translation => ' + JSON.stringify(value))
 		})

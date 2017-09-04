@@ -206,11 +206,11 @@ app.controller('translationsCtrl', function($scope, database)
 				}
 			}
 
-			const translation = new Translation('', value)
-			$scope.translations.push(translation)
-
 			orderTranslations()
-			database.addTranslationRef(value)
+			const newEntry = database.addTranslationRef(value)
+
+			const translation = new Translation(newEntry.key, value)
+			$scope.translations.push(translation)
 
 			$('#translation-dialog').modal('hide')
 		}
