@@ -262,6 +262,8 @@ app.controller('translationsCtrl', function($scope, database)
 
 	function translationById(id)
 	{
+		const index = translationIndexById(id)
+
 		return (index != -1) ? $scope.translations[index] : null
 	}
 
