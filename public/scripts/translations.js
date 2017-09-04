@@ -160,8 +160,6 @@ app.controller('translationsCtrl', function($scope, database)
 		})
 
 		$('#translation-dialog').modal()
-
-		autosize(document.querySelectorAll('textarea'))
 	}
 
 	$scope.onAddTranslation = function(form)

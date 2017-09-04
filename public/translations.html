@@ -28,9 +28,6 @@
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
 
-	<!-- Autosize -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/autosize.js/4.0.0/autosize.min.js"></script>
-
 	<!-- Local styles -->
 	<link href="styles/style.css" rel="stylesheet">
 	<link href="styles/translations.css" rel="stylesheet">
@@ -116,7 +113,7 @@
 		<table class="table table-sm table-hover table-striped">
 			<thead class="thead-default">
 				<tr>
-					<th style="padding-left:10px">Key</th>
+					<th style="padding-left:10px;width:20em">Key</th>
 					<th ng-repeat="locale in locales" ng-show="filter.locale[locale.id]" style="padding-left:10px">
 						{{locale.fullName}}
 					</th>
@@ -134,7 +131,7 @@
 					</td>
 					<td ng-repeat="locale in locales" ng-show="filter.locale[locale.id]">
 						<div class="input-group">
-							<input class="form-control translation-input" type="text" ng-model="translation.locales[locale.id].value" ng-blur="onTranslationValueUpdated(translation, locale)">
+							<textarea class="form-control translation-input" type="text" ng-model="translation.locales[locale.id].value" ng-blur="onTranslationValueUpdated(translation, locale)" rows="1"></textarea>
 							<div class="input-group-addon translation-checkbox" ng-class="translationValidatedState(translation.locales[locale.id].validated)" ng-click="onTranslationValidatedChanged(translation, locale)">
 								<i class="fa fa-check"></i>
 							</div>
