@@ -44,6 +44,11 @@ function showError(message)
 	}, 3000)
 }
 
+function controllerById(id)
+{
+	return angular.element($('#' + id)).scope()
+}
+
 function downloadFile(path)
 {
 	var a = createTag('A')

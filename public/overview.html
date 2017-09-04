@@ -42,6 +42,9 @@
 	<script src="scripts/scripts.js"></script>
 	<script src="scripts/database.js"></script>
 	<script src="scripts/overview.js"></script>
+	<script src="scripts/overview/dialog-delete-language.js"></script>
+	<script src="scripts/overview/dialog-logout.js"></script>
+	<script src="scripts/overview/dialog-profile.js"></script>
 	<script src="scripts/firebase.js"></script>
 </head>
 
@@ -125,7 +128,7 @@
 			Profile
 		</button>
 
-		<div id="profile-dialog" class="modal fade">
+		<div id="profile-dialog" class="modal fade" ng-controller="overviewDialogProfileCtrl">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -134,11 +137,11 @@
 					<div class="modal-body">
 						<div class="form-group">
 							<label>New Password</label>
-							<input class="form-control" type="password" ng-model="dialog.profile.password">
+							<input class="form-control" type="password" ng-model="dialog.password">
 						</div>
 						<div class="form-group">
 							<label>Confirm new Password</label>
-							<input class="form-control" type="password" ng-model="dialog.profile.passwordConfirmation">
+							<input class="form-control" type="password" ng-model="dialog.passwordConfirmation">
 						</div>
 						<hr class="separator"/>
 						<div class="form-group">
@@ -147,7 +150,7 @@
 						</div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-danger mr-auto" data-toggle="modal" data-target="#logout-dialog">
+						<button type="button" class="btn btn-danger mr-auto" ng-click="openLogoutDialog()">
 							<i class="fa fa-sign-out"></i>
 							Logout
 						</button>
@@ -155,7 +158,7 @@
 							<i class="fa fa-ban"></i>
 							Cancel
 						</button>
-						<button type="button" class="btn btn-success" data-dismiss="modal" ng-disabled="(dialog.profile.password != dialog.profile.passwordConfirmation) || (dialog.profile.password == '')" ng-click="onProfileUpdated(dialog.profile.password)">
+						<button type="button" class="btn btn-success" ng-disabled="(dialog.password != dialog.passwordConfirmation) || (dialog.password == '')" ng-click="onUpdatePassword(dialog.password)">
 							<i class="fa fa-check"></i>
 							Save
 						</button>
@@ -164,7 +167,7 @@
 			</div>
 		</div>
 
-		<div id="logout-dialog" class="modal fade">
+		<div id="logout-dialog" class="modal fade" ng-controller="overviewDialogLogoutCtrl">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-body">
@@ -175,7 +178,7 @@
 							<i class="fa fa-ban"></i>
 							Cancel
 						</button>
-						<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="firebaseLogout()">
+						<button type="button" class="btn btn-danger" ng-click="onLogout()">
 							<i class="fa fa-sign-out"></i>
 							Logout
 						</button>
@@ -214,19 +217,19 @@
 			</div>
 		</div>
 
-		<div id="delete-language-dialog" class="modal fade">
+		<div id="delete-language-dialog" class="modal fade" ng-controller="overviewDialogDeleteLanguageCtrl">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-body">
-						Do you want to delete <b ng-bind="dialog.deleteLocale.name"></b>?
-						<input type="hidden" ng-model="dialog.deleteLocale.id" value="">
+						Do you want to delete <b ng-bind="dialog.name"></b>?
+						<input type="hidden" ng-model="dialog.id" value="">
 					</div>
 					<div class="modal-footer no-modal-separator">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">
 							<i class="fa fa-ban"></i>
 							Cancel
 						</button>
-						<button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="onDeleteLanguage(dialog.deleteLocale.id)">
+						<button type="button" class="btn btn-danger" ng-click="onDelete(dialog.id)">
 							<i class="fa fa-trash"></i>
 							Delete
 						</button>
