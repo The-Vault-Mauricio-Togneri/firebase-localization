@@ -31,7 +31,7 @@ app.service('database', function()
 
 	this.localesFromSnap = function(snap)
 	{
-		var locales = {}
+		const locales = {}
 
 		snap.forEach(function(entry)
 		{
@@ -79,7 +79,7 @@ app.service('database', function()
 
 	this.translationsFromSnap = function(snap)
 	{
-		var translations = []
+		const translations = []
 
 		snap.forEach(function(entry)
 		{

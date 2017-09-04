@@ -18,7 +18,7 @@ app.get('/export/:locale/android', (request, response) =>
 
 	database.localesRef(admin).once('value', localesSnap =>
 	{
-		var locale = database.localeByCode(localeCode, localesSnap)
+		const locale = database.localeByCode(localeCode, localesSnap)
 		
 		return database.translationsRef(admin).once('value', translationsSnap =>
 		{
@@ -34,7 +34,7 @@ app.get('/export/:locale/ios', (request, response) =>
 	
 	database.localesRef(admin).once('value', localesSnap =>
 	{
-		var locale = database.localeByCode(localeCode, localesSnap)
+		const locale = database.localeByCode(localeCode, localesSnap)
 		
 		return database.translationsRef(admin).once('value', translationsSnap =>
 		{

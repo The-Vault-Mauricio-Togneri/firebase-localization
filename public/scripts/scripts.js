@@ -1,28 +1,10 @@
 "use strict"
 
-var app = angular.module('translationsApp', [])
+const app = angular.module('translationsApp', [])
 
 function byId(id)
 {
 	return document.getElementById(id)
-}
-
-function createTag(type)
-{
-	return document.createElement(type)
-}
-
-function createText(content)
-{
-	return document.createTextNode(content)
-}
-
-function removeChildren(element)
-{
-	while (element.firstChild)
-	{
-		element.removeChild(element.firstChild)
-	}
 }
 
 function displayContent()
@@ -61,7 +43,7 @@ function closeDialog(id)
 
 function downloadFile(path)
 {
-	var a = createTag('A')
+	const a = document.createElement('A')
 	a.href = path
 	a.download = path.substr(path.lastIndexOf('/') + 1)
 	document.body.appendChild(a)

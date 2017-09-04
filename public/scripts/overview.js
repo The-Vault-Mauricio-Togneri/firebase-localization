@@ -17,29 +17,29 @@ app.controller('overviewCtrl', function($scope, database)
 
 			database.translationsRef().on('value', snapTranslations =>
 			{
-				const summary = $scope.summary($scope.locales, database.translationsFromSnap(snapTranslations))
+				const translations = database.translationsFromSnap(snapTranslations)
+				const summary = $scope.summary($scope.locales, translations)
 
 				for (const index in summary)
 				{
-					const entry = summary[index]
-					$scope.locales[index].translated = (entry.total > 0) ? parseInt(entry.translated * 100 / entry.total) : 0
-					$scope.locales[index].validated  = (entry.total > 0) ? parseInt(entry.validated  * 100 / entry.total) : 0
+					$scope.locales[index].translated = summary[index].translated
+					$scope.locales[index].validated  = summary[index].validated
 				}
 
 				$scope.$applyAsync()
 				displayContent()
-			})
 
-			database.apiTokenRef().once('value', snap =>
-			{
-				$scope.apiToken = snap.val()
+				database.apiTokenRef().once('value', snap =>
+				{
+					$scope.apiToken = snap.val()
+				})
 			})
 		})
 	}
 
 	$scope.summary = function(locales, translations)
 	{
-		var summary = {}
+		const summary = {}
 
 		for (const index in locales)
 		{
@@ -70,6 +70,12 @@ app.controller('overviewCtrl', function($scope, database)
 					summary[localeIndex].validated++
 				}
 			}
+		}
+
+		for (const index in summary)
+		{
+			summary[index].translated = (summary[index].total > 0) ? parseInt(summary[index].translated * 100 / summary[index].total) : 0
+			summary[index].validated  = (summary[index].total > 0) ? parseInt(summary[index].validated  * 100 / summary[index].total) : 0
 		}
 
 		return summary

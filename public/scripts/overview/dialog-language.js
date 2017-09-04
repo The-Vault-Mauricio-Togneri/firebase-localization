@@ -36,7 +36,7 @@ app.controller('overviewDialogLanguageCtrl', function($scope, database)
 
 	$scope.onAddLanguage = function(form)
 	{
-		var value = {
+		const value = {
 			code: byId('language-dialog-select').value
 		}
 
@@ -47,7 +47,7 @@ app.controller('overviewDialogLanguageCtrl', function($scope, database)
 
 	$scope.onEditLanguage = function(form)
 	{
-		var value = {
+		const value = {
 			code: byId('language-dialog-select').value
 		}
 

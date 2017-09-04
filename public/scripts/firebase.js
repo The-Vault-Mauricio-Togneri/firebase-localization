@@ -1,4 +1,4 @@
-var config = {
+const config = {
 	apiKey: 'AIzaSyD97ohSqPCr_8O0byCUMdqpPB9rTf-Qgtk',
 	authDomain: 'app-localization-2f645.firebaseapp.com',
 	databaseURL: 'https://app-localization-2f645.firebaseio.com',

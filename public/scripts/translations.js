@@ -185,7 +185,7 @@ app.controller('translationsCtrl', function($scope, database)
 	{
 		if (translationFormValid(form))
 		{
-			var value = {
+			const value = {
 				key: form.key,
 				description: form.description,
 				tags: form.tags,
@@ -198,7 +198,7 @@ app.controller('translationsCtrl', function($scope, database)
 
 			for (const index in form.locales)
 			{
-				var locale = form.locales[index]
+				const locale = form.locales[index]
 
 				value.locales[index] = {
 					value: locale.value,
@@ -220,7 +220,7 @@ app.controller('translationsCtrl', function($scope, database)
 	{
 		if (translationFormValid(form))
 		{
-			var value = {
+			const value = {
 				key: form.key,
 				description: form.description,
 				tags: form.tags,
@@ -231,7 +231,7 @@ app.controller('translationsCtrl', function($scope, database)
 				locales: {}
 			}
 
-			var sourceTranslation = translationById(form.id)
+			const sourceTranslation = translationById(form.id)
 			sourceTranslation.key         = form.key
 			sourceTranslation.description = form.description
 			sourceTranslation.tags        = form.tags
@@ -242,7 +242,7 @@ app.controller('translationsCtrl', function($scope, database)
 
 			for (const index in form.locales)
 			{
-				var locale = form.locales[index]
+				const locale = form.locales[index]
 
 				value.locales[index] = {
 					value: locale.value,
@@ -304,11 +304,11 @@ app.controller('translationsCtrl', function($scope, database)
 	
 	$scope.displayByState = function(translation)
 	{
-		var translated = ($scope.filter.state.translated ? translation.hasTranslated() : false)
-		var notTranslated = ($scope.filter.state.notTranslated ? translation.hasNotTranslated() : false)
-		var validated = ($scope.filter.state.validated ? translation.hasValidated() : false)
-		var notValidated = ($scope.filter.state.notValidated ? translation.hasNotValidated() : false)
-		var byText = ($scope.filter.content ? translation.contains($scope.filter.content.toLowerCase()) : true)
+		const translated = ($scope.filter.state.translated ? translation.hasTranslated() : false)
+		const notTranslated = ($scope.filter.state.notTranslated ? translation.hasNotTranslated() : false)
+		const validated = ($scope.filter.state.validated ? translation.hasValidated() : false)
+		const notValidated = ($scope.filter.state.notValidated ? translation.hasNotValidated() : false)
+		const byText = ($scope.filter.content ? translation.contains($scope.filter.content.toLowerCase()) : true)
 
 		return (translated || notTranslated || validated || notValidated) && byText
 	}

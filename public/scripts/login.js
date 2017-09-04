@@ -6,7 +6,7 @@ firebase.auth().onAuthStateChanged(function(user)
 	}
 	else
 	{
-		const form = document.getElementById('form')
+		const form = byId('form')
 		form.style.visibility = 'visible'
 	}
 })
@@ -38,12 +38,12 @@ app.controller('loginCtrl', function($scope)
 
 function login2()
 {
-	const email = document.getElementById('form.email')
-	const password = document.getElementById('form.password')
-	const button = document.getElementById('form.button')
+	const email = byId('form.email')
+	const password = byId('form.password')
+	const button = byId('form.button')
 
-	const buttonNormal = document.getElementById('form.button.normal')
-	const buttonLoading = document.getElementById('form.button.loading')
+	const buttonNormal = byId('form.button.normal')
+	const buttonLoading = byId('form.button.loading')
 
 	email.disabled = true
 	password.disabled = true
