@@ -162,6 +162,7 @@
 									<label>Key:</label>
 									<input type="hidden" ng-model="dialog.translation.id">
 									<input class="form-control" id="translation-dialog-key" type="text" ng-model="dialog.translation.key">
+									<span class="form-invalid-input" ng-show="dialog.translation.validation.keyMissing">Invalid key</span>
 								</div>
 								<div class="form-group" ng-repeat="locale in locales">
 									<label>{{locale.fullName}}</label>
@@ -211,11 +212,11 @@
 							<i class="fa fa-ban"></i>
 							Cancel
 						</button>
-						<button type="button" ng-show="!dialog.translation.id" class="btn btn-success" data-dismiss="modal" ng-click="onAddTranslation(dialog.translation)">
+						<button type="button" ng-show="!dialog.translation.id" class="btn btn-success" ng-click="onAddTranslation(dialog.translation)">
 							<i class="fa fa-plus"></i>
 							Add
 						</button>
-						<button type="button" ng-show="dialog.translation.id" class="btn btn-success" data-dismiss="modal" ng-click="onEditTranslation(dialog.translation)">
+						<button type="button" ng-show="dialog.translation.id" class="btn btn-success" ng-click="onEditTranslation(dialog.translation)">
 							<i class="fa fa-check"></i>
 							Edit
 						</button>

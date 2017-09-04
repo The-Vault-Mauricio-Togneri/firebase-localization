@@ -23,7 +23,10 @@ app.controller('translationsCtrl', function($scope, database)
 			maxLength: '',
 			screenshot: '',
 			isPlural: false,
-			isArray: false
+			isArray: false,
+			validation: {
+				keyMissing: false
+			}
 		},
 		deleteTranslation: {
 			id: '',
@@ -140,6 +143,8 @@ app.controller('translationsCtrl', function($scope, database)
 
 	function openTranslationDialog()
 	{
+		$scope.dialog.translation.validation.keyMissing = false
+
 		$('#translation-dialog').on('shown.bs.modal', function()
 		{
 			$('#translation-dialog-key').focus()
@@ -162,73 +167,97 @@ app.controller('translationsCtrl', function($scope, database)
 		$('#translation-dialog').modal()
 	}
 
+	function translationFormValid(form)
+	{
+		if (!form.key)
+		{
+			$scope.dialog.translation.validation.keyMissing = true
+			$('#translation-dialog-tabs a:first').tab('show')
+			$('#translation-dialog-key').focus()
+		}
+		else
+		{
+			return true
+		}
+	}
+
 	$scope.onAddTranslation = function(form)
 	{
-		var value = {
-			key: form.key,
-			description: form.description,
-			tags: form.tags,
-			maxLength: form.maxLength,
-			screenshot: form.screenshot,
-			isPlural: form.isPlural,
-			isArray: form.isArray,
-			locales: {}
-		}
-
-		for (const index in form.locales)
+		if (translationFormValid(form))
 		{
-			var locale = form.locales[index]
-
-			value.locales[index] = {
-				value: locale.value,
-				validated: locale.validated
+			var value = {
+				key: form.key,
+				description: form.description,
+				tags: form.tags,
+				maxLength: form.maxLength,
+				screenshot: form.screenshot,
+				isPlural: form.isPlural,
+				isArray: form.isArray,
+				locales: {}
 			}
+
+			for (const index in form.locales)
+			{
+				var locale = form.locales[index]
+
+				value.locales[index] = {
+					value: locale.value,
+					validated: locale.validated
+				}
+			}
+
+			const translation = new Translation('', value)
+			$scope.translations.push(translation)
+
+			orderTranslations()
+			database.addTranslationRef(value)
+
+			$('#translation-dialog').modal('hide')
 		}
-
-		const translation = new Translation('', value)
-		$scope.translations.push(translation)
-
-		orderTranslations()
-		database.addTranslationRef(value)
 	}
 
 	$scope.onEditTranslation = function(form)
 	{
-		var value = {
-			key: form.key,
-			description: form.description,
-			tags: form.tags,
-			maxLength: form.maxLength,
-			screenshot: form.screenshot,
-			isPlural: form.isPlural,
-			isArray: form.isArray,
-			locales: {}
-		}
-
-		var sourceTranslation = translationById(form.id)
-		sourceTranslation.key         = form.key
-		sourceTranslation.description = form.description
-		sourceTranslation.tags        = form.tags
-		sourceTranslation.maxLength   = form.maxLength
-		sourceTranslation.screenshot  = form.screenshot
-		sourceTranslation.isPlural    = form.isPlural
-		sourceTranslation.isArray     = form.isArray
-
-		for (const index in form.locales)
+		if (translationFormValid(form))
 		{
-			var locale = form.locales[index]
-
-			value.locales[index] = {
-				value: locale.value,
-				validated: locale.validated && (locale.value == locale.oldValue)
+			var value = {
+				key: form.key,
+				description: form.description,
+				tags: form.tags,
+				maxLength: form.maxLength,
+				screenshot: form.screenshot,
+				isPlural: form.isPlural,
+				isArray: form.isArray,
+				locales: {}
 			}
 
-			sourceTranslation.locales[index].value     = value.locales[index].value
-			sourceTranslation.locales[index].validated = value.locales[index].validated
+			var sourceTranslation = translationById(form.id)
+			sourceTranslation.key         = form.key
+			sourceTranslation.description = form.description
+			sourceTranslation.tags        = form.tags
+			sourceTranslation.maxLength   = form.maxLength
+			sourceTranslation.screenshot  = form.screenshot
+			sourceTranslation.isPlural    = form.isPlural
+			sourceTranslation.isArray     = form.isArray
+
+			for (const index in form.locales)
+			{
+				var locale = form.locales[index]
+
+				value.locales[index] = {
+					value: locale.value,
+					validated: locale.validated && (locale.value == locale.oldValue)
+				}
+
+				sourceTranslation.locales[index].value     = value.locales[index].value
+				sourceTranslation.locales[index].validated = value.locales[index].validated
+			}
+			
+			orderTranslations()
+			database.updateTranslationRef(form.id, value)
+
+			$('#translation-dialog').modal('hide')
 		}
-		
-		orderTranslations()
-		database.updateTranslationRef(form.id, value)
 	}
 
 	function translationById(id)
