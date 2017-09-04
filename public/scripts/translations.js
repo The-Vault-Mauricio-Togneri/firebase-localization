@@ -184,7 +184,11 @@ app.controller('translationsCtrl', function($scope, database)
 				validated: locale.validated
 			}
 		}
-	
+
+		const translation = new Translation('', value)
+		$scope.translations.push(translation)
+
+		orderTranslations()
 		database.addTranslationRef(value)
 	}
 
@@ -229,15 +233,20 @@ app.controller('translationsCtrl', function($scope, database)
 
 	function translationById(id)
 	{
+		return (index != -1) ? $scope.translations[index] : null
+	}
+
+	function translationIndexById(id)
+	{
 		for (const index in $scope.translations)
 		{
 			if ($scope.translations[index].id == id)
 			{
-				return $scope.translations[index]
+				return index
 			}
 		}
 
-		return null
+		return -1
 	}
 
 	$scope.openRemoveTranslationDialog = function(translation)
@@ -250,6 +259,10 @@ app.controller('translationsCtrl', function($scope, database)
 
 	$scope.onDeleteTranslation = function(id)
 	{
+		const index = translationIndexById(id)
+		$scope.translations.splice(index, 1)
+		
+		orderTranslations()
 		database.removeTranslationRef(id)
 
 		$('#translation-dialog').modal('hide')
