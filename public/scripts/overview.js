@@ -5,6 +5,8 @@ function onLanguageSelected()
 
 app.controller('overviewCtrl', function($scope, database)
 {
+	$scope.apiToken = ''
+
 	$scope.locales = {}
 
 	$scope.dialog = {
@@ -42,6 +44,11 @@ app.controller('overviewCtrl', function($scope, database)
 
 				$scope.$applyAsync()
 				displayContent()
+			})
+
+			database.apiTokenRef().once('value', snap =>
+			{
+				$scope.apiToken = snap.val()
 			})
 		})
 	}

@@ -137,7 +137,8 @@ html, body
 
 /* Table */
 
-.thead-default th {
+.thead-default th
+{
     color: #444444;
 	background-color: #F2F5F7;
 	height: 2.7em;

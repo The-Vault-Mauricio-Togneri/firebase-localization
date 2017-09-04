@@ -112,4 +112,11 @@ app.service('database', function()
 			logDatabaseResult(error, 'Remove translation (' + id + ')')
 		})
 	}
+
+	// -------------------------------
+
+	this.apiTokenRef = function()
+	{
+		return databaseRef().child('api/token')
+	}
 })
