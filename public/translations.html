@@ -28,6 +28,9 @@
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
 
+	<!-- Autosize -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/autosize.js/4.0.0/autosize.min.js"></script>
+
 	<!-- Local styles -->
 	<link href="styles/style.css" rel="stylesheet">
 	<link href="styles/translations.css" rel="stylesheet">
@@ -165,7 +168,7 @@
 								</div>
 								<div class="form-group" ng-repeat="locale in locales">
 									<label>{{locale.fullName}}</label>
-									<input class="form-control" type="text" ng-model="dialog.translation.locales[locale.id].value">
+									<textarea class="form-control" type="text" ng-model="dialog.translation.locales[locale.id].value" rows="1"></textarea>
 								</div>
 							</div>
 							<div class="tab-pane fade" id="translation-dialog-tab-properties">
