@@ -1,6 +1,6 @@
 function onLanguageSelected()
 {
-	angular.element($('body')).scope().onLanguageSelected()
+	controllerById('language-dialog').onLanguageSelected()
 }
 
 app.controller('overviewCtrl', function($scope, database)
@@ -8,14 +8,6 @@ app.controller('overviewCtrl', function($scope, database)
 	$scope.apiToken = ''
 
 	$scope.locales = {}
-
-	$scope.dialog = {
-		locale: {
-			id: '',
-			originalCode: '',
-			buttonDisabled: true
-		}
-	}
 
 	$scope.init = function()
 	{
@@ -118,48 +110,12 @@ app.controller('overviewCtrl', function($scope, database)
 
 	$scope.openAddLanguageDialog = function()
 	{
-		openLanguageDialog(null, '')
+		controllerById('language-dialog').openAdd()
 	}
 
 	$scope.openEditLanguageDialog = function(locale)
 	{
-		openLanguageDialog(locale.id, locale.code)
-	}
-
-	$scope.onLanguageSelected = function()
-	{
-		const value = byId('language-dialog-select').value
-		
-		$scope.dialog.locale.buttonDisabled = (value == $scope.dialog.locale.originalCode)
-		$scope.$applyAsync()
-	}
-
-	function openLanguageDialog(id, select)
-	{
-		$scope.dialog.locale.id = id
-		$scope.dialog.locale.originalCode = select
-		$scope.dialog.locale.buttonDisabled = true
-
-		$('#language-dialog-select').val(select).trigger('change.select2')
-		$('#language-dialog').modal()
-	}
-
-	$scope.onAddLanguage = function(form)
-	{
-		var value = {
-			code: byId('language-dialog-select').value
-		}
-
-		database.addLocaleRef(value)
-	}
-
-	$scope.onEditLanguage = function(form)
-	{
-		var value = {
-			code: byId('language-dialog-select').value
-		}
-
-		database.updateLocaleRef(form.id, value)
+		controllerById('language-dialog').openEdit(locale)
 	}
 
 	$scope.openDeleteLanguageDialog = function(locale)

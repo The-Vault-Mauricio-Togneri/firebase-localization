@@ -1,13 +1,13 @@
-app.controller('overviewDialogLogoutCtrl', function($scope, database)
+app.controller('overviewDialogLogoutCtrl', function($scope)
 {
 	$scope.open = function()
 	{
-		$('#logout-dialog').modal()
+		openDialog('logout-dialog')
 	}
 
 	$scope.onLogout = function(id)
 	{
-		$('#logout-dialog').modal('hide')
+		closeDialog('logout-dialog')
 
 		firebase.auth().signOut().then(function()
 		{

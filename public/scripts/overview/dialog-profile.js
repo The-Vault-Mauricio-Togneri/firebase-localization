@@ -1,4 +1,4 @@
-app.controller('overviewDialogProfileCtrl', function($scope, database)
+app.controller('overviewDialogProfileCtrl', function($scope)
 {
 	$scope.dialog = {
 		password: '',
@@ -10,7 +10,7 @@ app.controller('overviewDialogProfileCtrl', function($scope, database)
 		$scope.dialog.password = ''
 		$scope.dialog.passwordConfirmation = ''
 
-		$('#profile-dialog').modal()
+		openDialog('profile-dialog')
 	}
 
 	$scope.onUpdatePassword = function(password)
@@ -20,7 +20,7 @@ app.controller('overviewDialogProfileCtrl', function($scope, database)
 			showError(error.message)
 		})
 
-		$('#profile-dialog').modal('hide')
+		openDialog('profile-dialog')
 	}
 
 	$scope.openLogoutDialog = function()

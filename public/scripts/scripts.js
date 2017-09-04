@@ -49,6 +49,16 @@ function controllerById(id)
 	return angular.element($('#' + id)).scope()
 }
 
+function openDialog(id)
+{
+	$('#' + id).modal()
+}
+
+function closeDialog(id)
+{
+	$('#' + id).modal('hide')
+}
+
 function downloadFile(path)
 {
 	var a = createTag('A')

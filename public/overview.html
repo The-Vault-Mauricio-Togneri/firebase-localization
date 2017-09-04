@@ -43,6 +43,7 @@
 	<script src="scripts/database.js"></script>
 	<script src="scripts/overview.js"></script>
 	<script src="scripts/overview/dialog-delete-language.js"></script>
+	<script src="scripts/overview/dialog-language.js"></script>
 	<script src="scripts/overview/dialog-logout.js"></script>
 	<script src="scripts/overview/dialog-profile.js"></script>
 	<script src="scripts/firebase.js"></script>
@@ -187,14 +188,14 @@
 			</div>
 		</div>
 
-		<div id="language-dialog" class="modal fade">
+		<div id="language-dialog" class="modal fade" ng-controller="overviewDialogLanguageCtrl">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header no-modal-separator">
 						<h5 class="modal-title">Language</h5>
 					</div>
 					<div class="modal-body">
-						<input type="hidden" ng-model="dialog.locale.id">
+						<input type="hidden" ng-model="dialog.id">
 						<select id="language-dialog-select" data-placeholder="Select a language" class="js-example-placeholder-single" style="width:100%" onchange="onLanguageSelected()">
 							<option value=""></option>
 						</select>
@@ -204,11 +205,11 @@
 							<i class="fa fa-ban"></i>
 							Cancel
 						</button>
-						<button type="button" ng-show="!dialog.locale.id" class="btn btn-success" ng-disabled="dialog.locale.buttonDisabled" data-dismiss="modal" ng-click="onAddLanguage(dialog.locale)">
+						<button type="button" ng-show="!dialog.id" class="btn btn-success" ng-disabled="dialog.buttonDisabled" ng-click="onAddLanguage(dialog)">
 							<i class="fa fa-plus"></i>
 							Add
 						</button>
-						<button type="button" ng-show="dialog.locale.id" class="btn btn-success" ng-disabled="dialog.locale.buttonDisabled" data-dismiss="modal" ng-click="onEditLanguage(dialog.locale)">
+						<button type="button" ng-show="dialog.id" class="btn btn-success" ng-disabled="dialog.buttonDisabled" ng-click="onEditLanguage(dialog)">
 							<i class="fa fa-check"></i>
 							Edit
 						</button>

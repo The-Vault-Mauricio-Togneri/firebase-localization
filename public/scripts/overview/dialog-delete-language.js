@@ -10,13 +10,13 @@ app.controller('overviewDialogDeleteLanguageCtrl', function($scope, database)
 		$scope.dialog.id   = locale.id
 		$scope.dialog.name = locale.fullName
 
-		$('#delete-language-dialog').modal()
+		openDialog('delete-language-dialog')
 	}
 
 	$scope.onDelete = function(id)
 	{
 		database.removeLocaleRef(id)
 
-		$('#delete-language-dialog').modal('hide')
+		closeDialog('delete-language-dialog')
 	}
 })
