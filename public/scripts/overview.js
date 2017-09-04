@@ -16,6 +16,10 @@ app.controller('overviewCtrl', function($scope, database)
 		deleteLocale: {
 			id: '',
 			name: ''
+		},
+		profile: {
+			password: '',
+			passwordConfirmation: ''
 		}
 	}
 
@@ -170,6 +174,22 @@ app.controller('overviewCtrl', function($scope, database)
 	$scope.onDeleteLanguage = function(id)
 	{
 		database.removeLocaleRef(id)
+	}
+
+	$scope.openProfileDialog = function()
+	{
+		$scope.dialog.profile.password = ''
+		$scope.dialog.profile.passwordConfirmation = ''
+
+		$('#profile-dialog').modal()
+	}
+
+	$scope.onProfileUpdated = function(password)
+	{
+		firebase.auth().currentUser.updatePassword(password).catch(function(error)
+		{
+			showError(error.message)
+		})
 	}
 
 	$scope.init()

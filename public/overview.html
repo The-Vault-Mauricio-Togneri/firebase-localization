@@ -120,16 +120,48 @@
 			Add Language
 		</button>
 
-		<button type="button" class="btn btn-danger logout-button" data-toggle="modal" data-target="#logout-dialog">
-			<i class="fa fa-sign-out"></i>
-			Logout
+		<button type="button" class="btn btn-primary logout-profile" ng-click="openProfileDialog()">
+			<i class="fa fa-user"></i>
+			Profile
 		</button>
 
-		<div class="token-container">
-			<b>API Token:</b>
-			<span class="alert token-field">
-				2661e040-e825-40d5-ba61-d73f2d111b10
-			</span>
+		<div id="profile-dialog" class="modal fade">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Profile</h5>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<label>New Password</label>
+							<input class="form-control" type="password" ng-model="dialog.profile.password">
+						</div>
+						<div class="form-group">
+							<label>Confirm new Password</label>
+							<input class="form-control" type="password" ng-model="dialog.profile.passwordConfirmation">
+						</div>
+						<hr class="separator"/>
+						<div class="form-group">
+							<label>API Token</label>
+							<input class="form-control" type="text" readonly value="2661e040-e825-40d5-ba61-d73f2d111b10">
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-danger mr-auto" data-toggle="modal" data-target="#logout-dialog">
+							<i class="fa fa-sign-out"></i>
+							Logout
+						</button>
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">
+							<i class="fa fa-ban"></i>
+							Cancel
+						</button>
+						<button type="button" class="btn btn-success" data-dismiss="modal" ng-disabled="(dialog.profile.password != dialog.profile.passwordConfirmation) || (dialog.profile.password == '')" ng-click="onProfileUpdated(dialog.profile.password)">
+							<i class="fa fa-check"></i>
+							Save
+						</button>
+					</div>
+				</div>
+			</div>
 		</div>
 
 		<div id="logout-dialog" class="modal fade">
@@ -138,7 +170,7 @@
 					<div class="modal-body">
 						Do you want to logout?
 					</div>
-					<div class="modal-footer">
+					<div class="modal-footer no-modal-separator">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">
 							<i class="fa fa-ban"></i>
 							Cancel
@@ -155,7 +187,7 @@
 		<div id="language-dialog" class="modal fade">
 			<div class="modal-dialog">
 				<div class="modal-content">
-					<div class="modal-header">
+					<div class="modal-header no-modal-separator">
 						<h5 class="modal-title">Language</h5>
 					</div>
 					<div class="modal-body">
@@ -164,7 +196,7 @@
 							<option value=""></option>
 						</select>
 					</div>
-					<div class="modal-footer">
+					<div class="modal-footer no-modal-separator">
 						<button type="button" class="btn btn-danger" data-dismiss="modal">
 							<i class="fa fa-ban"></i>
 							Cancel
@@ -189,7 +221,7 @@
 						Do you want to delete <b ng-bind="dialog.deleteLocale.name"></b>?
 						<input type="hidden" ng-model="dialog.deleteLocale.id" value="">
 					</div>
-					<div class="modal-footer">
+					<div class="modal-footer no-modal-separator">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">
 							<i class="fa fa-ban"></i>
 							Cancel
@@ -201,6 +233,10 @@
 					</div>
 				</div>
 			</div>
+		</div>
+
+		<div class="error-message-container" id="error-message" style="visibility:hidden">
+			<span class="alert alert-danger"></span>
 		</div>
 
 	</div>

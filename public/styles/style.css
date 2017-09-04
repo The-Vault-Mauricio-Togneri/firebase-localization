@@ -61,6 +61,31 @@ html, body
 	color: #888888;
 }
 
+.separator
+{
+	margin-top: 1.5em;
+	margin-bottom: 1em;
+}
+
+.error-message-container
+{
+	width: 100%;
+    text-align: center;
+    position: fixed;
+    z-index: 999;
+    bottom: 30px;
+}
+
+.error-message-text
+{
+	visibility: visible;
+    background-color: #333;
+    color: #fff;
+    border-radius: 5px;
+    padding: 16px;
+    font-size: 17px;
+}
+
 /* Loading progress bar */
 
 .progress-bar.indeterminate
@@ -105,12 +130,7 @@ html, body
 
 /* Modal */
 
-.modal-header
-{
-	border: 0 solid transparent;
-}
-
-.modal-footer
+.no-modal-separator
 {
 	border: 0 solid transparent;
 }
