@@ -139,19 +139,37 @@ app.controller('overviewCtrl', function($scope, database)
 		})
 	}
 
-	$scope.openDeleteLanguageDialog = function(locale)
-	{
-		controllerById('delete-language-dialog').open(locale)
-	}
-
 	$scope.openAddLanguageDialog = function()
 	{
 		controllerById('language-dialog').openAdd()
 	}
 
+	$scope.addLanguage = function(value)
+	{
+		const entry = {
+			code: value
+		}
+
+		database.addLocaleRef(entry)
+	}
+
 	$scope.openEditLanguageDialog = function(locale)
 	{
 		controllerById('language-dialog').openEdit(locale)
+	}
+
+	$scope.editLanguage = function(id, value)
+	{
+		const entry = {
+			code: value
+		}
+
+		database.updateLocaleRef(id, entry)
+	}
+
+	$scope.openDeleteLanguageDialog = function(locale)
+	{
+		controllerById('delete-language-dialog').open(locale)
 	}
 
 	$scope.init()

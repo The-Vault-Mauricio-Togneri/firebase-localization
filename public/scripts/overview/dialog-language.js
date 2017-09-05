@@ -1,6 +1,6 @@
 app.controller('overviewDialogLanguageCtrl', function($scope, database)
 {
-	$scope.dialog = {
+	$scope.form = {
 		id: '',
 		originalCode: '',
 		buttonDisabled: true
@@ -18,9 +18,9 @@ app.controller('overviewDialogLanguageCtrl', function($scope, database)
 
 	function open(id, select)
 	{
-		$scope.dialog.id = id
-		$scope.dialog.originalCode = select
-		$scope.dialog.buttonDisabled = true
+		$scope.form.id = id
+		$scope.form.originalCode = select
+		$scope.form.buttonDisabled = true
 
 		$('#language-dialog-select').val(select).trigger('change.select2')
 		openDialog('language-dialog')
@@ -30,28 +30,20 @@ app.controller('overviewDialogLanguageCtrl', function($scope, database)
 	{
 		const value = byId('language-dialog-select').value
 		
-		$scope.dialog.buttonDisabled = (value == $scope.dialog.originalCode)
+		$scope.form.buttonDisabled = (value == $scope.form.originalCode)
 		$scope.$applyAsync()
 	}
 
-	$scope.onAddLanguage = function(form)
+	$scope.onAddLanguage = function()
 	{
-		const value = {
-			code: byId('language-dialog-select').value
-		}
-
-		database.addLocaleRef(value)
+		controllerById('overview-controller').addLanguage(byId('language-dialog-select').value)
 
 		closeDialog('language-dialog')
 	}
 
 	$scope.onEditLanguage = function(form)
 	{
-		const value = {
-			code: byId('language-dialog-select').value
-		}
-
-		database.updateLocaleRef(form.id, value)
+		controllerById('overview-controller').editLanguage(form.id, byId('language-dialog-select').value)
 
 		closeDialog('language-dialog')
 	}

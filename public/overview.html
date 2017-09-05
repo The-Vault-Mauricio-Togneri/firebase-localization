@@ -195,7 +195,7 @@
 						<h5 class="modal-title">Language</h5>
 					</div>
 					<div class="modal-body">
-						<input type="hidden" ng-model="dialog.id">
+						<input type="hidden" ng-model="form.id">
 						<select id="language-dialog-select" data-placeholder="Select a language" class="js-example-placeholder-single" style="width:100%" onchange="onLanguageSelected()">
 							<option value=""></option>
 						</select>
@@ -205,11 +205,11 @@
 							<i class="fa fa-ban"></i>
 							Cancel
 						</button>
-						<button type="button" ng-show="!dialog.id" class="btn btn-success" ng-disabled="dialog.buttonDisabled" ng-click="onAddLanguage(dialog)">
+						<button type="button" ng-show="!form.id" class="btn btn-success" ng-disabled="form.buttonDisabled" ng-click="onAddLanguage()">
 							<i class="fa fa-plus"></i>
 							Add
 						</button>
-						<button type="button" ng-show="dialog.id" class="btn btn-success" ng-disabled="dialog.buttonDisabled" ng-click="onEditLanguage(dialog)">
+						<button type="button" ng-show="form.id" class="btn btn-success" ng-disabled="form.buttonDisabled" ng-click="onEditLanguage(form)">
 							<i class="fa fa-check"></i>
 							Edit
 						</button>
