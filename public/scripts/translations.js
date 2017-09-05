@@ -12,13 +12,6 @@ app.controller('translationsCtrl', function($scope, database)
 			notValidated: true
 		}
 	}
-
-	$scope.dialog = {
-		deleteTranslation: {
-			id: '',
-			key: ''
-		}
-	}
 	
 	$scope.init = function()
 	{
@@ -113,7 +106,7 @@ app.controller('translationsCtrl', function($scope, database)
 
 	$scope.editExistingTranslation = function(form)
 	{
-		const value = {
+		const entry = {
 			key: form.key,
 			description: form.description,
 			tags: form.tags,
@@ -137,17 +130,17 @@ app.controller('translationsCtrl', function($scope, database)
 		{
 			const locale = form.locales[index]
 
-			value.locales[index] = {
+			entry.locales[index] = {
 				value: locale.value,
 				validated: locale.validated && (locale.value == locale.oldValue)
 			}
 
-			sourceTranslation.locales[index].value     = value.locales[index].value
-			sourceTranslation.locales[index].validated = value.locales[index].validated
+			sourceTranslation.locales[index].value     = entry.locales[index].value
+			sourceTranslation.locales[index].validated = entry.locales[index].validated
 		}
 		
 		orderTranslations()
-		database.updateTranslationRef(form.id, value)
+		database.updateTranslationRef(form.id, entry)
 	}
 
 	function translationById(id)
@@ -170,15 +163,12 @@ app.controller('translationsCtrl', function($scope, database)
 		return -1
 	}
 
-	$scope.openRemoveTranslationDialog = function(translation)
+	$scope.openDeleteTranslationDialog = function(translation)
 	{
-		$scope.dialog.deleteTranslation.id = translation.id
-		$scope.dialog.deleteTranslation.key = translation.key
-
-		$('#delete-translation-dialog').modal()
+		controllerById('delete-translation-dialog').open(translation)
 	}
 
-	$scope.onDeleteTranslation = function(id)
+	$scope.deleteTranslation = function(id)
 	{
 		const index = translationIndexById(id)
 		$scope.translations.splice(index, 1)

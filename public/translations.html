@@ -38,6 +38,7 @@
 	<script src="scripts/scripts.js"></script>
 	<script src="scripts/database.js"></script>
 	<script src="scripts/translations.js"></script>
+	<script src="scripts/translations/dialog-delete-translation.js"></script>
 	<script src="scripts/translations/dialog-translation.js"></script>
 	<script src="scripts/firebase.js"></script>
 </head>
@@ -161,46 +162,46 @@
 							<div class="tab-pane fade show active" id="translation-dialog-tab-translations">
 								<div class="form-group">
 									<label>Key:</label>
-									<input type="hidden" ng-model="dialog.id">
-									<input class="form-control" id="translation-dialog-key" type="text" ng-model="dialog.key">
-									<span class="form-invalid-input" ng-show="dialog.formError && !dialog.key">Invalid key</span>
+									<input type="hidden" ng-model="form.id">
+									<input class="form-control" id="translation-dialog-key" type="text" ng-model="form.key">
+									<span class="form-invalid-input" ng-show="form.formError && !form.key">Invalid key</span>
 								</div>
 								<div class="form-group" ng-repeat="locale in locales">
 									<label>{{locale.fullName}}</label>
-									<textarea class="form-control" type="text" ng-model="dialog.locales[locale.id].value" rows="1"></textarea>
+									<textarea class="form-control" type="text" ng-model="form.locales[locale.id].value" rows="1"></textarea>
 								</div>
 							</div>
 							<div class="tab-pane fade" id="translation-dialog-tab-properties">
 								<div class="form-group">
 									<label>Description:</label>
-									<input class="form-control" id="translation-dialog-description" type="text" ng-model="dialog.description">
+									<input class="form-control" id="translation-dialog-description" type="text" ng-model="form.description">
 								</div>
 								<div class="form-group">
 									<label>Tags</label>
-									<input class="form-control" type="text" ng-model="dialog.tags">
+									<input class="form-control" type="text" ng-model="form.tags">
 								</div>
 								<div class="form-group">
 									<label>Max. length</label>
-									<input class="form-control" type="number" min="0" ng-model="dialog.maxLength">
+									<input class="form-control" type="number" min="0" ng-model="form.maxLength">
 								</div>
 								<div class="form-group">
 									<label>Screenshot link</label>
-									<input class="form-control" id="translation-dialog-screenshot" type="text" ng-model="dialog.screenshot">
+									<input class="form-control" id="translation-dialog-screenshot" type="text" ng-model="form.screenshot">
 								</div>
 								<div class="form-group">
 									<label class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input" ng-model="dialog.isPlural">
+										<input type="checkbox" class="custom-control-input" ng-model="form.isPlural">
 										<span class="custom-control-indicator"></span>
 										<span class="custom-control-description noselect">Is plural</span>
 									</label>
 									<label class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input" ng-model="dialog.isArray">
+										<input type="checkbox" class="custom-control-input" ng-model="form.isArray">
 										<span class="custom-control-indicator"></span>
 										<span class="custom-control-description noselect">Is array</span>
 									</label>
 								</div>
-								<div class="form-group" ng-show="dialog.id">
-									<button type="button" class="btn btn-danger" ng-click="openRemoveTranslationDialog(dialog)">
+								<div class="form-group" ng-show="form.id">
+									<button type="button" class="btn btn-danger" ng-click="openDeleteTranslationDialog(form)">
 										<i class="fa fa-trash"></i>
 										Delete
 									</button>
@@ -213,11 +214,11 @@
 							<i class="fa fa-ban"></i>
 							Cancel
 						</button>
-						<button type="button" ng-show="!dialog.id" class="btn btn-success" ng-click="onAddTranslation(dialog)">
+						<button type="button" ng-show="!form.id" class="btn btn-success" ng-click="onAddTranslation(form)">
 							<i class="fa fa-plus"></i>
 							Add
 						</button>
-						<button type="button" ng-show="dialog.id" class="btn btn-success" ng-click="onEditTranslation(dialog)">
+						<button type="button" ng-show="form.id" class="btn btn-success" ng-click="onEditTranslation(form)">
 							<i class="fa fa-check"></i>
 							Edit
 						</button>
@@ -226,19 +227,19 @@
 			</div>
 		</div>
 
-		<div id="delete-translation-dialog" class="modal fade">
+		<div id="delete-translation-dialog" class="modal fade" ng-controller="translationsDialogDeleteTranslationCtrl">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-body">
-						Do you want to delete <b ng-bind="dialog.deleteTranslation.key"></b>?
-						<input type="hidden" ng-model="dialog.deleteTranslation.id" value="">
+						Do you want to delete <b ng-bind="form.key"></b>?
+						<input type="hidden" ng-model="form.id" value="">
 					</div>
 					<div class="modal-footer no-modal-separator">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">
 							<i class="fa fa-ban"></i>
 							Cancel
 						</button>
-						<button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="onDeleteTranslation(dialog.deleteTranslation.id)">
+						<button type="button" class="btn btn-danger" ng-click="onDeleteTranslation(form)">
 							<i class="fa fa-trash"></i>
 							Delete
 						</button>

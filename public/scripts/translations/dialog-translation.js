@@ -1,6 +1,6 @@
 app.controller('translationsDialogTranslationCtrl', function($scope)
 {
-	$scope.dialog = {
+	$scope.form = {
 		id: '',
 		key: '',
 		locales: {},
@@ -15,18 +15,18 @@ app.controller('translationsDialogTranslationCtrl', function($scope)
 
 	$scope.openAdd = function(locales)
 	{
-		$scope.dialog.id          = ''
-		$scope.dialog.key         = ''
-		$scope.dialog.description = ''
-		$scope.dialog.tags        = ''
-		$scope.dialog.maxLength   = ''
-		$scope.dialog.screenshot  = ''
-		$scope.dialog.isPlural    = false
-		$scope.dialog.isArray     = false
+		$scope.form.id          = ''
+		$scope.form.key         = ''
+		$scope.form.description = ''
+		$scope.form.tags        = ''
+		$scope.form.maxLength   = ''
+		$scope.form.screenshot  = ''
+		$scope.form.isPlural    = false
+		$scope.form.isArray     = false
 
 		for (const index in locales)
 		{
-			$scope.dialog.locales[index] = {
+			$scope.form.locales[index] = {
 				value: '',
 				oldValue: null,
 				validated: false
@@ -38,18 +38,18 @@ app.controller('translationsDialogTranslationCtrl', function($scope)
 
 	$scope.openEdit = function(locales, translation)
 	{
-		$scope.dialog.id          = translation.id
-		$scope.dialog.key         = translation.key
-		$scope.dialog.description = translation.description
-		$scope.dialog.tags        = translation.tags
-		$scope.dialog.maxLength   = translation.maxLength
-		$scope.dialog.screenshot  = translation.screenshot
-		$scope.dialog.isPlural    = translation.isPlural
-		$scope.dialog.isArray     = translation.isArray
+		$scope.form.id          = translation.id
+		$scope.form.key         = translation.key
+		$scope.form.description = translation.description
+		$scope.form.tags        = translation.tags
+		$scope.form.maxLength   = translation.maxLength
+		$scope.form.screenshot  = translation.screenshot
+		$scope.form.isPlural    = translation.isPlural
+		$scope.form.isArray     = translation.isArray
 
 		for (const index in locales)
 		{
-			$scope.dialog.locales[index] = {
+			$scope.form.locales[index] = {
 				value: translation.locales[index].value,
 				oldValue: translation.locales[index].value,
 				validated: translation.locales[index].validated
@@ -61,7 +61,7 @@ app.controller('translationsDialogTranslationCtrl', function($scope)
 
 	function open()
 	{
-		$scope.dialog.formError = false
+		$scope.form.formError = false
 		
 		$('#translation-dialog').on('shown.bs.modal', function()
 		{
@@ -89,7 +89,7 @@ app.controller('translationsDialogTranslationCtrl', function($scope)
 	{
 		if (!form.key)
 		{
-			$scope.dialog.formError = true
+			$scope.form.formError = true
 			$('#translation-dialog-tabs a:first').tab('show')
 			$('#translation-dialog-key').focus()
 		}
