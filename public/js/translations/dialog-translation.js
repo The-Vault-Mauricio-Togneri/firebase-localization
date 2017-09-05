@@ -63,26 +63,26 @@ app.controller('translationsDialogTranslationCtrl', function($scope)
 	{
 		$scope.form.formError = false
 		
-		$('#translation-dialog').on('shown.bs.modal', function()
+		$('#dialog-translation').on('shown.bs.modal', function()
 		{
-			$('#translation-dialog-key').focus()
+			$('#dialog-translation-key').focus()
 		})
 
-		$('#translation-dialog-tabs a:first').tab('show')
+		$('#dialog-translation-tabs a:first').tab('show')
 
-		$('#translation-dialog').on('shown.bs.tab', function(event)
+		$('#dialog-translation').on('shown.bs.tab', function(event)
 		{
-			if (event.target.href.includes('#translation-dialog-tab-translations'))
+			if (event.target.href.includes('#dialog-translation-tab-translations'))
 			{
-				$('#translation-dialog-key').focus()
+				$('#dialog-translation-key').focus()
 			}
-			else if (event.target.href.includes('#translation-dialog-tab-properties'))
+			else if (event.target.href.includes('#dialog-translation-tab-properties'))
 			{
-				$('#translation-dialog-description').focus()
+				$('#dialog-translation-description').focus()
 			}
 		})
 
-		openDialog('translation-dialog')
+		openDialog('dialog-translation')
 	}
 
 	function translationFormValid(form)
@@ -90,8 +90,8 @@ app.controller('translationsDialogTranslationCtrl', function($scope)
 		if (!form.key)
 		{
 			$scope.form.formError = true
-			$('#translation-dialog-tabs a:first').tab('show')
-			$('#translation-dialog-key').focus()
+			$('#dialog-translation-tabs a:first').tab('show')
+			$('#dialog-translation-key').focus()
 		}
 		else
 		{
@@ -105,7 +105,7 @@ app.controller('translationsDialogTranslationCtrl', function($scope)
 		{
 			controllerById('translations-controller').addTranslation(form)
 
-			closeDialog('translation-dialog')
+			closeDialog('dialog-translation')
 		}
 	}
 
@@ -115,7 +115,7 @@ app.controller('translationsDialogTranslationCtrl', function($scope)
 		{
 			controllerById('translations-controller').editTranslation(form)
 
-			closeDialog('translation-dialog')
+			closeDialog('dialog-translation')
 		}
 	}
 })

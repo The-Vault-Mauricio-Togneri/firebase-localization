@@ -76,7 +76,7 @@ app.controller('translationsCtrl', function($scope, database)
 
 	$scope.openAddTranslationDialog = function()
 	{
-		controllerById('translation-dialog').openAdd($scope.locales)
+		controllerById('dialog-translation').openAdd($scope.locales)
 	}
 
 	$scope.addTranslation = function(form)
@@ -101,7 +101,7 @@ app.controller('translationsCtrl', function($scope, database)
 
 	$scope.openEditTranslationDialog = function(translation)
 	{
-		controllerById('translation-dialog').openEdit($scope.locales, translation)
+		controllerById('dialog-translation').openEdit($scope.locales, translation)
 	}
 
 	$scope.editTranslation = function(form)
@@ -165,7 +165,7 @@ app.controller('translationsCtrl', function($scope, database)
 
 	$scope.openDeleteTranslationDialog = function(translation)
 	{
-		controllerById('delete-translation-dialog').open(translation)
+		controllerById('dialog-delete-translation').open(translation)
 	}
 
 	$scope.deleteTranslation = function(id)
@@ -176,7 +176,7 @@ app.controller('translationsCtrl', function($scope, database)
 		orderTranslations()
 		database.removeTranslationRef(id)
 
-		$('#translation-dialog').modal('hide')
+		$('#dialog-translation').modal('hide')
 	}
 
 	$scope.translationValidatedState = function(value)

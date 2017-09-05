@@ -10,13 +10,13 @@ app.controller('translationsDialogDeleteTranslationCtrl', function($scope)
 		$scope.form.id  = translation.id
 		$scope.form.key = translation.key
 
-		openDialog('delete-translation-dialog')
+		openDialog('dialog-delete-translation')
 	}
 
 	$scope.onDeleteTranslation = function(form)
 	{
 		controllerById('translations-controller').deleteTranslation(form.id)
 
-		closeDialog('delete-translation-dialog')
+		closeDialog('dialog-delete-translation')
 	}
 })
