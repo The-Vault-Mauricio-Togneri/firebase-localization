@@ -56,7 +56,7 @@ exports.api = functions.https.onRequest(api)
 	response.json({property:123})
 })*/
 
-exports.addHistory = functions.database.ref('/translations/{translationId}/locales/{localeId}/value').onWrite(event =>
+exports.addHistory = functions.database.ref('/translations/{translationId}/locales/{localeId}/value').onUpdate(event =>
 {
 	const entry = {
 		value: event.data.previous.val(),
