@@ -116,7 +116,7 @@ app.controller('overviewCtrl', function($scope, database)
 
 	$scope.openProfileDialog = function()
 	{
-		controllerById('profile-dialog').open()
+		controllerById('dialog-profile').open()
 	}
 
 	$scope.updateProfile = function(password)

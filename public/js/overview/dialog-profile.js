@@ -10,23 +10,23 @@ app.controller('overviewDialogProfileCtrl', function($scope)
 		$scope.form.password = ''
 		$scope.form.passwordConfirmation = ''
 
-		$('#profile-dialog').on('shown.bs.modal', function()
+		$('#dialog-profile').on('shown.bs.modal', function()
 		{
-			$('#profile-dialog-password').focus()
+			$('#dialog-profile-password').focus()
 		})
 
-		openDialog('profile-dialog')
+		openDialog('dialog-profile')
 	}
 
 	$scope.onUpdatePassword = function(password)
 	{
 		controllerById('overview-controller').updateProfile(password)
 
-		closeDialog('profile-dialog')
+		closeDialog('dialog-profile')
 	}
 
 	$scope.openLogoutDialog = function()
 	{
-		controllerById('logout-dialog').open()
+		controllerById('dialog-logout').open()
 	}
 })
