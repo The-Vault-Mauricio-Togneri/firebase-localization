@@ -35,33 +35,3 @@ app.controller('loginCtrl', function($scope)
 		})
 	}
 })
-
-function login2()
-{
-	const email = byId('form.email')
-	const password = byId('form.password')
-	const button = byId('form.button')
-
-	const buttonNormal = byId('form.button.normal')
-	const buttonLoading = byId('form.button.loading')
-
-	email.disabled = true
-	password.disabled = true
-	button.disabled = true
-
-	buttonNormal.style.display = 'none'
-	buttonLoading.style.display = 'inline'
-
-	firebase.auth().signInWithEmailAndPassword(email.value, password.value)
-	.catch(function(error)
-	{
-		email.disabled = false
-		password.disabled = false
-		button.disabled = false
-
-		buttonNormal.style.display = 'inline'
-		buttonLoading.style.display = 'none'
-
-		console.log("ERROR: " + JSON.stringify(error))
-	})
-}

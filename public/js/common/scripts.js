@@ -2,6 +2,27 @@
 
 const app = angular.module('translationsApp', [])
 
+app.filter('formatDate', function()
+{
+	return function(input)
+	{
+		const date = moment(input)
+		var formatted = date.format('dddd DD MMMM YYYY HH:mm:ss')
+		const diff = moment().diff(date, 'days')
+
+		if (diff == 1)
+		{
+			formatted += ' (1 day ago)'
+		}
+		else if (diff > 0)
+		{
+			formatted += ' (' + diff + ' days ago)'
+		}
+
+		return formatted
+	}
+})
+
 function byId(id)
 {
 	return document.getElementById(id)

@@ -60,7 +60,8 @@ exports.addHistory = functions.database.ref('/translations/{translationId}/local
 {
 	const entry = {
 		value: event.data.previous.val(),
-		author: event.auth.variable.email
+		author: event.auth.variable.email,
+		date: Date.now()
 	}
 	
 	return event.data.ref.parent.child('history').push(entry)

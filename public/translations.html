@@ -28,6 +28,9 @@
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
 
+	<!-- Moment -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+
 	<!-- Local styles -->
 	<link href="styles/style.css" rel="stylesheet">
 	<link href="styles/translations.css" rel="stylesheet">
@@ -39,6 +42,7 @@
 	<script src="js/common/database.js"></script>
 	<script src="js/translations/translations.js"></script>
 	<script src="js/translations/dialog-delete-translation.js"></script>
+	<script src="js/translations/dialog-translation-history.js"></script>
 	<script src="js/translations/dialog-translation.js"></script>
 	<script src="js/common/firebase.js"></script>
 </head>
@@ -144,6 +148,8 @@
 		</table>
 
 		<div ng-include="'html/translations/dialog-translation.html'"></div>
+
+		<div ng-include="'html/translations/dialog-translation-history.html'"></div>
 
 		<div ng-include="'html/translations/dialog-delete-translation.html'"></div>
 

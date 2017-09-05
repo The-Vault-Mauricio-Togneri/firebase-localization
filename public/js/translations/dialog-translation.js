@@ -52,7 +52,8 @@ app.controller('translationsDialogTranslationCtrl', function($scope)
 			$scope.form.locales[index] = {
 				value: translation.locales[index].value,
 				oldValue: translation.locales[index].value,
-				validated: translation.locales[index].validated
+				validated: translation.locales[index].validated,
+				history: translation.locales[index].history,
 			}
 		}
 	
@@ -117,5 +118,10 @@ app.controller('translationsDialogTranslationCtrl', function($scope)
 
 			closeDialog('dialog-translation')
 		}
+	}
+
+	$scope.openTranslationHistory = function(locale)
+	{
+		controllerById('dialog-translation-history').open(locale.history)
 	}
 })
