@@ -172,5 +172,10 @@ app.controller('overviewCtrl', function($scope, database)
 		controllerById('delete-language-dialog').open(locale)
 	}
 
+	$scope.deleteLanguage = function(id)
+	{
+		database.removeLocaleRef(id)
+	}
+
 	$scope.init()
 })

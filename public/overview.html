@@ -205,11 +205,11 @@
 							<i class="fa fa-ban"></i>
 							Cancel
 						</button>
-						<button type="button" ng-show="!form.id" class="btn btn-success" ng-disabled="form.buttonDisabled" ng-click="onAddLanguage()">
+						<button type="button" ng-show="!form.id" class="btn btn-success" ng-disabled="form.buttonDisabled" ng-click="onAdd()">
 							<i class="fa fa-plus"></i>
 							Add
 						</button>
-						<button type="button" ng-show="form.id" class="btn btn-success" ng-disabled="form.buttonDisabled" ng-click="onEditLanguage(form)">
+						<button type="button" ng-show="form.id" class="btn btn-success" ng-disabled="form.buttonDisabled" ng-click="onEdit(form)">
 							<i class="fa fa-check"></i>
 							Edit
 						</button>
@@ -222,15 +222,15 @@
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-body">
-						Do you want to delete <b ng-bind="dialog.name"></b>?
-						<input type="hidden" ng-model="dialog.id" value="">
+						Do you want to delete <b ng-bind="form.name"></b>?
+						<input type="hidden" ng-model="form.id" value="">
 					</div>
 					<div class="modal-footer no-modal-separator">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">
 							<i class="fa fa-ban"></i>
 							Cancel
 						</button>
-						<button type="button" class="btn btn-danger" ng-click="onDelete(dialog.id)">
+						<button type="button" class="btn btn-danger" ng-click="onDelete(form.id)">
 							<i class="fa fa-trash"></i>
 							Delete
 						</button>

@@ -79,7 +79,7 @@ app.controller('translationsCtrl', function($scope, database)
 		controllerById('translation-dialog').openAdd($scope.locales)
 	}
 
-	$scope.addNewTranslation = function(form)
+	$scope.addTranslation = function(form)
 	{
 		const entry = {
 			key: form.key,
@@ -104,7 +104,7 @@ app.controller('translationsCtrl', function($scope, database)
 		controllerById('translation-dialog').openEdit($scope.locales, translation)
 	}
 
-	$scope.editExistingTranslation = function(form)
+	$scope.editTranslation = function(form)
 	{
 		const entry = {
 			key: form.key,

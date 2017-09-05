@@ -34,14 +34,14 @@ app.controller('overviewDialogLanguageCtrl', function($scope, database)
 		$scope.$applyAsync()
 	}
 
-	$scope.onAddLanguage = function()
+	$scope.onAdd = function()
 	{
 		controllerById('overview-controller').addLanguage(byId('language-dialog-select').value)
 
 		closeDialog('language-dialog')
 	}
 
-	$scope.onEditLanguage = function(form)
+	$scope.onEdit = function(form)
 	{
 		controllerById('overview-controller').editLanguage(form.id, byId('language-dialog-select').value)
 

@@ -103,7 +103,7 @@ app.controller('translationsDialogTranslationCtrl', function($scope)
 	{
 		if (translationFormValid(form))
 		{
-			controllerById('translations-controller').addNewTranslation(form)
+			controllerById('translations-controller').addTranslation(form)
 
 			closeDialog('translation-dialog')
 		}
@@ -113,7 +113,7 @@ app.controller('translationsDialogTranslationCtrl', function($scope)
 	{
 		if (translationFormValid(form))
 		{
-			controllerById('translations-controller').editExistingTranslation(form)
+			controllerById('translations-controller').editTranslation(form)
 
 			closeDialog('translation-dialog')
 		}
