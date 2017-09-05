@@ -7,15 +7,8 @@ app.controller('overviewDialogLogoutCtrl', function($scope)
 
 	$scope.onLogout = function(id)
 	{
-		closeDialog('logout-dialog')
+		controllerById('overview-controller').logout()
 
-		firebase.auth().signOut().then(function()
-		{
-			window.location.href = '/'
-		},
-		function(error)
-		{
-			console.log(error)
-		})
+		closeDialog('logout-dialog')
 	}
 })

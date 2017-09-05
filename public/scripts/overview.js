@@ -127,6 +127,18 @@ app.controller('overviewCtrl', function($scope, database)
 		})
 	}
 
+	$scope.logout = function()
+	{
+		firebase.auth().signOut().then(function()
+		{
+			window.location.href = '/'
+		},
+		function(error)
+		{
+			showError(error.message)
+		})
+	}
+
 	$scope.openDeleteLanguageDialog = function(locale)
 	{
 		controllerById('delete-language-dialog').open(locale)
