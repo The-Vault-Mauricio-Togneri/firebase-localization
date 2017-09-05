@@ -47,7 +47,7 @@ app.get('/export/:locale/ios', (request, response) =>
 const api = express()
 api.use('/api', app)
 
-exports.api = functions.https.onRequest(api);
+exports.api = functions.https.onRequest(api)
 
 // https://github.com/firebase/functions-samples
 // https://us-central1-app-localization-2f645.cloudfunctions.net/[function]
@@ -55,3 +55,13 @@ exports.api = functions.https.onRequest(api);
 {
 	response.json({property:123})
 })*/
+
+exports.addHistory = functions.database.ref('/translations/{translationId}/locales/{localeId}/value').onWrite(event =>
+{
+	const entry = {
+		value: event.data.previous.val(),
+		author: event.auth.variable.email
+	}
+	
+	return event.data.ref.parent.child('history').push(entry)
+})

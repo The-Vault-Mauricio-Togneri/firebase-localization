@@ -1,6 +1,18 @@
 {
-  "rules": {
-    ".read": "auth != null",
-    ".write": "auth != null"
-  }
+	"rules": {
+		".read": "auth != null",
+		".write": "auth != null",
+		"api": {
+			"token": {
+				".validate": "newData.isString() && newData.val().length > 0"
+			}
+		},
+		"translations": {
+			"$translationId": {
+				"key": {
+					".validate": "newData.isString() && newData.val().length > 0"
+				}
+			}
+		}
+	}
 }
