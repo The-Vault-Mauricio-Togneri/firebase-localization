@@ -114,6 +114,24 @@ app.controller('overviewCtrl', function($scope, database)
 		downloadFile('https://' + window.location.host + '/api/export/' + locale.code + '/ios')
 	}
 
+	$scope.openProfileDialog = function()
+	{
+		controllerById('profile-dialog').open()
+	}
+
+	$scope.updateProfile = function(password)
+	{
+		firebase.auth().currentUser.updatePassword(password).catch(function(error)
+		{
+			showError(error.message)
+		})
+	}
+
+	$scope.openDeleteLanguageDialog = function(locale)
+	{
+		controllerById('delete-language-dialog').open(locale)
+	}
+
 	$scope.openAddLanguageDialog = function()
 	{
 		controllerById('language-dialog').openAdd()
@@ -122,16 +140,6 @@ app.controller('overviewCtrl', function($scope, database)
 	$scope.openEditLanguageDialog = function(locale)
 	{
 		controllerById('language-dialog').openEdit(locale)
-	}
-
-	$scope.openDeleteLanguageDialog = function(locale)
-	{
-		controllerById('delete-language-dialog').open(locale)
-	}
-
-	$scope.openProfileDialog = function()
-	{
-		controllerById('profile-dialog').open()
 	}
 
 	$scope.init()

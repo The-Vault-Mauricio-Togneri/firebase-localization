@@ -1,26 +1,28 @@
 app.controller('overviewDialogProfileCtrl', function($scope)
 {
-	$scope.dialog = {
+	$scope.form = {
 		password: '',
 		passwordConfirmation: ''
 	}
 
 	$scope.open = function()
 	{
-		$scope.dialog.password = ''
-		$scope.dialog.passwordConfirmation = ''
+		$scope.form.password = ''
+		$scope.form.passwordConfirmation = ''
+
+		$('#profile-dialog').on('shown.bs.modal', function()
+		{
+			$('#profile-dialog-password').focus()
+		})
 
 		openDialog('profile-dialog')
 	}
 
 	$scope.onUpdatePassword = function(password)
 	{
-		firebase.auth().currentUser.updatePassword(password).catch(function(error)
-		{
-			showError(error.message)
-		})
+		controllerById('overview-controller').updateProfile(password)
 
-		openDialog('profile-dialog')
+		closeDialog('profile-dialog')
 	}
 
 	$scope.openLogoutDialog = function()
