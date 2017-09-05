@@ -16,7 +16,7 @@
 			},
 			{
 				"source": "/",
-				"destination": "/index.html"
+				"destination": "/login.html"
 			},
 			{
 				"source": "/overview",

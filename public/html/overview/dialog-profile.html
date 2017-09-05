@@ -1,0 +1,38 @@
+<div id="profile-dialog" class="modal fade" ng-controller="overviewDialogProfileCtrl">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Profile</h5>
+			</div>
+			<div class="modal-body">
+				<div class="form-group">
+					<label>New Password</label>
+					<input class="form-control" type="password" ng-model="form.password" id="profile-dialog-password">
+				</div>
+				<div class="form-group">
+					<label>Confirm new Password</label>
+					<input class="form-control" type="password" ng-model="form.passwordConfirmation">
+				</div>
+				<hr class="separator"/>
+				<div class="form-group">
+					<label>API Token</label>
+					<input class="form-control" type="text" readonly ng-model="apiToken">
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-danger mr-auto" ng-click="openLogoutDialog()">
+					<i class="fa fa-sign-out"></i>
+					Logout
+				</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">
+					<i class="fa fa-ban"></i>
+					Cancel
+				</button>
+				<button type="button" class="btn btn-success" ng-disabled="(form.password != form.passwordConfirmation) || (form.password == '')" ng-click="onUpdatePassword(form.password)">
+					<i class="fa fa-check"></i>
+					Save
+				</button>
+			</div>
+		</div>
+	</div>
+</div>

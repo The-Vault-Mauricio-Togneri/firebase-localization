@@ -1,0 +1,29 @@
+<div id="language-dialog" class="modal fade" ng-controller="overviewDialogLanguageCtrl">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header no-modal-separator">
+				<h5 class="modal-title">Language</h5>
+			</div>
+			<div class="modal-body">
+				<input type="hidden" ng-model="form.id">
+				<select id="language-dialog-select" data-placeholder="Select a language" class="js-example-placeholder-single" style="width:100%" onchange="onLanguageSelected()">
+					<option value=""></option>
+				</select>
+			</div>
+			<div class="modal-footer no-modal-separator">
+				<button type="button" class="btn btn-danger" data-dismiss="modal">
+					<i class="fa fa-ban"></i>
+					Cancel
+				</button>
+				<button type="button" ng-show="!form.id" class="btn btn-success" ng-disabled="form.buttonDisabled" ng-click="onAdd()">
+					<i class="fa fa-plus"></i>
+					Add
+				</button>
+				<button type="button" ng-show="form.id" class="btn btn-success" ng-disabled="form.buttonDisabled" ng-click="onEdit(form)">
+					<i class="fa fa-check"></i>
+					Edit
+				</button>
+			</div>
+		</div>
+	</div>
+</div>

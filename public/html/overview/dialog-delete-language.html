@@ -1,0 +1,20 @@
+<div id="delete-language-dialog" class="modal fade" ng-controller="overviewDialogDeleteLanguageCtrl">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-body">
+				Do you want to delete <b ng-bind="form.name"></b>?
+				<input type="hidden" ng-model="form.id" value="">
+			</div>
+			<div class="modal-footer no-modal-separator">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">
+					<i class="fa fa-ban"></i>
+					Cancel
+				</button>
+				<button type="button" class="btn btn-danger" ng-click="onDelete(form.id)">
+					<i class="fa fa-trash"></i>
+					Delete
+				</button>
+			</div>
+		</div>
+	</div>
+</div>

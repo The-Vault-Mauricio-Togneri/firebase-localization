@@ -37,16 +37,16 @@
 	<link href="styles/overview.css" rel="stylesheet">
 
 	<!-- Local scripts -->
-	<script src="models/locale.js"></script>
-	<script src="models/translation.js"></script>
-	<script src="scripts/scripts.js"></script>
-	<script src="scripts/database.js"></script>
-	<script src="scripts/overview.js"></script>
-	<script src="scripts/overview/dialog-delete-language.js"></script>
-	<script src="scripts/overview/dialog-language.js"></script>
-	<script src="scripts/overview/dialog-logout.js"></script>
-	<script src="scripts/overview/dialog-profile.js"></script>
-	<script src="scripts/firebase.js"></script>
+	<script src="js/models/locale.js"></script>
+	<script src="js/models/translation.js"></script>
+	<script src="js/common/scripts.js"></script>
+	<script src="js/common/database.js"></script>
+	<script src="js/overview/overview.js"></script>
+	<script src="js/overview/dialog-delete-language.js"></script>
+	<script src="js/overview/dialog-language.js"></script>
+	<script src="js/overview/dialog-logout.js"></script>
+	<script src="js/overview/dialog-profile.js"></script>
+	<script src="js/common/firebase.js"></script>
 </head>
 
 <body id="overview-controller" ng-controller="overviewCtrl">
@@ -129,115 +129,13 @@
 			Profile
 		</button>
 
-		<div id="profile-dialog" class="modal fade" ng-controller="overviewDialogProfileCtrl">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title">Profile</h5>
-					</div>
-					<div class="modal-body">
-						<div class="form-group">
-							<label>New Password</label>
-							<input class="form-control" type="password" ng-model="form.password" id="profile-dialog-password">
-						</div>
-						<div class="form-group">
-							<label>Confirm new Password</label>
-							<input class="form-control" type="password" ng-model="form.passwordConfirmation">
-						</div>
-						<hr class="separator"/>
-						<div class="form-group">
-							<label>API Token</label>
-							<input class="form-control" type="text" readonly ng-model="apiToken">
-						</div>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-danger mr-auto" ng-click="openLogoutDialog()">
-							<i class="fa fa-sign-out"></i>
-							Logout
-						</button>
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">
-							<i class="fa fa-ban"></i>
-							Cancel
-						</button>
-						<button type="button" class="btn btn-success" ng-disabled="(form.password != form.passwordConfirmation) || (form.password == '')" ng-click="onUpdatePassword(form.password)">
-							<i class="fa fa-check"></i>
-							Save
-						</button>
-					</div>
-				</div>
-			</div>
-		</div>
+		<div ng-include="'html/overview/dialog-profile.html'"></div>
 
-		<div id="logout-dialog" class="modal fade" ng-controller="overviewDialogLogoutCtrl">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-body">
-						Do you want to logout?
-					</div>
-					<div class="modal-footer no-modal-separator">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">
-							<i class="fa fa-ban"></i>
-							Cancel
-						</button>
-						<button type="button" class="btn btn-danger" ng-click="onLogout()">
-							<i class="fa fa-sign-out"></i>
-							Logout
-						</button>
-					</div>
-				</div>
-			</div>
-		</div>
+		<div ng-include="'html/overview/dialog-logout.html'"></div>
 
-		<div id="language-dialog" class="modal fade" ng-controller="overviewDialogLanguageCtrl">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header no-modal-separator">
-						<h5 class="modal-title">Language</h5>
-					</div>
-					<div class="modal-body">
-						<input type="hidden" ng-model="form.id">
-						<select id="language-dialog-select" data-placeholder="Select a language" class="js-example-placeholder-single" style="width:100%" onchange="onLanguageSelected()">
-							<option value=""></option>
-						</select>
-					</div>
-					<div class="modal-footer no-modal-separator">
-						<button type="button" class="btn btn-danger" data-dismiss="modal">
-							<i class="fa fa-ban"></i>
-							Cancel
-						</button>
-						<button type="button" ng-show="!form.id" class="btn btn-success" ng-disabled="form.buttonDisabled" ng-click="onAdd()">
-							<i class="fa fa-plus"></i>
-							Add
-						</button>
-						<button type="button" ng-show="form.id" class="btn btn-success" ng-disabled="form.buttonDisabled" ng-click="onEdit(form)">
-							<i class="fa fa-check"></i>
-							Edit
-						</button>
-					</div>
-				</div>
-			</div>
-		</div>
+		<div ng-include="'html/overview/dialog-language.html'"></div>
 
-		<div id="delete-language-dialog" class="modal fade" ng-controller="overviewDialogDeleteLanguageCtrl">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-body">
-						Do you want to delete <b ng-bind="form.name"></b>?
-						<input type="hidden" ng-model="form.id" value="">
-					</div>
-					<div class="modal-footer no-modal-separator">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">
-							<i class="fa fa-ban"></i>
-							Cancel
-						</button>
-						<button type="button" class="btn btn-danger" ng-click="onDelete(form.id)">
-							<i class="fa fa-trash"></i>
-							Delete
-						</button>
-					</div>
-				</div>
-			</div>
-		</div>
+		<div ng-include="'html/overview/dialog-delete-language.html'"></div>
 
 		<div class="error-message-container" id="error-message" style="visibility:hidden">
 			<span class="alert alert-danger"></span>
