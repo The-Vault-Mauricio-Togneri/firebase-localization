@@ -1,11 +1,11 @@
-<div id="dialog-segment-history" class="modal fade" ng-controller="segmentsDialogSegmentHistoryCtrl">
+<div id="dialog-translation-comments" class="modal fade" ng-controller="segmentsDialogTranslationCommentsCtrl">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title">History</h5>
+				<h5 class="modal-title">Comments</h5>
 			</div>
 			<div class="modal-body">
-				<div class="card" style="margin-bottom:1em" ng-repeat="entry in history">
+				<div class="card" style="margin-bottom:1em" ng-repeat="entry in form.comments">
 					<div class="card-header" style="padding-left:0.8em">
 						<div class="d-flex justify-content-start">
 							<img src="{{entry.author | gravatar}}" style="padding-right:0.5em"/>
@@ -17,6 +17,11 @@
 						{{entry.value}}
 					</div>
 				</div>
+				<textarea class="form-control" type="text" style="margin-bottom:1em" ng-model="form.newComment" rows="3"></textarea>
+				<button type="button" class="btn btn-primary float-right" ng-disabled="!form.newComment" ng-click="createNewComment(form)">
+					<i class="fa fa-comment"></i>
+					Send
+				</button>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-danger" data-dismiss="modal">

@@ -47,7 +47,7 @@ app.controller('segmentsCtrl', function($scope, database)
 		orderSegments()
 	}
 
-	$scope.onSegmentValueUpdated = function(segment, language)
+	$scope.onTranslationValueUpdated = function(segment, language)
 	{
 		const newValue = segment.translations[language.id].value
 		const oldValue = segment.translations[language.id].oldValue
@@ -59,17 +59,17 @@ app.controller('segmentsCtrl', function($scope, database)
 
 			if (segment.translations[language.id].validated)
 			{
-				updateSegmentValidated(segment, language, false)
+				updateTranslationValidated(segment, language, false)
 			}
 		}
 	}
 
 	$scope.onSegmentValidatedChanged = function(segment, language)
 	{
-		updateSegmentValidated(segment, language, !segment.translations[language.id].validated)
+		updateTranslationValidated(segment, language, !segment.translations[language.id].validated)
 	}
 
-	function updateSegmentValidated(segment, language, value)
+	function updateTranslationValidated(segment, language, value)
 	{
 		segment.translations[language.id].validated = value
 		database.updateTranslationValidatedRef(segment.id, language.id, value)

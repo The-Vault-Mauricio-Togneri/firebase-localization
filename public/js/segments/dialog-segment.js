@@ -122,11 +122,11 @@ app.controller('segmentsDialogSegmentCtrl', function($scope)
 
 	$scope.openSegmentHistory = function(history)
 	{
-		controllerById('dialog-segment-history').open(history)
+		controllerById('dialog-translation-history').open(history)
 	}
 
 	$scope.openSegmentComments = function(languageId, comments)
 	{
-		controllerById('dialog-segment-comments').open($scope.form.id, languageId, comments)
+		controllerById('dialog-translation-comments').open($scope.form.id, languageId, comments)
 	}
 })
