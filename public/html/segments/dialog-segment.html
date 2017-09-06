@@ -24,11 +24,11 @@
 						<div class="form-group" ng-repeat="language in languages">
 							<label>{{language.fullName}}</label>
 							<div style="display:flex">
-								<textarea class="form-control" type="text" ng-model="form.languages[language.id].value" rows="1"></textarea>
-								<button type="button" ng-show="form.id" ng-disabled="!form.languages[language.id].history" class="btn btn-link button-action" ng-click="openSegmentHistory(form.languages[language.id].history)">
+								<textarea class="form-control" type="text" ng-model="form.translations[language.id].value" rows="1"></textarea>
+								<button type="button" ng-show="form.id" ng-disabled="historyEmpty(form.translations[language.id].history)" class="btn btn-link button-action" ng-click="openSegmentHistory(form.translations[language.id].history)">
 									<i class="fa fa-history"></i>
 								</button>
-								<button type="button" ng-show="form.id" class="btn btn-link button-action" ng-click="openSegmentComments(language.id, form.languages[language.id].comments)">
+								<button type="button" ng-show="form.id" class="btn btn-link button-action" ng-click="openSegmentComments(language.id, form.translations[language.id].comments)">
 									<i class="fa fa-comment"></i>
 								</button>
 							</div>

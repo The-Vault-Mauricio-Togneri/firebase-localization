@@ -3,7 +3,7 @@ app.controller('dialogSegment', function($scope)
 	$scope.form = {
 		id: '',
 		key: '',
-		languages: {},
+		translations: {},
 		description: '',
 		tags: '',
 		maxLength: '',
@@ -26,7 +26,7 @@ app.controller('dialogSegment', function($scope)
 
 		for (const index in languages)
 		{
-			$scope.form.languages[index] = {
+			$scope.form.translations[index] = {
 				value: '',
 				oldValue: null,
 				validated: false
@@ -49,7 +49,7 @@ app.controller('dialogSegment', function($scope)
 
 		for (const index in languages)
 		{
-			$scope.form.languages[index] = {
+			$scope.form.translations[index] = {
 				value: segment.translations[index].value,
 				oldValue: segment.translations[index].value,
 				validated: segment.translations[index].validated,
@@ -58,6 +58,11 @@ app.controller('dialogSegment', function($scope)
 		}
 	
 		open()
+	}
+
+	$scope.historyEmpty = function(history)
+	{
+		return !history || (Object.keys(history).length == 0)
 	}
 
 	function open()
