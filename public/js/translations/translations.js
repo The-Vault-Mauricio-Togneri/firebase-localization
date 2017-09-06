@@ -179,6 +179,13 @@ app.controller('translationsCtrl', function($scope, database)
 		$('#dialog-translation').modal('hide')
 	}
 
+	$scope.createNewComment = function(translationId, localeId, comment)
+	{
+		console.log(translationId)
+		console.log(localeId)
+		console.log(comment)
+	}
+
 	$scope.translationValidatedState = function(value)
 	{
 		return value ? 'translation-checkbox-on' : 'translation-checkbox-off'

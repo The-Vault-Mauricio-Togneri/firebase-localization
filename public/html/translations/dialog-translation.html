@@ -14,7 +14,7 @@
 					</li>
 				</ul>
 				<div class="tab-content">
-					<div class="tab-pane fade show active" id="dialog-translation-tab-translations">
+					<div class="tab-pane fade show active" style="padding-left:0;padding-right:0" id="dialog-translation-tab-translations">
 						<div class="form-group">
 							<label>Key:</label>
 							<input type="hidden" ng-model="form.id">
@@ -25,8 +25,11 @@
 							<label>{{locale.fullName}}</label>
 							<div style="display:flex">
 								<textarea class="form-control" type="text" ng-model="form.locales[locale.id].value" rows="1"></textarea>
-								<button type="button" ng-show="form.id" ng-disabled="!form.locales[locale.id].history" class="btn btn-link button-action" ng-click="openTranslationHistory(form.locales[locale.id])">
+								<button type="button" ng-show="form.id" ng-disabled="!form.locales[locale.id].history" class="btn btn-link button-action" ng-click="openTranslationHistory(form.locales[locale.id].history)">
 									<i class="fa fa-history"></i>
+								</button>
+								<button type="button" ng-show="form.id" class="btn btn-link button-action" ng-click="openTranslationComments(locale.id, form.locales[locale.id].comments)">
+									<i class="fa fa-comment"></i>
 								</button>
 							</div>
 						</div>

@@ -1,0 +1,34 @@
+<div id="dialog-translation-comments" class="modal fade" ng-controller="translationsDialogTranslationCommentsCtrl">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Comments</h5>
+			</div>
+			<div class="modal-body">
+				<div class="card" style="margin-bottom:1em" ng-repeat="entry in form.comments">
+					<div class="card-header" style="padding-left:0.8em">
+						<div class="d-flex justify-content-start">
+							<img src="{{entry.author | gravatar}}" style="padding-right:0.5em"/>
+							<a class="align-self-center" style="text-decoration:none" href="mailto:{{entry.author}}">{{entry.author}}</a>
+							<div class="ml-auto align-self-center" style="color:#888888;font-size:0.8em" ng-bind="{{entry.date}} | formatDate"></div>
+						</div>
+					</div>
+					<div class="card-block" style="padding:0.6em">
+						{{entry.value}}
+					</div>
+				</div>
+				<textarea class="form-control" type="text" style="margin-bottom:1em" ng-model="form.newComment" rows="3"></textarea>
+				<button type="button" class="btn btn-primary float-right" ng-disabled="!form.newComment" ng-click="createNewComment(form)">
+					<i class="fa fa-comment"></i>
+					Send
+				</button>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-danger" data-dismiss="modal">
+					<i class="fa fa-ban"></i>
+					Close
+				</button>
+			</div>
+		</div>
+	</div>
+</div>

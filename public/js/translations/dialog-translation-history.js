@@ -4,6 +4,8 @@ app.controller('translationsDialogTranslationHistoryCtrl', function($scope)
 
 	$scope.open = function(history)
 	{
+		$scope.history = []
+
 		for (const index in history)
 		{
 			$scope.history.push(history[index])

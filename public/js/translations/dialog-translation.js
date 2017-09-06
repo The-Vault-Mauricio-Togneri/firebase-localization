@@ -120,8 +120,13 @@ app.controller('translationsDialogTranslationCtrl', function($scope)
 		}
 	}
 
-	$scope.openTranslationHistory = function(locale)
+	$scope.openTranslationHistory = function(history)
 	{
-		controllerById('dialog-translation-history').open(locale.history)
+		controllerById('dialog-translation-history').open(history)
+	}
+
+	$scope.openTranslationComments = function(localeId, comments)
+	{
+		controllerById('dialog-translation-comments').open($scope.form.id, localeId, comments)
 	}
 })
