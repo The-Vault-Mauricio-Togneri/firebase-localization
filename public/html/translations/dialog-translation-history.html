@@ -6,11 +6,20 @@
 			</div>
 			<div class="modal-body">
 				<div class="form-group" ng-repeat="entry in history">
-					<b>Value: </b>{{entry.value}}
-					<br/>
-					<b>Author: </b><a href="mailto:{{entry.author}}">{{entry.author}}</a>
-					<br/>
-					<b>Date: </b><span ng-bind="{{entry.date}} | formatDate"></span>
+					<table>
+						<tr>
+							<td><b>Value:</b></td>
+							<td>{{entry.value}}</td>
+						</tr>
+						<tr>
+							<td style="padding-right:2em"><b>Author:</b></td>
+							<td><a href="mailto:{{entry.author}}">{{entry.author}}</a></td>
+						</tr>
+						<tr>
+							<td><b>Date:</b></td>
+							<td><span ng-bind="{{entry.date}} | formatDate"></span></td>
+						</tr>
+					</table>
 					<hr ng-show="!$last"class="separator"/>
 				</div>
 			</div>

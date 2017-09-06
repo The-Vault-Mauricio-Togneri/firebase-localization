@@ -8,7 +8,7 @@ app.filter('formatDate', function()
 	{
 		const date = moment(input)
 		var formatted = date.format('dddd DD MMMM YYYY HH:mm:ss')
-		const diff = moment().diff(date, 'days')
+		const diff = moment().startOf('day').diff(date.startOf('day'), 'days')
 
 		if (diff == 1)
 		{
