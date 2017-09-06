@@ -23,8 +23,8 @@
 				"destination": "/overview.html"
 			},
 			{
-				"source": "/translations",
-				"destination": "/translations.html"
+				"source": "/segments",
+				"destination": "/segments.html"
 			}
 		]
 	}

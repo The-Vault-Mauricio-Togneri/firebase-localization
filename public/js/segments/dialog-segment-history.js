@@ -1,4 +1,4 @@
-app.controller('translationsDialogTranslationHistoryCtrl', function($scope)
+app.controller('segmentsDialogSegmentHistoryCtrl', function($scope)
 {
 	$scope.history = []
 
@@ -13,6 +13,6 @@ app.controller('translationsDialogTranslationHistoryCtrl', function($scope)
 
 		$scope.history = $scope.history.reverse()
 
-		openDialog('dialog-translation-history')
+		openDialog('dialog-segment-history')
 	}
 })

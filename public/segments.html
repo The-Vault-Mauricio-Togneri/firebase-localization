@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html ng-app="translationsApp">
+<html ng-app="segmentsApp">
 
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Translations</title>
+	<title>Segments</title>
 
 	<!-- Angular JS -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.6/angular.min.js"></script>
@@ -36,22 +36,22 @@
 
 	<!-- Local styles -->
 	<link href="styles/style.css" rel="stylesheet">
-	<link href="styles/translations.css" rel="stylesheet">
+	<link href="styles/segments.css" rel="stylesheet">
 
 	<!-- Local scripts -->
 	<script src="js/models/language.js"></script>
-	<script src="js/models/translation.js"></script>
+	<script src="js/models/segment.js"></script>
 	<script src="js/common/scripts.js"></script>
 	<script src="js/common/database.js"></script>
-	<script src="js/translations/translations.js"></script>
-	<script src="js/translations/dialog-delete-translation.js"></script>
-	<script src="js/translations/dialog-translation-comments.js"></script>
-	<script src="js/translations/dialog-translation-history.js"></script>
-	<script src="js/translations/dialog-translation.js"></script>
+	<script src="js/segments/segments.js"></script>
+	<script src="js/segments/dialog-delete-segment.js"></script>
+	<script src="js/segments/dialog-segment-comments.js"></script>
+	<script src="js/segments/dialog-segment-history.js"></script>
+	<script src="js/segments/dialog-segment.js"></script>
 	<script src="js/common/firebase.js"></script>
 </head>
 
-<body id ="translations-controller" ng-controller="translationsCtrl">
+<body id ="segments-controller" ng-controller="segmentsCtrl">
 
 	<div id="overview-content" class="view-gone">
 
@@ -60,11 +60,11 @@
 				Overview
 			</li>
 			<li class="active">
-				Translations
+				Segments
 			</li>
 		</ul>
 
-		<button type="button" class="btn btn-success button-circle" ng-click="openAddTranslationDialog()">
+		<button type="button" class="btn btn-success button-circle" ng-click="openAddSegmentDialog()">
 			<i class="fa fa-plus"></i>
 		</button>
 
@@ -82,11 +82,11 @@
 					</li>
 					<li class="list-group-item align-items-center">
 						<label class="col-form-label filter-label">By language:</label>
-						<span ng-repeat="locale in locales">
+						<span ng-repeat="language in languages">
 							<label class="custom-control custom-checkbox filter-checkbox">
-								<input type="checkbox" checked="true" ng-model="filter.locale[locale.id]" class="custom-control-input">
+								<input type="checkbox" checked="true" ng-model="filter.language[language.id]" class="custom-control-input">
 								<span class="custom-control-indicator"></span>
-								<span class="custom-control-description noselect">{{locale.fullName}}</span>
+								<span class="custom-control-description noselect">{{language.fullName}}</span>
 							</label>
 						</span>
 					</li>
@@ -124,25 +124,25 @@
 			<thead class="thead-default">
 				<tr>
 					<th style="padding-left:10px;width:20em">Key</th>
-					<th ng-repeat="locale in locales" ng-show="filter.locale[locale.id]" style="padding-left:10px">
-						{{locale.fullName}}
+					<th ng-repeat="language in languages" ng-show="filter.language[language.id]" style="padding-left:10px">
+						{{language.fullName}}
 					</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="translation in translations" ng-show="displayByState(translation)">
+				<tr ng-repeat="segment in segments" ng-show="displayByState(segment)">
 					<td>
 						<div class="input-group">
-							<div class="input-group-addon translations-settings-icon" ng-click="openEditTranslationDialog(translation)">
+							<div class="input-group-addon segments-settings-icon" ng-click="openEditSegmentDialog(segment)">
 								<i class="fa fa-cog"></i>
 							</div>
-							<input class="form-control" type="text" ng-model="translation.key" ng-blur="onTranslationKeyUpdated(translation)">
+							<input class="form-control" type="text" ng-model="segment.key" ng-blur="onSegmentKeyUpdated(segment)">
 						</div>
 					</td>
-					<td ng-repeat="locale in locales" ng-show="filter.locale[locale.id]">
+					<td ng-repeat="language in languages" ng-show="filter.language[language.id]">
 						<div class="input-group">
-							<textarea class="form-control translation-input" type="text" ng-model="translation.locales[locale.id].value" ng-blur="onTranslationValueUpdated(translation, locale)" rows="1"></textarea>
-							<div class="input-group-addon translation-checkbox" ng-class="translationValidatedState(translation.locales[locale.id].validated)" ng-click="onTranslationValidatedChanged(translation, locale)">
+							<textarea class="form-control segment-input" type="text" ng-model="segment.languages[language.id].value" ng-blur="onSegmentValueUpdated(segment, language)" rows="1"></textarea>
+							<div class="input-group-addon segment-checkbox" ng-class="segmentValidatedState(segment.languages[language.id].validated)" ng-click="onSegmentValidatedChanged(segment, language)">
 								<i class="fa fa-check"></i>
 							</div>
 						</div>
@@ -151,13 +151,13 @@
 			</tbody>
 		</table>
 
-		<div ng-include="'html/translations/dialog-translation.html'"></div>
+		<div ng-include="'html/segments/dialog-segment.html'"></div>
 
-		<div ng-include="'html/translations/dialog-translation-comments.html'"></div>
+		<div ng-include="'html/segments/dialog-segment-comments.html'"></div>
 
-		<div ng-include="'html/translations/dialog-translation-history.html'"></div>
+		<div ng-include="'html/segments/dialog-segment-history.html'"></div>
 
-		<div ng-include="'html/translations/dialog-delete-translation.html'"></div>
+		<div ng-include="'html/segments/dialog-delete-segment.html'"></div>
 
 		<div class="error-message-container" id="error-message" style="visibility:hidden">
 			<span class="alert alert-danger"></span>

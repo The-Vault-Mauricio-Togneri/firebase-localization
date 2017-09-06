@@ -1,15 +1,15 @@
 module.exports = {
 	
-	android: function(language, translations)
+	android: function(language, segments)
 	{
 		var result = `<?xml version="1.0" encoding="utf-8"?>\n`
 		result += '<resources>\n'
 	
-		for (const index in translations)
+		for (const index in segments)
 		{
-			const translation = translations[index]
-			const key = translation.key
-			const value = translation.languages[language].value
+			const segment = segments[index]
+			const key = segment.key
+			const value = segment.languages[language].value
 			
 			result += `\t<string name="${key}">${value}"</string>\n`
 		}
@@ -19,15 +19,15 @@ module.exports = {
 		return result
 	},
 	
-    ios: function(language, translations)
+    ios: function(language, segments)
 	{
 		var result = ''
 	
-		for (const index in translations)
+		for (const index in segments)
 		{
-			const translation = translations[index]
-			const key = translation.key
-			const value = translation.languages[language].value
+			const segment = segments[index]
+			const key = segment.key
+			const value = segment.languages[language].value
 	
 			result += `"${key}" = "${value}";\n`
 		}

@@ -5,9 +5,9 @@ module.exports = {
 		return admin.database().ref('languages')
 	},
 
-	translationsRef: function(admin)
+	segmentsRef: function(admin)
 	{
-		return admin.database().ref('translations')
+		return admin.database().ref('segments')
 	},
 
 	languageByCode: function(code, snapshot)

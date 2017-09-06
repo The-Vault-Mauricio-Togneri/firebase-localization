@@ -1,43 +1,43 @@
-<div id="dialog-translation" class="modal fade" ng-controller="translationsDialogTranslationCtrl">
+<div id="dialog-segment" class="modal fade" ng-controller="segmentsDialogSegmentCtrl">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title">Translation</h5>
+				<h5 class="modal-title">Segment</h5>
 			</div>
 			<div class="modal-body">
-				<ul class="nav nav-tabs" id="dialog-translation-tabs">
+				<ul class="nav nav-tabs" id="dialog-segment-tabs">
 					<li class="nav-item">
-						<a class="nav-link active" data-toggle="tab" href="#dialog-translation-tab-translations">Translation</a>
+						<a class="nav-link active" data-toggle="tab" href="#dialog-segment-tab-segments">Segment</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" data-toggle="tab" href="#dialog-translation-tab-properties">Properties</a>
+						<a class="nav-link" data-toggle="tab" href="#dialog-segment-tab-properties">Properties</a>
 					</li>
 				</ul>
 				<div class="tab-content">
-					<div class="tab-pane fade show active" style="padding-left:0;padding-right:0" id="dialog-translation-tab-translations">
+					<div class="tab-pane fade show active" style="padding-left:0;padding-right:0" id="dialog-segment-tab-segments">
 						<div class="form-group">
 							<label>Key:</label>
 							<input type="hidden" ng-model="form.id">
-							<input class="form-control" id="dialog-translation-key" type="text" ng-model="form.key">
+							<input class="form-control" id="dialog-segment-key" type="text" ng-model="form.key">
 							<span class="form-invalid-input" ng-show="form.formError && !form.key">Invalid key</span>
 						</div>
-						<div class="form-group" ng-repeat="locale in locales">
-							<label>{{locale.fullName}}</label>
+						<div class="form-group" ng-repeat="language in languages">
+							<label>{{language.fullName}}</label>
 							<div style="display:flex">
-								<textarea class="form-control" type="text" ng-model="form.locales[locale.id].value" rows="1"></textarea>
-								<button type="button" ng-show="form.id" ng-disabled="!form.locales[locale.id].history" class="btn btn-link button-action" ng-click="openTranslationHistory(form.locales[locale.id].history)">
+								<textarea class="form-control" type="text" ng-model="form.languages[language.id].value" rows="1"></textarea>
+								<button type="button" ng-show="form.id" ng-disabled="!form.languages[language.id].history" class="btn btn-link button-action" ng-click="openSegmentHistory(form.languages[language.id].history)">
 									<i class="fa fa-history"></i>
 								</button>
-								<button type="button" ng-show="form.id" class="btn btn-link button-action" ng-click="openTranslationComments(locale.id, form.locales[locale.id].comments)">
+								<button type="button" ng-show="form.id" class="btn btn-link button-action" ng-click="openSegmentComments(language.id, form.languages[language.id].comments)">
 									<i class="fa fa-comment"></i>
 								</button>
 							</div>
 						</div>
 					</div>
-					<div class="tab-pane fade" id="dialog-translation-tab-properties">
+					<div class="tab-pane fade" id="dialog-segment-tab-properties">
 						<div class="form-group">
 							<label>Description:</label>
-							<input class="form-control" id="dialog-translation-description" type="text" ng-model="form.description">
+							<input class="form-control" id="dialog-segment-description" type="text" ng-model="form.description">
 						</div>
 						<div class="form-group">
 							<label>Tags</label>
@@ -49,7 +49,7 @@
 						</div>
 						<div class="form-group">
 							<label>Screenshot link</label>
-							<input class="form-control" id="dialog-translation-screenshot" type="text" ng-model="form.screenshot">
+							<input class="form-control" id="dialog-segment-screenshot" type="text" ng-model="form.screenshot">
 						</div>
 						<div class="form-group">
 							<label class="custom-control custom-checkbox">
@@ -64,7 +64,7 @@
 							</label>
 						</div>
 						<div class="form-group" ng-show="form.id">
-							<button type="button" class="btn btn-danger" ng-click="openDeleteTranslationDialog(form)">
+							<button type="button" class="btn btn-danger" ng-click="openDeleteSegmentDialog(form)">
 								<i class="fa fa-trash"></i>
 								Delete
 							</button>
@@ -77,11 +77,11 @@
 					<i class="fa fa-ban"></i>
 					Cancel
 				</button>
-				<button type="button" ng-show="!form.id" class="btn btn-success" ng-click="onAddTranslation(form)">
+				<button type="button" ng-show="!form.id" class="btn btn-success" ng-click="onAddSegment(form)">
 					<i class="fa fa-plus"></i>
 					Add
 				</button>
-				<button type="button" ng-show="form.id" class="btn btn-success" ng-click="onEditTranslation(form)">
+				<button type="button" ng-show="form.id" class="btn btn-success" ng-click="onEditSegment(form)">
 					<i class="fa fa-check"></i>
 					Edit
 				</button>

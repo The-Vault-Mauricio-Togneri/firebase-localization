@@ -67,49 +67,49 @@ app.service('database', function()
 
 	// -------------------------------
 
-	this.translationsEntryRef = function(id)
+	this.segmentsEntryRef = function(id)
 	{
-		return databaseRef().child('/translations/' + id)
+		return databaseRef().child('/segments/' + id)
 	}
 
-	this.translationsRef = function()
+	this.segmentsRef = function()
 	{
-		return databaseRef().child('translations')
+		return databaseRef().child('segments')
 	}
 
-	this.translationsFromSnap = function(snap)
+	this.segmentsFromSnap = function(snap)
 	{
-		const translations = []
+		const segments = []
 
 		snap.forEach(function(entry)
 		{
-			translations.push(new Translation(entry.key, entry.val()))
+			segments.push(new Segment(entry.key, entry.val()))
 		})
 
-		return translations
+		return segments
 	}
 
-	this.addTranslationRef = function(value)
+	this.addSegmentRef = function(value)
 	{
-		return this.translationsRef().push(value, function(error)
+		return this.segmentsRef().push(value, function(error)
 		{
-			logDatabaseResult(error, 'Add translation => ' + JSON.stringify(value))
-		})
-	}
-
-	this.updateTranslationRef = function(id, value)
-	{
-		this.translationsEntryRef(id).set(value, function(error)
-		{
-			logDatabaseResult(error, 'Update translation (' + id + ') => ' + JSON.stringify(value))
+			logDatabaseResult(error, 'Add segment => ' + JSON.stringify(value))
 		})
 	}
 
-	this.removeTranslationRef = function(id)
+	this.updateSegmentRef = function(id, value)
 	{
-		this.translationsEntryRef(id).remove(function(error)
+		this.segmentsEntryRef(id).set(value, function(error)
 		{
-			logDatabaseResult(error, 'Remove translation (' + id + ')')
+			logDatabaseResult(error, 'Update segment (' + id + ') => ' + JSON.stringify(value))
+		})
+	}
+
+	this.removeSegmentRef = function(id)
+	{
+		this.segmentsEntryRef(id).remove(function(error)
+		{
+			logDatabaseResult(error, 'Remove segment (' + id + ')')
 		})
 	}
 

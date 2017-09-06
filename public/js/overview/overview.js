@@ -15,10 +15,10 @@ app.controller('overviewCtrl', function($scope, database)
 		{	
 			$scope.languages = database.languagesFromSnap(snapLanguages)
 
-			database.translationsRef().on('value', snapTranslations =>
+			database.segmentsRef().on('value', snapSegments =>
 			{
-				const translations = database.translationsFromSnap(snapTranslations)
-				const summary = $scope.summary($scope.languages, translations)
+				const segments = database.segmentsFromSnap(snapSegments)
+				const summary = $scope.summary($scope.languages, segments)
 
 				for (const index in summary)
 				{
@@ -37,7 +37,7 @@ app.controller('overviewCtrl', function($scope, database)
 		})
 	}
 
-	$scope.summary = function(languages, translations)
+	$scope.summary = function(languages, segments)
 	{
 		const summary = {}
 
@@ -50,13 +50,13 @@ app.controller('overviewCtrl', function($scope, database)
 			}
 		}
 
-		for (const translationIndex in translations)
+		for (const segmentIndex in segments)
 		{
-			const translation = translations[translationIndex]
+			const segment = segments[segmentIndex]
 
-			for (const languageIndex in translation.languages)
+			for (const languageIndex in segment.languages)
 			{
-				const language = translation.languages[languageIndex]
+				const language = segment.languages[languageIndex]
 				
 				summary[languageIndex].total++
 

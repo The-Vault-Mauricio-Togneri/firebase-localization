@@ -22,47 +22,47 @@
 	border-bottom: 0 solid transparent;
 }
 
-.translations-settings-icon:hover
+.segments-settings-icon:hover
 {
 	background-color: #E2E6E9;
 }
 
-.translations-settings-icon:active
+.segments-settings-icon:active
 {
 	background-color: #DCE0E3;
 }
 
-.translations-settings-icon
+.segments-settings-icon
 {
 	cursor: pointer;
 	padding: 0 0.2em 0 0.6em;
 }
 
-.translation-checkbox
+.segment-checkbox
 {
 	cursor: pointer;
 	padding: 0 0 0 0.6em;
 }
 
-.translation-checkbox-on:hover
+.segment-checkbox-on:hover
 {
 	color: #F0F0F0;
 	background-color: #90D875;
 }
 
-.translation-checkbox-on
+.segment-checkbox-on
 {
 	color: #F0F0F0;
 	background-color: #7DC263;
 }
 
-.translation-checkbox-off
+.segment-checkbox-off
 {
 	color: #C0C0C0;
 	background-color: #E0E0E0;
 }
 
-.translation-checkbox-off:hover
+.segment-checkbox-off:hover
 {
 	color: #EFEFEF;
 	background-color: #D0D0D0;

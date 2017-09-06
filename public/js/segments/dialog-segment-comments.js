@@ -1,17 +1,17 @@
-app.controller('translationsDialogTranslationCommentsCtrl', function($scope)
+app.controller('segmentsDialogSegmentCommentsCtrl', function($scope)
 {
-	$scope.translationId = ''
-	$scope.localeId = ''
+	$scope.segmentId = ''
+	$scope.languageId = ''
 
 	$scope.form = {
 		comments: [],
 		newComment: ''
 	}
 
-	$scope.open = function(translationId, localeId, comments)
+	$scope.open = function(segmentId, languageId, comments)
 	{
-		$scope.translationId = translationId
-		$scope.localeId = localeId
+		$scope.segmentId = segmentId
+		$scope.languageId = languageId
 
 		$scope.form.comments = []
 
@@ -22,7 +22,7 @@ app.controller('translationsDialogTranslationCommentsCtrl', function($scope)
 
 		$scope.form.comments = $scope.form.comments.reverse()
 
-		openDialog('dialog-translation-comments')
+		openDialog('dialog-segment-comments')
 	}
 
 	$scope.createNewComment = function(form)
@@ -36,6 +36,6 @@ app.controller('translationsDialogTranslationCommentsCtrl', function($scope)
 		$scope.form.newComment = ''
 		$scope.form.comments.unshift(comment)
 
-		controllerById('translations-controller').createNewComment($scope.translationId, $scope.localeId, comment)
+		controllerById('segments-controller').createNewComment($scope.segmentId, $scope.languageId, comment)
 	}
 })

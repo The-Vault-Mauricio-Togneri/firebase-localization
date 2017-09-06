@@ -7,8 +7,8 @@
 				".validate": "newData.isString() && newData.val().length > 0"
 			}
 		},
-		"translations": {
-			"$translationId": {
+		"segments": {
+			"$segmentId": {
 				"key": {
 					".validate": "newData.isString() && newData.val().length > 0"
 				}

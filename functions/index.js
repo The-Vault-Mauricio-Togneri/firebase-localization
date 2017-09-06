@@ -20,10 +20,10 @@ app.get('/export/:language/android', (request, response) =>
 	{
 		const language = database.languageByCode(languageCode, languagesSnap)
 		
-		return database.translationsRef(admin).once('value', translationsSnap =>
+		return database.segmentsRef(admin).once('value', segmentsSnap =>
 		{
 			response.set('content-disposition', `attachment; filename="strings-${languageCode}.xml"`)
-			response.send(generate.android(language.key, translationsSnap.val()))
+			response.send(generate.android(language.key, segmentsSnap.val()))
 		})
 	})
 })
@@ -36,10 +36,10 @@ app.get('/export/:language/ios', (request, response) =>
 	{
 		const language = database.languageByCode(languageCode, languagesSnap)
 		
-		return database.translationsRef(admin).once('value', translationsSnap =>
+		return database.segmentsRef(admin).once('value', segmentsSnap =>
 		{
 			response.set('content-disposition', `attachment; filename="Localizable-${languageCode}.strings"`)
-			response.send(generate.ios(language.key, translationsSnap.val()))
+			response.send(generate.ios(language.key, segmentsSnap.val()))
 		})
 	})
 })
@@ -56,7 +56,7 @@ exports.api = functions.https.onRequest(api)
 	response.json({property:123})
 })*/
 
-exports.addHistory = functions.database.ref('/translations/{translationId}/languages/{languageId}/value').onUpdate(event =>
+exports.addHistory = functions.database.ref('/segments/{segmentId}/languages/{languageId}/value').onUpdate(event =>
 {
 	const entry = {
 		value: event.data.previous.val(),

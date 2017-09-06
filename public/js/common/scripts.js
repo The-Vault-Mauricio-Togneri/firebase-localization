@@ -1,6 +1,6 @@
 "use strict"
 
-const app = angular.module('translationsApp', [])
+const app = angular.module('segmentsApp', [])
 
 app.filter('formatDate', function()
 {
