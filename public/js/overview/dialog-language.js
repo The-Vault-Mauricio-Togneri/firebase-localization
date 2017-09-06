@@ -1,4 +1,4 @@
-app.controller('overviewDialogLanguageCtrl', function($scope, database)
+app.controller('dialogLanguage', function($scope, database)
 {
 	$scope.form = {
 		id: '',

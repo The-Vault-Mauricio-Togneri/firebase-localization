@@ -1,4 +1,4 @@
-app.controller('segmentsDialogSegmentCtrl', function($scope)
+app.controller('dialogSegment', function($scope)
 {
 	$scope.form = {
 		id: '',

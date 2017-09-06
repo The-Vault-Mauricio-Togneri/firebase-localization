@@ -1,4 +1,4 @@
-app.controller('overviewDialogProfileCtrl', function($scope)
+app.controller('dialogProfile', function($scope)
 {
 	$scope.form = {
 		password: '',

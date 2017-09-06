@@ -1,4 +1,4 @@
-app.controller('overviewDialogLogoutCtrl', function($scope)
+app.controller('dialogLogout', function($scope)
 {
 	$scope.open = function()
 	{

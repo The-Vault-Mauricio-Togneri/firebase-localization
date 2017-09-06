@@ -1,4 +1,4 @@
-app.controller('segmentsCtrl', function($scope, database)
+app.controller('segments', function($scope, database)
 {
 	$scope.languages = {}
 	$scope.segments = {}

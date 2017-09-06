@@ -1,4 +1,4 @@
-app.controller('overviewDialogDeleteLanguageCtrl', function($scope, database)
+app.controller('dialogDeleteLanguage', function($scope, database)
 {
 	$scope.form = {
 		id: '',

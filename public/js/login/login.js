@@ -11,7 +11,7 @@ firebase.auth().onAuthStateChanged(function(user)
 	}
 })
 
-app.controller('loginCtrl', function($scope)
+app.controller('login', function($scope)
 {
 	$scope.form = {
 		email: '',

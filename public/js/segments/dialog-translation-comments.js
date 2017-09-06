@@ -1,4 +1,4 @@
-app.controller('segmentsDialogTranslationCommentsCtrl', function($scope)
+app.controller('dialogTranslationComments', function($scope)
 {
 	$scope.segmentId = ''
 	$scope.languageId = ''

@@ -1,4 +1,4 @@
-app.controller('segmentsDialogTranslationHistoryCtrl', function($scope)
+app.controller('dialogTranslationHistory', function($scope)
 {
 	$scope.history = []
 
