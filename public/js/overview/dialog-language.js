@@ -11,9 +11,9 @@ app.controller('overviewDialogLanguageCtrl', function($scope, database)
 		open(null, '')
 	}
 
-	$scope.openEdit = function(locale)
+	$scope.openEdit = function(language)
 	{
-		open(locale.id, locale.code)
+		open(language.id, language.code)
 	}
 
 	function open(id, select)

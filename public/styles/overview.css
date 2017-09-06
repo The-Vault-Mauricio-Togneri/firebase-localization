@@ -1,27 +1,27 @@
-.locale-table-header-icon
+.language-table-header-icon
 {
 	margin-left: 0.4em;
 }
 
-.locale-table-header-icon-settings
+.language-table-header-icon-settings
 {
 	color: #276FE4;
 	font-size: 1.3em;
 }
 
-.locale-table-header-icon-delete
+.language-table-header-icon-delete
 {
 	color: #EA5854;
 	font-size: 1.4em;
 }
 
-.locale-table-header-icon-android
+.language-table-header-icon-android
 {
 	color: #A5CA3A;
 	font-size: 1.6em;
 }
 
-.locale-table-header-icon-ios
+.language-table-header-icon-ios
 {
 	color: #333333;
 	font-size: 1.5em;

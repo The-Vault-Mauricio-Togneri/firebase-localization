@@ -12,34 +12,34 @@ admin.initializeApp({
 	databaseURL: 'https://app-localization-2f645.firebaseio.com'
 })
 
-app.get('/export/:locale/android', (request, response) =>
+app.get('/export/:language/android', (request, response) =>
 {
-	const localeCode = request.param('locale')
+	const languageCode = request.param('language')
 
-	database.localesRef(admin).once('value', localesSnap =>
+	database.languagesRef(admin).once('value', languagesSnap =>
 	{
-		const locale = database.localeByCode(localeCode, localesSnap)
+		const language = database.languageByCode(languageCode, languagesSnap)
 		
 		return database.translationsRef(admin).once('value', translationsSnap =>
 		{
-			response.set('content-disposition', `attachment; filename="strings-${localeCode}.xml"`)
-			response.send(generate.android(locale.key, translationsSnap.val()))
+			response.set('content-disposition', `attachment; filename="strings-${languageCode}.xml"`)
+			response.send(generate.android(language.key, translationsSnap.val()))
 		})
 	})
 })
 
-app.get('/export/:locale/ios', (request, response) =>
+app.get('/export/:language/ios', (request, response) =>
 {
-	const localeCode = request.param('locale')
+	const languageCode = request.param('language')
 	
-	database.localesRef(admin).once('value', localesSnap =>
+	database.languagesRef(admin).once('value', languagesSnap =>
 	{
-		const locale = database.localeByCode(localeCode, localesSnap)
+		const language = database.languageByCode(languageCode, languagesSnap)
 		
 		return database.translationsRef(admin).once('value', translationsSnap =>
 		{
-			response.set('content-disposition', `attachment; filename="Localizable-${localeCode}.strings"`)
-			response.send(generate.ios(locale.key, translationsSnap.val()))
+			response.set('content-disposition', `attachment; filename="Localizable-${languageCode}.strings"`)
+			response.send(generate.ios(language.key, translationsSnap.val()))
 		})
 	})
 })
@@ -56,7 +56,7 @@ exports.api = functions.https.onRequest(api)
 	response.json({property:123})
 })*/
 
-exports.addHistory = functions.database.ref('/translations/{translationId}/locales/{localeId}/value').onUpdate(event =>
+exports.addHistory = functions.database.ref('/translations/{translationId}/languages/{languageId}/value').onUpdate(event =>
 {
 	const entry = {
 		value: event.data.previous.val(),

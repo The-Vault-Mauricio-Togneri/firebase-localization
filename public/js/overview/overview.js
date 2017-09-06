@@ -7,23 +7,23 @@ app.controller('overviewCtrl', function($scope, database)
 {
 	$scope.apiToken = ''
 
-	$scope.locales = {}
+	$scope.languages = {}
 
 	$scope.init = function()
 	{
-		database.localesRef().on('value', snapLocales =>
+		database.languagesRef().on('value', snapLanguages =>
 		{	
-			$scope.locales = database.localesFromSnap(snapLocales)
+			$scope.languages = database.languagesFromSnap(snapLanguages)
 
 			database.translationsRef().on('value', snapTranslations =>
 			{
 				const translations = database.translationsFromSnap(snapTranslations)
-				const summary = $scope.summary($scope.locales, translations)
+				const summary = $scope.summary($scope.languages, translations)
 
 				for (const index in summary)
 				{
-					$scope.locales[index].translated = summary[index].translated
-					$scope.locales[index].validated  = summary[index].validated
+					$scope.languages[index].translated = summary[index].translated
+					$scope.languages[index].validated  = summary[index].validated
 				}
 
 				$scope.$applyAsync()
@@ -37,11 +37,11 @@ app.controller('overviewCtrl', function($scope, database)
 		})
 	}
 
-	$scope.summary = function(locales, translations)
+	$scope.summary = function(languages, translations)
 	{
 		const summary = {}
 
-		for (const index in locales)
+		for (const index in languages)
 		{
 			summary[index] = {
 				translated: 0,
@@ -54,20 +54,20 @@ app.controller('overviewCtrl', function($scope, database)
 		{
 			const translation = translations[translationIndex]
 
-			for (const localeIndex in translation.locales)
+			for (const languageIndex in translation.languages)
 			{
-				const locale = translation.locales[localeIndex]
+				const language = translation.languages[languageIndex]
 				
-				summary[localeIndex].total++
+				summary[languageIndex].total++
 
-				if (locale.value)
+				if (language.value)
 				{
-					summary[localeIndex].translated++
+					summary[languageIndex].translated++
 				}
 
-				if (locale.validated)
+				if (language.validated)
 				{
-					summary[localeIndex].validated++
+					summary[languageIndex].validated++
 				}
 			}
 		}
@@ -81,14 +81,14 @@ app.controller('overviewCtrl', function($scope, database)
 		return summary
 	}
 
-	$scope.localeProgressValue = function(value)
+	$scope.languageProgressValue = function(value)
 	{
 		return {
 			width: value + '%'
 		}
 	}
 
-	$scope.localeProgressColor = function(value)
+	$scope.languageProgressColor = function(value)
 	{
 		if (value == 100)
 		{
@@ -104,14 +104,14 @@ app.controller('overviewCtrl', function($scope, database)
 		}
 	}
 
-	$scope.exportAndroid = function(locale)
+	$scope.exportAndroid = function(language)
 	{
-		downloadFile('https://' + window.location.host + '/api/export/' + locale.code + '/android')
+		downloadFile('https://' + window.location.host + '/api/export/' + language.code + '/android')
 	}
 
-	$scope.exportIOS = function(locale)
+	$scope.exportIOS = function(language)
 	{
-		downloadFile('https://' + window.location.host + '/api/export/' + locale.code + '/ios')
+		downloadFile('https://' + window.location.host + '/api/export/' + language.code + '/ios')
 	}
 
 	$scope.openProfileDialog = function()
@@ -150,12 +150,12 @@ app.controller('overviewCtrl', function($scope, database)
 			code: value
 		}
 
-		database.addLocaleRef(entry)
+		database.addLanguageRef(entry)
 	}
 
-	$scope.openEditLanguageDialog = function(locale)
+	$scope.openEditLanguageDialog = function(language)
 	{
-		controllerById('dialog-language').openEdit(locale)
+		controllerById('dialog-language').openEdit(language)
 	}
 
 	$scope.editLanguage = function(id, value)
@@ -164,17 +164,17 @@ app.controller('overviewCtrl', function($scope, database)
 			code: value
 		}
 
-		database.updateLocaleRef(id, entry)
+		database.updateLanguageRef(id, entry)
 	}
 
-	$scope.openDeleteLanguageDialog = function(locale)
+	$scope.openDeleteLanguageDialog = function(language)
 	{
-		controllerById('dialog-delete-language').open(locale)
+		controllerById('dialog-delete-language').open(language)
 	}
 
 	$scope.deleteLanguage = function(id)
 	{
-		database.removeLocaleRef(id)
+		database.removeLanguageRef(id)
 	}
 
 	$scope.init()

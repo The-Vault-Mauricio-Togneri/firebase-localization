@@ -1,6 +1,6 @@
 module.exports = {
 	
-	android: function(locale, translations)
+	android: function(language, translations)
 	{
 		var result = `<?xml version="1.0" encoding="utf-8"?>\n`
 		result += '<resources>\n'
@@ -9,7 +9,7 @@ module.exports = {
 		{
 			const translation = translations[index]
 			const key = translation.key
-			const value = translation.locales[locale].value
+			const value = translation.languages[language].value
 			
 			result += `\t<string name="${key}">${value}"</string>\n`
 		}
@@ -19,7 +19,7 @@ module.exports = {
 		return result
 	},
 	
-    ios: function(locale, translations)
+    ios: function(language, translations)
 	{
 		var result = ''
 	
@@ -27,7 +27,7 @@ module.exports = {
 		{
 			const translation = translations[index]
 			const key = translation.key
-			const value = translation.locales[locale].value
+			const value = translation.languages[language].value
 	
 			result += `"${key}" = "${value}";\n`
 		}

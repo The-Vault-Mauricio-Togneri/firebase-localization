@@ -15,9 +15,9 @@ app.controller('translationsCtrl', function($scope, database)
 	
 	$scope.init = function()
 	{
-		database.localesRef().once('value', snapLocales =>
+		database.localesRef().once('value', snapLanguages =>
 		{	
-			$scope.locales = database.localesFromSnap(snapLocales)
+			$scope.locales = database.localesFromSnap(snapLanguages)
 
 			for (const index in $scope.locales)
 			{

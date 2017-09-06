@@ -1,10 +1,9 @@
-function Locale(id, locale)
+function Language(id, snap)
 {
 	this.id = id
-	this.code = locale.code
-	this.name = LOCALES[locale.code]
+	this.code = snap.code
+	this.name = LOCALES[snap.code]
 	this.fullName = this.name + ' (' + this.code + ')'
-	this.visible = true
 }
 
 const LOCALES = {

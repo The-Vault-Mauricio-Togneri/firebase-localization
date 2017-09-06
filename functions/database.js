@@ -1,8 +1,8 @@
 module.exports = {
 	
-	localesRef: function(admin)
+	languagesRef: function(admin)
 	{
-		return admin.database().ref('locales')
+		return admin.database().ref('languages')
 	},
 
 	translationsRef: function(admin)
@@ -10,15 +10,15 @@ module.exports = {
 		return admin.database().ref('translations')
 	},
 
-	localeByCode: function(code, snapshot)
+	languageByCode: function(code, snapshot)
 	{
 		var result = null
 
-		snapshot.forEach(function(locale)
+		snapshot.forEach(function(language)
 		{
-			if (locale.val().code === code)
+			if (language.val().code === code)
 			{
-				result = locale
+				result = language
 			}
 		})
 

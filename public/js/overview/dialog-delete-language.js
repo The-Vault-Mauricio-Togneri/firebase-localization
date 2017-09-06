@@ -5,10 +5,10 @@ app.controller('overviewDialogDeleteLanguageCtrl', function($scope, database)
 		name: ''
 	}
 
-	$scope.open = function(locale)
+	$scope.open = function(language)
 	{
-		$scope.form.id   = locale.id
-		$scope.form.name = locale.fullName
+		$scope.form.id   = language.id
+		$scope.form.name = language.fullName
 
 		openDialog('dialog-delete-language')
 	}

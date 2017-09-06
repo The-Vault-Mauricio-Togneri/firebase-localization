@@ -37,7 +37,7 @@
 	<link href="styles/overview.css" rel="stylesheet">
 
 	<!-- Local scripts -->
-	<script src="js/models/locale.js"></script>
+	<script src="js/models/language.js"></script>
 	<script src="js/models/translation.js"></script>
 	<script src="js/common/scripts.js"></script>
 	<script src="js/common/database.js"></script>
@@ -68,50 +68,50 @@
 					<th style="padding-left:1em">Language</th>
 					<th>Translated</th>
 					<th>Validated</th>
-					<th><i class="fa fa-cogs locale-table-header-icon locale-table-header-icon-settings"></i></th>
-					<th><i class="fa fa-trash locale-table-header-icon locale-table-header-icon-delete"></i></th>
-					<th><i class="fa fa-android locale-table-header-icon locale-table-header-icon-android"></i></th>
-					<th><i class="fa fa-apple locale-table-header-icon locale-table-header-icon-ios"></i></th>
+					<th><i class="fa fa-cogs language-table-header-icon language-table-header-icon-settings"></i></th>
+					<th><i class="fa fa-trash language-table-header-icon language-table-header-icon-delete"></i></th>
+					<th><i class="fa fa-android language-table-header-icon language-table-header-icon-android"></i></th>
+					<th><i class="fa fa-apple language-table-header-icon language-table-header-icon-ios"></i></th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="locale in locales">
-					<td class="align-middle" style="padding-left:1em">{{locale.fullName}}</td>
+				<tr ng-repeat="language in languages">
+					<td class="align-middle" style="padding-left:1em">{{language.fullName}}</td>
 					<td class="align-middle">
 						<div class="progress progress-bar-indicator">
-							<div class="progress-bar" ng-class="localeProgressColor(locale.translated)" ng-style="localeProgressValue(locale.translated)">
-								<span ng-show="locale.translated > 0">
-									{{locale.translated}}%
+							<div class="progress-bar" ng-class="languageProgressColor(language.translated)" ng-style="languageProgressValue(language.translated)">
+								<span ng-show="language.translated > 0">
+									{{language.translated}}%
 								</span>
 							</div>
 						</div>
 					</td>
 					<td class="align-middle">
 						<div class="progress progress-bar-indicator">
-							<div class="progress-bar" ng-class="localeProgressColor(locale.validated)" ng-style="localeProgressValue(locale.validated)">
-								<span ng-show="locale.validated > 0">
-									{{locale.validated}}%
+							<div class="progress-bar" ng-class="languageProgressColor(language.validated)" ng-style="languageProgressValue(language.validated)">
+								<span ng-show="language.validated > 0">
+									{{language.validated}}%
 								</span>
 							</div>
 						</div>
 					</td>
 					<td>
-						<button type="button" class="btn btn-outline-light button-action" ng-click="openEditLanguageDialog(locale)">
+						<button type="button" class="btn btn-outline-light button-action" ng-click="openEditLanguageDialog(language)">
 							<i class="fa button-action-icon fa-pencil"></i>
 						</button>
 					</td>
 					<td>
-						<button type="button" class="btn btn-outline-light button-action" ng-click="openDeleteLanguageDialog(locale)">
+						<button type="button" class="btn btn-outline-light button-action" ng-click="openDeleteLanguageDialog(language)">
 							<i class="fa button-action-icon fa-times"></i>
 						</button>
 					</td>
 					<td>
-						<button type="button" class="btn btn-outline-light button-action" ng-click="exportAndroid(locale)">
+						<button type="button" class="btn btn-outline-light button-action" ng-click="exportAndroid(language)">
 							<i class="fa button-action-icon fa-arrow-down"></i>
 						</button>
 					</td>
 					<td>
-						<button type="button" class="btn btn-outline-light button-action" ng-click="exportIOS(locale)">
+						<button type="button" class="btn btn-outline-light button-action" ng-click="exportIOS(language)">
 							<i class="fa button-action-icon fa-arrow-down"></i>
 						</button>
 					</td>

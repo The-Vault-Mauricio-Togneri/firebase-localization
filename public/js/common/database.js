@@ -19,49 +19,49 @@ app.service('database', function()
 
 	// -------------------------------
 
-	this.localesEntryRef = function(id)
+	this.languagesEntryRef = function(id)
 	{
-		return databaseRef().child('locales/' + id)
+		return databaseRef().child('languages/' + id)
 	}
 
-	this.localesRef = function()
+	this.languagesRef = function()
 	{
-		return databaseRef().child('locales')
+		return databaseRef().child('languages')
 	}
 
-	this.localesFromSnap = function(snap)
+	this.languagesFromSnap = function(snap)
 	{
-		const locales = {}
+		const languages = {}
 
 		snap.forEach(function(entry)
 		{
-			locales[entry.key] = new Locale(entry.key, entry.val())
+			languages[entry.key] = new Language(entry.key, entry.val())
 		})
 
-		return locales
+		return languages
 	}
 
-	this.addLocaleRef = function(value)
+	this.addLanguageRef = function(value)
 	{
-		this.localesRef().push(value, function(error)
+		this.languagesRef().push(value, function(error)
 		{
-			logDatabaseResult(error, 'Add locale => ' + JSON.stringify(value))
-		})
-	}
-
-	this.updateLocaleRef = function(id, value)
-	{
-		this.localesEntryRef(id).set(value, function(error)
-		{
-			logDatabaseResult(error, 'Update locale (' + id + ') => ' + JSON.stringify(value))
+			logDatabaseResult(error, 'Add language => ' + JSON.stringify(value))
 		})
 	}
 
-	this.removeLocaleRef = function(id)
+	this.updateLanguageRef = function(id, value)
 	{
-		this.localesEntryRef(id).remove(function(error)
+		this.languagesEntryRef(id).set(value, function(error)
 		{
-			logDatabaseResult(error, 'Remove locale (' + id + ')')
+			logDatabaseResult(error, 'Update language (' + id + ') => ' + JSON.stringify(value))
+		})
+	}
+
+	this.removeLanguageRef = function(id)
+	{
+		this.languagesEntryRef(id).remove(function(error)
+		{
+			logDatabaseResult(error, 'Remove language (' + id + ')')
 		})
 	}
 
