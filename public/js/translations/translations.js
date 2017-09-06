@@ -143,26 +143,6 @@ app.controller('translationsCtrl', function($scope, database)
 		database.updateTranslationRef(form.id, entry)
 	}
 
-	function translationById(id)
-	{
-		const index = translationIndexById(id)
-
-		return (index != -1) ? $scope.translations[index] : null
-	}
-
-	function translationIndexById(id)
-	{
-		for (const index in $scope.translations)
-		{
-			if ($scope.translations[index].id == id)
-			{
-				return index
-			}
-		}
-
-		return -1
-	}
-
 	$scope.openDeleteTranslationDialog = function(translation)
 	{
 		controllerById('dialog-delete-translation').open(translation)
@@ -181,9 +161,10 @@ app.controller('translationsCtrl', function($scope, database)
 
 	$scope.createNewComment = function(translationId, localeId, comment)
 	{
-		console.log(translationId)
-		console.log(localeId)
-		console.log(comment)
+		const translation = translationById(translationId)
+		const locale = translation.localeById(localeId)
+		//console.log(locale)
+		//locale.comments.push(comment)
 	}
 
 	$scope.translationValidatedState = function(value)
@@ -200,6 +181,26 @@ app.controller('translationsCtrl', function($scope, database)
 		const byText = ($scope.filter.content ? translation.contains($scope.filter.content.toLowerCase()) : true)
 
 		return (translated || notTranslated || validated || notValidated) && byText
+	}
+
+	function translationById(id)
+	{
+		const index = translationIndexById(id)
+
+		return (index != -1) ? $scope.translations[index] : null
+	}
+
+	function translationIndexById(id)
+	{
+		for (const index in $scope.translations)
+		{
+			if ($scope.translations[index].id == id)
+			{
+				return index
+			}
+		}
+
+		return -1
 	}
 
 	function orderTranslations()

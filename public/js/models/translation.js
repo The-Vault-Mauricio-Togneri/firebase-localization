@@ -15,6 +15,19 @@ function Translation(id, translation)
 		this.locales[index].oldValue = this.locales[index].value
 	}
 
+	this.localeById = function(id)
+	{
+		for (const index in this.locales)
+		{
+			if (index == id)
+			{
+				return this.locales[index]
+			}
+		}
+
+		return null
+	}
+
 	this.contains = function(text)
 	{
 		for (const index in this.locales)
