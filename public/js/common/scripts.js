@@ -23,6 +23,14 @@ app.filter('formatDate', function()
 	}
 })
 
+app.filter('gravatar', function()
+{
+	return function(input)
+	{
+		return "http://www.gravatar.com/avatar/" + md5(input) + "?s=30"
+	}
+})
+
 function byId(id)
 {
 	return document.getElementById(id)

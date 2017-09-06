@@ -5,22 +5,17 @@
 				<h5 class="modal-title">History</h5>
 			</div>
 			<div class="modal-body">
-				<div class="form-group" ng-repeat="entry in history">
-					<table>
-						<tr>
-							<td><b>Value:</b></td>
-							<td>{{entry.value}}</td>
-						</tr>
-						<tr>
-							<td style="padding-right:2em"><b>Author:</b></td>
-							<td><a href="mailto:{{entry.author}}">{{entry.author}}</a></td>
-						</tr>
-						<tr>
-							<td><b>Date:</b></td>
-							<td><span ng-bind="{{entry.date}} | formatDate"></span></td>
-						</tr>
-					</table>
-					<hr ng-show="!$last"class="separator"/>
+				<div class="card" style="margin-bottom:1em" ng-repeat="entry in history">
+					<div class="card-header" style="padding-left:0.8em">
+						<div class="d-flex justify-content-start">
+							<img src="{{entry.author | gravatar}}" style="padding-right:0.5em"/>
+							<a class="align-self-center" style="text-decoration:none" href="mailto:{{entry.author}}">{{entry.author}}</a>
+							<div class="ml-auto align-self-center" style="color:#888888;font-size:0.8em" ng-bind="{{entry.date}} | formatDate"></div>
+						</div>
+					</div>
+					<div class="card-block" style="padding:0.6em">
+						{{entry.value}}
+					</div>
 				</div>
 			</div>
 			<div class="modal-footer">
