@@ -1,24 +1,5 @@
 app.service('database', function()
 {
-	function databaseRef()
-	{
-		return firebase.database().ref()
-	}
-
-	function logDatabaseResult(error, label)
-	{
-		if (error)
-		{
-			console.log(label + ': FAILED: ' + error)
-		}
-		else
-		{
-			console.log(label + ': OK')
-		}
-	}
-
-	// -------------------------------
-
 	this.languagesEntryRef = function(id)
 	{
 		return databaseRef().child('languages/' + id)
@@ -105,6 +86,14 @@ app.service('database', function()
 		})
 	}
 
+	this.updateSegmentKeyRef = function(id, value)
+	{
+		this.segmentsEntryRef(id + '/key').set(value, function(error)
+		{
+			logDatabaseResult(error, 'Update segment (' + id + ').key => ' + JSON.stringify(value))
+		})
+	}
+
 	this.removeSegmentRef = function(id)
 	{
 		this.segmentsEntryRef(id).remove(function(error)
@@ -115,8 +104,45 @@ app.service('database', function()
 
 	// -------------------------------
 
+	this.updateTranslationValueRef = function(segmentId, languageId, value)
+	{
+		this.segmentsEntryRef(segmentId + '/translations/' + languageId + '/value').set(value, function(error)
+		{
+			logDatabaseResult(error, 'Update translation (' + segmentId + '.' + languageId +  ').value => ' + JSON.stringify(value))
+		})
+	}
+
+	this.updateTranslationValidatedRef = function(segmentId, languageId, value)
+	{
+		this.segmentsEntryRef(segmentId + '/translations/' + languageId + '/validated').set(value, function(error)
+		{
+			logDatabaseResult(error, 'Update translation (' + segmentId + '.' + languageId +  ').validated => ' + JSON.stringify(value))
+		})
+	}
+
+	// -------------------------------
+
 	this.apiTokenRef = function()
 	{
 		return databaseRef().child('api/token')
+	}
+
+	// -------------------------------
+
+	function databaseRef()
+	{
+		return firebase.database().ref()
+	}
+
+	function logDatabaseResult(error, label)
+	{
+		if (error)
+		{
+			console.log(label + ': FAILED: ' + error)
+		}
+		else
+		{
+			console.log(label + ': OK')
+		}
 	}
 })

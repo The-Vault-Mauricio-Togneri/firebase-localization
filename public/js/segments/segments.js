@@ -2,6 +2,7 @@ app.controller('segmentsCtrl', function($scope, database)
 {
 	$scope.languages = {}
 	$scope.segments = {}
+
 	$scope.filter = {
 		content: '',
 		language: {},
@@ -41,22 +42,22 @@ app.controller('segmentsCtrl', function($scope, database)
 
 	$scope.onSegmentKeyUpdated = function(segment)
 	{
-		database.updateSegmentRef(segment.id + '/key', segment.key)
+		database.updateSegmentKeyRef(segment.id, segment.key)
 
 		orderSegments()
 	}
 
 	$scope.onSegmentValueUpdated = function(segment, language)
 	{
-		const newValue = segment.languages[language.id].value
-		const oldValue = segment.languages[language.id].oldValue
+		const newValue = segment.translations[language.id].value
+		const oldValue = segment.translations[language.id].oldValue
 
 		if (newValue != oldValue)
 		{
-			database.updateSegmentRef(segment.id + '/languages/' + language.id + '/value', newValue)
-			segment.languages[language.id].oldValue = newValue
+			database.updateTranslationValueRef(segment.id, language.id, newValue)
+			segment.translations[language.id].oldValue = newValue
 
-			if (segment.languages[language.id].validated)
+			if (segment.translations[language.id].validated)
 			{
 				updateSegmentValidated(segment, language, false)
 			}
@@ -65,13 +66,13 @@ app.controller('segmentsCtrl', function($scope, database)
 
 	$scope.onSegmentValidatedChanged = function(segment, language)
 	{
-		updateSegmentValidated(segment, language, !segment.languages[language.id].validated)
+		updateSegmentValidated(segment, language, !segment.translations[language.id].validated)
 	}
 
 	function updateSegmentValidated(segment, language, value)
 	{
-		segment.languages[language.id].validated = value
-		database.updateSegmentRef(segment.id + '/languages/' + language.id + '/validated', value)
+		segment.translations[language.id].validated = value
+		database.updateTranslationValidatedRef(segment.id, language.id, value)
 	}
 
 	$scope.openAddSegmentDialog = function()
@@ -89,7 +90,7 @@ app.controller('segmentsCtrl', function($scope, database)
 			screenshot: form.screenshot,
 			isPlural: form.isPlural,
 			isArray: form.isArray,
-			languages: form.languages
+			translations: form.translations
 		}
 
 		const ref = database.addSegmentRef(entry)
@@ -114,7 +115,7 @@ app.controller('segmentsCtrl', function($scope, database)
 			screenshot: form.screenshot,
 			isPlural: form.isPlural,
 			isArray: form.isArray,
-			languages: {}
+			translations: {}
 		}
 
 		const sourceSegment = segmentById(form.id)
@@ -126,17 +127,17 @@ app.controller('segmentsCtrl', function($scope, database)
 		sourceSegment.isPlural    = form.isPlural
 		sourceSegment.isArray     = form.isArray
 
-		for (const index in form.languages)
+		for (const index in form.translations)
 		{
-			const language = form.languages[index]
+			const language = form.translations[index]
 
-			entry.languages[index] = {
+			entry.translations[index] = {
 				value: language.value,
 				validated: language.validated && (language.value == language.oldValue)
 			}
 
-			sourceSegment.languages[index].value     = entry.languages[index].value
-			sourceSegment.languages[index].validated = entry.languages[index].validated
+			sourceSegment.translations[index].value     = entry.translations[index].value
+			sourceSegment.translations[index].validated = entry.translations[index].validated
 		}
 		
 		orderSegments()
@@ -162,7 +163,7 @@ app.controller('segmentsCtrl', function($scope, database)
 	$scope.createNewComment = function(segmentId, languageId, comment)
 	{
 		const segment = segmentById(segmentId)
-		const language = segment.languageById(languageId)
+		const language = segment.translationById(languageId)
 		//console.log(language)
 		//language.comments.push(comment)
 	}

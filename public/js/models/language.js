@@ -1,8 +1,8 @@
-function Language(id, snap)
+function Language(id, data)
 {
 	this.id = id
-	this.code = snap.code
-	this.name = LOCALES[snap.code]
+	this.code = data.code
+	this.name = LOCALES[data.code]
 	this.fullName = this.name + ' (' + this.code + ')'
 }
 

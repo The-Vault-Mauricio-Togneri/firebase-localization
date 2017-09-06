@@ -50,10 +50,10 @@ app.controller('segmentsDialogSegmentCtrl', function($scope)
 		for (const index in languages)
 		{
 			$scope.form.languages[index] = {
-				value: segment.languages[index].value,
-				oldValue: segment.languages[index].value,
-				validated: segment.languages[index].validated,
-				history: segment.languages[index].history,
+				value: segment.translations[index].value,
+				oldValue: segment.translations[index].value,
+				validated: segment.translations[index].validated,
+				history: segment.translations[index].history,
 			}
 		}
 	

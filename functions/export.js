@@ -9,7 +9,7 @@ module.exports = {
 		{
 			const segment = segments[index]
 			const key = segment.key
-			const value = segment.languages[language].value
+			const value = segment.translations[language].value
 			
 			result += `\t<string name="${key}">${value}"</string>\n`
 		}
@@ -27,7 +27,7 @@ module.exports = {
 		{
 			const segment = segments[index]
 			const key = segment.key
-			const value = segment.languages[language].value
+			const value = segment.translations[language].value
 	
 			result += `"${key}" = "${value}";\n`
 		}

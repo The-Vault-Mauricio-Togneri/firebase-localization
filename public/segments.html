@@ -41,14 +41,20 @@
 	<!-- Local scripts -->
 	<script src="js/models/language.js"></script>
 	<script src="js/models/segment.js"></script>
+	<script src="js/models/translation.js"></script>
+	<script src="js/models/history.js"></script>
+	<script src="js/models/comment.js"></script>
+
 	<script src="js/common/scripts.js"></script>
 	<script src="js/common/database.js"></script>
+	<script src="js/common/firebase.js"></script>
+
 	<script src="js/segments/segments.js"></script>
 	<script src="js/segments/dialog-delete-segment.js"></script>
 	<script src="js/segments/dialog-segment-comments.js"></script>
 	<script src="js/segments/dialog-segment-history.js"></script>
 	<script src="js/segments/dialog-segment.js"></script>
-	<script src="js/common/firebase.js"></script>
+
 </head>
 
 <body id ="segments-controller" ng-controller="segmentsCtrl">
@@ -141,8 +147,8 @@
 					</td>
 					<td ng-repeat="language in languages" ng-show="filter.language[language.id]">
 						<div class="input-group">
-							<textarea class="form-control segment-input" type="text" ng-model="segment.languages[language.id].value" ng-blur="onSegmentValueUpdated(segment, language)" rows="1"></textarea>
-							<div class="input-group-addon segment-checkbox" ng-class="segmentValidatedState(segment.languages[language.id].validated)" ng-click="onSegmentValidatedChanged(segment, language)">
+							<textarea class="form-control segment-input" type="text" ng-model="segment.translations[language.id].value" ng-blur="onSegmentValueUpdated(segment, language)" rows="1"></textarea>
+							<div class="input-group-addon segment-checkbox" ng-class="segmentValidatedState(segment.translations[language.id].validated)" ng-click="onSegmentValidatedChanged(segment, language)">
 								<i class="fa fa-check"></i>
 							</div>
 						</div>

@@ -54,9 +54,9 @@ app.controller('overviewCtrl', function($scope, database)
 		{
 			const segment = segments[segmentIndex]
 
-			for (const languageIndex in segment.languages)
+			for (const languageIndex in segment.translations)
 			{
-				const language = segment.languages[languageIndex]
+				const language = segment.translations[languageIndex]
 				
 				summary[languageIndex].total++
 

@@ -1,27 +1,27 @@
-function Segment(id, segment)
+function Segment(id, data)
 {
 	this.id = id
-	this.key = segment.key
-	this.description = segment.description
-	this.tags = segment.tags
-	this.maxLength = segment.maxLength
-	this.screenshot = segment.screenshot
-	this.isPlural = segment.isPlural
-	this.isArray = segment.isArray
-	this.languages = segment.languages
+	this.key = data.key
+	this.description = data.description
+	this.tags = data.tags
+	this.maxLength = data.maxLength
+	this.screenshot = data.screenshot
+	this.isPlural = data.isPlural
+	this.isArray = data.isArray
+	this.translations = {}
 
-	for (const index in this.languages)
+	for (const index in data.translations)
 	{
-		this.languages[index].oldValue = this.languages[index].value
+		this.translations[index] = new Translation(index, data.translations[index])
 	}
 
-	this.languageById = function(id)
+	this.translationById = function(id)
 	{
-		for (const index in this.languages)
+		for (const index in this.translations)
 		{
 			if (index == id)
 			{
-				return this.languages[index]
+				return this.translations[index]
 			}
 		}
 
@@ -30,9 +30,9 @@ function Segment(id, segment)
 
 	this.contains = function(text)
 	{
-		for (const index in this.languages)
+		for (const index in this.translations)
 		{
-			if (this.languages[index].value.toLowerCase().includes(text))
+			if (this.translations[index].value.toLowerCase().includes(text))
 			{
 				return true	
 			}
@@ -43,9 +43,9 @@ function Segment(id, segment)
 
 	this.hasValidated = function()
 	{
-		for (const index in this.languages)
+		for (const index in this.translations)
 		{
-			if (this.languages[index].validated)
+			if (this.translations[index].validated)
 			{
 				return true	
 			}
@@ -56,9 +56,9 @@ function Segment(id, segment)
 
 	this.hasNotValidated = function()
 	{
-		for (const index in this.languages)
+		for (const index in this.translations)
 		{
-			if (!this.languages[index].validated)
+			if (!this.translations[index].validated)
 			{
 				return true	
 			}
@@ -69,9 +69,9 @@ function Segment(id, segment)
 
 	this.hasTranslated = function()
 	{
-		for (const index in this.languages)
+		for (const index in this.translations)
 		{
-			if (this.languages[index].value)
+			if (this.translations[index].value)
 			{
 				return true	
 			}
@@ -82,9 +82,9 @@ function Segment(id, segment)
 
 	this.hasNotTranslated = function()
 	{
-		for (const index in this.languages)
+		for (const index in this.translations)
 		{
-			if (!this.languages[index].value)
+			if (!this.translations[index].value)
 			{
 				return true	
 			}
