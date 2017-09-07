@@ -28,12 +28,12 @@ app.controller(DIALOG_LANGUAGE, function($scope, database, ui)
 
 	function getSelectValue()
 	{
-		return $('#dialog-language-select').val()
+		return $('.js-example-placeholder-single').val()
 	}
 
 	function setSelectValue(value)
 	{
-		$('#dialog-language-select').val(value).trigger('change.select2')
+		$('.js-example-placeholder-single').val(value).trigger('change.select2')
 	}
 
 	$scope.onLanguageSelected = function()

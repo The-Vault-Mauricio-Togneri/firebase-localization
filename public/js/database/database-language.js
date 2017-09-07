@@ -32,7 +32,7 @@ app.service('databaseLanguage', function(database)
 
 	this.updateLanguage = function(id, value)
 	{
-		this.languagesEntryRef(id).set(value, function(error)
+		this.entryRef(id).set(value, function(error)
 		{
 			database.logDatabaseResult(error, `Update language (${id}) => ${JSON.stringify(value)}`)
 		})
@@ -40,7 +40,7 @@ app.service('databaseLanguage', function(database)
 
 	this.removeLanguage = function(id)
 	{
-		this.languagesEntryRef(id).remove(function(error)
+		this.entryRef(id).remove(function(error)
 		{
 			database.logDatabaseResult(error, `Remove language (${id})`)
 		})
