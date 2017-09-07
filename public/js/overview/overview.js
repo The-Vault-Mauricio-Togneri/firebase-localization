@@ -108,12 +108,12 @@ app.controller(CONTROLLER_OVERVIEW, function($scope, database, databaseToken, da
 
 	$scope.exportAndroid = function(language)
 	{
-		downloadFile(`https://${window.location.host}/api/export/${language.code}/android`)
+		downloadFile(`https://${window.location.host}/api/export/${language.code}/android?token=${$scope.apiToken}`)
 	}
 
 	$scope.exportIOS = function(language)
 	{
-		downloadFile(`https://${window.location.host}/api/export/${language.code}/ios`)
+		downloadFile(`https://${window.location.host}/api/export/${language.code}/ios?token=${$scope.apiToken}`)
 	}
 
 	function downloadFile(path)
