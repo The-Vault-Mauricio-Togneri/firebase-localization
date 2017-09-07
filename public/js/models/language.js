@@ -3,7 +3,7 @@ function Language(id, data)
 	this.id = id
 	this.code = data.code
 	this.name = LOCALES[data.code]
-	this.fullName = this.name + ' (' + this.code + ')'
+	this.fullName = this.name + ` (${this.code})`
 }
 
 const LOCALES = {

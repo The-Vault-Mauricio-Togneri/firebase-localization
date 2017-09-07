@@ -28,8 +28,8 @@ app.controller(CONTROLLER_OVERVIEW, function($scope, database)
 					$scope.languages[index].validated  = summary[index].validated
 				}
 
-				$scope.$applyAsync()
 				$scope.loading = false
+				$scope.$applyAsync()
 
 				database.apiTokenRef().once('value', snap =>
 				{
@@ -108,16 +108,18 @@ app.controller(CONTROLLER_OVERVIEW, function($scope, database)
 
 	$scope.exportAndroid = function(language)
 	{
-		downloadFile('https://' + window.location.host + '/api/export/' + language.code + '/android')
+		downloadFile(`https://${window.location.host}/api/export/${language.code}/android`)
 	}
 
 	$scope.exportIOS = function(language)
 	{
-		downloadFile('https://' + window.location.host + '/api/export/' + language.code + '/ios')
+		downloadFile(`https://${window.location.host}/api/export/${language.code}/ios`)
 	}
 
 	function downloadFile(path)
 	{
+		console.log(`Download file: ${path}`)
+
 		const a = document.createElement('A')
 		a.href = path
 		a.download = path.substr(path.lastIndexOf('/') + 1)

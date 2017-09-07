@@ -16,7 +16,7 @@ app.filter('formatDate', function()
 		}
 		else if (diff > 0)
 		{
-			formatted += ' (' + diff + ' days ago)'
+			formatted += ` (${diff} days ago)`
 		}
 
 		return formatted
@@ -27,7 +27,7 @@ app.filter('gravatar', function()
 {
 	return function(input)
 	{
-		return 'http://www.gravatar.com/avatar/' + md5(input) + '?s=30'
+		return `http://www.gravatar.com/avatar/${md5(input)}?s=30`
 	}
 })
 
@@ -38,12 +38,12 @@ function showError(message)
 
 function controller(id)
 {
-	return angular.element($('[ng-controller=' + id + ']')).scope()
+	return angular.element($(`[ng-controller=${id}]`)).scope()
 }
 
 function dialog(id)
 {
-	return $('[ng-controller=' + id + ']')
+	return $(`[ng-controller=${id}]`)
 }
 
 function openDialog(id)
@@ -58,10 +58,10 @@ function closeDialog(id)
 
 function openTab(id, index)
 {
-	$('#' + id + ' a:' + index).tab('show')
+	$(`#${id} a:${index}`).tab('show')
 }
 
 function focus(id)
 {
-	$('#' + id).focus()
+	$(`#${id}`).focus()
 }
