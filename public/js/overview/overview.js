@@ -1,9 +1,9 @@
 function onLanguageSelected()
 {
-	controllerById('dialog-language').onLanguageSelected()
+	controllerById(DIALOG_LANGUAGE).onLanguageSelected()
 }
 
-app.controller('overview', function($scope, database)
+app.controller(CONTROLLER_OVERVIEW, function($scope, database)
 {
 	$scope.apiToken = ''
 
@@ -116,7 +116,7 @@ app.controller('overview', function($scope, database)
 
 	$scope.openProfileDialog = function()
 	{
-		controllerById('dialog-profile').open()
+		controllerById(DIALOG_PROFILE).open()
 	}
 
 	$scope.updateProfile = function(password)
@@ -141,7 +141,7 @@ app.controller('overview', function($scope, database)
 
 	$scope.openAddLanguageDialog = function()
 	{
-		controllerById('dialog-language').openAdd()
+		controllerById(DIALOG_LANGUAGE).openAdd()
 	}
 
 	$scope.addLanguage = function(value)
@@ -155,7 +155,7 @@ app.controller('overview', function($scope, database)
 
 	$scope.openEditLanguageDialog = function(language)
 	{
-		controllerById('dialog-language').openEdit(language)
+		controllerById(DIALOG_LANGUAGE).openEdit(language)
 	}
 
 	$scope.editLanguage = function(id, value)
@@ -169,7 +169,7 @@ app.controller('overview', function($scope, database)
 
 	$scope.openDeleteLanguageDialog = function(language)
 	{
-		controllerById('dialog-delete-language').open(language)
+		controllerById(DIALOG_DELETE_LANGUAGE).open(language)
 	}
 
 	$scope.deleteLanguage = function(id)

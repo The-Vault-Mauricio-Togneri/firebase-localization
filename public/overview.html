@@ -43,6 +43,7 @@
 	<script src="js/models/history.js"></script>
 	<script src="js/models/comment.js"></script>
 
+	<script src="js/common/constants.js"></script>
 	<script src="js/common/scripts.js"></script>
 	<script src="js/common/database.js"></script>
 	<script src="js/common/firebase.js"></script>
@@ -55,7 +56,7 @@
 
 </head>
 
-<body id="overview-controller" ng-controller="overview">
+<body ng-controller="overview">
 
 	<div id="overview-content" class="view-gone">
 
@@ -130,7 +131,7 @@
 			Add Language
 		</button>
 
-		<button type="button" class="btn btn-primary logout-profile" ng-click="openProfileDialog()">
+		<button type="button" class="btn btn-primary button-profile" ng-click="openProfileDialog()">
 			<i class="fa fa-user"></i>
 			Profile
 		</button>

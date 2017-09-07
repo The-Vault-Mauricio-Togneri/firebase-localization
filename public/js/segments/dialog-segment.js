@@ -1,4 +1,4 @@
-app.controller('dialogSegment', function($scope)
+app.controller(DIALOG_SEGMENT, function($scope)
 {
 	$scope.form = {
 		id: '',
@@ -69,26 +69,14 @@ app.controller('dialogSegment', function($scope)
 	{
 		$scope.form.formError = false
 		
-		$('#dialog-segment').on('shown.bs.modal', function()
+		dialog(DIALOG_SEGMENT).on('shown.bs.modal', function()
 		{
-			$('#dialog-segment-key').focus()
+			focus('dialog-segment-key')
 		})
 
 		$('#dialog-segment-tabs a:first').tab('show')
 
-		$('#dialog-segment').on('shown.bs.tab', function(event)
-		{
-			if (event.target.href.includes('#dialog-segment-tab-segments'))
-			{
-				$('#dialog-segment-key').focus()
-			}
-			else if (event.target.href.includes('#dialog-segment-tab-properties'))
-			{
-				$('#dialog-segment-description').focus()
-			}
-		})
-
-		openDialog('dialog-segment')
+		openDialog(DIALOG_SEGMENT)
 	}
 
 	function segmentFormValid(form)
@@ -97,7 +85,7 @@ app.controller('dialogSegment', function($scope)
 		{
 			$scope.form.formError = true
 			$('#dialog-segment-tabs a:first').tab('show')
-			$('#dialog-segment-key').focus()
+			focus('dialog-segment-key')
 		}
 		else
 		{
@@ -109,9 +97,9 @@ app.controller('dialogSegment', function($scope)
 	{
 		if (segmentFormValid(form))
 		{
-			controllerById('segments-controller').addSegment(form)
+			controllerById(CONTROLLER_SEGMENTS).addSegment(form)
 
-			closeDialog('dialog-segment')
+			closeDialog(DIALOG_SEGMENT)
 		}
 	}
 
@@ -119,19 +107,19 @@ app.controller('dialogSegment', function($scope)
 	{
 		if (segmentFormValid(form))
 		{
-			controllerById('segments-controller').editSegment(form)
+			controllerById(CONTROLLER_SEGMENTS).editSegment(form)
 
-			closeDialog('dialog-segment')
+			closeDialog(DIALOG_SEGMENT)
 		}
 	}
 
 	$scope.openSegmentHistory = function(history)
 	{
-		controllerById('dialog-translation-history').open(history)
+		controllerById(DIALOG_TRANSLATION_HISTORY).open(history)
 	}
 
 	$scope.openSegmentComments = function(languageId, comments)
 	{
-		controllerById('dialog-translation-comments').open($scope.form.id, languageId, comments)
+		controllerById(DIALOG_TRANSLATION_COMMENTS).open($scope.form.id, languageId, comments)
 	}
 })

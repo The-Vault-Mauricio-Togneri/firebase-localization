@@ -57,17 +57,30 @@ function showError(message)
 
 function controllerById(id)
 {
-	return angular.element($('#' + id)).scope()
+	//const element = document.querySelector('[ng-controller=' + id + ']');
+	//return angular.element(element).scope()
+
+	return angular.element($('[ng-controller=' + id + ']')).scope()
+}
+
+function dialog(id)
+{
+	return $('[ng-controller=' + id + ']')
 }
 
 function openDialog(id)
 {
-	$('#' + id).modal()
+	$('[ng-controller=' + id + ']').modal()
 }
 
 function closeDialog(id)
 {
-	$('#' + id).modal('hide')
+	$('[ng-controller=' + id + ']').modal('hide')
+}
+
+function focus(id)
+{
+	$('#' + id).focus()
 }
 
 function downloadFile(path)
