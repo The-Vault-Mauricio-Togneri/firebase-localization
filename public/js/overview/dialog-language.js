@@ -1,4 +1,4 @@
-app.controller(DIALOG_LANGUAGE, function($scope, database)
+app.controller(DIALOG_LANGUAGE, function($scope, database, ui)
 {
 	$scope.form = {
 		id: '',
@@ -23,7 +23,7 @@ app.controller(DIALOG_LANGUAGE, function($scope, database)
 		$scope.form.buttonDisabled = true
 
 		setSelectValue(select)
-		openDialog(DIALOG_LANGUAGE)
+		ui.openDialog(DIALOG_LANGUAGE)
 	}
 
 	function getSelectValue()
@@ -46,13 +46,13 @@ app.controller(DIALOG_LANGUAGE, function($scope, database)
 	{
 		controller(CONTROLLER_OVERVIEW).addLanguage(getSelectValue())
 
-		closeDialog(DIALOG_LANGUAGE)
+		ui.closeDialog(DIALOG_LANGUAGE)
 	}
 
 	$scope.onEdit = function(form)
 	{
 		controller(CONTROLLER_OVERVIEW).editLanguage(form.id, getSelectValue())
 
-		closeDialog(DIALOG_LANGUAGE)
+		ui.closeDialog(DIALOG_LANGUAGE)
 	}
 })

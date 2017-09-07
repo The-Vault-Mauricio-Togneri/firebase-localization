@@ -1,4 +1,4 @@
-app.controller(CONTROLLER_SEGMENTS, function($scope, database)
+app.controller(CONTROLLER_SEGMENTS, function($scope, database, ui)
 {
 	$scope.languages = {}
 
@@ -39,7 +39,7 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database)
 
 		$('#collapse-filter').on('shown.bs.collapse', function()
 		{
-			focus('filter-content-input')
+			ui.focus('filter-content-input')
 		})
 	}
 
@@ -160,7 +160,7 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database)
 		orderSegments()
 		database.removeSegmentRef(id)
 
-		closeDialog(DIALOG_SEGMENT)
+		ui.closeDialog(DIALOG_SEGMENT)
 	}
 
 	$scope.createNewComment = function(segmentId, languageId, comment)

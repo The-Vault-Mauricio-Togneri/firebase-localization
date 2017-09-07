@@ -1,4 +1,4 @@
-app.controller(DIALOG_DELETE_LANGUAGE, function($scope, database)
+app.controller(DIALOG_DELETE_LANGUAGE, function($scope, database, ui)
 {
 	$scope.form = {
 		id: '',
@@ -10,13 +10,13 @@ app.controller(DIALOG_DELETE_LANGUAGE, function($scope, database)
 		$scope.form.id   = language.id
 		$scope.form.name = language.fullName
 
-		openDialog(DIALOG_DELETE_LANGUAGE)
+		ui.openDialog(DIALOG_DELETE_LANGUAGE)
 	}
 
 	$scope.onDelete = function(id)
 	{
 		controller(CONTROLLER_OVERVIEW).deleteLanguage(id)
 
-		closeDialog(DIALOG_DELETE_LANGUAGE)
+		ui.closeDialog(DIALOG_DELETE_LANGUAGE)
 	}
 })

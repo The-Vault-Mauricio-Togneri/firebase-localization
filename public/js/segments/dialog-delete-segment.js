@@ -1,4 +1,4 @@
-app.controller(DIALOG_DELETE_SEGMENT, function($scope)
+app.controller(DIALOG_DELETE_SEGMENT, function($scope, ui)
 {
 	$scope.form = {
 		id: '',
@@ -10,13 +10,13 @@ app.controller(DIALOG_DELETE_SEGMENT, function($scope)
 		$scope.form.id  = segment.id
 		$scope.form.key = segment.key
 
-		openDialog(DIALOG_DELETE_SEGMENT)
+		ui.openDialog(DIALOG_DELETE_SEGMENT)
 	}
 
 	$scope.onDeleteSegment = function(form)
 	{
 		controller(CONTROLLER_SEGMENTS).deleteSegment(form.id)
 
-		closeDialog(DIALOG_DELETE_SEGMENT)
+		ui.closeDialog(DIALOG_DELETE_SEGMENT)
 	}
 })

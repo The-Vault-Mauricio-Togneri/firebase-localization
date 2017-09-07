@@ -1,4 +1,4 @@
-app.controller(DIALOG_TRANSLATION_COMMENTS, function($scope)
+app.controller(DIALOG_TRANSLATION_COMMENTS, function($scope, ui)
 {
 	$scope.segmentId = ''
 	$scope.languageId = ''
@@ -22,7 +22,7 @@ app.controller(DIALOG_TRANSLATION_COMMENTS, function($scope)
 
 		$scope.form.comments = $scope.form.comments.reverse()
 
-		openDialog(DIALOG_TRANSLATION_COMMENTS)
+		ui.openDialog(DIALOG_TRANSLATION_COMMENTS)
 	}
 
 	$scope.createNewComment = function(form)

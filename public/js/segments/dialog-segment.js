@@ -1,4 +1,4 @@
-app.controller(DIALOG_SEGMENT, function($scope)
+app.controller(DIALOG_SEGMENT, function($scope, ui)
 {
 	$scope.form = {
 		id: '',
@@ -69,14 +69,14 @@ app.controller(DIALOG_SEGMENT, function($scope)
 	{
 		$scope.form.formError = false
 		
-		dialog(DIALOG_SEGMENT).on('shown.bs.modal', function()
+		ui.dialog(DIALOG_SEGMENT).on('shown.bs.modal', function()
 		{
-			focus('dialog-segment-key')
+			ui.focus('dialog-segment-key')
 		})
 
-		openTab('dialog-segment-tabs', 'first')
+		ui.openTab('dialog-segment-tabs', 'first')
 
-		openDialog(DIALOG_SEGMENT)
+		ui.openDialog(DIALOG_SEGMENT)
 	}
 
 	function segmentFormValid(form)
@@ -85,8 +85,8 @@ app.controller(DIALOG_SEGMENT, function($scope)
 		{
 			$scope.form.formError = true
 			
-			openTab('dialog-segment-tabs', 'first')
-			focus('dialog-segment-key')
+			ui.openTab('dialog-segment-tabs', 'first')
+			ui.focus('dialog-segment-key')
 		}
 		else
 		{
@@ -100,7 +100,7 @@ app.controller(DIALOG_SEGMENT, function($scope)
 		{
 			controller(CONTROLLER_SEGMENTS).addSegment(form)
 
-			closeDialog(DIALOG_SEGMENT)
+			ui.closeDialog(DIALOG_SEGMENT)
 		}
 	}
 
@@ -110,7 +110,7 @@ app.controller(DIALOG_SEGMENT, function($scope)
 		{
 			controller(CONTROLLER_SEGMENTS).editSegment(form)
 
-			closeDialog(DIALOG_SEGMENT)
+			ui.closeDialog(DIALOG_SEGMENT)
 		}
 	}
 

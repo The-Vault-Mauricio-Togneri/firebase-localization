@@ -1,4 +1,4 @@
-app.controller(DIALOG_PROFILE, function($scope)
+app.controller(DIALOG_PROFILE, function($scope, ui)
 {
 	$scope.form = {
 		password: '',
@@ -10,14 +10,14 @@ app.controller(DIALOG_PROFILE, function($scope)
 		$scope.form.password = ''
 		$scope.form.passwordConfirmation = ''
 
-		openDialog(DIALOG_PROFILE)
+		ui.openDialog(DIALOG_PROFILE)
 	}
 
 	$scope.onUpdatePassword = function(password)
 	{
 		controller(CONTROLLER_OVERVIEW).updateProfile(password)
 
-		closeDialog(DIALOG_PROFILE)
+		ui.closeDialog(DIALOG_PROFILE)
 	}
 
 	$scope.openLogoutDialog = function()

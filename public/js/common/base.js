@@ -31,37 +31,7 @@ app.filter('gravatar', function()
 	}
 })
 
-function showError(message)
-{
-	controller(DIALOG_ERROR_MESSAGE).show(message)
-}
-
 function controller(id)
 {
 	return angular.element($(`[ng-controller=${id}]`)).scope()
-}
-
-function dialog(id)
-{
-	return $(`[ng-controller=${id}]`)
-}
-
-function openDialog(id)
-{
-	dialog(id).modal()
-}
-
-function closeDialog(id)
-{
-	dialog(id).modal('hide')
-}
-
-function openTab(id, index)
-{
-	$(`#${id} a:${index}`).tab('show')
-}
-
-function focus(id)
-{
-	$(`#${id}`).focus()
 }

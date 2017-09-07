@@ -3,7 +3,7 @@ function onLanguageSelected()
 	controller(DIALOG_LANGUAGE).onLanguageSelected()
 }
 
-app.controller(CONTROLLER_OVERVIEW, function($scope, database)
+app.controller(CONTROLLER_OVERVIEW, function($scope, database, ui)
 {
 	$scope.apiToken = ''
 
@@ -137,7 +137,7 @@ app.controller(CONTROLLER_OVERVIEW, function($scope, database)
 	{
 		firebase.auth().currentUser.updatePassword(password).catch(function(error)
 		{
-			showError(error.message)
+			ui.showError(error.message)
 		})
 	}
 
@@ -149,7 +149,7 @@ app.controller(CONTROLLER_OVERVIEW, function($scope, database)
 		},
 		function(error)
 		{
-			showError(error.message)
+			ui.showError(error.message)
 		})
 	}
 

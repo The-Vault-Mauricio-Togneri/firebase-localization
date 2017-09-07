@@ -1,14 +1,14 @@
-app.controller(DIALOG_LOGOUT, function($scope)
+app.controller(DIALOG_LOGOUT, function($scope, ui)
 {
 	$scope.open = function()
 	{
-		openDialog(DIALOG_LOGOUT)
+		ui.openDialog(DIALOG_LOGOUT)
 	}
 
 	$scope.onLogout = function(id)
 	{
 		controller(CONTROLLER_OVERVIEW).logout()
 
-		closeDialog(DIALOG_LOGOUT)
+		ui.closeDialog(DIALOG_LOGOUT)
 	}
 })
