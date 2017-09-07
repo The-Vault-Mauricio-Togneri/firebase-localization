@@ -5,11 +5,6 @@ app.service('databaseSegment', function(database)
 		return database.databaseRef().child('segments')
 	}
 
-	this.entryRef = function(id)
-	{
-		return database.databaseRef().child(`/segments/${id}`)
-	}
-
 	this.fromSnap = function(snap)
 	{
 		const segments = []
@@ -24,33 +19,28 @@ app.service('databaseSegment', function(database)
 
 	this.addSegment = function(value)
 	{
-		return this.ref().push(value, function(error)
-		{
-			database.logDatabaseResult(error, `Add segment => ${JSON.stringify(value)}`)
-		})
+		return database.push('segments', value)
 	}
 
 	this.updateSegment = function(id, value)
 	{
-		this.entryRef(id).set(value, function(error)
-		{
-			database.logDatabaseResult(error, `Update segment (${id}) => ${JSON.stringify(value)}`)
-		})
+		database.set(segmentPath(id), value)
 	}
 
 	this.updateSegmentKey = function(id, value)
 	{
-		this.entryRef(`${id}/key`).set(value, function(error)
-		{
-			database.logDatabaseResult(error, `Update segment (${id}).key => ${JSON.stringify(value)}`)
-		})
+		const basePath = segmentPath(id)
+		
+		database.set(`${basePath}/key`, value)
 	}
 
 	this.removeSegment = function(id)
 	{
-		this.entryRef(id).remove(function(error)
-		{
-			database.logDatabaseResult(error, `Remove segment (${id})`)
-		})
+		database.remove(segmentPath(id))
+	}
+
+	function segmentPath(segmentId)
+	{
+		return `segments/${segmentId}`
 	}
 })

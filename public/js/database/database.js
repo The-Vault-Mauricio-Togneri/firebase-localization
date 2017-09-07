@@ -24,7 +24,7 @@ app.service('database', function()
 
 	this.push = function(path, value)
 	{
-		this.child(path).push(value, function(error)
+		return this.child(path).push(value, function(error)
 		{
 			logResultPush(path, value, error)
 		})
@@ -32,7 +32,7 @@ app.service('database', function()
 
 	this.set = function(path, value)
 	{
-		this.child(path).set(value, function(error)
+		return this.child(path).set(value, function(error)
 		{
 			logResultSet(path, value, error)
 		})
@@ -40,7 +40,7 @@ app.service('database', function()
 
 	this.remove = function(path)
 	{
-		this.child(path).remove(function(error)
+		return this.child(path).remove(function(error)
 		{
 			logResultRemove(path, error)
 		})
