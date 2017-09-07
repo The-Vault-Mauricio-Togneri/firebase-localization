@@ -1,23 +1,26 @@
-firebase.auth().onAuthStateChanged(function(user)
-{
-	if (user)
-	{
-		window.location.href = '/overview'
-	}
-	else
-	{
-		const form = byId('form')
-		form.style.visibility = 'visible'
-	}
-})
-
 app.controller(CONTROLLER_LOGIN, function($scope)
 {
 	$scope.form = {
 		email: '',
 		password: '',
 		loading: false,
-		error: ''
+		error: '',
+		display: false
+	}
+
+	$scope.init = function()
+	{
+		firebase.auth().onAuthStateChanged(function(user)
+		{
+			if (user)
+			{
+				window.location.href = '/overview'
+			}
+			else
+			{
+				$scope.form.display = true
+			}
+		})
 	}
 
 	$scope.login = function(email, password)
@@ -34,4 +37,6 @@ app.controller(CONTROLLER_LOGIN, function($scope)
 			$scope.form.error = error.message
 		})
 	}
+
+	$scope.init()
 })
