@@ -6,6 +6,24 @@ app.controller(DIALOG_LANGUAGE, function($scope, database, ui)
 		buttonDisabled: true
 	}
 
+	$scope.init = function()
+	{
+		const data = []
+
+		for (const locale in LOCALES)
+		{
+			data.push({
+				id: locale,
+				text: LOCALES[locale]
+			})
+		}
+
+		$scope.select().select2({
+			placeholder: "Language",
+			data: data
+		})
+	}
+
 	$scope.openAdd = function()
 	{
 		open(null, '')
@@ -22,37 +40,34 @@ app.controller(DIALOG_LANGUAGE, function($scope, database, ui)
 		$scope.form.originalCode = select
 		$scope.form.buttonDisabled = true
 
-		setSelectValue(select)
+		$scope.select().val(select).trigger('change.select2')
 		ui.openDialog(DIALOG_LANGUAGE)
 	}
 
-	function getSelectValue()
+	$scope.select = function()
 	{
-		return $('.js-example-placeholder-single').val()
-	}
-
-	function setSelectValue(value)
-	{
-		$('.js-example-placeholder-single').val(value).trigger('change.select2')
+		return $('.js-example-placeholder-single')
 	}
 
 	$scope.onLanguageSelected = function()
 	{
-		$scope.form.buttonDisabled = (getSelectValue() == $scope.form.originalCode)
+		$scope.form.buttonDisabled = ($scope.select().val() == $scope.form.originalCode)
 		$scope.$applyAsync()
 	}
 
 	$scope.onAdd = function()
 	{
-		controller(CONTROLLER_OVERVIEW).addLanguage(getSelectValue())
+		controller(CONTROLLER_OVERVIEW).addLanguage($scope.select().val())
 
 		ui.closeDialog(DIALOG_LANGUAGE)
 	}
 
 	$scope.onEdit = function(form)
 	{
-		controller(CONTROLLER_OVERVIEW).editLanguage(form.id, getSelectValue())
+		controller(CONTROLLER_OVERVIEW).editLanguage(form.id, $scope.select().val())
 
 		ui.closeDialog(DIALOG_LANGUAGE)
 	}
+
+	$scope.init()
 })
