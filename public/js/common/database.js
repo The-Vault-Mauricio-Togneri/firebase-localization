@@ -2,7 +2,7 @@ app.service('database', function()
 {
 	this.languagesEntryRef = function(id)
 	{
-		return databaseRef().child('languages/' + id)
+		return databaseRef().child(`languages/${id}`)
 	}
 
 	this.languagesRef = function()
@@ -26,7 +26,7 @@ app.service('database', function()
 	{
 		this.languagesRef().push(value, function(error)
 		{
-			logDatabaseResult(error, 'Add language => ' + JSON.stringify(value))
+			logDatabaseResult(error, `Add language => ${JSON.stringify(value)}`)
 		})
 	}
 
@@ -34,7 +34,7 @@ app.service('database', function()
 	{
 		this.languagesEntryRef(id).set(value, function(error)
 		{
-			logDatabaseResult(error, 'Update language (' + id + ') => ' + JSON.stringify(value))
+			logDatabaseResult(error, `Update language (${id}) => ${JSON.stringify(value)}`)
 		})
 	}
 
@@ -42,7 +42,7 @@ app.service('database', function()
 	{
 		this.languagesEntryRef(id).remove(function(error)
 		{
-			logDatabaseResult(error, 'Remove language (' + id + ')')
+			logDatabaseResult(error, `Remove language (${id})`)
 		})
 	}
 
@@ -50,7 +50,7 @@ app.service('database', function()
 
 	this.segmentsEntryRef = function(id)
 	{
-		return databaseRef().child('/segments/' + id)
+		return databaseRef().child(`/segments/${id}`)
 	}
 
 	this.segmentsRef = function()
@@ -74,7 +74,7 @@ app.service('database', function()
 	{
 		return this.segmentsRef().push(value, function(error)
 		{
-			logDatabaseResult(error, 'Add segment => ' + JSON.stringify(value))
+			logDatabaseResult(error, `Add segment => ${JSON.stringify(value)}`)
 		})
 	}
 
@@ -82,15 +82,15 @@ app.service('database', function()
 	{
 		this.segmentsEntryRef(id).set(value, function(error)
 		{
-			logDatabaseResult(error, 'Update segment (' + id + ') => ' + JSON.stringify(value))
+			logDatabaseResult(error, `Update segment (${id}) => ${JSON.stringify(value)}`)
 		})
 	}
 
 	this.updateSegmentKeyRef = function(id, value)
 	{
-		this.segmentsEntryRef(id + '/key').set(value, function(error)
+		this.segmentsEntryRef(`${id}/key`).set(value, function(error)
 		{
-			logDatabaseResult(error, 'Update segment (' + id + ').key => ' + JSON.stringify(value))
+			logDatabaseResult(error, `Update segment (${id}).key => ${JSON.stringify(value)}`)
 		})
 	}
 
@@ -98,7 +98,7 @@ app.service('database', function()
 	{
 		this.segmentsEntryRef(id).remove(function(error)
 		{
-			logDatabaseResult(error, 'Remove segment (' + id + ')')
+			logDatabaseResult(error, `Remove segment (${id})`)
 		})
 	}
 
@@ -106,17 +106,17 @@ app.service('database', function()
 
 	this.updateTranslationValueRef = function(segmentId, languageId, value)
 	{
-		this.segmentsEntryRef(segmentId + '/translations/' + languageId + '/value').set(value, function(error)
+		this.segmentsEntryRef(`${segmentId}/translations/${languageId}/value`).set(value, function(error)
 		{
-			logDatabaseResult(error, 'Update translation (' + segmentId + '.' + languageId +  ').value => ' + JSON.stringify(value))
+			logDatabaseResult(error, `Update translation (${segmentId}.${languageId}).value => ${JSON.stringify(value)}`)
 		})
 	}
 
 	this.updateTranslationValidatedRef = function(segmentId, languageId, value)
 	{
-		this.segmentsEntryRef(segmentId + '/translations/' + languageId + '/validated').set(value, function(error)
+		this.segmentsEntryRef(`${segmentId}/translations/${languageId}/validated`).set(value, function(error)
 		{
-			logDatabaseResult(error, 'Update translation (' + segmentId + '.' + languageId +  ').validated => ' + JSON.stringify(value))
+			logDatabaseResult(error, `Update translation (${segmentId}.${languageId}).validated => ${JSON.stringify(value)}`)
 		})
 	}
 
@@ -138,11 +138,11 @@ app.service('database', function()
 	{
 		if (error)
 		{
-			console.log(label + ': FAILED: ' + error)
+			console.log(`${label}: FAILED: ${error}`)
 		}
 		else
 		{
-			console.log(label + ': OK')
+			console.log(`${label}: OK`)
 		}
 	}
 })

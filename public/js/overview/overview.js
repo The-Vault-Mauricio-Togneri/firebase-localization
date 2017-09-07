@@ -86,7 +86,7 @@ app.controller(CONTROLLER_OVERVIEW, function($scope, database)
 	$scope.languageProgressValue = function(value)
 	{
 		return {
-			width: value + '%'
+			width: `${value}%`
 		}
 	}
 
