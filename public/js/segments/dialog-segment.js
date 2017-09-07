@@ -9,8 +9,7 @@ app.controller(DIALOG_SEGMENT, function($scope, ui)
 		maxLength: '',
 		screenshot: '',
 		isPlural: false,
-		isArray: false,
-		formError: false
+		isArray: false
 	}
 
 	$scope.openAdd = function(languages)
@@ -67,8 +66,6 @@ app.controller(DIALOG_SEGMENT, function($scope, ui)
 
 	function open()
 	{
-		$scope.form.formError = false
-		
 		ui.dialog(DIALOG_SEGMENT).on('shown.bs.modal', function()
 		{
 			ui.focus('dialog-segment-key')
@@ -79,39 +76,18 @@ app.controller(DIALOG_SEGMENT, function($scope, ui)
 		ui.openDialog(DIALOG_SEGMENT)
 	}
 
-	function segmentFormValid(form)
-	{
-		if (!form.key)
-		{
-			$scope.form.formError = true
-			
-			ui.openTab('dialog-segment-tabs', 'first')
-			ui.focus('dialog-segment-key')
-		}
-		else
-		{
-			return true
-		}
-	}
-
 	$scope.onAddSegment = function(form)
 	{
-		if (segmentFormValid(form))
-		{
-			controller(CONTROLLER_SEGMENTS).addSegment(form)
+		controller(CONTROLLER_SEGMENTS).addSegment(form)
 
-			ui.closeDialog(DIALOG_SEGMENT)
-		}
+		ui.closeDialog(DIALOG_SEGMENT)
 	}
 
 	$scope.onEditSegment = function(form)
 	{
-		if (segmentFormValid(form))
-		{
-			controller(CONTROLLER_SEGMENTS).editSegment(form)
+		controller(CONTROLLER_SEGMENTS).editSegment(form)
 
-			ui.closeDialog(DIALOG_SEGMENT)
-		}
+		ui.closeDialog(DIALOG_SEGMENT)
 	}
 
 	$scope.openSegmentHistory = function(history)
