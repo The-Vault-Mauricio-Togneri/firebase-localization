@@ -39,7 +39,7 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database)
 
 		$('#collapse-filter').on('shown.bs.collapse', function()
 		{
-			$('#filter-content-input').focus()
+			focus('filter-content-input')
 		})
 	}
 

@@ -31,11 +31,6 @@ app.filter('gravatar', function()
 	}
 })
 
-function byId(id)
-{
-	return document.getElementById(id)
-}
-
 function showError(message)
 {
 	controller(DIALOG_ERROR_MESSAGE).show(message)
@@ -59,6 +54,11 @@ function openDialog(id)
 function closeDialog(id)
 {
 	dialog(id).modal('hide')
+}
+
+function openTab(id, index)
+{
+	$('#' + id + ' a:' + index).tab('show')
 }
 
 function focus(id)

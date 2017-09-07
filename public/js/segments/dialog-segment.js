@@ -74,7 +74,7 @@ app.controller(DIALOG_SEGMENT, function($scope)
 			focus('dialog-segment-key')
 		})
 
-		$('#dialog-segment-tabs a:first').tab('show')
+		openTab('dialog-segment-tabs', 'first')
 
 		openDialog(DIALOG_SEGMENT)
 	}
@@ -84,7 +84,8 @@ app.controller(DIALOG_SEGMENT, function($scope)
 		if (!form.key)
 		{
 			$scope.form.formError = true
-			$('#dialog-segment-tabs a:first').tab('show')
+			
+			openTab('dialog-segment-tabs', 'first')
 			focus('dialog-segment-key')
 		}
 		else
