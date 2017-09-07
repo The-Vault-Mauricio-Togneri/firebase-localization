@@ -1,18 +1,15 @@
 app.service('databaseTranslation', function(database)
 {
-	this.ref = function(segmentId)
+	this.entryRef = function(path)
 	{
-		return database.databaseRef().child(`${segmentId}/translations`)
-	}
-
-	this.entryRef = function(segmentId, translationId)
-	{
-		return database.databaseRef().child(`${segmentId}/translations/${translationId}`)
+		return database.databaseRef().child(path)
 	}
 
 	this.updateTranslationValue = function(segmentId, translationId, value)
 	{
-		this.entryRef(segmentId, translationId).set(value, function(error)
+		const path = this.translationPath(segmentId, translationId)
+
+		this.entryRef(`${path}/value`).set(value, function(error)
 		{
 			database.logDatabaseResult(error, `Update translation (${segmentId}.${translationId}).value => ${JSON.stringify(value)}`)
 		})
@@ -20,9 +17,16 @@ app.service('databaseTranslation', function(database)
 
 	this.updateTranslationValidated = function(segmentId, translationId, value)
 	{
-		this.entryRef(segmentId, translationId).set(value, function(error)
+		const path = this.translationPath(segmentId, translationId)
+
+		this.entryRef(`${path}/validated`).set(value, function(error)
 		{
 			database.logDatabaseResult(error, `Update translation (${segmentId}.${translationId}).validated => ${JSON.stringify(value)}`)
 		})
+	}
+
+	this.translationPath = function(segmentId, translationId)
+	{
+		return `segments/${segmentId}/translations/${translationId}`
 	}
 })
