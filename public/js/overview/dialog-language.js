@@ -22,28 +22,36 @@ app.controller(DIALOG_LANGUAGE, function($scope, database)
 		$scope.form.originalCode = select
 		$scope.form.buttonDisabled = true
 
-		$('#dialog-language-select').val(select).trigger('change.select2')
+		setSelectValue(select)
 		openDialog(DIALOG_LANGUAGE)
+	}
+
+	function getSelectValue()
+	{
+		return $('#dialog-language-select').val()
+	}
+
+	function setSelectValue(value)
+	{
+		$('#dialog-language-select').val(value).trigger('change.select2')
 	}
 
 	$scope.onLanguageSelected = function()
 	{
-		const value = byId('dialog-language-select').value
-		
-		$scope.form.buttonDisabled = (value == $scope.form.originalCode)
+		$scope.form.buttonDisabled = (getSelectValue() == $scope.form.originalCode)
 		$scope.$applyAsync()
 	}
 
 	$scope.onAdd = function()
 	{
-		controller(CONTROLLER_OVERVIEW).addLanguage(byId('dialog-language-select').value)
+		controller(CONTROLLER_OVERVIEW).addLanguage(getSelectValue())
 
 		closeDialog(DIALOG_LANGUAGE)
 	}
 
 	$scope.onEdit = function(form)
 	{
-		controller(CONTROLLER_OVERVIEW).editLanguage(form.id, byId('dialog-language-select').value)
+		controller(CONTROLLER_OVERVIEW).editLanguage(form.id, getSelectValue())
 
 		closeDialog(DIALOG_LANGUAGE)
 	}
