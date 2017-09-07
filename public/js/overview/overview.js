@@ -116,6 +116,16 @@ app.controller(CONTROLLER_OVERVIEW, function($scope, database)
 		downloadFile('https://' + window.location.host + '/api/export/' + language.code + '/ios')
 	}
 
+	function downloadFile(path)
+	{
+		const a = document.createElement('A')
+		a.href = path
+		a.download = path.substr(path.lastIndexOf('/') + 1)
+		document.body.appendChild(a)
+		a.click()
+		document.body.removeChild(a)
+	}
+
 	$scope.openProfileDialog = function()
 	{
 		controller(DIALOG_PROFILE).open()
