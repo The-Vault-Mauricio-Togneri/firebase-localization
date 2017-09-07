@@ -167,8 +167,7 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 	{
 		const segment = segmentById(segmentId)
 		const language = segment.translationById(languageId)
-		//console.log(language)
-		//language.comments.push(comment)
+		//TODO language.comments.push(comment)
 	}
 
 	$scope.segmentValidatedState = function(value)

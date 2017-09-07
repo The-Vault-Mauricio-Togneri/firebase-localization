@@ -118,7 +118,7 @@ app.controller(CONTROLLER_OVERVIEW, function($scope, database, databaseToken, da
 
 	function downloadFile(path)
 	{
-		console.log(`Download file: ${path}`)
+		console.log(`DOWNLOADING: ${path}`)
 
 		const a = document.createElement('A')
 		a.href = path
