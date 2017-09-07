@@ -55,11 +55,8 @@ function showError(message)
 	}, 3000)
 }
 
-function controllerById(id)
+function controller(id)
 {
-	//const element = document.querySelector('[ng-controller=' + id + ']');
-	//return angular.element(element).scope()
-
 	return angular.element($('[ng-controller=' + id + ']')).scope()
 }
 
@@ -70,12 +67,12 @@ function dialog(id)
 
 function openDialog(id)
 {
-	$('[ng-controller=' + id + ']').modal()
+	dialog(id).modal()
 }
 
 function closeDialog(id)
 {
-	$('[ng-controller=' + id + ']').modal('hide')
+	dialog(id).modal('hide')
 }
 
 function focus(id)

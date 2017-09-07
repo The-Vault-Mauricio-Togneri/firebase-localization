@@ -36,6 +36,6 @@ app.controller(DIALOG_TRANSLATION_COMMENTS, function($scope)
 		$scope.form.newComment = ''
 		$scope.form.comments.unshift(comment)
 
-		controllerById(CONTROLLER_SEGMENTS).createNewComment($scope.segmentId, $scope.languageId, comment)
+		controller(CONTROLLER_SEGMENTS).createNewComment($scope.segmentId, $scope.languageId, comment)
 	}
 })

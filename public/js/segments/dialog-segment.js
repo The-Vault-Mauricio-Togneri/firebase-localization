@@ -97,7 +97,7 @@ app.controller(DIALOG_SEGMENT, function($scope)
 	{
 		if (segmentFormValid(form))
 		{
-			controllerById(CONTROLLER_SEGMENTS).addSegment(form)
+			controller(CONTROLLER_SEGMENTS).addSegment(form)
 
 			closeDialog(DIALOG_SEGMENT)
 		}
@@ -107,7 +107,7 @@ app.controller(DIALOG_SEGMENT, function($scope)
 	{
 		if (segmentFormValid(form))
 		{
-			controllerById(CONTROLLER_SEGMENTS).editSegment(form)
+			controller(CONTROLLER_SEGMENTS).editSegment(form)
 
 			closeDialog(DIALOG_SEGMENT)
 		}
@@ -115,11 +115,11 @@ app.controller(DIALOG_SEGMENT, function($scope)
 
 	$scope.openSegmentHistory = function(history)
 	{
-		controllerById(DIALOG_TRANSLATION_HISTORY).open(history)
+		controller(DIALOG_TRANSLATION_HISTORY).open(history)
 	}
 
 	$scope.openSegmentComments = function(languageId, comments)
 	{
-		controllerById(DIALOG_TRANSLATION_COMMENTS).open($scope.form.id, languageId, comments)
+		controller(DIALOG_TRANSLATION_COMMENTS).open($scope.form.id, languageId, comments)
 	}
 })

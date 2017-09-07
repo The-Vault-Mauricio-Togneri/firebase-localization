@@ -77,7 +77,7 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database)
 
 	$scope.openAddSegmentDialog = function()
 	{
-		controllerById(DIALOG_SEGMENT).openAdd($scope.languages)
+		controller(DIALOG_SEGMENT).openAdd($scope.languages)
 	}
 
 	$scope.addSegment = function(form)
@@ -102,7 +102,7 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database)
 
 	$scope.openEditSegmentDialog = function(segment)
 	{
-		controllerById(DIALOG_SEGMENT).openEdit($scope.languages, segment)
+		controller(DIALOG_SEGMENT).openEdit($scope.languages, segment)
 	}
 
 	$scope.editSegment = function(form)
@@ -146,7 +146,7 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database)
 
 	$scope.openDeleteSegmentDialog = function(segment)
 	{
-		controllerById(DIALOG_DELETE_SEGMENT).open(segment)
+		controller(DIALOG_DELETE_SEGMENT).open(segment)
 	}
 
 	$scope.deleteSegment = function(id)

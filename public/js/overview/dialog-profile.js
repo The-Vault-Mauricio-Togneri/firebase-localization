@@ -20,13 +20,13 @@ app.controller(DIALOG_PROFILE, function($scope)
 
 	$scope.onUpdatePassword = function(password)
 	{
-		controllerById(CONTROLLER_OVERVIEW).updateProfile(password)
+		controller(CONTROLLER_OVERVIEW).updateProfile(password)
 
 		closeDialog(DIALOG_PROFILE)
 	}
 
 	$scope.openLogoutDialog = function()
 	{
-		controllerById(DIALOG_LOGOUT).open()
+		controller(DIALOG_LOGOUT).open()
 	}
 })

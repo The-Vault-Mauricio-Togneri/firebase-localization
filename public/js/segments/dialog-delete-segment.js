@@ -15,7 +15,7 @@ app.controller(DIALOG_DELETE_SEGMENT, function($scope)
 
 	$scope.onDeleteSegment = function(form)
 	{
-		controllerById(CONTROLLER_SEGMENTS).deleteSegment(form.id)
+		controller(CONTROLLER_SEGMENTS).deleteSegment(form.id)
 
 		closeDialog(DIALOG_DELETE_SEGMENT)
 	}
