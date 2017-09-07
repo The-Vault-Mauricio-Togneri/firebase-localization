@@ -45,6 +45,7 @@
 
 	<script src="js/common/constants.js"></script>
 	<script src="js/common/base.js"></script>
+	<script src="js/common/dialog-error-message.js"></script>
 	<script src="js/common/database.js"></script>
 	<script src="js/common/firebase.js"></script>
 
@@ -144,8 +145,8 @@
 
 		<div ng-include="'html/overview/dialog-delete-language.html'"></div>
 
-		<div class="error-message-container" id="error-message" style="visibility:hidden">
-			<span class="alert alert-danger"></span>
+		<div class="error-message-container" ng-show="message != ''" class="hidden" ng-controller="dialogErrorMessage">
+			<span class="alert alert-danger">{{message}}</span>
 		</div>
 
 	</div>
