@@ -1,53 +1,5 @@
 app.service('database', function()
 {
-	this.languagesEntryRef = function(id)
-	{
-		return this.databaseRef().child(`languages/${id}`)
-	}
-
-	this.languagesRef = function()
-	{
-		return this.databaseRef().child('languages')
-	}
-
-	this.languagesFromSnap = function(snap)
-	{
-		const languages = {}
-
-		snap.forEach(function(entry)
-		{
-			languages[entry.key] = new Language(entry.key, entry.val())
-		})
-
-		return languages
-	}
-
-	this.addLanguageRef = function(value)
-	{
-		this.languagesRef().push(value, function(error)
-		{
-			this.logDatabaseResult(error, `Add language => ${JSON.stringify(value)}`)
-		})
-	}
-
-	this.updateLanguageRef = function(id, value)
-	{
-		this.languagesEntryRef(id).set(value, function(error)
-		{
-			this.logDatabaseResult(error, `Update language (${id}) => ${JSON.stringify(value)}`)
-		})
-	}
-
-	this.removeLanguageRef = function(id)
-	{
-		this.languagesEntryRef(id).remove(function(error)
-		{
-			this.logDatabaseResult(error, `Remove language (${id})`)
-		})
-	}
-
-	// -------------------------------
-
 	this.segmentsEntryRef = function(id)
 	{
 		return this.databaseRef().child(`/segments/${id}`)

@@ -1,4 +1,4 @@
-app.controller(CONTROLLER_SEGMENTS, function($scope, database, ui)
+app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage, ui)
 {
 	$scope.languages = {}
 
@@ -19,9 +19,9 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, ui)
 	
 	$scope.init = function()
 	{
-		database.languagesRef().once('value', snapLanguages =>
+		databaseLanguage.ref().once('value', snapLanguages =>
 		{	
-			$scope.languages = database.languagesFromSnap(snapLanguages)
+			$scope.languages = databaseLanguage.fromSnap(snapLanguages)
 
 			for (const index in $scope.languages)
 			{

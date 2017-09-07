@@ -3,7 +3,7 @@ function onLanguageSelected()
 	controller(DIALOG_LANGUAGE).onLanguageSelected()
 }
 
-app.controller(CONTROLLER_OVERVIEW, function($scope, database, databaseToken, ui)
+app.controller(CONTROLLER_OVERVIEW, function($scope, database, databaseToken, databaseLanguage, ui)
 {
 	$scope.apiToken = ''
 
@@ -13,9 +13,9 @@ app.controller(CONTROLLER_OVERVIEW, function($scope, database, databaseToken, ui
 
 	$scope.init = function()
 	{
-		database.languagesRef().on('value', snapLanguages =>
+		databaseLanguage.ref().on('value', snapLanguages =>
 		{	
-			$scope.languages = database.languagesFromSnap(snapLanguages)
+			$scope.languages = databaseLanguage.fromSnap(snapLanguages)
 
 			database.segmentsRef().on('value', snapSegments =>
 			{
@@ -164,7 +164,7 @@ app.controller(CONTROLLER_OVERVIEW, function($scope, database, databaseToken, ui
 			code: value
 		}
 
-		database.addLanguageRef(entry)
+		databaseLanguage.addLanguage(entry)
 	}
 
 	$scope.openEditLanguageDialog = function(language)
@@ -178,7 +178,7 @@ app.controller(CONTROLLER_OVERVIEW, function($scope, database, databaseToken, ui
 			code: value
 		}
 
-		database.updateLanguageRef(id, entry)
+		databaseLanguage.updateLanguage(id, entry)
 	}
 
 	$scope.openDeleteLanguageDialog = function(language)
@@ -188,7 +188,7 @@ app.controller(CONTROLLER_OVERVIEW, function($scope, database, databaseToken, ui
 
 	$scope.deleteLanguage = function(id)
 	{
-		database.removeLanguageRef(id)
+		databaseLanguage.removeLanguage(id)
 	}
 
 	$scope.init()
