@@ -22,23 +22,63 @@ app.service('database', function()
 		}
 	}
 
+	this.push = function(path, value)
+	{
+		this.child(path).push(value, function(error)
+		{
+			logResultPush(path, value, error)
+		})
+	}
+
 	this.set = function(path, value)
 	{
 		this.child(path).set(value, function(error)
 		{
-			logResult(path, value, error)
+			logResultSet(path, value, error)
 		})
 	}
 
-	function logResult(path, value, error)
+	this.remove = function(path)
+	{
+		this.child(path).remove(function(error)
+		{
+			logResultRemove(path, error)
+		})
+	}
+
+	function logResultPush(path, value, error)
 	{
 		if (error)
 		{
-			console.log(`[${path}] => ${JSON.stringify(value)}: FAILED: ${error}`)
+			console.log(`CREATED [${path}] => ${JSON.stringify(value)}: FAILED: ${error}`)
 		}
 		else
 		{
-			console.log(`[${path}] => ${JSON.stringify(value)}: OK`)
+			console.log(`CREATED [${path}] => ${JSON.stringify(value)}: OK`)
+		}
+	}
+
+	function logResultSet(path, value, error)
+	{
+		if (error)
+		{
+			console.log(`UPDATED [${path}] => ${JSON.stringify(value)}: FAILED: ${error}`)
+		}
+		else
+		{
+			console.log(`UPDATED [${path}] => ${JSON.stringify(value)}: OK`)
+		}
+	}
+
+	function logResultRemove(path, error)
+	{
+		if (error)
+		{
+			console.log(`REMOVED [${path}]: FAILED: ${error}`)
+		}
+		else
+		{
+			console.log(`REMOVED [${path}]: OK`)
 		}
 	}
 })

@@ -2,12 +2,7 @@ app.service('databaseLanguage', function(database)
 {
 	this.ref = function()
 	{
-		return database.databaseRef().child('languages')
-	}
-
-	this.entryRef = function(id)
-	{
-		return database.databaseRef().child(`languages/${id}`)
+		return database.child('languages')
 	}
 
 	this.fromSnap = function(snap)
@@ -24,10 +19,7 @@ app.service('databaseLanguage', function(database)
 
 	this.addLanguage = function(value)
 	{
-		this.ref().push(value, function(error)
-		{
-			database.logDatabaseResult(error, `Add language => ${JSON.stringify(value)}`)
-		})
+		database.push('languages', value)
 	}
 
 	this.updateLanguage = function(id, value)
@@ -37,10 +29,7 @@ app.service('databaseLanguage', function(database)
 
 	this.removeLanguage = function(id)
 	{
-		this.entryRef(id).remove(function(error)
-		{
-			database.logDatabaseResult(error, `Remove language (${id})`)
-		})
+		database.remove(languagePath(id))
 	}
 
 	function languagePath(languageId)
