@@ -3,7 +3,7 @@ function onLanguageSelected()
 	controller(DIALOG_LANGUAGE).onLanguageSelected()
 }
 
-app.controller(CONTROLLER_OVERVIEW, function($scope, database, databaseToken, databaseLanguage, ui)
+app.controller(CONTROLLER_OVERVIEW, function($scope, database, databaseToken, databaseLanguage, databaseSegment, ui)
 {
 	$scope.apiToken = ''
 
@@ -17,9 +17,9 @@ app.controller(CONTROLLER_OVERVIEW, function($scope, database, databaseToken, da
 		{	
 			$scope.languages = databaseLanguage.fromSnap(snapLanguages)
 
-			database.segmentsRef().on('value', snapSegments =>
+			databaseSegment.ref().on('value', snapSegments =>
 			{
-				const segments = database.segmentsFromSnap(snapSegments)
+				const segments = databaseSegment.fromSnap(snapSegments)
 				const summary = $scope.summary($scope.languages, segments)
 
 				for (const index in summary)

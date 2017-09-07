@@ -1,4 +1,4 @@
-app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage, ui)
+app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage, databaseSegment, databaseTranslation, ui)
 {
 	$scope.languages = {}
 
@@ -28,9 +28,9 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 				$scope.filter.language[index] = true
 			}
 
-			database.segmentsRef().once('value', snapSegments =>
+			databaseSegment.ref().once('value', snapSegments =>
 			{
-				$scope.segments = database.segmentsFromSnap(snapSegments)
+				$scope.segments = databaseSegment.fromSnap(snapSegments)
 				orderSegments()
 				$scope.loading = false
 				$scope.$applyAsync()
@@ -45,7 +45,7 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 
 	$scope.onSegmentKeyUpdated = function(segment)
 	{
-		database.updateSegmentKeyRef(segment.id, segment.key)
+		databaseSegment.updateSegmentKey(segment.id, segment.key)
 
 		orderSegments()
 	}
@@ -57,7 +57,7 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 
 		if (newValue != oldValue)
 		{
-			database.updateTranslationValueRef(segment.id, language.id, newValue)
+			databaseTranslation.updateTranslationValue(segment.id, language.id, newValue)
 			segment.translations[language.id].oldValue = newValue
 
 			if (segment.translations[language.id].validated)
@@ -75,7 +75,7 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 	function updateTranslationValidated(segment, language, value)
 	{
 		segment.translations[language.id].validated = value
-		database.updateTranslationValidatedRef(segment.id, language.id, value)
+		databaseTranslation.updateTranslationValidated(segment.id, language.id, value)
 	}
 
 	$scope.openAddSegmentDialog = function()
@@ -96,7 +96,7 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 			translations: form.translations
 		}
 
-		const ref = database.addSegmentRef(entry)
+		const ref = databaseSegment.addSegment(entry)
 		const segment = new Segment(ref.key, entry)
 
 		$scope.segments.push(segment)
@@ -144,7 +144,7 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 		}
 		
 		orderSegments()
-		database.updateSegmentRef(form.id, entry)
+		databaseSegment.updateSegment(form.id, entry)
 	}
 
 	$scope.openDeleteSegmentDialog = function(segment)
@@ -158,7 +158,7 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 		$scope.segments.splice(index, 1)
 		
 		orderSegments()
-		database.removeSegmentRef(id)
+		databaseSegment.removeSegment(id)
 
 		ui.closeDialog(DIALOG_SEGMENT)
 	}
