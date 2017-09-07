@@ -60,7 +60,7 @@
 
 <body ng-controller="segments">
 
-	<div id="overview-content" class="view-gone">
+	<div ng-show="!loading">
 
 		<ul class="nav navigation-bar-top">
 			<li onclick="window.location.href='/overview'">
@@ -172,7 +172,7 @@
 
 	</div>
 
-	<center id="loading-progress" class="progress loading-progress">
+	<center ng-show="loading" class="progress loading-progress">
 		<div class="progress-bar progress-bar-striped indeterminate">
 	</center>
 

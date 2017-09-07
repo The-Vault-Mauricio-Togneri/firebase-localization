@@ -1,7 +1,10 @@
 app.controller(CONTROLLER_SEGMENTS, function($scope, database)
 {
 	$scope.languages = {}
+
 	$scope.segments = {}
+
+	$scope.loading = true
 
 	$scope.filter = {
 		content: '',
@@ -29,8 +32,8 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database)
 			{
 				$scope.segments = database.segmentsFromSnap(snapSegments)
 				orderSegments()
+				$scope.loading = false
 				$scope.$applyAsync()
-				displayContent()
 			})
 		})
 

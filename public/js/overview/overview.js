@@ -9,6 +9,8 @@ app.controller(CONTROLLER_OVERVIEW, function($scope, database)
 
 	$scope.languages = {}
 
+	$scope.loading = true
+
 	$scope.init = function()
 	{
 		database.languagesRef().on('value', snapLanguages =>
@@ -27,7 +29,7 @@ app.controller(CONTROLLER_OVERVIEW, function($scope, database)
 				}
 
 				$scope.$applyAsync()
-				displayContent()
+				$scope.loading = false
 
 				database.apiTokenRef().once('value', snap =>
 				{

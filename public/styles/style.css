@@ -36,11 +36,6 @@ html, body
 	border-color: #E3534F;
 }
 
-.view-gone
-{
-	display: none;
-}
-
 .loading-progress
 {
 	position: absolute;

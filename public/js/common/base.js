@@ -36,12 +36,6 @@ function byId(id)
 	return document.getElementById(id)
 }
 
-function displayContent()
-{
-	byId('loading-progress').style.display = 'none'
-	byId('overview-content').style.display = 'block'
-}
-
 function showError(message)
 {
 	const alert = byId('error-message')
