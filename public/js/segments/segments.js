@@ -61,11 +61,16 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 		})
 	}
 
-	$scope.onSegmentKeyUpdated = function(segment)
+	$scope.onSegmentKeyUpdated = function(segment, input)
 	{
-		databaseSegment.updateSegmentKey(segment.id, segment.key)
-
-		orderSegments()
+		const oldValue = input.target.alt
+		
+		if (oldValue != segment.key)
+		{
+			input.target.alt = segment.key
+			databaseSegment.updateSegmentKey(segment.id, segment.key)
+			orderSegments()
+		}
 	}
 
 	$scope.onTranslationValueUpdated = function(segment, language)

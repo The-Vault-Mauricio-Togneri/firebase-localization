@@ -149,7 +149,7 @@
 							<div class="input-group-addon segments-settings-icon" ng-click="openEditSegmentDialog(segment)">
 								<i class="fa fa-cog"></i>
 							</div>
-							<input class="form-control" type="text" ng-model="segment.key" ng-blur="onSegmentKeyUpdated(segment)">
+							<input class="form-control" type="text" alt="{{::segment.key}}" ng-model="segment.key" ng-blur="onSegmentKeyUpdated(segment, $event)">
 						</div>
 					</td>
 					<td ng-repeat="language in languages" ng-show="filter.language[language.id]">
