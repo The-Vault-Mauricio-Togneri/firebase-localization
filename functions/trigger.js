@@ -28,6 +28,17 @@ function Trigger(databaseConfig)
 			})
 		})
 	}
+
+	this.onLanguageRemoved = function(event)
+	{
+		database.segmentsRef().once('value', snap =>
+		{
+			snap.forEach(function(entry)
+			{
+				database.ref(`/segments/${entry.key}/translations/${event.data.ref.key}`).remove()
+			})
+		})
+	}
 }
 
 module.exports = Trigger

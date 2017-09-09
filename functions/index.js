@@ -53,5 +53,10 @@ exports.onLanguageAdded = functions.database.ref('/languages/{languageId}').onCr
 	return trigger.onLanguageAdded(event)
 })
 
+exports.onLanguageRemoved = functions.database.ref('/languages/{languageId}').onDelete(event =>
+{
+	return trigger.onLanguageRemoved(event)
+})
+
 // https://github.com/firebase/functions-samples
 // https://us-central1-app-localization-2f645.cloudfunctions.net/[function]
