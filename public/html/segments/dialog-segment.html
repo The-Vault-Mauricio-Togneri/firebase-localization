@@ -26,9 +26,11 @@
 						<div class="form-group" ng-repeat="language in languages">
 							<label>{{language.fullName}}</label>
 							<div style="display:flex">
-								<textarea class="form-control" type="text" ng-model="form.translations[language.id].value" rows="1"></textarea>
-								<div class="input-group-addon segment-checkbox" ng-class="(form.translations[language.id].validated) ? 'segment-checkbox-on' : 'segment-checkbox-off'" ng-click="form.translations[language.id].validated = !form.translations[language.id].validated">
-									<i class="fa fa-check"></i>
+								<div class="input-group">
+									<textarea class="form-control" type="text" ng-model="form.translations[language.id].value" rows="1"></textarea>
+									<div class="input-group-addon segment-checkbox" ng-class="(form.translations[language.id].validated) ? 'segment-checkbox-on' : 'segment-checkbox-off'" ng-click="form.translations[language.id].validated = !form.translations[language.id].validated">
+										<i class="fa fa-check"></i>
+									</div>
 								</div>
 								<button type="button" ng-show="form.id" ng-disabled="historyEmpty(form.translations[language.id].history)" class="btn btn-link button-action" ng-click="openSegmentHistory(form.translations[language.id].history)">
 									<i class="fa fa-history"></i>
