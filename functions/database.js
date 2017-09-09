@@ -17,6 +17,11 @@ function Database(adminConfig)
 		return admin.database().ref('segments')
 	}
 
+	this.translation = function(segmentId, translationId)
+	{
+		return admin.database().ref(`segments/${segmentId}/translations/${translationId}`)
+	}
+
 	this.apiToken = function()
 	{
 		return admin.database().ref('api/token')

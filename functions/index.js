@@ -43,17 +43,17 @@ api.use('/api', app)
 
 exports.api = functions.https.onRequest(api)
 
-exports.onTranslationUpdated = functions.database.ref('/segments/{segmentId}/translations/{translationId}/value').onUpdate(event =>
+exports.onTranslationUpdated = functions.database.ref('segments/{segmentId}/translations/{translationId}/value').onUpdate(event =>
 {
 	return trigger.onTranslationUpdated(event)
 })
 
-exports.onLanguageAdded = functions.database.ref('/languages/{languageId}').onCreate(event =>
+exports.onLanguageAdded = functions.database.ref('languages/{languageId}').onCreate(event =>
 {
 	return trigger.onLanguageAdded(event)
 })
 
-exports.onLanguageRemoved = functions.database.ref('/languages/{languageId}').onDelete(event =>
+exports.onLanguageRemoved = functions.database.ref('languages/{languageId}').onDelete(event =>
 {
 	return trigger.onLanguageRemoved(event)
 })

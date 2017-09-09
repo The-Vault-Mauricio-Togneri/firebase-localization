@@ -24,7 +24,7 @@ function Trigger(databaseConfig)
 					validated: false
 				}
 	
-				database.ref(`/segments/${entry.key}/translations/${event.data.ref.key}`).set(value)
+				database.translation(entry.key, event.data.ref.key).set(value)
 			})
 		})
 	}
@@ -35,7 +35,7 @@ function Trigger(databaseConfig)
 		{
 			snap.forEach(function(entry)
 			{
-				database.ref(`/segments/${entry.key}/translations/${event.data.ref.key}`).remove()
+				database.translation(entry.key, event.data.ref.key).remove()
 			})
 		})
 	}
