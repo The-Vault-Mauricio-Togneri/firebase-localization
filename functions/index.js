@@ -3,7 +3,7 @@
 const functions = require('firebase-functions')
 const admin = require('firebase-admin')
 const express = require('express')
-const generate = require('./export.js')
+const generate = require('./generate.js')
 const database = require('./database.js')
 const app = express()
 
