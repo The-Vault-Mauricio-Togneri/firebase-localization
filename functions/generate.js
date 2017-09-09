@@ -1,4 +1,4 @@
-function Exporter(language, segments)
+function Exporter()
 {
 	function translationsByLanguage(language, segments)
 	{

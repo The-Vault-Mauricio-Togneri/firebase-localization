@@ -1,16 +1,16 @@
-module.exports = {
-	
-	languagesRef: function(admin)
+function Database()
+{
+	this.languagesRef = function(admin)
 	{
 		return admin.database().ref('languages')
-	},
+	}
 
-	segmentsRef: function(admin)
+	this.segmentsRef = function(admin)
 	{
 		return admin.database().ref('segments')
-	},
+	}
 
-	languageByCode: function(code, snapshot)
+	this.languageByCode = function(code, snapshot)
 	{
 		var result = null
 
@@ -25,3 +25,5 @@ module.exports = {
 		return result
 	}
 }
+
+module.exports = new Database()
