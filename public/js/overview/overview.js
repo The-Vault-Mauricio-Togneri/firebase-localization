@@ -15,12 +15,12 @@ app.controller(CONTROLLER_OVERVIEW, function($scope, database, databaseToken, da
 	{
 		databaseLanguage.ref().on('value', snapLanguages =>
 		{	
-			$scope.languages = databaseLanguage.fromSnap(snapLanguages)
+			const languages = databaseLanguage.fromSnap(snapLanguages)
 
 			databaseSegment.ref().on('value', snapSegments =>
 			{
 				const segments = databaseSegment.fromSnap(snapSegments)
-				$scope.summary($scope.languages, segments)
+				$scope.languages = summary(languages, segments)
 
 				$scope.loading = false
 				$scope.$applyAsync()
@@ -33,8 +33,10 @@ app.controller(CONTROLLER_OVERVIEW, function($scope, database, databaseToken, da
 		})
 	}
 
-	$scope.summary = function(languages, segments)
+	function summary(languages, segments)
 	{
+		var result = []
+
 		for (const segmentIndex in segments)
 		{
 			const segment = segments[segmentIndex]
@@ -58,7 +60,15 @@ app.controller(CONTROLLER_OVERVIEW, function($scope, database, databaseToken, da
 		for (const index in languages)
 		{
 			languages[index].calculateSummary(segments.length)
+			result.push(languages[index])
 		}
+
+		result = result.sort(function(a, b)
+		{
+			return (a.fullName < b.fullName ? -1 : (a.fullName > b.fullName))
+		})
+
+		return result
 	}
 
 	$scope.languageProgressValue = function(value)
