@@ -31,6 +31,24 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 			databaseSegment.ref().once('value', snapSegments =>
 			{
 				$scope.segments = databaseSegment.fromSnap(snapSegments)
+
+				for (const index in $scope.segments)
+				{
+					const segment = $scope.segments[index]
+
+					databaseSegment.ref(segment.id).on('value', snap =>
+					{
+						const segmentIndex = segmentIndexById(segment.id)
+						
+						if (segmentIndex)
+						{
+							const updatedSegment = new Segment(snap.key, snap.val())
+							$scope.segments[segmentIndex].update(updatedSegment)
+							$scope.$applyAsync()
+						}
+					})
+				}
+
 				orderSegments()
 				$scope.loading = false
 				$scope.$applyAsync()
@@ -155,19 +173,27 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 	$scope.deleteSegment = function(id)
 	{
 		const index = segmentIndexById(id)
-		$scope.segments.splice(index, 1)
-		
-		orderSegments()
-		databaseSegment.removeSegment(id)
 
-		ui.closeDialog(DIALOG_SEGMENT)
+		if (index)
+		{
+			$scope.segments.splice(index, 1)
+			
+			orderSegments()
+			databaseSegment.removeSegment(id)
+
+			ui.closeDialog(DIALOG_SEGMENT)
+		}
 	}
 
 	$scope.createNewComment = function(segmentId, languageId, comment)
 	{
 		const segment = segmentById(segmentId)
 		const language = segment.translationById(languageId)
-		//TODO language.comments.push(comment)
+
+		if (language)
+		{
+			//TODO language.comments.push(comment)
+		}
 	}
 
 	$scope.segmentValidatedState = function(value)
@@ -190,7 +216,7 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 	{
 		const index = segmentIndexById(id)
 
-		return (index != -1) ? $scope.segments[index] : null
+		return (index) ? $scope.segments[index] : null
 	}
 
 	function segmentIndexById(id)
@@ -203,7 +229,7 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 			}
 		}
 
-		return -1
+		return null
 	}
 
 	function orderSegments()

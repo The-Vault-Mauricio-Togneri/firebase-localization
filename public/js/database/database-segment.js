@@ -1,8 +1,15 @@
 app.service('databaseSegment', function(database)
 {
-	this.ref = function()
+	this.ref = function(id)
 	{
-		return database.ref('segments')
+		if (id)
+		{
+			return database.ref(`segments/${id}`)
+		}
+		else
+		{
+			return database.ref('segments')
+		}
 	}
 
 	this.fromSnap = function(snap)

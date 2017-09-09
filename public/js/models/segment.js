@@ -15,6 +15,24 @@ function Segment(id, data)
 		this.translations[index] = new Translation(index, data.translations[index])
 	}
 
+	this.update = function(segment)
+	{
+		this.id = segment.id
+		this.key = segment.key
+		this.description = segment.description
+		this.tags = segment.tags
+		this.maxLength = segment.maxLength
+		this.screenshot = segment.screenshot
+		this.isPlural = segment.isPlural
+		this.isArray = segment.isArray
+		this.translations = {}
+
+		for (const index in segment.translations)
+		{
+			this.translations[index] = new Translation(index, segment.translations[index])
+		}
+	}
+
 	this.translationById = function(id)
 	{
 		for (const index in this.translations)
