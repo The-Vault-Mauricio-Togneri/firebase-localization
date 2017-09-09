@@ -67,9 +67,16 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 		
 		if (oldValue != segment.key)
 		{
-			input.target.alt = segment.key
-			databaseSegment.updateSegmentKey(segment.id, segment.key)
-			orderSegments()
+			if (segment.key)
+			{
+				input.target.alt = segment.key
+				databaseSegment.updateSegmentKey(segment.id, segment.key)
+				orderSegments()
+			}
+			else
+			{
+				segment.key = oldValue
+			}
 		}
 	}
 
