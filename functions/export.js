@@ -1,42 +1,54 @@
-module.exports = {
-	
-	android: function(language, segments)
+function Exporter(language, segments)
+{
+	function translationsByLanguage(language, segments)
 	{
+		var result = {}
+		
+		for (const index in segments)
+		{
+			const key = segments[index].key
+			const value = segments[index].translations[language.key].value
+	
+			result[key] = value
+		}
+
+		return result
+	}
+
+	this.android = function(language, segments)
+	{
+		const translations = translationsByLanguage(language, segments)
+
 		var result = '<?xml version="1.0" encoding="utf-8"?>\n'
 		result += '<resources>\n'
 	
-		for (const index in segments)
+		for (const key in translations)
 		{
-			const segment = segments[index]
-			const key = segment.key
-			const value = segment.translations[language.key].value
-			
-			result += `\t<string name="${key}">${value}"</string>\n`
+			result += `\t<string name="${key}">${translations[key]}"</string>\n`
 		}
 	
 		result += '</resources>'
 	
 		return result
-	},
-	
-    ios: function(language, segments)
+	}
+
+	this.ios = function(language, segments)
 	{
+		const translations = translationsByLanguage(language, segments)
+
 		var result = ''
 	
-		for (const index in segments)
+		for (const key in translations)
 		{
-			const segment = segments[index]
-			const key = segment.key
-			const value = segment.translations[language.key].value
-	
-			result += `"${key}" = "${value}";\n`
+			result += `"${key}" = "${translations[key]}";\n`
 		}
 	
 		return result
-	},
+	}
 	
-    xliff: function(language, segments)
+    this.xliff = function(language, segments)
 	{
+		const translations = translationsByLanguage(language, segments)
 		const languageCode = language.val().code
 
 		var result = '<?xml version="1.0" encoding="utf-8"?>\n'
@@ -44,15 +56,11 @@ module.exports = {
 		result += `\t<file original="global" datatype="plaintext" source-language="${languageCode}" target-language="${languageCode}">\n`
 		result += '\t\t<body>\n'
 
-		for (const index in segments)
+		for (const key in translations)
 		{
-			const segment = segments[index]
-			const key = segment.key
-			const value = segment.translations[language.key].value
-
 			result += `\t\t\t<trans-unit id="${key}">\n`
-			result += `\t\t\t\t<source xml:lang="${languageCode}">${value}</source>\n`
-			result += `\t\t\t\t<target xml:lang="${languageCode}">${value}</target>\n`
+			result += `\t\t\t\t<source xml:lang="${languageCode}">${translations[key]}</source>\n`
+			result += `\t\t\t\t<target xml:lang="${languageCode}">${translations[key]}</target>\n`
 			result += `\t\t\t</trans-unit>\n`
 		}
 	
@@ -61,37 +69,28 @@ module.exports = {
 		result += '</xliff>'
 	
 		return result
-	},
+	}
 	
-    json: function(language, segments)
+    this.json = function(language, segments)
 	{
-		var result = {}
-	
-		for (const index in segments)
-		{
-			const segment = segments[index]
-			const key = segment.key
-			const value = segment.translations[language.key].value
-	
-			result[key] = value
-		}
+		const translations = translationsByLanguage(language, segments)
 
-		return JSON.stringify(result, null, 4)
-	},
+		return JSON.stringify(translations, null, 4)
+	}
 	
-    yaml: function(language, segments)
+    this.yaml = function(language, segments)
 	{
+		const translations = translationsByLanguage(language, segments)
+
 		var result = ''
 	
-		for (const index in segments)
+		for (const key in translations)
 		{
-			const segment = segments[index]
-			const key = segment.key
-			const value = segment.translations[language.key].value
-	
-			result += `${key}: ${value}\n`
+			result += `${key}: ${translations[key]}\n`
 		}
 
 		return result
 	}
 }
+
+module.exports = new Exporter()
