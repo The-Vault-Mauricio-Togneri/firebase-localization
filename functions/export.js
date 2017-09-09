@@ -77,5 +77,21 @@ module.exports = {
 		}
 
 		return JSON.stringify(result, null, 4)
+	},
+	
+    yaml: function(language, segments)
+	{
+		var result = ''
+	
+		for (const index in segments)
+		{
+			const segment = segments[index]
+			const key = segment.key
+			const value = segment.translations[language.key].value
+	
+			result += `${key}: ${value}\n`
+		}
+
+		return result
 	}
 }

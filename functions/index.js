@@ -76,6 +76,22 @@ app.get('/export/:language/json', (request, response) =>
 	})
 })
 
+app.get('/export/:language/yaml', (request, response) =>
+{
+	const languageCode = request.param('language')
+	
+	database.languagesRef(admin).once('value', languagesSnap =>
+	{
+		const language = database.languageByCode(languageCode, languagesSnap)
+		
+		return database.segmentsRef(admin).once('value', segmentsSnap =>
+		{
+			response.set('content-disposition', `attachment; filename="${languageCode}.yaml"`)
+			response.send(generate.yaml(language, segmentsSnap.val()))
+		})
+	})
+})
+
 const api = express()
 api.use('/api', app)
 

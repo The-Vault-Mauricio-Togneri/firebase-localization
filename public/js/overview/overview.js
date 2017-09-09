@@ -114,6 +114,11 @@ app.controller(CONTROLLER_OVERVIEW, function($scope, database, databaseToken, da
 		exportFile(language.code, 'json', $scope.apiToken)
 	}
 
+	$scope.exportYaml = function(language)
+	{
+		exportFile(language.code, 'yaml', $scope.apiToken)
+	}
+
 	function exportFile(languageCode, format, token)
 	{
 		downloadFile(`https://${window.location.host}/api/export/${languageCode}/${format}?token=${token}`)
