@@ -104,6 +104,11 @@ app.controller(CONTROLLER_OVERVIEW, function($scope, database, databaseToken, da
 		downloadFile(`https://${window.location.host}/api/export/${language.code}/ios?token=${$scope.apiToken}`)
 	}
 
+	$scope.exportXliff = function(language)
+	{
+		downloadFile(`https://${window.location.host}/api/export/${language.code}/xliff?token=${$scope.apiToken}`)
+	}
+
 	function downloadFile(path)
 	{
 		console.log(`DOWNLOADING: ${path}`)

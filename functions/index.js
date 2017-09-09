@@ -23,7 +23,7 @@ app.get('/export/:language/android', (request, response) =>
 		return database.segmentsRef(admin).once('value', segmentsSnap =>
 		{
 			response.set('content-disposition', `attachment; filename="strings-${languageCode}.xml"`)
-			response.send(generate.android(language.key, segmentsSnap.val()))
+			response.send(generate.android(language, segmentsSnap.val()))
 		})
 	})
 })
@@ -39,7 +39,23 @@ app.get('/export/:language/ios', (request, response) =>
 		return database.segmentsRef(admin).once('value', segmentsSnap =>
 		{
 			response.set('content-disposition', `attachment; filename="Localizable-${languageCode}.strings"`)
-			response.send(generate.ios(language.key, segmentsSnap.val()))
+			response.send(generate.ios(language, segmentsSnap.val()))
+		})
+	})
+})
+
+app.get('/export/:language/xliff', (request, response) =>
+{
+	const languageCode = request.param('language')
+	
+	database.languagesRef(admin).once('value', languagesSnap =>
+	{
+		const language = database.languageByCode(languageCode, languagesSnap)
+		
+		return database.segmentsRef(admin).once('value', segmentsSnap =>
+		{
+			response.set('content-disposition', `attachment; filename="${languageCode}.xlf"`)
+			response.send(generate.xliff(language, segmentsSnap.val()))
 		})
 	})
 })
