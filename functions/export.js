@@ -49,8 +49,6 @@ module.exports = {
 			const segment = segments[index]
 			const key = segment.key
 			const value = segment.translations[language.key].value
-			
-			result += `\t<string name="${key}">${value}"</string>\n`
 
 			result += `\t\t\t<trans-unit id="${key}">\n`
 			result += `\t\t\t\t<source xml:lang="${languageCode}">${value}</source>\n`
