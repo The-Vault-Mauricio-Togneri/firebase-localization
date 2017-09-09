@@ -155,7 +155,7 @@
 					<td ng-repeat="language in languages" ng-show="filter.language[language.id]">
 						<div class="input-group">
 							<textarea class="form-control segment-input" type="text" title="{{::segment.translations[language.id].value}}" ng-model="segment.translations[language.id].value" ng-blur="onTranslationValueUpdated(segment, language, $event.target)" rows="1"></textarea>
-							<div class="input-group-addon segment-checkbox" ng-class="segmentValidatedState(segment.translations[language.id].validated)" ng-click="onSegmentValidatedChanged(segment, language)">
+							<div class="input-group-addon segment-checkbox" ng-class="(segment.translations[language.id].validated) ? 'segment-checkbox-on' : 'segment-checkbox-off'" ng-click="onSegmentValidatedChanged(segment, language)">
 								<i class="fa fa-check"></i>
 							</div>
 						</div>

@@ -193,11 +193,6 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 	{
 		databaseTranslation.addComment(segmentId, languageId, comment)
 	}
-
-	$scope.segmentValidatedState = function(value)
-	{
-		return value ? 'segment-checkbox-on' : 'segment-checkbox-off'
-	}
 	
 	$scope.displayByState = function(segment)
 	{
