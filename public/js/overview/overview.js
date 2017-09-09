@@ -17,7 +17,7 @@ app.controller(CONTROLLER_OVERVIEW, function($scope, database, databaseToken, da
 		{	
 			const languages = databaseLanguage.fromSnap(snapLanguages)
 
-			databaseSegment.ref().on('value', snapSegments =>
+			databaseSegment.ref().once('value', snapSegments =>
 			{
 				const segments = databaseSegment.fromSnap(snapSegments)
 				$scope.languages = summary(languages, segments)
@@ -43,14 +43,14 @@ app.controller(CONTROLLER_OVERVIEW, function($scope, database, databaseToken, da
 
 			for (const languageIndex in segment.translations)
 			{
-				const language = segment.translations[languageIndex]
+				const translation = segment.translations[languageIndex]
 				
-				if (language.value)
+				if (translation.value)
 				{
 					languages[languageIndex].translated++
 				}
 
-				if (language.validated)
+				if (translation.validated)
 				{
 					languages[languageIndex].validated++
 				}
