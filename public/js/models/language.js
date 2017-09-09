@@ -4,6 +4,14 @@ function Language(id, data)
 	this.code = data.code
 	this.name = LOCALES[data.code]
 	this.fullName = this.name + ` (${this.code})`
+	this.translated = 0
+	this.validated = 0
+
+	this.calculateSummary = function(total)
+	{
+		this.translated = (total > 0) ? parseInt(this.translated * 100 / total) : 0
+		this.validated  = (total > 0) ? parseInt(this.validated  * 100 / total) : 0
+	}
 }
 
 const LOCALES = {

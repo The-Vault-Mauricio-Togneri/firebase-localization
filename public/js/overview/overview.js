@@ -20,13 +20,7 @@ app.controller(CONTROLLER_OVERVIEW, function($scope, database, databaseToken, da
 			databaseSegment.ref().on('value', snapSegments =>
 			{
 				const segments = databaseSegment.fromSnap(snapSegments)
-				const summary = $scope.summary($scope.languages, segments)
-
-				for (const index in summary)
-				{
-					$scope.languages[index].translated = summary[index].translated
-					$scope.languages[index].validated  = summary[index].validated
-				}
+				$scope.summary($scope.languages, segments)
 
 				$scope.loading = false
 				$scope.$applyAsync()
@@ -41,17 +35,6 @@ app.controller(CONTROLLER_OVERVIEW, function($scope, database, databaseToken, da
 
 	$scope.summary = function(languages, segments)
 	{
-		const summary = {}
-
-		for (const index in languages)
-		{
-			summary[index] = {
-				translated: 0,
-				validated: 0,
-				total: 0
-			}
-		}
-
 		for (const segmentIndex in segments)
 		{
 			const segment = segments[segmentIndex]
@@ -60,27 +43,22 @@ app.controller(CONTROLLER_OVERVIEW, function($scope, database, databaseToken, da
 			{
 				const language = segment.translations[languageIndex]
 				
-				summary[languageIndex].total++
-
 				if (language.value)
 				{
-					summary[languageIndex].translated++
+					languages[languageIndex].translated++
 				}
 
 				if (language.validated)
 				{
-					summary[languageIndex].validated++
+					languages[languageIndex].validated++
 				}
 			}
 		}
 
-		for (const index in summary)
+		for (const index in languages)
 		{
-			summary[index].translated = (summary[index].total > 0) ? parseInt(summary[index].translated * 100 / summary[index].total) : 0
-			summary[index].validated  = (summary[index].total > 0) ? parseInt(summary[index].validated  * 100 / summary[index].total) : 0
+			languages[index].calculateSummary(segments.length)
 		}
-
-		return summary
 	}
 
 	$scope.languageProgressValue = function(value)
