@@ -7,14 +7,19 @@ function Database(adminConfig)
 		return admin.database().ref(path)
 	}
 
-	this.languagesRef = function()
+	this.languages = function()
 	{
 		return admin.database().ref('languages')
 	}
 
-	this.segmentsRef = function()
+	this.segments = function()
 	{
 		return admin.database().ref('segments')
+	}
+
+	this.apiToken = function()
+	{
+		return admin.database().ref('api/token')
 	}
 
 	this.languageByCode = function(code, snapshot)

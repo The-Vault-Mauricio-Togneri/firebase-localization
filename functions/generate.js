@@ -20,16 +20,34 @@ function Generate(databaseConfig)
 	this.exportFile = function(request, response, fileName, exporter)
 	{
 		const languageCode = request.param('language')
+		const token = request.query.token
 		
-		database.languagesRef().once('value', languagesSnap =>
+		database.apiToken().once('value', tokenSnap =>
 		{
-			const language = database.languageByCode(languageCode, languagesSnap)
-			
-			database.segmentsRef().once('value', segmentsSnap =>
+			if (tokenSnap.val() == token)
 			{
-				response.set('content-disposition', `attachment; filename="${fileName.replace('{language}', languageCode)}"`)
-				response.send(exporter(language, segmentsSnap.val()))
-			})
+				database.languages().once('value', languagesSnap =>
+				{
+					const language = database.languageByCode(languageCode, languagesSnap)
+				
+					if (language)
+					{
+						database.segments().once('value', segmentsSnap =>
+						{
+							response.set('content-disposition', `attachment; filename="${fileName.replace('{language}', languageCode)}"`)
+							response.send(exporter(language, segmentsSnap.val()))
+						})
+					}
+					else
+					{
+						response.status(400).send();
+					}
+				})	
+			}
+			else
+			{
+				response.status(400).send();
+			}
 		})
 	}
 

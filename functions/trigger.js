@@ -15,7 +15,7 @@ function Trigger(databaseConfig)
 	
 	this.onLanguageAdded = function(event)
 	{
-		database.segmentsRef().once('value', snap =>
+		database.segments().once('value', snap =>
 		{
 			snap.forEach(function(entry)
 			{
@@ -31,7 +31,7 @@ function Trigger(databaseConfig)
 
 	this.onLanguageRemoved = function(event)
 	{
-		database.segmentsRef().once('value', snap =>
+		database.segments().once('value', snap =>
 		{
 			snap.forEach(function(entry)
 			{
