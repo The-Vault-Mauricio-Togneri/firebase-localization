@@ -94,13 +94,10 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 
 	$scope.onSegmentValidatedChanged = function(segment, language)
 	{
-		updateTranslationValidated(segment, language, !segment.translations[language.id].validated)
-	}
+		const newValue = !segment.translations[language.id].validated
 
-	function updateTranslationValidated(segment, language, value)
-	{
-		segment.translations[language.id].validated = value
-		databaseTranslation.updateTranslationValidated(segment.id, language.id, value)
+		segment.translations[language.id].validated = newValue
+		databaseTranslation.updateTranslationValidated(segment.id, language.id, newValue)
 	}
 
 	$scope.openAddSegmentDialog = function()
