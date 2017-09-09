@@ -4,8 +4,7 @@ app.controller(CONTROLLER_LOGIN, function($scope)
 		email: '',
 		password: '',
 		loading: false,
-		error: '',
-		display: false
+		error: ''
 	}
 
 	$scope.init = function()
@@ -18,7 +17,9 @@ app.controller(CONTROLLER_LOGIN, function($scope)
 			}
 			else
 			{
-				$scope.form.display = true
+				const form = $('.view-invisible')
+				form.removeClass('view-invisible')
+				form.addClass('view-visible')
 			}
 		})
 	}

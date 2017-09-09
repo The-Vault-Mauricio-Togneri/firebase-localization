@@ -36,6 +36,16 @@ html, body
 	border-color: #E3534F;
 }
 
+.view-invisible
+{
+	visibility: hidden;
+}
+
+.view-visible
+{
+	visibility: visible;
+}
+
 .loading-progress
 {
 	position: absolute;
