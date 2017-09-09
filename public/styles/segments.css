@@ -70,9 +70,9 @@
 
 .button-circle
 {
-	width: 3em;
-	height: 3em;
-	padding: 0px 1em;
+	width: 4em;
+	height: 4em;
+	padding: 0px 1.3em;
 	border-radius: 10em;
 	position: fixed;
 	z-index: 999;

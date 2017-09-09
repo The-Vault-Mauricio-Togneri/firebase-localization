@@ -24,16 +24,40 @@ html, body
 	cursor: pointer;
 }
 
+.btn-primary
+{
+	background: #3D88EC;
+	border-color: #3D88EC;
+}
+
+.btn-primary:hover
+{
+	background: #4493FA;
+	border-color: #4493FA;
+}
+
 .btn-success
 {
 	background: #5F9B48;
-	border-color: #71A55D;
+	border-color: #5F9B48;
+}
+
+.btn-success:hover
+{
+	background: #6AAD4F;
+	border-color: #6AAD4F;
 }
 
 .btn-danger
 {
 	background: #EA5854;
-	border-color: #E3534F;
+	border-color: #EA5854;
+}
+
+.btn-danger:hover
+{
+	background: #F86060;
+	border-color: #F86060;
 }
 
 .cursor-hand
