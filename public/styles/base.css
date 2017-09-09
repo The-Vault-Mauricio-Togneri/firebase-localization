@@ -36,6 +36,11 @@ html, body
 	border-color: #E3534F;
 }
 
+.cursor-hand
+{
+	cursor: pointer;
+}
+
 .view-invisible
 {
 	visibility: hidden;
