@@ -27,7 +27,6 @@ app.controller(DIALOG_SEGMENT, function($scope, ui)
 		{
 			$scope.form.translations[index] = {
 				value: '',
-				oldValue: null,
 				validated: false
 			}
 		}
@@ -50,7 +49,6 @@ app.controller(DIALOG_SEGMENT, function($scope, ui)
 		{
 			$scope.form.translations[index] = {
 				value: segment.translations[index].value,
-				oldValue: segment.translations[index].value,
 				validated: segment.translations[index].validated,
 				history: segment.translations[index].history,
 			}

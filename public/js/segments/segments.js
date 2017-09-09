@@ -63,13 +63,13 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 
 	$scope.onSegmentKeyUpdated = function(segment, input)
 	{
-		const oldValue = input.target.alt
+		const oldValue = input.alt
 		
 		if (oldValue != segment.key)
 		{
 			if (segment.key)
 			{
-				input.target.alt = segment.key
+				input.alt = segment.key
 				databaseSegment.updateSegmentKey(segment.id, segment.key)
 				orderSegments()
 			}
@@ -80,20 +80,15 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 		}
 	}
 
-	$scope.onTranslationValueUpdated = function(segment, language)
+	$scope.onTranslationValueUpdated = function(segment, language, textarea)
 	{
 		const newValue = segment.translations[language.id].value
-		const oldValue = segment.translations[language.id].oldValue
+		const oldValue = textarea.title
 
 		if (newValue != oldValue)
 		{
+			textarea.title = newValue
 			databaseTranslation.updateTranslationValue(segment.id, language.id, newValue)
-			segment.translations[language.id].oldValue = newValue
-
-			if (segment.translations[language.id].validated)
-			{
-				updateTranslationValidated(segment, language, false)
-			}
 		}
 	}
 
@@ -166,7 +161,7 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 
 			entry.translations[index] = {
 				value: language.value,
-				validated: language.validated && (language.value == language.oldValue)
+				validated: language.validated
 			}
 
 			sourceSegment.translations[index].value     = entry.translations[index].value

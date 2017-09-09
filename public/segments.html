@@ -149,12 +149,12 @@
 							<div class="input-group-addon segments-settings-icon" ng-click="openEditSegmentDialog(segment)">
 								<i class="fa fa-cog"></i>
 							</div>
-							<input class="form-control" type="text" alt="{{::segment.key}}" ng-model="segment.key" ng-blur="onSegmentKeyUpdated(segment, $event)">
+							<input class="form-control" type="text" alt="{{::segment.key}}" ng-model="segment.key" ng-blur="onSegmentKeyUpdated(segment, $event.target)">
 						</div>
 					</td>
 					<td ng-repeat="language in languages" ng-show="filter.language[language.id]">
 						<div class="input-group">
-							<textarea class="form-control segment-input" type="text" ng-model="segment.translations[language.id].value" ng-blur="onTranslationValueUpdated(segment, language)" rows="1"></textarea>
+							<textarea class="form-control segment-input" type="text" title="{{::segment.translations[language.id].value}}" ng-model="segment.translations[language.id].value" ng-blur="onTranslationValueUpdated(segment, language, $event.target)" rows="1"></textarea>
 							<div class="input-group-addon segment-checkbox" ng-class="segmentValidatedState(segment.translations[language.id].validated)" ng-click="onSegmentValidatedChanged(segment, language)">
 								<i class="fa fa-check"></i>
 							</div>
