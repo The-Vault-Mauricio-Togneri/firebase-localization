@@ -96,17 +96,27 @@ app.controller(CONTROLLER_OVERVIEW, function($scope, database, databaseToken, da
 
 	$scope.exportAndroid = function(language)
 	{
-		downloadFile(`https://${window.location.host}/api/export/${language.code}/android?token=${$scope.apiToken}`)
+		exportFile(language.code, 'android', $scope.apiToken)
 	}
 
 	$scope.exportIOS = function(language)
 	{
-		downloadFile(`https://${window.location.host}/api/export/${language.code}/ios?token=${$scope.apiToken}`)
+		exportFile(language.code, 'ios', $scope.apiToken)
 	}
 
 	$scope.exportXliff = function(language)
 	{
-		downloadFile(`https://${window.location.host}/api/export/${language.code}/xliff?token=${$scope.apiToken}`)
+		exportFile(language.code, 'xliff', $scope.apiToken)
+	}
+
+	$scope.exportJson = function(language)
+	{
+		exportFile(language.code, 'json', $scope.apiToken)
+	}
+
+	function exportFile(languageCode, format, token)
+	{
+		downloadFile(`https://${window.location.host}/api/export/${languageCode}/${format}?token=${token}`)
 	}
 
 	function downloadFile(path)

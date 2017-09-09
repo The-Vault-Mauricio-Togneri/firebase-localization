@@ -61,5 +61,21 @@ module.exports = {
 		result += '</xliff>'
 	
 		return result
+	},
+	
+    json: function(language, segments)
+	{
+		var result = {}
+	
+		for (const index in segments)
+		{
+			const segment = segments[index]
+			const key = segment.key
+			const value = segment.translations[language.key].value
+	
+			result[key] = value
+		}
+
+		return JSON.stringify(result, null, 4)
 	}
 }
