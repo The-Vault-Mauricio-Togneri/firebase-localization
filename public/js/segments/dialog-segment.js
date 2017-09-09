@@ -51,6 +51,7 @@ app.controller(DIALOG_SEGMENT, function($scope, ui)
 				value: segment.translations[index].value,
 				validated: segment.translations[index].validated,
 				history: segment.translations[index].history,
+				comments: segment.translations[index].comments
 			}
 		}
 	
