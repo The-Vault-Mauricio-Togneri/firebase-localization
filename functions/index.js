@@ -14,82 +14,27 @@ admin.initializeApp({
 
 app.get('/export/:language/android', (request, response) =>
 {
-	const languageCode = request.param('language')
-
-	database.languagesRef(admin).once('value', languagesSnap =>
-	{
-		const language = database.languageByCode(languageCode, languagesSnap)
-		
-		return database.segmentsRef(admin).once('value', segmentsSnap =>
-		{
-			response.set('content-disposition', `attachment; filename="strings-${languageCode}.xml"`)
-			response.send(generate.android(language, segmentsSnap.val()))
-		})
-	})
+	generate.exportFile(request, response, admin, 'strings-{language}.xml', generate.android)
 })
 
 app.get('/export/:language/ios', (request, response) =>
 {
-	const languageCode = request.param('language')
-	
-	database.languagesRef(admin).once('value', languagesSnap =>
-	{
-		const language = database.languageByCode(languageCode, languagesSnap)
-		
-		return database.segmentsRef(admin).once('value', segmentsSnap =>
-		{
-			response.set('content-disposition', `attachment; filename="Localizable-${languageCode}.strings"`)
-			response.send(generate.ios(language, segmentsSnap.val()))
-		})
-	})
+	generate.exportFile(request, response, admin, 'Localizable-{language}.strings', generate.ios)
 })
 
 app.get('/export/:language/xliff', (request, response) =>
 {
-	const languageCode = request.param('language')
-	
-	database.languagesRef(admin).once('value', languagesSnap =>
-	{
-		const language = database.languageByCode(languageCode, languagesSnap)
-		
-		return database.segmentsRef(admin).once('value', segmentsSnap =>
-		{
-			response.set('content-disposition', `attachment; filename="${languageCode}.xlf"`)
-			response.send(generate.xliff(language, segmentsSnap.val()))
-		})
-	})
+	generate.exportFile(request, response, admin, '{language}.xlf', generate.xliff)
 })
 
 app.get('/export/:language/json', (request, response) =>
 {
-	const languageCode = request.param('language')
-	
-	database.languagesRef(admin).once('value', languagesSnap =>
-	{
-		const language = database.languageByCode(languageCode, languagesSnap)
-		
-		return database.segmentsRef(admin).once('value', segmentsSnap =>
-		{
-			response.set('content-disposition', `attachment; filename="${languageCode}.json"`)
-			response.send(generate.json(language, segmentsSnap.val()))
-		})
-	})
+	generate.exportFile(request, response, admin, '{language}.json', generate.json)
 })
 
 app.get('/export/:language/yaml', (request, response) =>
 {
-	const languageCode = request.param('language')
-	
-	database.languagesRef(admin).once('value', languagesSnap =>
-	{
-		const language = database.languageByCode(languageCode, languagesSnap)
-		
-		return database.segmentsRef(admin).once('value', segmentsSnap =>
-		{
-			response.set('content-disposition', `attachment; filename="${languageCode}.yaml"`)
-			response.send(generate.yaml(language, segmentsSnap.val()))
-		})
-	})
+	generate.exportFile(request, response, admin, '{language}.yaml', generate.yaml)
 })
 
 const api = express()

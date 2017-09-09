@@ -15,6 +15,23 @@ function Exporter()
 		return result
 	}
 
+	this.exportFile = function(request, response, admin, fileName, exporter)
+	{
+		const database = require('./database.js')
+		const languageCode = request.param('language')
+		
+		database.languagesRef(admin).once('value', languagesSnap =>
+		{
+			const language = database.languageByCode(languageCode, languagesSnap)
+			
+			database.segmentsRef(admin).once('value', segmentsSnap =>
+			{
+				response.set('content-disposition', `attachment; filename="${fileName.replace('{language}', languageCode)}"`)
+				response.send(exporter(language, segmentsSnap.val()))
+			})
+		})
+	}
+
 	this.android = function(language, segments)
 	{
 		const translations = translationsByLanguage(language, segments)
