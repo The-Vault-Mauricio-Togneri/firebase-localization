@@ -73,7 +73,7 @@ exports.onLanguageAdded = functions.database.ref('/languages/{languageId}').onCr
 
 			console.log('c')
 
-			database.ref(`/segments/${entry.key}/translations`).push(value)
+			database.ref(admin, `/segments/${entry.key}/translations`).push(value)
 		})
 	})
 })
