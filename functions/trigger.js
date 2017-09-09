@@ -1,5 +1,7 @@
-function Trigger(adminConfig)
+function Trigger(databaseConfig)
 {
+	const database = databaseConfig
+
     this.onTranslationUpdated = function(event)
 	{
 		const entry = {
@@ -11,9 +13,9 @@ function Trigger(adminConfig)
 		return event.data.ref.parent.child('history').push(entry)
 	}
 	
-	this.onLanguageAdded = function(event, database, admin)
+	this.onLanguageAdded = function(event)
 	{
-		database.segmentsRef(admin).once('value', snap =>
+		database.segmentsRef().once('value', snap =>
 		{
 			snap.forEach(function(entry)
 			{
@@ -22,10 +24,10 @@ function Trigger(adminConfig)
 					validated: false
 				}
 	
-				database.ref(admin, `/segments/${entry.key}/translations/${event.data.ref.key}`).set(value)
+				database.ref(`/segments/${entry.key}/translations/${event.data.ref.key}`).set(value)
 			})
 		})
 	}
 }
 
-module.exports = new Trigger()
+module.exports = Trigger

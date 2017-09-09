@@ -1,5 +1,7 @@
-function Exporter()
+function Generate(databaseConfig)
 {
+	const database = databaseConfig
+
 	function translationsByLanguage(language, segments)
 	{
 		var result = {}
@@ -15,16 +17,15 @@ function Exporter()
 		return result
 	}
 
-	this.exportFile = function(request, response, admin, fileName, exporter)
+	this.exportFile = function(request, response, fileName, exporter)
 	{
-		const database = require('./database.js')
 		const languageCode = request.param('language')
 		
-		database.languagesRef(admin).once('value', languagesSnap =>
+		database.languagesRef().once('value', languagesSnap =>
 		{
 			const language = database.languageByCode(languageCode, languagesSnap)
 			
-			database.segmentsRef(admin).once('value', segmentsSnap =>
+			database.segmentsRef().once('value', segmentsSnap =>
 			{
 				response.set('content-disposition', `attachment; filename="${fileName.replace('{language}', languageCode)}"`)
 				response.send(exporter(language, segmentsSnap.val()))
@@ -110,4 +111,4 @@ function Exporter()
 	}
 }
 
-module.exports = new Exporter()
+module.exports = Generate

@@ -1,16 +1,18 @@
-function Database()
+function Database(adminConfig)
 {
-	this.ref = function(admin, path)
+	const admin = adminConfig
+
+	this.ref = function(path)
 	{
 		return admin.database().ref(path)
 	}
 
-	this.languagesRef = function(admin)
+	this.languagesRef = function()
 	{
 		return admin.database().ref('languages')
 	}
 
-	this.segmentsRef = function(admin)
+	this.segmentsRef = function()
 	{
 		return admin.database().ref('segments')
 	}
@@ -31,4 +33,4 @@ function Database()
 	}
 }
 
-module.exports = new Database()
+module.exports = Database

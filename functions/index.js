@@ -8,33 +8,34 @@ admin.initializeApp({
 
 const functions = require('firebase-functions')
 const express   = require('express')
-const generate  = require('./generate.js')
-const trigger   = require('./trigger.js')
+const database  = new (require('./database.js'))(admin)
+const trigger   = new (require('./trigger.js'))(database)
+const generate  = new (require('./generate.js'))(database)
 const app = express()
 
 app.get('/export/:language/android', (request, response) =>
 {
-	generate.exportFile(request, response, admin, 'strings-{language}.xml', generate.android)
+	generate.exportFile(request, response, 'strings-{language}.xml', generate.android)
 })
 
 app.get('/export/:language/ios', (request, response) =>
 {
-	generate.exportFile(request, response, admin, 'Localizable-{language}.strings', generate.ios)
+	generate.exportFile(request, response, 'Localizable-{language}.strings', generate.ios)
 })
 
 app.get('/export/:language/xliff', (request, response) =>
 {
-	generate.exportFile(request, response, admin, '{language}.xlf', generate.xliff)
+	generate.exportFile(request, response, '{language}.xlf', generate.xliff)
 })
 
 app.get('/export/:language/json', (request, response) =>
 {
-	generate.exportFile(request, response, admin, '{language}.json', generate.json)
+	generate.exportFile(request, response, '{language}.json', generate.json)
 })
 
 app.get('/export/:language/yaml', (request, response) =>
 {
-	generate.exportFile(request, response, admin, '{language}.yaml', generate.yaml)
+	generate.exportFile(request, response, '{language}.yaml', generate.yaml)
 })
 
 const api = express()
@@ -49,7 +50,7 @@ exports.onTranslationUpdated = functions.database.ref('/segments/{segmentId}/tra
 
 exports.onLanguageAdded = functions.database.ref('/languages/{languageId}').onCreate(event =>
 {
-	return trigger.onLanguageAdded(event, database, admin)
+	return trigger.onLanguageAdded(event)
 })
 
 // https://github.com/firebase/functions-samples
