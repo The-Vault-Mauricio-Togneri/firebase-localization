@@ -2,7 +2,7 @@ app.service('databaseLanguage', function(database)
 {
 	this.ref = function()
 	{
-		return database.child('languages')
+		return database.ref('languages')
 	}
 
 	this.fromSnap = function(snap)

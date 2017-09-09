@@ -1,16 +1,16 @@
 "use strict"
 
-const functions = require('firebase-functions')
-const express = require('express')
-const generate = require('./generate.js')
-const database = require('./database.js')
-const app = express()
-
 const admin = require('firebase-admin')
 admin.initializeApp({
 	credential: admin.credential.applicationDefault(),
 	databaseURL: 'https://app-localization-2f645.firebaseio.com'
 })
+
+const functions = require('firebase-functions')
+const express   = require('express')
+const generate  = require('./generate.js')
+const trigger   = require('./trigger.js')
+const app = express()
 
 app.get('/export/:language/android', (request, response) =>
 {
@@ -42,38 +42,15 @@ api.use('/api', app)
 
 exports.api = functions.https.onRequest(api)
 
-// https://github.com/firebase/functions-samples
-// https://us-central1-app-localization-2f645.cloudfunctions.net/[function]
-
 exports.onTranslationUpdated = functions.database.ref('/segments/{segmentId}/translations/{translationId}/value').onUpdate(event =>
 {
-	const entry = {
-		value: event.data.previous.val(),
-		author: event.auth.variable.email,
-		date: Date.now()
-	}
-	
-	return event.data.ref.parent.child('history').push(entry)
+	return trigger.onTranslationUpdated(event)
 })
 
 exports.onLanguageAdded = functions.database.ref('/languages/{languageId}').onCreate(event =>
 {
-	console.log('a')
-
-	database.segmentsRef(admin).once('value', snap =>
-	{
-		console.log('b')
-
-		snap.forEach(function(entry)
-		{
-			const value = {
-				value: '',
-				validated: false
-			}
-
-			console.log('c')
-
-			database.ref(admin, `/segments/${entry.key}/translations`).push(value)
-		})
-	})
+	return trigger.onLanguageAdded(event, database, admin)
 })
+
+// https://github.com/firebase/functions-samples
+// https://us-central1-app-localization-2f645.cloudfunctions.net/[function]

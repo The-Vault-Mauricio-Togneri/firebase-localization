@@ -2,7 +2,7 @@ app.service('databaseSegment', function(database)
 {
 	this.ref = function()
 	{
-		return database.child('segments')
+		return database.ref('segments')
 	}
 
 	this.fromSnap = function(snap)

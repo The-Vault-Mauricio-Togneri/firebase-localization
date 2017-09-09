@@ -1,13 +1,13 @@
 app.service('database', function()
 {
-	this.child = function(path)
+	this.ref = function(path)
 	{
-		return firebase.database().ref().child(path)
+		return firebase.database().ref(path)
 	}
 
 	this.push = function(path, value)
 	{
-		return this.child(path).push(value, function(error)
+		return this.ref(path).push(value, function(error)
 		{
 			logResultPush(path, value, error)
 		})
@@ -15,7 +15,7 @@ app.service('database', function()
 
 	this.set = function(path, value)
 	{
-		return this.child(path).set(value, function(error)
+		return this.ref(path).set(value, function(error)
 		{
 			logResultSet(path, value, error)
 		})
@@ -23,7 +23,7 @@ app.service('database', function()
 
 	this.remove = function(path)
 	{
-		return this.child(path).remove(function(error)
+		return this.ref(path).remove(function(error)
 		{
 			logResultRemove(path, error)
 		})
