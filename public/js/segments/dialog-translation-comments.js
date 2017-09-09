@@ -28,9 +28,9 @@ app.controller(DIALOG_TRANSLATION_COMMENTS, function($scope, ui)
 	$scope.createNewComment = function(form)
 	{
 		const comment = {
+			value: form.newComment,
 			author: firebase.auth().currentUser.email,
-			date: Date.now(),
-			value: form.newComment
+			date: Date.now()
 		}
 
 		$scope.form.newComment = ''

@@ -191,13 +191,7 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 
 	$scope.createNewComment = function(segmentId, languageId, comment)
 	{
-		const segment = segmentById(segmentId)
-		const language = segment.translationById(languageId)
-
-		if (language)
-		{
-			//TODO language.comments.push(comment)
-		}
+		databaseTranslation.addComment(segmentId, languageId, comment)
 	}
 
 	$scope.segmentValidatedState = function(value)
