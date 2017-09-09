@@ -1,5 +1,10 @@
 function Database()
 {
+	this.ref = function(admin, path)
+	{
+		return admin.database().ref(path)
+	}
+
 	this.languagesRef = function(admin)
 	{
 		return admin.database().ref('languages')

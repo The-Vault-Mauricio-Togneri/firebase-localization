@@ -1,12 +1,12 @@
 "use strict"
 
 const functions = require('firebase-functions')
-const admin = require('firebase-admin')
 const express = require('express')
 const generate = require('./generate.js')
 const database = require('./database.js')
 const app = express()
 
+const admin = require('firebase-admin')
 admin.initializeApp({
 	credential: admin.credential.applicationDefault(),
 	databaseURL: 'https://app-localization-2f645.firebaseio.com'
@@ -44,12 +44,8 @@ exports.api = functions.https.onRequest(api)
 
 // https://github.com/firebase/functions-samples
 // https://us-central1-app-localization-2f645.cloudfunctions.net/[function]
-/*exports.example = functions.https.onRequest((request, response) =>
-{
-	response.json({property:123})
-})*/
 
-exports.addHistory = functions.database.ref('/segments/{segmentId}/translations/{translationId}/value').onUpdate(event =>
+exports.onTranslationUpdated = functions.database.ref('/segments/{segmentId}/translations/{translationId}/value').onUpdate(event =>
 {
 	const entry = {
 		value: event.data.previous.val(),
@@ -58,4 +54,26 @@ exports.addHistory = functions.database.ref('/segments/{segmentId}/translations/
 	}
 	
 	return event.data.ref.parent.child('history').push(entry)
+})
+
+exports.onLanguageAdded = functions.database.ref('/languages/{languageId}').onCreate(event =>
+{
+	console.log('a')
+
+	database.segmentsRef(admin).once('value', snap =>
+	{
+		console.log('b')
+
+		snap.forEach(function(entry)
+		{
+			const value = {
+				value: '',
+				validated: false
+			}
+
+			console.log('c')
+
+			database.ref(`/segments/${entry.key}/translations`).push(value)
+		})
+	})
 })
