@@ -1,7 +1,7 @@
 #!/bin/bash
 
-HOST_NAME='app-localization-2f645.firebaseapp.com'
-TOKEN='2661e040-e825-40d5-ba61-d73f2d111b10'
+HOST_NAME='...' # e.g. localization.firebaseapp.com
+TOKEN='...' # e.g. 1f1536e7-25c9-4062-8072-f7469baf1513
 
 declare -A LOCALES
 LOCALES[en_GB]='strings-en-GB.xml'
