@@ -68,6 +68,20 @@
 	background-color: #D0D0D0;
 }
 
+.segment-tag
+{
+	padding: 5px;
+	font-size: 1em;
+	background-color: #5F9B48;
+	margin-right: 5px;
+}
+
+.segment-tag-cross
+{
+	cursor: pointer;
+	margin-left: 5px;
+}
+
 .button-circle
 {
 	width: 4em;
@@ -83,9 +97,4 @@
 .tab-pane
 {
 	padding: 1em;
-}
-
-.form-invalid-input
-{
-	color: red;
 }

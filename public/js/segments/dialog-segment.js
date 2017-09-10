@@ -5,7 +5,8 @@ app.controller(DIALOG_SEGMENT, function($scope, ui)
 		key: '',
 		translations: {},
 		description: '',
-		tags: '',
+		tags: [],
+		newTag: '',
 		maxLength: '',
 		screenshot: '',
 		isPlural: false,
@@ -17,7 +18,8 @@ app.controller(DIALOG_SEGMENT, function($scope, ui)
 		$scope.form.id          = ''
 		$scope.form.key         = ''
 		$scope.form.description = ''
-		$scope.form.tags        = ''
+		$scope.form.tags        = []
+		$scope.form.newTag      = ''
 		$scope.form.maxLength   = ''
 		$scope.form.screenshot  = ''
 		$scope.form.isPlural    = false
@@ -39,7 +41,8 @@ app.controller(DIALOG_SEGMENT, function($scope, ui)
 		$scope.form.id          = segment.id
 		$scope.form.key         = segment.key
 		$scope.form.description = segment.description
-		$scope.form.tags        = segment.tags
+		$scope.form.tags        = (segment.tags) ? segment.tags : []
+		$scope.form.newTag      = ''
 		$scope.form.maxLength   = segment.maxLength
 		$scope.form.screenshot  = segment.screenshot
 		$scope.form.isPlural    = segment.isPlural
@@ -56,6 +59,16 @@ app.controller(DIALOG_SEGMENT, function($scope, ui)
 		}
 	
 		open()
+	}
+
+	$scope.addTag = function(value)
+	{
+		if ($scope.form.tags.indexOf(value) == -1)
+		{  
+			$scope.form.tags.push(value)
+		}
+
+		$scope.form.newTag = ''
 	}
 
 	$scope.historyEmpty = function(history)
