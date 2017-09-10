@@ -27,7 +27,7 @@
 							<label>{{language.fullName}}</label>
 							<div style="display:flex">
 								<div class="input-group">
-									<textarea class="form-control" type="text" ng-model="form.translations[language.id].value" rows="1"></textarea>
+									<textarea class="form-control" maxlength="{{form.maxLength}}" ng-model="form.translations[language.id].value" rows="1"></textarea>
 									<div class="input-group-addon segment-checkbox" ng-class="(form.translations[language.id].validated) ? 'segment-checkbox-on' : 'segment-checkbox-off'" ng-click="form.translations[language.id].validated = !form.translations[language.id].validated">
 										<i class="fa fa-check"></i>
 									</div>
@@ -44,7 +44,7 @@
 					<div class="tab-pane fade" style="padding-left:0;padding-right:0" id="dialog-segment-tab-properties">
 						<div class="form-group">
 							<label>Description:</label>
-							<input class="form-control" type="text" ng-model="form.description">
+							<textarea class="form-control" rows="1" ng-model="form.description"></textarea>
 						</div>
 						<div class="form-group">
 							<label>Tags</label>
