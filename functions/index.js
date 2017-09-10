@@ -1,9 +1,11 @@
 "use strict"
 
+const config = require('./config.js')
+
 const admin = require('firebase-admin')
 admin.initializeApp({
 	credential: admin.credential.applicationDefault(),
-	databaseURL: 'https://app-localization-2f645.firebaseio.com'
+	databaseURL: config.databaseURL
 })
 
 const functions = require('firebase-functions')

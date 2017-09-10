@@ -2,4 +2,6 @@ node_modules/
 functions/node_modules/
 functions/package-lock.json
 firebase-debug.log
+
 public/js/common/config.js
+functions/config.js
