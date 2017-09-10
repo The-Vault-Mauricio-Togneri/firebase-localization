@@ -76,6 +76,8 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 			else
 			{
 				segment.key = oldValue
+
+				ui.showError('Keys cannot be empty')
 			}
 		}
 	}
