@@ -21,6 +21,14 @@ app.service('database', function()
 		})
 	}
 
+	this.update = function(path, value)
+	{
+		return this.ref(path).update(value, function(error)
+		{
+			logResultUpdate(path, value, error)
+		})
+	}
+
 	this.remove = function(path)
 	{
 		return this.ref(path).remove(function(error)
@@ -33,6 +41,18 @@ app.service('database', function()
 	{
 		if (error)
 		{
+			console.log(`PUSHED [${path}] => ${JSON.stringify(value)}: FAILED: ${error}`)
+		}
+		else
+		{
+			console.log(`PUSHED [${path}] => ${JSON.stringify(value)}: OK`)
+		}
+	}
+
+	function logResultSet(path, value, error)
+	{
+		if (error)
+		{
 			console.log(`CREATED [${path}] => ${JSON.stringify(value)}: FAILED: ${error}`)
 		}
 		else
@@ -41,7 +61,7 @@ app.service('database', function()
 		}
 	}
 
-	function logResultSet(path, value, error)
+	function logResultUpdate(path, value, error)
 	{
 		if (error)
 		{

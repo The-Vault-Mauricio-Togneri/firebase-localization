@@ -145,26 +145,14 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 			translations: {}
 		}
 
-		const sourceSegment = segmentById(form.id)
-		sourceSegment.key         = form.key
-		sourceSegment.description = form.description
-		sourceSegment.tags        = form.tags
-		sourceSegment.maxLength   = form.maxLength
-		sourceSegment.screenshot  = form.screenshot
-		sourceSegment.isPlural    = form.isPlural
-		sourceSegment.isArray     = form.isArray
-
 		for (const index in form.translations)
 		{
-			const language = form.translations[index]
+			const translation = form.translations[index]
 
 			entry.translations[index] = {
-				value: language.value,
-				validated: language.validated
+				value: translation.value,
+				validated: translation.validated
 			}
-
-			sourceSegment.translations[index].value     = entry.translations[index].value
-			sourceSegment.translations[index].validated = entry.translations[index].validated
 		}
 		
 		orderSegments()

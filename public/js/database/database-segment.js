@@ -31,7 +31,7 @@ app.service('databaseSegment', function(database)
 
 	this.updateSegment = function(id, value)
 	{
-		database.set(segmentPath(id), value)
+		database.update(segmentPath(id), value)
 	}
 
 	this.updateSegmentKey = function(id, value)
