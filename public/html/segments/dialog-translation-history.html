@@ -17,7 +17,8 @@
 						</div>
 					</div>
 					<div class="card-block" style="padding:0.6em">
-						{{entry.value}}
+						<span ng-show="entry.value">{{entry.value}}</span>
+						<span ng-show="!entry.value" style="color:#AAAAAA"><i>empty value</i></span>
 					</div>
 				</div>
 			</div>
