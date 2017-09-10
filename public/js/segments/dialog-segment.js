@@ -71,6 +71,16 @@ app.controller(DIALOG_SEGMENT, function($scope, ui)
 		$scope.form.newTag = ''
 	}
 
+	$scope.removeTag = function(tag)
+	{
+		const index = $scope.form.tags.indexOf(tag)
+
+		if (index != -1)
+		{
+			$scope.form.tags.splice(index, 1)
+		}
+	}
+
 	$scope.historyEmpty = function(history)
 	{
 		return !history || (Object.keys(history).length == 0)

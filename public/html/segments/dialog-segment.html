@@ -52,7 +52,7 @@
 							<div style="margin-top:5px">
 								<span class="badge segment-tag" ng-repeat="tag in form.tags">
 									{{tag}}
-									<span class="segment-tag-cross">&times;</span>
+									<span class="segment-tag-cross" ng-click="removeTag(tag)">&times;</span>
 								</span>
 							</div>
 						</div>
