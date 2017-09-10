@@ -36,21 +36,12 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 				{
 					const segment = $scope.segments[index]
 
-					databaseSegment.ref(segment.id).on('value', snap =>
-					{
-						const segmentIndex = segmentIndexById(segment.id)
-						
-						if (segmentIndex)
-						{
-							const updatedSegment = new Segment(snap.key, snap.val())
-							$scope.segments[segmentIndex].update(updatedSegment)
-							$scope.$applyAsync()
-						}
-					})
+					listenSegmentChanges(segment.id)
 				}
 
-				orderSegments()
 				$scope.loading = false
+
+				orderSegments()
 				$scope.$applyAsync()
 			})
 		})
@@ -124,6 +115,8 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 		const segment = new Segment(ref.key, entry)
 
 		$scope.segments.push(segment)
+		listenSegmentChanges(segment.id)
+
 		orderSegments()
 	}
 
@@ -225,6 +218,23 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 		$scope.segments = $scope.segments.sort(function(a, b)
 		{
 			return (a.key < b.key) ? -1 : (a.key > b.key)
+		})
+	}
+
+	function listenSegmentChanges(segmentId)
+	{
+		databaseSegment.ref(segmentId).on('value', snap =>
+		{
+			const segmentIndex = segmentIndexById(segmentId)
+			
+			if (segmentIndex)
+			{
+				const updatedSegment = new Segment(snap.key, snap.val())
+				$scope.segments[segmentIndex].update(updatedSegment)
+
+				orderSegments()
+				$scope.$applyAsync()
+			}
 		})
 	}
 
