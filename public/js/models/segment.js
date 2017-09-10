@@ -3,7 +3,7 @@ function Segment(id, data)
 	this.id = id
 	this.key = data.key
 	this.description = data.description
-	this.tags = data.tags
+	this.tags = (data.tags) ? data.tags : []
 	this.maxLength = data.maxLength
 	this.screenshot = data.screenshot
 	this.isPlural = data.isPlural
@@ -20,7 +20,7 @@ function Segment(id, data)
 		this.id = segment.id
 		this.key = segment.key
 		this.description = segment.description
-		this.tags = segment.tags
+		this.tags = (segment.tags) ? segment.tags : []
 		this.maxLength = segment.maxLength
 		this.screenshot = segment.screenshot
 		this.isPlural = segment.isPlural
@@ -56,7 +56,7 @@ function Segment(id, data)
 			}
 		}
 
-		return this.key.toLowerCase().includes(text)
+		return this.key.toLowerCase().includes(text) || this.description.toLowerCase().includes(text) || (this.tags.indexOf(text) != -1)
 	}
 
 	this.hasValidated = function()
