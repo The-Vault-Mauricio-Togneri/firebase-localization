@@ -1,13 +1,13 @@
 app.service('databaseTranslation', function(database)
 {
-	this.updateTranslationValue = function(segmentId, translationId, value)
+	this.updateValue = function(segmentId, translationId, value)
 	{
 		const basePath = translationPath(segmentId, translationId)
 
 		database.set(`${basePath}/value`, value)
 	}
 
-	this.updateTranslationValidated = function(segmentId, translationId, value)
+	this.updateValidated = function(segmentId, translationId, value)
 	{
 		const basePath = translationPath(segmentId, translationId)
 		

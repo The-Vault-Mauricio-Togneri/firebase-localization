@@ -24,24 +24,24 @@ app.service('databaseSegment', function(database)
 		return segments
 	}
 
-	this.addSegment = function(value)
+	this.add = function(value)
 	{
 		return database.push('segments', value)
 	}
 
-	this.updateSegment = function(id, value)
+	this.update = function(id, value)
 	{
 		database.update(segmentPath(id), value)
 	}
 
-	this.updateSegmentKey = function(id, value)
+	this.updateKey = function(id, value)
 	{
 		const basePath = segmentPath(id)
 		
 		database.set(`${basePath}/key`, value)
 	}
 
-	this.removeSegment = function(id)
+	this.remove = function(id)
 	{
 		database.remove(segmentPath(id))
 	}

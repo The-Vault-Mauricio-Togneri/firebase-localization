@@ -17,17 +17,17 @@ app.service('databaseLanguage', function(database)
 		return languages
 	}
 
-	this.addLanguage = function(value)
+	this.add = function(value)
 	{
 		database.push('languages', value)
 	}
 
-	this.updateLanguage = function(id, value)
+	this.update = function(id, value)
 	{
 		database.set(languagePath(id), value)
 	}
 
-	this.removeLanguage = function(id)
+	this.remove = function(id)
 	{
 		database.remove(languagePath(id))
 	}

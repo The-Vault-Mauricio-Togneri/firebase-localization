@@ -172,7 +172,7 @@ app.controller(CONTROLLER_OVERVIEW, function($scope, database, databaseToken, da
 			code: value
 		}
 
-		databaseLanguage.addLanguage(entry)
+		databaseLanguage.add(entry)
 	}
 
 	$scope.openEditLanguageDialog = function(language)
@@ -186,7 +186,7 @@ app.controller(CONTROLLER_OVERVIEW, function($scope, database, databaseToken, da
 			code: value
 		}
 
-		databaseLanguage.updateLanguage(id, entry)
+		databaseLanguage.update(id, entry)
 	}
 
 	$scope.openDeleteLanguageDialog = function(language)
@@ -196,7 +196,7 @@ app.controller(CONTROLLER_OVERVIEW, function($scope, database, databaseToken, da
 
 	$scope.deleteLanguage = function(id)
 	{
-		databaseLanguage.removeLanguage(id)
+		databaseLanguage.remove(id)
 	}
 
 	$scope.init()

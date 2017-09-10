@@ -61,7 +61,7 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 			if (segment.key)
 			{
 				input.alt = segment.key
-				databaseSegment.updateSegmentKey(segment.id, segment.key)
+				databaseSegment.updateKey(segment.id, segment.key)
 				orderSegments()
 			}
 			else
@@ -81,7 +81,7 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 		if (newValue != oldValue)
 		{
 			textarea.title = newValue
-			databaseTranslation.updateTranslationValue(segment.id, language.id, newValue)
+			databaseTranslation.updateValue(segment.id, language.id, newValue)
 		}
 	}
 
@@ -90,7 +90,7 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 		const newValue = !segment.translations[language.id].validated
 
 		segment.translations[language.id].validated = newValue
-		databaseTranslation.updateTranslationValidated(segment.id, language.id, newValue)
+		databaseTranslation.updateValidated(segment.id, language.id, newValue)
 	}
 
 	$scope.openAddSegmentDialog = function()
@@ -111,7 +111,7 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 			translations: form.translations
 		}
 
-		const ref = databaseSegment.addSegment(entry)
+		const ref = databaseSegment.add(entry)
 		const segment = new Segment(ref.key, entry)
 
 		$scope.segments.push(segment)
@@ -138,7 +138,7 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 		}
 
 		orderSegments()
-		databaseSegment.updateSegment(form.id, entry)
+		databaseSegment.update(form.id, entry)
 
 		for (const index in form.translations)
 		{
@@ -167,7 +167,7 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 			$scope.segments.splice(index, 1)
 			
 			orderSegments()
-			databaseSegment.removeSegment(id)
+			databaseSegment.remove(id)
 
 			ui.closeDialog(DIALOG_SEGMENT)
 		}
