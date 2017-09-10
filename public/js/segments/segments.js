@@ -207,6 +207,11 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 		return (translated || notTranslated || validated || notValidated) && byText
 	}
 
+	$scope.openScreenshot = function(url)
+	{
+		window.open(url, '_blank')
+	}
+
 	function segmentById(id)
 	{
 		const index = segmentIndexById(id)

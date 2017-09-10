@@ -148,10 +148,13 @@
 				<tr ng-repeat="segment in segments" ng-show="displayByState(segment)">
 					<td>
 						<div class="input-group">
-							<div class="input-group-addon segments-settings-icon" ng-click="openEditSegmentDialog(segment)">
+							<div class="input-group-addon segment-action-icon" ng-click="openEditSegmentDialog(segment)">
 								<i class="fa fa-cog"></i>
 							</div>
 							<input class="form-control" type="text" alt="{{::segment.key}}" ng-model="segment.key" ng-blur="onSegmentKeyUpdated(segment, $event.target)">
+							<div class="input-group-addon segment-action-icon" ng-show="segment.screenshot" ng-click="openScreenshot(segment.screenshot)">
+								<i class="fa fa-picture-o"></i>
+							</div>
 						</div>
 					</td>
 					<td ng-repeat="language in languages" ng-show="filter.language[language.id]">

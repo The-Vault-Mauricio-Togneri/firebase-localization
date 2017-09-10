@@ -22,17 +22,17 @@
 	border-bottom: 0 solid transparent;
 }
 
-.segments-settings-icon:hover
+.segment-action-icon:hover
 {
 	background-color: #E2E6E9;
 }
 
-.segments-settings-icon:active
+.segment-action-icon:active
 {
 	background-color: #DCE0E3;
 }
 
-.segments-settings-icon
+.segment-action-icon
 {
 	cursor: pointer;
 	padding: 0 0.2em 0 0.6em;
