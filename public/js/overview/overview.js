@@ -43,16 +43,19 @@ app.controller(CONTROLLER_OVERVIEW, function($scope, database, databaseToken, da
 
 			for (const languageIndex in segment.translations)
 			{
-				const translation = segment.translations[languageIndex]
-				
-				if (translation.value)
+				if (languages[languageIndex])
 				{
-					languages[languageIndex].translated++
-				}
+					const translation = segment.translations[languageIndex]
+					
+					if (translation.value)
+					{
+						languages[languageIndex].translated++
+					}
 
-				if (translation.validated)
-				{
-					languages[languageIndex].validated++
+					if (translation.validated)
+					{
+						languages[languageIndex].validated++
+					}
 				}
 			}
 		}
