@@ -75,6 +75,11 @@ app.controller(DIALOG_SEGMENT, function($scope, ui)
 		ui.openDialog(DIALOG_SEGMENT)
 	}
 
+	$scope.openScreenshot = function(url)
+	{
+		window.open(url, '_blank')
+	}
+
 	$scope.onAddSegment = function(form)
 	{
 		controller(CONTROLLER_SEGMENTS).addSegment(form)
