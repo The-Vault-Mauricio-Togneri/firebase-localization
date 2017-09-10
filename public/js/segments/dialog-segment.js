@@ -51,6 +51,7 @@ app.controller(DIALOG_SEGMENT, function($scope, ui)
 		for (const index in languages)
 		{
 			$scope.form.translations[index] = {
+				id: segment.translations[index].id,
 				value: segment.translations[index].value,
 				validated: segment.translations[index].validated,
 				history: segment.translations[index].history,

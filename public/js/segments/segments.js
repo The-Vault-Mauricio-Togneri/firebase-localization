@@ -134,22 +134,23 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 			maxLength: form.maxLength,
 			screenshot: form.screenshot,
 			isPlural: form.isPlural,
-			isArray: form.isArray,
-			translations: {}
+			isArray: form.isArray
 		}
+
+		orderSegments()
+		databaseSegment.updateSegment(form.id, entry)
 
 		for (const index in form.translations)
 		{
 			const translation = form.translations[index]
 
-			entry.translations[index] = {
+			const translationEntry = {
 				value: translation.value,
 				validated: translation.validated
 			}
+
+			databaseTranslation.update(form.id, translation.id, translationEntry)
 		}
-		
-		orderSegments()
-		databaseSegment.updateSegment(form.id, entry)
 	}
 
 	$scope.openDeleteSegmentDialog = function(segment)

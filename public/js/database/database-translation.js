@@ -14,6 +14,13 @@ app.service('databaseTranslation', function(database)
 		database.set(`${basePath}/validated`, value)
 	}
 
+	this.update = function(segmentId, translationId, value)
+	{
+		const path = translationPath(segmentId, translationId)
+		
+		database.update(path, value)
+	}
+
 	this.addComment = function(segmentId, translationId, comment)
 	{
 		const basePath = translationPath(segmentId, translationId)
