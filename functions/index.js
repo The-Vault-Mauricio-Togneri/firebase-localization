@@ -17,27 +17,27 @@ const app = express()
 
 app.get('/export/:language/android', (request, response) =>
 {
-	generate.exportFile(request, response, 'strings-{language}.xml', generate.android)
+	return generate.exportFile(request, response, 'strings-{language}.xml', generate.android)
 })
 
 app.get('/export/:language/ios', (request, response) =>
 {
-	generate.exportFile(request, response, 'Localizable-{language}.strings', generate.ios)
+	return generate.exportFile(request, response, 'Localizable-{language}.strings', generate.ios)
 })
 
 app.get('/export/:language/xliff', (request, response) =>
 {
-	generate.exportFile(request, response, '{language}.xlf', generate.xliff)
+	return generate.exportFile(request, response, '{language}.xlf', generate.xliff)
 })
 
 app.get('/export/:language/json', (request, response) =>
 {
-	generate.exportFile(request, response, '{language}.json', generate.json)
+	return generate.exportFile(request, response, '{language}.json', generate.json)
 })
 
 app.get('/export/:language/yaml', (request, response) =>
 {
-	generate.exportFile(request, response, '{language}.yaml', generate.yaml)
+	return generate.exportFile(request, response, '{language}.yaml', generate.yaml)
 })
 
 const api = express()

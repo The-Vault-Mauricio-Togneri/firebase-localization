@@ -22,7 +22,7 @@ function Generate(databaseConfig)
 		const languageCode = request.param('language')
 		const token = request.query.token
 		
-		database.apiToken().once('value', tokenSnap =>
+		return database.apiToken().once('value', tokenSnap =>
 		{
 			if (tokenSnap.val() == token)
 			{

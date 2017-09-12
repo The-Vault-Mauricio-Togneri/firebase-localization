@@ -122,7 +122,7 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 		$scope.segments.push(segment)
 		listenSegmentChanges(segment.id)
 
-		thus.orderSegments()
+		$scope.orderSegments()
 	}
 
 	$scope.openEditSegmentDialog = function(segment)
@@ -264,11 +264,16 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 			
 			if (segmentIndex)
 			{
-				const updatedSegment = new Segment(snap.key, snap.val())
-				$scope.segments[segmentIndex].update(updatedSegment)
+				const data = snap.val()
 
-				$scope.orderSegments()
-				$scope.$applyAsync()
+				if (data)
+				{
+					const updatedSegment = new Segment(snap.key, data)
+					$scope.segments[segmentIndex].update(updatedSegment)
+
+					$scope.orderSegments()
+					$scope.$applyAsync()
+				}
 			}
 		})
 	}

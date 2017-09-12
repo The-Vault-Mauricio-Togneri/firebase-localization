@@ -12,10 +12,10 @@ function Trigger(databaseConfig)
 		
 		return event.data.ref.parent.child('history').push(entry)
 	}
-	
+
 	this.onLanguageAdded = function(event)
 	{
-		database.segments().once('value', snap =>
+		return database.segments().once('value', snap =>
 		{
 			snap.forEach(function(entry)
 			{
@@ -31,7 +31,7 @@ function Trigger(databaseConfig)
 
 	this.onLanguageRemoved = function(event)
 	{
-		database.segments().once('value', snap =>
+		return database.segments().once('value', snap =>
 		{
 			snap.forEach(function(entry)
 			{
