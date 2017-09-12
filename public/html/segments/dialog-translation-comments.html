@@ -11,7 +11,7 @@
 				<div class="card" style="margin-bottom:1em" ng-repeat="entry in form.comments">
 					<div class="card-header" style="padding-left:0.8em">
 						<div class="d-flex justify-content-start">
-							<img src="{{entry.author | gravatar}}" style="padding-right:0.5em"/>
+							<img ng-src="{{entry.author | gravatar}}" style="padding-right:0.5em"/>
 							<a class="align-self-center" style="text-decoration:none" href="mailto:{{entry.author}}">{{entry.author}}</a>
 							<div class="ml-auto align-self-center" style="color:#888888;font-size:0.8em" ng-bind="{{entry.date}} | formatDate"></div>
 						</div>
