@@ -8,6 +8,7 @@ function Segment(id, data)
 	this.screenshot = data.screenshot
 	this.isPlural = data.isPlural
 	this.isArray = data.isArray
+	this.created = data.created
 	this.translations = {}
 
 	for (const index in data.translations)
@@ -25,6 +26,7 @@ function Segment(id, data)
 		this.screenshot = segment.screenshot
 		this.isPlural = segment.isPlural
 		this.isArray = segment.isArray
+		this.created = segment.created
 		this.translations = {}
 
 		for (const index in segment.translations)

@@ -13,6 +13,15 @@ function Trigger(databaseConfig)
 		return event.data.ref.parent.child('history').push(entry)
 	}
 
+	this.onSegmentCreated = function(event)
+	{
+		const entry = {
+			created: Date.now()
+		}
+		
+		return event.data.ref.update(entry)
+	}
+
 	this.onLanguageAdded = function(event)
 	{
 		return database.segments().once('value', snap =>

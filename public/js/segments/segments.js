@@ -240,18 +240,18 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 				return (a.key > b.key) ? -1 : (a.key < b.key)
 			})
 		}
-		else if ($scope.order == 'newOld') // TODO
+		else if ($scope.order == 'newOld')
 		{
 			$scope.segments = $scope.segments.sort(function(a, b)
 			{
-				return (a.key > b.key) ? -1 : (a.key < b.key)
+				return (a.created > b.created) ? -1 : (a.created < b.created)
 			})
 		}
-		else if ($scope.order == 'oldNew') // TODO
+		else if ($scope.order == 'oldNew')
 		{
 			$scope.segments = $scope.segments.sort(function(a, b)
 			{
-				return (a.key > b.key) ? -1 : (a.key < b.key)
+				return (a.created < b.created) ? -1 : (a.created > b.created)
 			})
 		}
 	}
