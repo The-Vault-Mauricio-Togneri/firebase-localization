@@ -46,17 +46,44 @@ function Segment(id, data)
 		return null
 	}
 
-	this.contains = function(text)
+	this.contains = function(text, regex)
 	{
 		for (const index in this.translations)
 		{
-			if (this.translations[index].value.toLowerCase().includes(text))
+			if (this.textMatch(this.translations[index].value, text, regex))
 			{
 				return true	
 			}
 		}
 
-		return this.key.toLowerCase().includes(text) || this.description.toLowerCase().includes(text) || (this.tags.indexOf(text) != -1)
+		for (const index in this.tags)
+		{
+			if (this.textMatch(this.tags[index], text, regex))
+			{
+				return true	
+			}
+		}
+
+		return this.textMatch(this.key, text, regex) || this.textMatch(this.description, text, regex)
+	}
+
+	this.textMatch = function(input, pattern, isRegex)
+	{
+		if (isRegex)
+		{
+			try
+			{
+				return (new RegExp(pattern)).test(input)
+			}
+			catch (e)
+			{
+				return false
+			}
+		}
+		else
+		{
+			return input.toLowerCase().includes(pattern.toLowerCase())
+		}
 	}
 
 	this.hasValidated = function()

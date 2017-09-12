@@ -92,9 +92,14 @@
 			<div id="collapse-filter" class="collapse">
 				<ul class="list-group list-group-flush">
 					<li class="list-group-item">
-						<div class="input-group">
+						<div class="input-group align-items-center">
 							<label class="col-form-label filter-label">By content:</label>
-							<input type="text" id="filter-content-input" class="form-control" placeholder="Keywords" ng-model="filter.content">
+							<input type="text" id="filter-content-input" class="form-control" placeholder="Keywords" ng-change="onFilterChange()" ng-model="filter.content.value">
+							<label class="custom-control custom-checkbox filter-checkbox" style="margin-left:1em;margin-right:0em">
+								<input type="checkbox" checked="true" ng-model="filter.content.regex" class="custom-control-input">
+								<span class="custom-control-indicator"></span>
+								<span class="custom-control-description noselect">Regex</span>
+							</label>
 						</div>
 					</li>
 					<li class="list-group-item align-items-center">

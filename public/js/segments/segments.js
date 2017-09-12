@@ -7,7 +7,10 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 	$scope.loading = true
 
 	$scope.filter = {
-		content: '',
+		content: {
+			value: '',
+			regex: false
+		},
 		language: {},
 		state: {
 			translated: true,
@@ -177,6 +180,11 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 	{
 		databaseTranslation.addComment(segmentId, languageId, comment)
 	}
+
+	$scope.onFilterChange = function()
+	{
+		$scope.$applyAsync()
+	}
 	
 	$scope.displayByState = function(segment)
 	{
@@ -184,7 +192,7 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 		const notTranslated = ($scope.filter.state.notTranslated ? segment.hasNotTranslated() : false)
 		const validated = ($scope.filter.state.validated ? segment.hasValidated() : false)
 		const notValidated = ($scope.filter.state.notValidated ? segment.hasNotValidated() : false)
-		const byText = ($scope.filter.content ? segment.contains($scope.filter.content.toLowerCase()) : true)
+		const byText = ($scope.filter.content.value ? segment.contains($scope.filter.content.value, $scope.filter.content.regex) : true)
 
 		return (translated || notTranslated || validated || notValidated) && byText
 	}
