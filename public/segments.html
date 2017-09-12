@@ -142,6 +142,43 @@
 			</div>
 		</div>
 
+		<div class="card filter-card">
+			<div class="card-header filter-header" style="padding:0.4em 0 0 1em;height:2.5em" data-toggle="collapse" href="#collapse-order">
+				<div>
+					<i class="fa fa-sort-amount-desc"></i> Order
+				</div>
+			</div>
+			<div id="collapse-order" class="collapse">
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item align-items-center">
+						<label class="custom-control custom-radio filter-checkbox">
+							<input type="radio" checked="true" class="custom-control-input" name="order-radio" value="az" ng-model="order" ng-change="orderSegments()">
+							<span class="custom-control-indicator"></span>
+							<span class="custom-control-description noselect">A &rarr; Z</span>
+						</label>
+
+						<label class="custom-control custom-radio filter-checkbox">
+							<input type="radio" checked="true" class="custom-control-input" name="order-radio" value="za" ng-model="order" ng-change="orderSegments()">
+							<span class="custom-control-indicator"></span>
+							<span class="custom-control-description noselect">Z &rarr; A</span>
+						</label>
+
+						<label class="custom-control custom-radio filter-checkbox">
+							<input type="radio" checked="true" class="custom-control-input" name="order-radio" value="newOld" ng-model="order" ng-change="orderSegments()">
+							<span class="custom-control-indicator"></span>
+							<span class="custom-control-description noselect">Newest &rarr; Oldest</span>
+						</label>
+
+						<label class="custom-control custom-radio filter-checkbox">
+							<input type="radio" checked="true" class="custom-control-input" name="order-radio" value="oldNew" ng-model="order" ng-change="orderSegments()">
+							<span class="custom-control-indicator"></span>
+							<span class="custom-control-description noselect">Oldest &rarr; Newest</span>
+						</label>
+					</li>
+				</ul>
+			</div>
+		</div>
+
 		<table class="table table-sm table-hover table-striped">
 			<thead class="thead-default">
 				<tr>

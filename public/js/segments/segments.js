@@ -19,6 +19,8 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 			notValidated: true
 		}
 	}
+
+	$scope.order = 'az'
 	
 	$scope.init = function()
 	{
@@ -44,7 +46,7 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 
 				$scope.loading = false
 
-				orderSegments()
+				$scope.orderSegments()
 				$scope.$applyAsync()
 			})
 		})
@@ -65,7 +67,7 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 			{
 				input.alt = segment.key
 				databaseSegment.updateKey(segment.id, segment.key)
-				orderSegments()
+				$scope.orderSegments()
 			}
 			else
 			{
@@ -120,7 +122,7 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 		$scope.segments.push(segment)
 		listenSegmentChanges(segment.id)
 
-		orderSegments()
+		thus.orderSegments()
 	}
 
 	$scope.openEditSegmentDialog = function(segment)
@@ -140,7 +142,7 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 			isArray: form.isArray
 		}
 
-		orderSegments()
+		$scope.orderSegments()
 		databaseSegment.update(form.id, entry)
 
 		for (const index in form.translations)
@@ -169,7 +171,7 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 		{
 			$scope.segments.splice(index, 1)
 			
-			orderSegments()
+			$scope.orderSegments()
 			databaseSegment.remove(id)
 
 			ui.closeDialog(DIALOG_SEGMENT)
@@ -222,12 +224,36 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 		return null
 	}
 
-	function orderSegments()
+	$scope.orderSegments = function()
 	{
-		$scope.segments = $scope.segments.sort(function(a, b)
+		if ($scope.order == 'az')
 		{
-			return (a.key < b.key) ? -1 : (a.key > b.key)
-		})
+			$scope.segments = $scope.segments.sort(function(a, b)
+			{
+				return (a.key < b.key) ? -1 : (a.key > b.key)
+			})
+		}
+		else if ($scope.order == 'za')
+		{
+			$scope.segments = $scope.segments.sort(function(a, b)
+			{
+				return (a.key > b.key) ? -1 : (a.key < b.key)
+			})
+		}
+		else if ($scope.order == 'newOld') // TODO
+		{
+			$scope.segments = $scope.segments.sort(function(a, b)
+			{
+				return (a.key > b.key) ? -1 : (a.key < b.key)
+			})
+		}
+		else if ($scope.order == 'oldNew') // TODO
+		{
+			$scope.segments = $scope.segments.sort(function(a, b)
+			{
+				return (a.key > b.key) ? -1 : (a.key < b.key)
+			})
+		}
 	}
 
 	function listenSegmentChanges(segmentId)
@@ -241,7 +267,7 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 				const updatedSegment = new Segment(snap.key, snap.val())
 				$scope.segments[segmentIndex].update(updatedSegment)
 
-				orderSegments()
+				$scope.orderSegments()
 				$scope.$applyAsync()
 			}
 		})
