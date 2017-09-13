@@ -166,7 +166,7 @@ app.controller(CONTROLLER_OVERVIEW, function($scope, database, databaseToken, da
 
 	$scope.openImportDialog = function()
 	{
-		controller(DIALOG_IMPORT).open()
+		controller(DIALOG_IMPORT).open($scope.languages)
 	}
 
 	$scope.openAddLanguageDialog = function()

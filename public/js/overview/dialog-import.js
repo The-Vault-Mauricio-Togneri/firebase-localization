@@ -1,16 +1,22 @@
 app.controller(DIALOG_IMPORT, function($scope, ui)
 {
 	$scope.form = {
+		language: '',
 		format: '',
 		fileName: '',
 		fileContent: ''
 	}
 
-	$scope.open = function()
+	$scope.languages = {}
+
+	$scope.open = function(languages)
 	{
+		$scope.form.language = ''
 		$scope.form.format = ''
 		$scope.form.fileName = ''
 		$scope.form.fileContent = ''
+
+		$scope.languages = languages
 
 		ui.openDialog(DIALOG_IMPORT)
 	}
@@ -40,6 +46,8 @@ app.controller(DIALOG_IMPORT, function($scope, ui)
 	{
 		// TODO
 		
+		console.log($scope.form)
+
 		ui.closeDialog(DIALOG_IMPORT)
 	}
 })
