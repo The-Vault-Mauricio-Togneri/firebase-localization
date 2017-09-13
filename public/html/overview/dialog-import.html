@@ -19,10 +19,10 @@
 					<label>Format</label>
 					<select class="form-control" style="font-size:1em;height:100%" ng-model="form.format">
 						<option value="" style="display:none" disabled selected></option>
-						<option value="android">Android</option>
-						<option value="ios">iOS</option>
-						<option value="json">JSON</option>
-						<option value="yaml">YAML</option>
+						<option value="android">Android (.xml)</option>
+						<option value="ios">iOS (.strings)</option>
+						<option value="json">Plain JSON (.json)</option>
+						<option value="yaml">YAML (.yml)</option>
 					</select>
 				</div>
 				<div class="form-group">
@@ -32,17 +32,17 @@
 							<i class="fa fa-upload"></i>
 							Browse
 						</button>
-						<input class="form-control" style="background-color:white" type="text" disabled ng-model="form.fileName">
+						<input class="form-control" style="background-color:white;color:#888888" type="text" readonly disabled ng-model="form.fileName">
 						<input type="file" id="input-browse" hidden onchange="angular.element(this).scope().onFileSelected(this)">
 					</div>
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">
+				<button type="button" class="btn btn-danger" data-dismiss="modal">
 					<i class="fa fa-ban"></i>
 					Cancel
 				</button>
-				<button type="button" class="btn btn-primary" ng-disabled="!form.language || !form.format || !form.fileName" ng-click="onImport(form)">
+				<button type="button" class="btn btn-success" ng-disabled="!form.language || !form.format || !form.fileName" ng-click="onImport(form)">
 					<i class="fa fa-check"></i>
 					Import
 				</button>
