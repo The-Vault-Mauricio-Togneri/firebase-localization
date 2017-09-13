@@ -76,3 +76,8 @@
 	float: right;
 	margin-right: 1em;
 }
+
+.download-column
+{
+	width: 5em;
+}
