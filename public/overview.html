@@ -77,6 +77,18 @@
 			</li>
 		</ul>
 
+		<button type="button" class="btn btn-success button-circle" style="bottom:1em;right:1em" ng-click="openAddLanguageDialog()">
+			<i class="fa fa-plus" style="font-size:1.6em"></i>
+		</button>
+
+		<button type="button" class="btn btn-primary button-circle" style="bottom:6em;right:1em" ng-click="openImportDialog()">
+			<i class="fa fa-upload" style="font-size:1.6em"></i>
+		</button>
+
+		<button type="button" class="btn btn-danger button-circle" style="bottom:11em;right:1em" ng-click="openProfileDialog()">
+			<i class="fa fa-user" style="font-size:1.6em"></i>
+		</button>
+
 		<table class="table table-sm table-striped">
 			<thead class="thead-default">
 				<tr>
@@ -151,16 +163,6 @@
 				</tr>
 			</tbody>
 		</table>
-
-		<button type="button" class="btn btn-success add-language-button" ng-click="openAddLanguageDialog()">
-			<i class="fa fa-plus"></i>
-			Add Language
-		</button>
-
-		<button type="button" class="btn btn-primary button-profile" ng-click="openProfileDialog()">
-			<i class="fa fa-user"></i>
-			Profile
-		</button>
 
 		<div ng-include="'html/overview/dialog-profile.html'"></div>
 

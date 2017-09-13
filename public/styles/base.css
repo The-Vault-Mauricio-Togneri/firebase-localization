@@ -90,6 +90,17 @@ html, body
 	border: 0 solid transparent;
 }
 
+.button-circle
+{
+	width: 4em;
+	height: 4em;
+	padding: 0px 1.3em;
+	border-radius: 10em;
+	position: fixed;
+	z-index: 999;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 .button-action-icon
 {
 	color: #888888;

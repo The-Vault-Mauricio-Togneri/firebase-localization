@@ -85,19 +85,6 @@
 	margin-left: 5px;
 }
 
-.button-circle
-{
-	width: 4em;
-	height: 4em;
-	padding: 0px 1.3em;
-	border-radius: 10em;
-	position: fixed;
-	z-index: 999;
-	bottom: 1em;
-	right: 1em;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
 .tab-pane
 {
 	padding: 1em;
