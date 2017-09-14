@@ -1,5 +1,7 @@
 app.controller(DIALOG_IMPORT, function($scope, $http, ui)
 {
+	$scope.apiToken = ''
+
 	$scope.form = {
 		language: '',
 		format: '',
@@ -10,8 +12,10 @@ app.controller(DIALOG_IMPORT, function($scope, $http, ui)
 
 	$scope.languages = {}
 
-	$scope.open = function(languages)
+	$scope.open = function(languages, token)
 	{
+		$scope.apiToken = token
+
 		$scope.form.language = ''
 		$scope.form.format = ''
 		$scope.form.fileName = ''
@@ -58,7 +62,7 @@ app.controller(DIALOG_IMPORT, function($scope, $http, ui)
 			content: form.fileContent
 		}
 
-		$http.put(`/api/export/${form.language}/${form.format}`, data, config)
+		$http.put(`/api/import/${form.language}/${form.format}?token=${$scope.apiToken}`, data, config)
 		.then(function(response)
 		{
 			console.log(response)

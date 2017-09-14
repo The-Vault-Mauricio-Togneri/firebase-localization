@@ -17,6 +17,13 @@ const trigger   = new (require('./trigger.js'))(database)
 const backup    = new (require('./backup.js'))(storage, database)
 const download  = new (require('./download.js'))(database)
 const upload    = new (require('./upload.js'))(database)
+
+const formatAndroid = require('./formats/format-android.js')
+const formatIOS     = require('./formats/format-ios.js')
+const formatXliff   = require('./formats/format-xliff.js')
+const formatJson    = require('./formats/format-json.js')
+const formatYaml    = require('./formats/format-yaml.js')
+
 const app = express()
 
 app.post('/backup', (request, response) =>
@@ -26,27 +33,27 @@ app.post('/backup', (request, response) =>
 
 app.get('/export/:language/android', (request, response) =>
 {
-	return download.process(request, response, 'strings-{language}.xml', download.android)
+	return download.process(request, response, 'strings-{language}.xml', formatAndroid)
 })
 
 app.get('/export/:language/ios', (request, response) =>
 {
-	return download.process(request, response, 'Localizable-{language}.strings', download.ios)
+	return download.process(request, response, 'Localizable-{language}.strings', formatIOS)
 })
 
 app.get('/export/:language/xliff', (request, response) =>
 {
-	return download.process(request, response, '{language}.xlf', download.xliff)
+	return download.process(request, response, '{language}.xlf', formatXliff)
 })
 
 app.get('/export/:language/json', (request, response) =>
 {
-	return download.process(request, response, '{language}.json', download.json)
+	return download.process(request, response, '{language}.json', formatJson)
 })
 
 app.get('/export/:language/yaml', (request, response) =>
 {
-	return download.process(request, response, '{language}.yaml', download.yaml)
+	return download.process(request, response, '{language}.yaml', formatYaml)
 })
 
 app.put('/import/:language/android', (request, response) =>
