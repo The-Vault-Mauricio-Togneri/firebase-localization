@@ -9,7 +9,10 @@ function Upload(database)
 		{
 			if (tokenSnap.val() == token)
 			{
-				// TODO
+				const body = JSON.parse(request.body)
+				const tree = importer(body.content)
+
+				response.status(200).send(tree)
 			}
 			else
 			{
@@ -18,9 +21,13 @@ function Upload(database)
 		})
 	}
 
-	this.android = function(language, fileContent)
+	this.android = function(fileContent)
 	{
-		return null
+		var result = []
+		result['foo'] = 'bar'
+		result['abc'] = '123'
+
+		return result
 	}
 }
 

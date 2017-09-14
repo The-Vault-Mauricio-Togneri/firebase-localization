@@ -1,4 +1,4 @@
-app.controller(DIALOG_IMPORT, function($scope, ui)
+app.controller(DIALOG_IMPORT, function($scope, $http, ui)
 {
 	$scope.form = {
 		language: '',
@@ -47,7 +47,26 @@ app.controller(DIALOG_IMPORT, function($scope, ui)
 
 	$scope.onImport = function(form)
 	{
-		// TODO
+		const config = {
+			headers : {
+				'Content-Type': 'application/json'
+			}
+		}
+
+		const data = {
+			replace: form.replace,
+			content: form.fileContent
+		}
+
+		$http.put(`/api/export/${form.language}/${form.format}`, data, config)
+		.then(function(response)
+		{
+			console.log(response)
+		}, 
+		function(response)
+		{
+			console.log(response)
+		})
 		
 		console.log($scope.form)
 
