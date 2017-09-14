@@ -39,9 +39,10 @@ app.controller(DIALOG_IMPORT, function($scope, ui)
 		reader.readAsText(file);
 	}
 
-	$scope.onBrowse = function()
+	$scope.onBrowse = function(target)
 	{
 		$('#input-browse').click()
+		target.blur()
 	}
 
 	$scope.onImport = function(form)
