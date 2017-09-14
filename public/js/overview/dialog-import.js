@@ -4,7 +4,8 @@ app.controller(DIALOG_IMPORT, function($scope, ui)
 		language: '',
 		format: '',
 		fileName: '',
-		fileContent: ''
+		fileContent: '',
+		replace: true
 	}
 
 	$scope.languages = {}
@@ -15,6 +16,7 @@ app.controller(DIALOG_IMPORT, function($scope, ui)
 		$scope.form.format = ''
 		$scope.form.fileName = ''
 		$scope.form.fileContent = ''
+		$scope.form.replace = true
 
 		$scope.languages = languages
 

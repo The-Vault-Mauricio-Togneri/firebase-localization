@@ -12,9 +12,15 @@ const functions = require('firebase-functions')
 const express   = require('express')
 const database  = new (require('./database.js'))(admin)
 const trigger   = new (require('./trigger.js'))(database)
+const backup    = new (require('./backup.js'))(database)
 const download  = new (require('./download.js'))(database)
 const upload    = new (require('./upload.js'))(database)
 const app = express()
+
+app.post('/backup', (request, response) =>
+{
+	return backup.process(request, response)
+})
 
 app.get('/export/:language/android', (request, response) =>
 {
@@ -41,7 +47,7 @@ app.get('/export/:language/yaml', (request, response) =>
 	return download.process(request, response, '{language}.yaml', download.yaml)
 })
 
-app.get('/import/:language/android', (request, response) =>
+app.put('/import/:language/android', (request, response) =>
 {
 	return upload.process(request, response, upload.android)
 })

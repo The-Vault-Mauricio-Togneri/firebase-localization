@@ -32,10 +32,15 @@
 							<i class="fa fa-upload"></i>
 							Browse
 						</button>
-						<input class="form-control" style="background-color:white;color:#888888" type="text" readonly disabled ng-model="form.fileName">
+						<input class="form-control noselect" style="background-color:white;color:#888888" type="text" readonly disabled ng-model="form.fileName">
 						<input type="file" id="input-browse" hidden onchange="angular.element(this).scope().onFileSelected(this)">
 					</div>
 				</div>
+				<label class="custom-control custom-checkbox" style="margin-top:0.5em">
+					<input type="checkbox" checked="true" ng-model="form.replace" class="custom-control-input">
+					<span class="custom-control-indicator"></span>
+					<span class="custom-control-description noselect">Replace existing values</span>
+				</label>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-danger" data-dismiss="modal">
