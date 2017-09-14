@@ -14,6 +14,11 @@ function FormatAndroid()
 	
 		return result
 	}
+
+	this.fromFile = function(content)
+	{
+		return []
+	}
 }
 
 module.exports = new FormatAndroid()

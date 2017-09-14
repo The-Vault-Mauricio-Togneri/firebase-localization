@@ -9,25 +9,16 @@ function Upload(database)
 		{
 			if (tokenSnap.val() == token)
 			{
-				const body = JSON.parse(request.body)
-				const tree = importer(body.content)
+				//const body = JSON.parse(request.body)
+				//const tree = importer.fromFile(body.content)
 
-				response.status(200).send(tree)
+				response.status(200).send()
 			}
 			else
 			{
 				response.status(400).send()
 			}
 		})
-	}
-
-	this.android = function(fileContent)
-	{
-		var result = []
-		result['foo'] = 'bar'
-		result['abc'] = '123'
-
-		return result
 	}
 }
 

@@ -21,6 +21,11 @@ function FormatXliff()
 	
 		return result
 	}
+
+	this.fromFile = function(content)
+	{
+		return []
+	}
 }
 
 module.exports = new FormatXliff()

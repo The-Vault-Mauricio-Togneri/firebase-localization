@@ -26,10 +26,14 @@ const formatYaml    = require('./formats/format-yaml.js')
 
 const app = express()
 
+// =============================================================================
+
 app.post('/backup', (request, response) =>
 {
 	return backup.process(request, response)
 })
+
+// =============================================================================
 
 app.get('/export/:language/android', (request, response) =>
 {
@@ -56,10 +60,34 @@ app.get('/export/:language/yaml', (request, response) =>
 	return download.process(request, response, '{language}.yaml', formatYaml)
 })
 
+// =============================================================================
+
 app.put('/import/:language/android', (request, response) =>
 {
-	return upload.process(request, response, upload.android)
+	return upload.process(request, response, formatAndroid)
 })
+
+app.put('/import/:language/ios', (request, response) =>
+{
+	return upload.process(request, response, formatIOS)
+})
+
+app.put('/import/:language/xliff', (request, response) =>
+{
+	return upload.process(request, response, formatXliff)
+})
+
+app.put('/import/:language/json', (request, response) =>
+{
+	return upload.process(request, response, formatJson)
+})
+
+app.put('/import/:language/yaml', (request, response) =>
+{
+	return upload.process(request, response, formatYaml)
+})
+
+// =============================================================================
 
 const api = express()
 api.use('/api', app)

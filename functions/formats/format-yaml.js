@@ -11,6 +11,11 @@ function FormatJson()
 
 		return result
 	}
+
+	this.fromFile = function(content)
+	{
+		return []
+	}
 }
 
 module.exports = new FormatJson()

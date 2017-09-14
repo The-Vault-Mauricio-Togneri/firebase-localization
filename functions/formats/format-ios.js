@@ -11,6 +11,11 @@ function FormatIOS()
 	
 		return result
 	}
+
+	this.fromFile = function(content)
+	{
+		return []
+	}
 }
 
 module.exports = new FormatIOS()
