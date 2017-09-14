@@ -26,13 +26,13 @@ function Download(databaseConfig)
 		{
 			if (tokenSnap.val() == token)
 			{
-				database.languages().once('value', languagesSnap =>
+				return database.languages().once('value', languagesSnap =>
 				{
 					const language = database.languageByCode(languageCode, languagesSnap)
 				
 					if (language)
 					{
-						database.segments().once('value', segmentsSnap =>
+						return database.segments().once('value', segmentsSnap =>
 						{
 							response.set('content-disposition', `attachment; filename="${fileName.replace('{language}', languageCode)}"`)
 							response.send(exporter(language, segmentsSnap.val()))
@@ -40,13 +40,13 @@ function Download(databaseConfig)
 					}
 					else
 					{
-						response.status(400).send();
+						response.status(400).send()
 					}
 				})	
 			}
 			else
 			{
-				response.status(400).send();
+				response.status(400).send()
 			}
 		})
 	}

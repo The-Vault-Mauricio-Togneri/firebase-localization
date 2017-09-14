@@ -5,14 +5,16 @@ const config = require('./config.js')
 const admin = require('firebase-admin')
 admin.initializeApp({
 	credential: admin.credential.applicationDefault(),
-	databaseURL: config.databaseURL
+	databaseURL: config.databaseURL,
+	storageBucket: config.storageBucket
 })
 
 const functions = require('firebase-functions')
 const express   = require('express')
 const database  = new (require('./database.js'))(admin)
+const storage   = new (require('./storage.js'))(admin)
 const trigger   = new (require('./trigger.js'))(database)
-const backup    = new (require('./backup.js'))(database)
+const backup    = new (require('./backup.js'))(storage, database)
 const download  = new (require('./download.js'))(database)
 const upload    = new (require('./upload.js'))(database)
 const app = express()

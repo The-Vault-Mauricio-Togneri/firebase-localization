@@ -31,19 +31,19 @@ app.service('databaseSegment', function(database)
 
 	this.update = function(id, value)
 	{
-		database.update(segmentPath(id), value)
+		return database.update(segmentPath(id), value)
 	}
 
 	this.updateKey = function(id, value)
 	{
 		const basePath = segmentPath(id)
 		
-		database.set(`${basePath}/key`, value)
+		return database.set(`${basePath}/key`, value)
 	}
 
 	this.remove = function(id)
 	{
-		database.remove(segmentPath(id))
+		return database.remove(segmentPath(id))
 	}
 
 	function segmentPath(segmentId)
