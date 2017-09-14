@@ -1,10 +1,14 @@
+# editor
 .vscode/
 .editorconfig
 
+# libs
 node_modules/
 functions/node_modules/
 functions/package-lock.json
 firebase-debug.log
 
+#config
+.firebaserc
 public/js/common/config.js
 functions/config.js
