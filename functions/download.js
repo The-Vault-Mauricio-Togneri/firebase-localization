@@ -1,4 +1,4 @@
-function Generate(databaseConfig)
+function Download(databaseConfig)
 {
 	const database = databaseConfig
 
@@ -17,7 +17,7 @@ function Generate(databaseConfig)
 		return result
 	}
 
-	this.exportFile = function(request, response, fileName, exporter)
+	this.process = function(request, response, fileName, exporter)
 	{
 		const languageCode = request.param('language')
 		const token = request.query.token
@@ -129,4 +129,4 @@ function Generate(databaseConfig)
 	}
 }
 
-module.exports = Generate
+module.exports = Download

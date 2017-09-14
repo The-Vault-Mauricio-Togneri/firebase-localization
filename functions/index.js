@@ -12,32 +12,38 @@ const functions = require('firebase-functions')
 const express   = require('express')
 const database  = new (require('./database.js'))(admin)
 const trigger   = new (require('./trigger.js'))(database)
-const generate  = new (require('./generate.js'))(database)
+const download  = new (require('./download.js'))(database)
+const upload    = new (require('./upload.js'))(database)
 const app = express()
 
 app.get('/export/:language/android', (request, response) =>
 {
-	return generate.exportFile(request, response, 'strings-{language}.xml', generate.android)
+	return download.process(request, response, 'strings-{language}.xml', download.android)
 })
 
 app.get('/export/:language/ios', (request, response) =>
 {
-	return generate.exportFile(request, response, 'Localizable-{language}.strings', generate.ios)
+	return download.process(request, response, 'Localizable-{language}.strings', download.ios)
 })
 
 app.get('/export/:language/xliff', (request, response) =>
 {
-	return generate.exportFile(request, response, '{language}.xlf', generate.xliff)
+	return download.process(request, response, '{language}.xlf', download.xliff)
 })
 
 app.get('/export/:language/json', (request, response) =>
 {
-	return generate.exportFile(request, response, '{language}.json', generate.json)
+	return download.process(request, response, '{language}.json', download.json)
 })
 
 app.get('/export/:language/yaml', (request, response) =>
 {
-	return generate.exportFile(request, response, '{language}.yaml', generate.yaml)
+	return download.process(request, response, '{language}.yaml', download.yaml)
+})
+
+app.get('/import/:language/android', (request, response) =>
+{
+	return upload.process(request, response, upload.android)
 })
 
 const api = express()
