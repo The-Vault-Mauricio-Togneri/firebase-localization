@@ -21,7 +21,8 @@ Create the file `functions/config.js` with the following format:
 
 ```javascript
 module.exports = {
-	databaseURL: ''
+	databaseURL: '',
+	storageBucket: ''
 }
 ```
 

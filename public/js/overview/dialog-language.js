@@ -19,7 +19,7 @@ app.controller(DIALOG_LANGUAGE, function($scope, database, ui)
 		}
 
 		$scope.select().select2({
-			placeholder: "Language",
+			placeholder: 'Language',
 			data: data
 		})
 	}

@@ -1,4 +1,4 @@
-"use strict"
+'use strict'
 
 const app = angular.module('segmentsApp', [])
 

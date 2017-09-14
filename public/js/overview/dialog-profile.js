@@ -13,6 +13,16 @@ app.controller(DIALOG_PROFILE, function($scope, ui)
 		ui.openDialog(DIALOG_PROFILE)
 	}
 
+	$scope.onCopyToken = function()
+	{
+		const input = $('#input-token')
+
+		input.select()
+		document.execCommand('copy')
+		input.focus()
+		input.val(input.val())
+	}
+
 	$scope.onUpdatePassword = function(password)
 	{
 		controller(CONTROLLER_OVERVIEW).updateProfile(password)
