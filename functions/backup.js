@@ -10,11 +10,9 @@ function Backup(storage, database)
 			{
 				return database.ref('/').once('value', snap =>
 				{
-					const ddbb = snap.val()
-					
-					storage.store(`/backup/${new Date().toISOString()}.ddbb`, 'AKANT!')
+					storage.store(`/backup/${new Date().toISOString()}.ddbb`, JSON.stringify(snap.val()))
 
-					response.status(200).send(ddbb)
+					response.status(200).send()
 				})
 			}
 			else

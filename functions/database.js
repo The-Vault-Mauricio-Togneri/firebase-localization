@@ -1,7 +1,5 @@
-function Database(adminConfig)
+function Database(admin)
 {
-	const admin = adminConfig
-
 	this.ref = function(path)
 	{
 		return admin.database().ref(path)

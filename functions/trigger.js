@@ -1,7 +1,5 @@
-function Trigger(databaseConfig)
+function Trigger(database)
 {
-	const database = databaseConfig
-
     this.onTranslationUpdated = function(event)
 	{
 		const entry = {

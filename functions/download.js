@@ -1,7 +1,5 @@
-function Download(databaseConfig)
+function Download(database)
 {
-	const database = databaseConfig
-
 	function translationsByLanguage(language, segments)
 	{
 		var result = {}

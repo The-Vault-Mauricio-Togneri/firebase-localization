@@ -1,7 +1,5 @@
-function Upload(databaseConfig)
+function Upload(database)
 {
-	const database = databaseConfig
-
 	this.process = function(request, response, importer)
 	{
 		const languageCode = request.param('language')

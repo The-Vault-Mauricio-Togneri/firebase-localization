@@ -24,3 +24,25 @@ module.exports = {
 	databaseURL: ''
 }
 ```
+
+## API
+
+### Import
+
+`https://myhost.com/api/import/:language/:format?token=xxx`
+
+### Export
+
+`https://myhost.com/api/export/:language/:format?token=xxx`
+
+#### Formats
+
+* android
+* ios
+* xliff
+* json
+* yaml
+
+### Backup
+
+`https://myhost.com/api/backup?token=xxx`
