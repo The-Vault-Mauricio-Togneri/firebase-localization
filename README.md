@@ -4,6 +4,17 @@
 
 ## Configuration
 
+Create the file `.firebaserc` with the following format:
+
+```json
+{
+	"projects": {
+		"default": "<PROJECT_ID>"
+	}
+}
+```
+
+
 Create the file `public/js/common/config.js` with the following format:
 
 ```javascript
