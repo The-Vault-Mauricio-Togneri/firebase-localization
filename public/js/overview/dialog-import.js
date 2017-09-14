@@ -57,16 +57,11 @@ app.controller(DIALOG_IMPORT, function($scope, $http, ui)
 	{
 		const config = {
 			headers : {
-				'Content-Type': 'application/json'
+				'Content-Type': 'text/plain'
 			}
 		}
 
-		const data = {
-			replace: form.replace,
-			content: form.fileContent
-		}
-
-		$http.put(`/api/import/${form.language}/${form.format}?token=${$scope.apiToken}`, data, config)
+		$http.put(`/api/import/${form.language}/${form.format}?replace=${form.replace}&token=${$scope.apiToken}`, form.fileContent, config)
 		.then(function(response)
 		{
 			ui.showSuccess('Import successful')

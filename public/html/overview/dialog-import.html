@@ -37,7 +37,7 @@
 					</div>
 				</div>
 				<label class="custom-control custom-checkbox" style="margin-top:0.5em">
-					<input type="checkbox" checked="true" ng-model="form.replace" class="custom-control-input">
+					<input type="checkbox" checked="true" ng-disabled="loading" ng-model="form.replace" class="custom-control-input">
 					<span class="custom-control-indicator"></span>
 					<span class="custom-control-description noselect">Replace existing values</span>
 				</label>
@@ -47,8 +47,9 @@
 					<i class="fa fa-ban"></i>
 					Cancel
 				</button>
-				<button type="button" class="btn btn-success" ng-disabled="loading" ng-disabled="!form.language || !form.format || !form.fileName" ng-click="onImport(form)">
-					<i class="fa fa-check"></i>
+				<button type="button" class="btn btn-success" ng-disabled="loading || !form.language || !form.format || !form.fileName" ng-click="onImport(form)">
+					<i ng-show="!loading" class="fa fa-check"></i>
+					<i ng-show="loading" class="fa fa-circle-o-notch fa-spin"></i>
 					Import
 				</button>
 			</div>
