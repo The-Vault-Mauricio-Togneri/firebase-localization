@@ -1,3 +1,6 @@
+.vscode/
+.editorconfig
+
 node_modules/
 functions/node_modules/
 functions/package-lock.json
