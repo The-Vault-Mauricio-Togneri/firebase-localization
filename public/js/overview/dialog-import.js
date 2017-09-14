@@ -2,6 +2,8 @@ app.controller(DIALOG_IMPORT, function($scope, $http, ui)
 {
 	$scope.apiToken = ''
 
+	$scope.loading = false
+
 	$scope.form = {
 		language: '',
 		format: '',
@@ -15,6 +17,8 @@ app.controller(DIALOG_IMPORT, function($scope, $http, ui)
 	$scope.open = function(languages, token)
 	{
 		$scope.apiToken = token
+
+		$scope.loading = false
 
 		$scope.form.language = ''
 		$scope.form.format = ''
@@ -65,15 +69,19 @@ app.controller(DIALOG_IMPORT, function($scope, $http, ui)
 		$http.put(`/api/import/${form.language}/${form.format}?token=${$scope.apiToken}`, data, config)
 		.then(function(response)
 		{
+			ui.showSuccess('Import successful')
 			console.log(response)
+
+			ui.closeDialog(DIALOG_IMPORT)
 		}, 
 		function(response)
 		{
+			ui.showError('Error importing file')
 			console.log(response)
-		})
-		
-		console.log($scope.form)
 
-		ui.closeDialog(DIALOG_IMPORT)
+			$scope.loading = false
+		})
+
+		$scope.loading = true
 	}
 })

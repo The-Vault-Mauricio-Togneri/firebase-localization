@@ -12,7 +12,7 @@ function Upload(database)
 				//const body = JSON.parse(request.body)
 				//const tree = importer.fromFile(body.content)
 
-				response.status(200).send()
+				response.status(200).send(request.body)
 			}
 			else
 			{

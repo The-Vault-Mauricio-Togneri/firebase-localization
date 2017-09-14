@@ -10,14 +10,14 @@
 			<div class="modal-body">
 				<div class="form-group">
 					<label>Language</label>
-					<select class="form-control" style="font-size:1em;height:100%" ng-model="form.language">
+					<select class="form-control" style="font-size:1em;height:100%" ng-disabled="loading" ng-model="form.language">
 						<option value="" style="display:none" disabled selected></option>
 						<option ng-repeat="language in languages" value="{{language.code}}">{{language.fullName}}</option>
 					</select>
 				</div>
 				<div class="form-group">
 					<label>Format</label>
-					<select class="form-control" style="font-size:1em;height:100%" ng-model="form.format">
+					<select class="form-control" style="font-size:1em;height:100%" ng-disabled="loading" ng-model="form.format">
 						<option value="" style="display:none" disabled selected></option>
 						<option value="android">Android (.xml)</option>
 						<option value="ios">iOS (.strings)</option>
@@ -28,7 +28,7 @@
 				<div class="form-group">
 					<label>File</label>
 					<div class="input-group">
-						<button type="button" class="btn btn-primary input-group-addon" style="color:white" ng-click="onBrowse($event.target)">
+						<button type="button" class="btn btn-primary input-group-addon" ng-disabled="loading" style="color:white" ng-click="onBrowse($event.target)">
 							<i class="fa fa-upload"></i>
 							Browse
 						</button>
@@ -43,11 +43,11 @@
 				</label>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-danger" data-dismiss="modal">
+				<button type="button" class="btn btn-danger" ng-disabled="loading" data-dismiss="modal">
 					<i class="fa fa-ban"></i>
 					Cancel
 				</button>
-				<button type="button" class="btn btn-success" ng-disabled="!form.language || !form.format || !form.fileName" ng-click="onImport(form)">
+				<button type="button" class="btn btn-success" ng-disabled="loading" ng-disabled="!form.language || !form.format || !form.fileName" ng-click="onImport(form)">
 					<i class="fa fa-check"></i>
 					Import
 				</button>
