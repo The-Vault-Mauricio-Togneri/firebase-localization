@@ -178,15 +178,11 @@
 
 		<div ng-include="'html/overview/dialog-delete-language.html'"></div>
 
-		<div class="error-message-container" ng-show="message != ''" class="hidden" ng-controller="dialogErrorMessage">
-			<span class="alert alert-danger">{{message}}</span>
-		</div>
+		<div ng-include="'html/ui/dialog-message.html'"></div>
 
 	</div>
 
-	<center ng-show="loading" class="progress loading-progress">
-		<div class="progress-bar progress-bar-striped indeterminate">
-	</center>
+	<div ng-include="'html/ui/progress-bar.html'"></div>
 
 </body>
 

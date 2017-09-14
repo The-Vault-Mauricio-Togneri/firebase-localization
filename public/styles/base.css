@@ -117,7 +117,7 @@ html, body
 	width: 100%;
     text-align: center;
     position: fixed;
-    z-index: 999;
+    z-index: 999999;
     bottom: 30px;
 }
 

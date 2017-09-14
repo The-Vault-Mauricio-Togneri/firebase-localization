@@ -12,7 +12,7 @@ const DIALOG_DELETE_SEGMENT = 'dialogDeleteSegment'
 const DIALOG_TRANSLATION_COMMENTS = 'dialogTranslationComments'
 const DIALOG_TRANSLATION_HISTORY = 'dialogTranslationHistory'
 
-const DIALOG_ERROR_MESSAGE = 'dialogErrorMessage'
+const DIALOG_MESSAGE = 'dialogMessage'
 
 const CONTROLLER_LOGIN = 'login'
 const CONTROLLER_OVERVIEW = 'overview'

@@ -21,6 +21,8 @@ app.controller(DIALOG_PROFILE, function($scope, ui)
 		document.execCommand('copy')
 		input.focus()
 		input.val(input.val())
+
+		ui.showSuccess('Token copied')
 	}
 
 	$scope.onUpdatePassword = function(password)

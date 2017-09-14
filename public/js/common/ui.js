@@ -2,7 +2,12 @@ app.service('ui', function()
 {
 	this.showError = function(message)
 	{
-		controller(DIALOG_ERROR_MESSAGE).show(message)
+		controller(DIALOG_MESSAGE).showError(message)
+	}
+
+	this.showSuccess = function(message)
+	{
+		controller(DIALOG_MESSAGE).showSuccess(message)
 	}
 	
 	this.dialog = function(id)
