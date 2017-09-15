@@ -37,10 +37,8 @@ app.controller(CONTROLLER_OVERVIEW, function($scope, database, databaseToken, da
 	{
 		var result = []
 
-		for (const segmentIndex in segments)
+		segments.forEach(segment =>
 		{
-			const segment = segments[segmentIndex]
-
 			for (const languageIndex in segment.translations)
 			{
 				if (languages[languageIndex])
@@ -58,7 +56,7 @@ app.controller(CONTROLLER_OVERVIEW, function($scope, database, databaseToken, da
 					}
 				}
 			}
-		}
+		})
 
 		for (const index in languages)
 		{
