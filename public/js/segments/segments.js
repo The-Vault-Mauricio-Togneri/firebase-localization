@@ -51,7 +51,7 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 			})
 		})
 
-		$('#collapse-filter').on('shown.bs.collapse', function()
+		$('#collapse-filter').on('shown.bs.collapse', () =>
 		{
 			ui.focus('filter-content-input')
 		})

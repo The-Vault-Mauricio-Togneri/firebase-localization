@@ -89,7 +89,7 @@ app.controller(DIALOG_SEGMENT, function($scope, ui)
 
 	function open()
 	{
-		ui.dialog(DIALOG_SEGMENT).on('shown.bs.modal', function()
+		ui.dialog(DIALOG_SEGMENT).on('shown.bs.modal', () =>
 		{
 			ui.focus('dialog-segment-key')
 		})
