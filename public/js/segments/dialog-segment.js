@@ -25,13 +25,13 @@ app.controller(DIALOG_SEGMENT, function($scope, ui)
 		$scope.form.isPlural    = false
 		$scope.form.isArray     = false
 
-		for (const index in languages)
+		languages.forEach(language =>
 		{
-			$scope.form.translations[index] = {
+			$scope.form.translations[language.id] = {
 				value: '',
 				validated: false
 			}
-		}
+		})
 	
 		open()
 	}
@@ -48,8 +48,10 @@ app.controller(DIALOG_SEGMENT, function($scope, ui)
 		$scope.form.isPlural    = segment.isPlural
 		$scope.form.isArray     = segment.isArray
 
-		for (const index in languages)
+		languages.forEach(language =>
 		{
+			const index = language.id
+
 			$scope.form.translations[index] = {
 				id: segment.translations[index].id,
 				value: segment.translations[index].value,
@@ -57,7 +59,7 @@ app.controller(DIALOG_SEGMENT, function($scope, ui)
 				history: segment.translations[index].history,
 				comments: segment.translations[index].comments
 			}
-		}
+		})
 	
 		open()
 	}

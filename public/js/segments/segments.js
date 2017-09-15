@@ -1,6 +1,6 @@
 app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage, databaseSegment, databaseTranslation, ui)
 {
-	$scope.languages = {}
+	$scope.languages = []
 
 	$scope.segments = {}
 
@@ -25,13 +25,13 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 	$scope.init = function()
 	{
 		databaseLanguage.rootStatic(languages =>
-		{	
+		{
 			$scope.languages = languages
 
-			for (const index in $scope.languages)
+			languages.forEach(language =>
 			{
-				$scope.filter.language[index] = true
-			}
+				$scope.filter.language[language.id] = true	
+			})
 
 			databaseSegment.rootStatic(segments =>
 			{

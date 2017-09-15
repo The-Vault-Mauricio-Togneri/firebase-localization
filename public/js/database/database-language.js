@@ -12,7 +12,20 @@ app.service('databaseLanguage', function(database)
 	{
 		root().once('value', snap =>
 		{	
-			callback(fromSnap(snap))
+			const languages = fromSnap(snap)
+			var result = []
+			
+			for (const index in languages)
+			{
+				result.push(languages[index])
+			}
+
+			result = result.sort(function(a, b)
+			{
+				return (a.fullName < b.fullName ? -1 : (a.fullName > b.fullName))
+			})
+
+			callback(result)
 		})
 	}
 
