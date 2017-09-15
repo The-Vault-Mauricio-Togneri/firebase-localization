@@ -22,27 +22,27 @@ function Trigger(database)
 
 	this.onLanguageAdded = function(event)
 	{
-		return database.segments().once('value', snap =>
+		return database.segment.root(segments =>
 		{
-			snap.forEach(function(entry)
+			segments.forEach(segment =>
 			{
 				const value = {
 					value: '',
 					validated: false
 				}
 	
-				database.translation(entry.key, event.data.ref.key).set(value)
+				database.translation.ref(segment.key, event.data.ref.key).set(value)
 			})
 		})
 	}
 
 	this.onLanguageRemoved = function(event)
 	{
-		return database.segments().once('value', snap =>
+		return database.segment.root(segments =>
 		{
-			snap.forEach(function(entry)
+			segments.forEach(segment =>
 			{
-				database.translation(entry.key, event.data.ref.key).remove()
+				database.translation.ref(segment.key, event.data.ref.key).remove()
 			})
 		})
 	}

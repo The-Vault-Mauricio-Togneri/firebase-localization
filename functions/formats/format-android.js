@@ -23,12 +23,10 @@ function FormatAndroid()
 
 		var result = []
 
-		for (const index in parsed)
+		parsed.forEach(entry =>
 		{
-			const entry = parsed[index]
-
 			result[entry.name] = entry._Data
-		}
+		})
 
 		return result
 	}

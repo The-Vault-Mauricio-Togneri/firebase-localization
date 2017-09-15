@@ -6,9 +6,9 @@ function Backup(storage, database)
 		{
 			if (token === request.query.token)
 			{
-				return database.ref('/').once('value', snap =>
+				return database.root(ddbb =>
 				{
-					storage.store(`/backup/${new Date().toISOString()}.ddbb`, JSON.stringify(snap.val()))
+					storage.store(`/backup/${new Date().toISOString()}.ddbb`, JSON.stringify(ddbb))
 
 					response.status(200).send()
 				})

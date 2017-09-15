@@ -5,37 +5,18 @@ function Database(admin)
 		return admin.database().ref(path)
 	}
 
-	this.languages = function()
+	this.root = function(callback)
 	{
-		return admin.database().ref('languages')
-	}
-
-	this.segments = function()
-	{
-		return admin.database().ref('segments')
-	}
-
-	this.translation = function(segmentId, translationId)
-	{
-		return admin.database().ref(`segments/${segmentId}/translations/${translationId}`)
-	}
-
-	this.api = new (require('./database-api.js'))(this)
-
-	this.languageByCode = function(code, snapshot)
-	{
-		var result = null
-
-		snapshot.forEach(function(language)
+		return this.ref('/').once('value', snap =>
 		{
-			if (language.val().code === code)
-			{
-				result = language
-			}
+			callback(snap.val())
 		})
-
-		return result
 	}
+
+	this.api         = new (require('./database-api.js'))(this)
+	this.language    = new (require('./database-language.js'))(this)
+	this.segment     = new (require('./database-segment.js'))(this)
+	this.translation = new (require('./database-translation.js'))(this)
 }
 
 module.exports = Database

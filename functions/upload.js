@@ -8,7 +8,7 @@ function Upload(database)
 		{
 			if (token === request.query.token)
 			{
-				console.log(request.query.replace)
+				const replace = request.query.replace === true
 				const entries = importer.fromFile(request.body)
 				console.log(entries)
 
