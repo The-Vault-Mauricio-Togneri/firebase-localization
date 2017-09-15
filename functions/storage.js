@@ -4,7 +4,7 @@ function Storage(admin)
 	{
 		var bucket = admin.storage().bucket()
 
-		return bucket.file(path).save(content, function(error)
+		return bucket.file(path).save(content, error =>
 		{
 			if (error)
 			{

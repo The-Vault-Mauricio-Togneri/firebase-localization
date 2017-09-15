@@ -2,7 +2,7 @@
 
 const app = angular.module('segmentsApp', [])
 
-app.filter('formatDate', function()
+app.filter('formatDate', () =>
 {
 	return function(input)
 	{
@@ -23,7 +23,7 @@ app.filter('formatDate', function()
 	}
 })
 
-app.filter('gravatar', function()
+app.filter('gravatar', () =>
 {
 	return function(input)
 	{
