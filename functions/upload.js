@@ -10,8 +10,8 @@ function Upload(database)
 			if (tokenSnap.val() == token)
 			{
 				console.log(request.query.replace)
-				const tree = importer.fromFile(request.body)
-				console.log(tree)
+				const entries = importer.fromFile(request.body)
+				console.log(entries)
 
 				response.status(200).send(request.body)
 			}

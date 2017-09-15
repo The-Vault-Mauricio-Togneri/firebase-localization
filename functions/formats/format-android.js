@@ -1,5 +1,7 @@
 function FormatAndroid()
 {
+	const pixlxml = require('pixl-xml')
+
 	this.toFile = function(language, translations)
 	{
 		var result = '<?xml version="1.0" encoding="utf-8"?>\n'
@@ -17,7 +19,18 @@ function FormatAndroid()
 
 	this.fromFile = function(content)
 	{
-		return []
+		const parsed = pixlxml.parse(content).string
+
+		var result = []
+
+		for (const index in parsed)
+		{
+			const entry = parsed[index]
+
+			result[entry.name] = entry._Data
+		}
+
+		return result
 	}
 }
 

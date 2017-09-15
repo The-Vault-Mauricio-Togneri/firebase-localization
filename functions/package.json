@@ -1,8 +1,10 @@
 {
 	"name": "firebase-localization",
 	"description": "Firebase Localization",
+	"version": "1.0.0",
 	"dependencies": {
 		"express": "^4.15.4",
+		"pixl-xml": "^1.0.13",
 		"firebase-admin": "^5.2.1",
 		"firebase-functions": "^0.6.3"
 	},
