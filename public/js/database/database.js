@@ -7,7 +7,7 @@ app.service('database', function()
 
 	this.push = function(path, value)
 	{
-		return this.ref(path).push(value, function(error)
+		return this.ref(path).push(value, error =>
 		{
 			logResultPush(path, value, error)
 		})
@@ -15,7 +15,7 @@ app.service('database', function()
 
 	this.set = function(path, value)
 	{
-		return this.ref(path).set(value, function(error)
+		return this.ref(path).set(value, error =>
 		{
 			logResultSet(path, value, error)
 		})
@@ -23,7 +23,7 @@ app.service('database', function()
 
 	this.update = function(path, value)
 	{
-		return this.ref(path).update(value, function(error)
+		return this.ref(path).update(value, error =>
 		{
 			logResultUpdate(path, value, error)
 		})
