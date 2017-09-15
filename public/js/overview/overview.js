@@ -3,7 +3,7 @@ function onLanguageSelected()
 	controller(DIALOG_LANGUAGE).onLanguageSelected()
 }
 
-app.controller(CONTROLLER_OVERVIEW, function($scope, database, databaseToken, databaseLanguage, databaseSegment, ui)
+app.controller(CONTROLLER_OVERVIEW, function($scope, database, databaseApi, databaseLanguage, databaseSegment, ui)
 {
 	$scope.apiToken = ''
 
@@ -25,9 +25,9 @@ app.controller(CONTROLLER_OVERVIEW, function($scope, database, databaseToken, da
 				$scope.loading = false
 				$scope.$applyAsync()
 
-				databaseToken.ref().once('value', snap =>
+				databaseApi.token(token =>
 				{
-					$scope.apiToken = snap.val()
+					$scope.apiToken = token
 				})
 			})
 		})
