@@ -15,9 +15,8 @@ app.controller(CONTROLLER_OVERVIEW, function($scope, database, databaseApi, data
 	{
 		databaseLanguage.rootLive(languages =>
 		{
-			databaseSegment.ref().once('value', snapSegments =>
+			databaseSegment.rootStatic(segments =>
 			{
-				const segments = databaseSegment.fromSnap(snapSegments)
 				$scope.languages = summary(languages, segments)
 
 				$scope.loading = false

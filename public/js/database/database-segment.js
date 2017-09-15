@@ -1,27 +1,19 @@
 app.service('databaseSegment', function(database)
 {
-	this.ref = function(id)
+	this.refLive = function(id, callback)
 	{
-		if (id)
-		{
-			return database.ref(`segments/${id}`)
-		}
-		else
-		{
-			return database.ref('segments')
-		}
+		database.ref(`segments/${id}`).on('value', snap =>
+		{	
+			callback(snap)
+		})
 	}
 
-	this.fromSnap = function(snap)
+	this.rootStatic = function(callback)
 	{
-		const segments = []
-
-		snap.forEach(function(entry)
-		{
-			segments.push(new Segment(entry.key, entry.val()))
+		database.ref('segments').once('value', snap =>
+		{	
+			callback(fromSnap(snap))
 		})
-
-		return segments
 	}
 
 	this.add = function(value)
@@ -44,6 +36,20 @@ app.service('databaseSegment', function(database)
 	this.remove = function(id)
 	{
 		return database.remove(segmentPath(id))
+	}
+
+	// =========================================================================
+
+	function fromSnap(snap)
+	{
+		var segments = []
+
+		snap.forEach(function(entry)
+		{
+			segments.push(new Segment(entry.key, entry.val()))
+		})
+
+		return segments
 	}
 
 	function segmentPath(segmentId)

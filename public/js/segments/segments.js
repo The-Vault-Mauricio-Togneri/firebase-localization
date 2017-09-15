@@ -33,9 +33,9 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 				$scope.filter.language[index] = true
 			}
 
-			databaseSegment.ref().once('value', snapSegments =>
+			databaseSegment.rootStatic(segments =>
 			{
-				$scope.segments = databaseSegment.fromSnap(snapSegments)
+				$scope.segments = segments
 
 				for (const index in $scope.segments)
 				{
@@ -258,17 +258,17 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 
 	function listenSegmentChanges(segmentId)
 	{
-		databaseSegment.ref(segmentId).on('value', snap =>
+		databaseSegment.refLive(segmentId, segmentSnap =>
 		{
 			const segmentIndex = segmentIndexById(segmentId)
 			
 			if (segmentIndex)
 			{
-				const data = snap.val()
+				const data = segmentSnap.val()
 
 				if (data)
 				{
-					const updatedSegment = new Segment(snap.key, data)
+					const updatedSegment = new Segment(segmentSnap.key, data)
 					$scope.segments[segmentIndex].update(updatedSegment)
 
 					$scope.orderSegments()
