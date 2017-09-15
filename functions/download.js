@@ -18,11 +18,10 @@ function Download(database)
 	this.process = function(request, response, fileName, exporter)
 	{
 		const languageCode = request.param('language')
-		const token = request.query.token
 		
-		return database.apiToken().once('value', tokenSnap =>
+		return database.api.token(token =>
 		{
-			if (tokenSnap.val() == token)
+			if (token === request.query.token)
 			{
 				return database.languages().once('value', languagesSnap =>
 				{

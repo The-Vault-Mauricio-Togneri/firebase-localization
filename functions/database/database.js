@@ -20,10 +20,7 @@ function Database(admin)
 		return admin.database().ref(`segments/${segmentId}/translations/${translationId}`)
 	}
 
-	this.apiToken = function()
-	{
-		return admin.database().ref('api/token')
-	}
+	this.api = new (require('./database-api.js'))(this)
 
 	this.languageByCode = function(code, snapshot)
 	{

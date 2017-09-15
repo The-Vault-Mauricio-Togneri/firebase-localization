@@ -11,7 +11,7 @@ admin.initializeApp({
 
 const functions = require('firebase-functions')
 const express   = require('express')
-const database  = new (require('./database.js'))(admin)
+const database  = new (require('./database/database.js'))(admin)
 const storage   = new (require('./storage.js'))(admin)
 const trigger   = new (require('./trigger.js'))(database)
 const backup    = new (require('./backup.js'))(storage, database)

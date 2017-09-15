@@ -2,11 +2,9 @@ function Backup(storage, database)
 {
 	this.process = function(request, response)
 	{
-		const token = request.query.token
-		
-		return database.apiToken().once('value', tokenSnap =>
+		return database.api.token(token =>
 		{
-			if (tokenSnap.val() == token)
+			if (token === request.query.token)
 			{
 				return database.ref('/').once('value', snap =>
 				{
