@@ -13,10 +13,8 @@ app.controller(CONTROLLER_OVERVIEW, function($scope, database, databaseApi, data
 
 	$scope.init = function()
 	{
-		databaseLanguage.ref().on('value', snapLanguages =>
-		{	
-			const languages = databaseLanguage.fromSnap(snapLanguages)
-
+		databaseLanguage.rootLive(languages =>
+		{
 			databaseSegment.ref().once('value', snapSegments =>
 			{
 				const segments = databaseSegment.fromSnap(snapSegments)

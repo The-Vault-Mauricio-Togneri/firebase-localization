@@ -5,6 +5,27 @@ app.service('databaseLanguage', function(database)
 		return database.ref('languages')
 	}
 
+	this.root = function()
+	{
+		return database.ref('languages')
+	}
+
+	this.rootLive = function(callback)
+	{
+		this.root().on('value', snap =>
+		{	
+			callback(this.fromSnap(snap))
+		})
+	}
+
+	this.rootStatic = function(callback)
+	{
+		this.root().once('value', snap =>
+		{	
+			callback(this.fromSnap(snap))
+		})
+	}
+
 	this.fromSnap = function(snap)
 	{
 		const languages = {}

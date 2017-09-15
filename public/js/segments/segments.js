@@ -24,9 +24,9 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 	
 	$scope.init = function()
 	{
-		databaseLanguage.ref().once('value', snapLanguages =>
+		databaseLanguage.rootStatic(languages =>
 		{	
-			$scope.languages = databaseLanguage.fromSnap(snapLanguages)
+			$scope.languages = languages
 
 			for (const index in $scope.languages)
 			{
