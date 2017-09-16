@@ -16,12 +16,20 @@ The project is design to run on a Firebase instance. Simply check out the projec
 ## Requisites
 
 1. A **Google** account ([create](https://accounts.google.com/SignUp))
-2. **NodeJS** installed
-3. ?
+2. **node.js** (min: v6.3.1) ([install](https://nodejs.org/en/download))
+3. **npm** ([install](https://www.npmjs.com/get-npm))
+4. **Firebase CLI** ([docs](https://firebase.google.com/docs/cli))
+	* `sudo npm install -g firebase-tools`
 
 ## Setting up Firebase
+In order to follow these steps, you must be logged in with your Google account.
 
+1. [Firebase console](https://console.firebase.google.com)
+2. Checkout the project code: `git@github.com:mauriciotogneri/firebase-localization.git`
+2. Login into Firebase: `firebase login`
 
+X. Deploy: `firebase deploy`
+Z. :boom: Boom! The tool is ready at: `https://<PROJECT_ID>.firebaseapp.com`
 
 ## Project configuration
 
@@ -92,7 +100,7 @@ For example:
 * `yaml`
 
 ### Backup
-To perform a backup of the full database. The file will be stored in the **Google Cloud Storage** (accessible from Firebase). The name of the file will be a string representing the given date in the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format according to universal time.
+To perform a backup of the full database. The file will be stored in the **Cloud Storage for Firebase**. The name of the file will be a string representing the given date in the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format according to universal time.
 
 `https://<PROJECT_ID>.firebaseapp.com/api/backup?token=[xxx]`
 
