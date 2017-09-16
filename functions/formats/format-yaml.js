@@ -4,10 +4,20 @@ function FormatJson()
 	{
 		var result = ''
 		
-		for (const key in translations)
+		translations.forEach(translation =>
 		{
-			result += `${key}: ${translations[key]}\n`
-		}
+			if (result != '')
+			{
+				result += '\n\n'
+			}
+
+			if (translation.description)
+			{
+				result += `# ${translation.description}\n`	
+			}
+
+			result += `${translation.key}: ${translation.value}`
+		})
 
 		return result
 	}

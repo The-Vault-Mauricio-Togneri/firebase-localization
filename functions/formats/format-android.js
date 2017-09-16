@@ -5,12 +5,17 @@ function FormatAndroid()
 	this.toFile = function(language, translations)
 	{
 		var result = '<?xml version="1.0" encoding="utf-8"?>\n'
-		result += '<resources>\n'
+		result += '<resources>\n\n'
 	
-		for (const key in translations)
+		translations.forEach(translation =>
 		{
-			result += `\t<string name="${key}">${translations[key]}"</string>\n`
-		}
+			if (translation.description)
+			{
+				result += `\t<!-- ${translation.description} -->\n`
+			}
+			
+			result += `\t<string name="${translation.key}">${translation.value}"</string>\n\n`
+		})
 	
 		result += '</resources>'
 	

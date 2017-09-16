@@ -7,14 +7,21 @@ function FormatXliff()
 		result += `\t<file original="global" datatype="plaintext" source-language="${language}" target-language="${language}">\n`
 		result += '\t\t<body>\n'
 
-		for (const key in translations)
+		translations.forEach(translation =>
 		{
-			result += `\t\t\t<trans-unit id="${key}">\n`
-			result += `\t\t\t\t<source xml:lang="${language}">${translations[key]}</source>\n`
-			result += `\t\t\t\t<target xml:lang="${language}">${translations[key]}</target>\n`
+			var description = ''
+
+			if (translation.description)
+			{
+				description = ` extradata="${translation.description}"`
+			}
+
+			result += `\t\t\t<trans-unit id="${translation.key}"${description}>\n`
+			result += `\t\t\t\t<source xml:lang="${language}">${translation.value}</source>\n`
+			result += `\t\t\t\t<target xml:lang="${language}">${translation.value}</target>\n`
 			result += `\t\t\t</trans-unit>\n`
-		}
-	
+		})
+
 		result += '\t\t</body>\n'
 		result += '\t</file>\n'
 		result += '</xliff>'

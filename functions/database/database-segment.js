@@ -12,13 +12,22 @@ function DatabaseSegment(database)
 	{
 		return this.root(segments =>
 		{
-			var result = {}
+			var result = []
 			
 			segments.forEach(entry =>
 			{
 				const segment = entry.val()
 
-				result[segment.key] = segment.translations[languageKey].value
+				result.push({
+					key: segment.key,
+					value: segment.translations[languageKey].value,
+					description: segment.description
+				})
+			})
+
+			result = result.sort(function(a, b)
+			{
+				return (a.key < b.key) ? -1 : (a.key > b.key)
 			})
 	
 			callback(result)
