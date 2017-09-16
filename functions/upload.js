@@ -9,10 +9,56 @@ function Upload(database)
 			if (token === request.query.token)
 			{
 				const replace = request.query.replace === true
-				const entries = importer.fromFile(request.body)
-				console.log(entries)
+				const translations = importer.fromFile(request.body)
+				
+				if (translations && translations.length)
+				{
+					return database.language.byCode(languageCode, language =>
+					{
+						if (language)
+						{
+							return database.segment.root(segments =>
+							{
+								if (segments)
+								{
+									for (const key in translations)
+									{
+										const value = translations[key]
 
-				response.status(200).send(request.body)
+										segments.forEach(segment =>
+										{
+											if (segment)
+											{
+												// TODO
+											}
+											else
+											{
+												// TODO: create segment
+											}
+										})
+									}
+								}
+								else
+								{
+									for (const key in translations)
+									{
+										const value = translations[key]
+
+										// TODO: create segment
+									}
+								}
+							})
+						}
+						else
+						{
+							response.status(400).send()
+						}
+					})
+				}
+				else
+				{
+					response.status(400).send()
+				}
 			}
 			else
 			{

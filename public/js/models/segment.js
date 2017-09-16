@@ -77,7 +77,7 @@ function Segment(id, data)
 			{
 				return (new RegExp(pattern)).test(input)
 			}
-			catch (e)
+			catch(e)
 			{
 				return false
 			}

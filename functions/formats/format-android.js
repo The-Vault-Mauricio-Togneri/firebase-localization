@@ -19,14 +19,21 @@ function FormatAndroid()
 
 	this.fromFile = function(content)
 	{
-		const parsed = pixlxml.parse(content).string
-
 		var result = []
 
-		parsed.forEach(entry =>
+		try
 		{
-			result[entry.name] = entry._Data
-		})
+			const parsed = pixlxml.parse(content).string
+
+			parsed.forEach(entry =>
+			{
+				result[entry.name] = entry._Data
+			})
+		}
+		catch(e)
+		{
+			console.log(e)
+		}
 
 		return result
 	}
