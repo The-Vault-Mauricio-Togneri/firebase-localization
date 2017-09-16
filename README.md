@@ -103,7 +103,7 @@ For example:
 * `yaml`
 
 ### Backup
-To perform a backup of the full database. The file will be stored in the **Cloud Storage for Firebase**. The name of the file will be a string representing the given date in the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format according to universal time.
+Used to perform a backup of the full database. The file will be stored in the **Cloud Storage for Firebase**. The name of the file will be a string representing the given date in the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format according to universal time.
 
 `https://<PROJECT_ID>.firebaseapp.com/api/backup?token=[xxx]`
 
