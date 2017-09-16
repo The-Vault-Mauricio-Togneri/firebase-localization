@@ -22,14 +22,14 @@ The project is design to run on a Firebase instance. Simply check out the projec
 	* `sudo npm install -g firebase-tools`
 
 ## Setting up Firebase
-In order to follow these steps, you must be logged in with your Google account.
+In order to follow these steps, you must be logged in with your **Google** account.
 
-1. [Firebase console](https://console.firebase.google.com)
-2. Checkout the project code: `git@github.com:mauriciotogneri/firebase-localization.git`
+1. Login into your [Firebase console](https://console.firebase.google.com)
+2. Checkout the project source code: `git@github.com:mauriciotogneri/firebase-localization.git`
 2. Login into Firebase: `firebase login`
 
-X. Deploy: `firebase deploy`
-Z. :boom: Boom! The tool is ready at: `https://<PROJECT_ID>.firebaseapp.com`
+4. Deploy: `firebase deploy`
+5. :boom: Boom! The tool is ready at: `https://<PROJECT_ID>.firebaseapp.com`
 
 ## Project configuration
 
@@ -93,9 +93,9 @@ For example:
 
 #### Available Formats
 
-* `android`
-* `ios`
-* `xliff`
+* `android` ([docs](https://developer.android.com/guide/topics/resources/string-resource.html))
+* `ios` ([docs](https://developer.apple.com/library/content/documentation/MacOSX/Conceptual/BPInternational/MaintaingYourOwnStringsFiles/MaintaingYourOwnStringsFiles.html))
+* `xliff` 1.2 ([docs](https://en.wikipedia.org/wiki/XLIFF))
 * `json`
 * `yaml`
 
