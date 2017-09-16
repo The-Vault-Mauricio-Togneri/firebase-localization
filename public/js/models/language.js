@@ -129,7 +129,6 @@ const LOCALES = {
 	en_TT: 'English, Trinidad and Tobago',
 	en_UM: 'English, U.S. Minor Outlying Islands',
 	en_VI: 'English, U.S. Virgin Islands',
-	en_US_POSIX: 'English, United States, Computer',
 	en_US: 'English, United States',
 	en_ZW: 'English, Zimbabwe',
 	en_GB: 'English, United Kingdom',

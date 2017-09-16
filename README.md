@@ -63,14 +63,25 @@ The backend exposes some end points in order to peform operations outside of the
 ### Import
 To upload content from a local file. Usually used to populate the database for the first time.
 
-`https://<PROJECT_ID>.firebaseapp.com/api/import/:language/:format?replace=[true|false]&token=[xxx]`
+`https://<PROJECT_ID>.firebaseapp.com/api/import/{language}/{format}?replace=[true|false]&token=[xxx]`
 
 The body of the request must contain the content of the file to be uploaded.
 
 ### Export
 To download a localization file in a particular format for a specific language.
 
-`https://<PROJECT_ID>.firebaseapp.com/api/export/:language/:format?token=[xxx]`
+`https://<PROJECT_ID>.firebaseapp.com/api/export/{language}/{format}?token=[xxx]`
+
+#### Languages
+Languages are described using:
+
+* Two letter code using [ISO 639-1](https://en.wikipedia.org/wiki/ISO_639-1) to represent the language
+* Two letter code using [ISO 3166-1](https://en.wikipedia.org/wiki/ISO_3166-1) to represent the region
+
+For example:
+* `en_US`: English, United States
+* `es_ES`: Spanish, Spain
+* `fr_CA`: French, Canada
 
 #### Available Formats
 
