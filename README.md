@@ -29,10 +29,11 @@ In order to follow these steps, you must be logged in with your **Google** accou
 2. Login into Firebase: `firebase login`
 
 4. Deploy: `firebase deploy`
-5. :boom: Boom! The tool is ready at: `https://<PROJECT_ID>.firebaseapp.com`
+5. :boom: Boom, the tool is ready! `https://<PROJECT_ID>.firebaseapp.com`
 
 ## Project configuration
 
+### General
 Create the file `.firebaserc` in the root of the project with the following format:
 
 ```json
@@ -43,6 +44,7 @@ Create the file `.firebaserc` in the root of the project with the following form
 }
 ```
 
+### Frontend
 Create the file `public/js/common/config.js` with the following format:
 
 ```javascript
@@ -56,6 +58,7 @@ const FIREBASE_CONFIG = {
 }
 ```
 
+### Backend
 Create the file `functions/config.js` with the following format:
 
 ```javascript
