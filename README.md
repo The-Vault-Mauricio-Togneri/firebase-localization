@@ -21,8 +21,6 @@ The project is design to run on a Firebase instance. Simply check out the projec
 4. **Firebase CLI** ([install](https://firebase.google.com/docs/cli))
 
 ## Setting up Firebase
-In order to follow these steps, you must be logged in with your **Google** account.
-
 1. Login into your [Firebase console](https://console.firebase.google.com)
 2. Checkout the project source code: `git@github.com:mauriciotogneri/firebase-localization.git`
 2. Login into Firebase: `firebase login`
