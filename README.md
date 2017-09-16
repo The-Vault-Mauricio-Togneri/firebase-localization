@@ -1,8 +1,23 @@
-# Firebase localization
+# Firebase Localization :fire:
 
-[DEMO](https://app-localization-2f645.firebaseapp.com)
+**Firebase Localization** is a web based localization management tool specially design for mobile and web projects.
 
-## Configuration
+## Demo
+If you want to try the online demo click [here](https://app-localization-2f645.firebaseapp.com)
+
+User: `demo@email.com`
+Password: `demouser`
+
+## Requisites
+
+1. Have a Google account [create](https://accounts.google.com/SignUp)
+2. 
+
+## Setting up Firebase
+
+
+
+## Project configuration
 
 Create the file `.firebaserc` with the following format:
 
@@ -13,7 +28,6 @@ Create the file `.firebaserc` with the following format:
 	}
 }
 ```
-
 
 Create the file `public/js/common/config.js` with the following format:
 
