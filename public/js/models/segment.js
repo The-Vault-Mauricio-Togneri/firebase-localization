@@ -27,11 +27,10 @@ function Segment(id, data)
 		this.isPlural = segment.isPlural
 		this.isArray = segment.isArray
 		this.created = segment.created
-		this.translations = {}
 
 		for (const index in segment.translations)
 		{
-			this.translations[index] = new Translation(index, segment.translations[index])
+			this.translations[index].update(new Translation(index, segment.translations[index]))
 		}
 	}
 
