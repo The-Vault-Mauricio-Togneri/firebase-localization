@@ -14,11 +14,21 @@ function FormatAndroid()
 				result += `\t<!-- ${translation.description} -->\n`
 			}
 			
-			result += `\t<string name="${translation.key}">${translation.value}"</string>\n\n`
+			result += `\t<string name="${translation.key}">${sanitizeValue(translation.value)}</string>\n\n`
 		})
 	
 		result += '</resources>'
 	
+		return result
+	}
+
+	function sanitizeValue(value)
+	{
+		var result = value
+
+		result = result.replace(/'/g, "\\'")
+		result = result.replace(/"/g, "\\\"")
+
 		return result
 	}
 
