@@ -16,10 +16,9 @@ The project is design to run on a Firebase instance. Simply check out the projec
 ## Requisites
 
 1. A **Google** account ([create](https://accounts.google.com/SignUp))
-2. **node.js** (min: v6.3.1) ([install](https://nodejs.org/en/download))
+2. **node.js** (min. v6.3.1) ([install](https://nodejs.org/en/download))
 3. **npm** ([install](https://www.npmjs.com/get-npm))
-4. **Firebase CLI** ([docs](https://firebase.google.com/docs/cli))
-	* `sudo npm install -g firebase-tools`
+4. **Firebase CLI** ([install](https://firebase.google.com/docs/cli))
 
 ## Setting up Firebase
 In order to follow these steps, you must be logged in with your **Google** account.
