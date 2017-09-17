@@ -63,12 +63,20 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 		{
 			if (segment.key)
 			{
-				input.alt = segment.key
-				databaseSegment.updateKey(segment.id, segment.key)
-				$scope.orderSegments()
+				const segments = segmentsByKey(segment.key)
 
-				console.log($scope.segments)
-				// TODO
+				if (segments.length == 1)
+				{
+					input.alt = segment.key
+					databaseSegment.updateKey(segment.id, segment.key)
+					$scope.orderSegments()
+				}
+				else
+				{
+					segment.key = oldValue
+					
+					ui.showError('Keys cannot be duplicated')
+				}
 			}
 			else
 			{
@@ -259,17 +267,19 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 		return null
 	}
 
-	function segmentByKey(key)
+	function segmentsByKey(key)
 	{
-		for (const index in $scope.segments)
-		{
-			if ($scope.segments[index].key == key)
-			{
-				return index
-			}
-		}
+		var result = []
 
-		return null
+		$scope.segments.forEach(segment =>
+		{
+			if (segment.key == key)
+			{
+				result.push(segment)
+			}
+		})
+
+		return result
 	}
 
 	function listenSegmentChanges(segmentId)
