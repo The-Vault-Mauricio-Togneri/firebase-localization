@@ -2,7 +2,9 @@
 
 # :fire: Firebase Localization :fire:
 
-**Firebase Localization** is a web based localization management tool specially design for mobile and web projects.
+**Firebase Localization** is a web based localization management tool specially design for mobile and web projects. The project is design to run on a **Firebase** instance. Simply check out the project, configure it with your settings and deploy it.
+
+![](https://i.imgur.com/8wKBooY.png)
 
 ## Demo
 If you want to try the online demo click [here](https://app-localization-2f645.firebaseapp.com).
@@ -10,60 +12,8 @@ If you want to try the online demo click [here](https://app-localization-2f645.f
 * User: `demo@email.com`
 * Password: `demouser`
 
-## How it works
-The project is design to run on a Firebase instance. Simply check out the project, configure it with your settings and deploy it.
-
-## Requisites
-
-1. A **Google** account ([create](https://accounts.google.com/SignUp))
-2. **node.js** (min. v6.3.1) ([install](https://nodejs.org/en/download))
-3. **npm** ([install](https://www.npmjs.com/get-npm))
-4. **Firebase CLI** ([install](https://firebase.google.com/docs/cli))
-
-## Setting up Firebase
-1. Login into your [Firebase console](https://console.firebase.google.com)
-2. Checkout the project source code: `git@github.com:mauriciotogneri/firebase-localization.git`
-2. Login into Firebase: `firebase login`
-
-4. Deploy: `firebase deploy`
-5. :boom: Boom, the tool is ready! `https://<PROJECT_ID>.firebaseapp.com`
-
-## Project configuration
-
-### General
-Create the file `.firebaserc` in the root of the project with the following format:
-
-```json
-{
-	"projects": {
-		"default": "<PROJECT_ID>"
-	}
-}
-```
-
-### Frontend
-Create the file `public/js/common/config.js` with the following format:
-
-```javascript
-const FIREBASE_CONFIG = {
-	apiKey: '',
-	authDomain: '',
-	databaseURL: '',
-	projectId: '',
-	storageBucket: '',
-	messagingSenderId: ''
-}
-```
-
-### Backend
-Create the file `functions/config.js` with the following format:
-
-```javascript
-module.exports = {
-	databaseURL: '',
-	storageBucket: ''
-}
-```
+## Installation
+To install **Firebase Localization** just follow the guide in the [wiki](https://github.com/mauriciotogneri/firebase-localization/wiki).
 
 ## API
 The backend exposes some end points in order to peform operations outside of the web tool. All the end points require the **API token** as a query parameter.
