@@ -8,9 +8,13 @@ function Backup(storage, database)
 			{
 				return database.root(ddbb =>
 				{
-					storage.store(`/backup/${new Date().toISOString()}.ddbb`, JSON.stringify(ddbb))
+					const path = `/backup/${new Date().toISOString()}.ddbb`
+					const content = JSON.stringify(ddbb)
 
-					response.status(200).send()
+					return storage.store(path, content, () =>
+					{
+						response.status(200).send()	
+					})
 				})
 			}
 			else

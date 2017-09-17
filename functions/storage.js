@@ -1,6 +1,6 @@
 function Storage(admin)
 {
-	this.store = function(path, content)
+	this.store = function(path, content, callback)
 	{
 		var bucket = admin.storage().bucket()
 
@@ -10,6 +10,8 @@ function Storage(admin)
 			{
 				console.log(error)
 			}
+
+			callback()
 		})
 	}
 }
