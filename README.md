@@ -13,7 +13,7 @@ If you want to try the online demo click [here](https://app-localization-2f645.f
 * Password: `demouser`
 
 ## Installation
-To install **Firebase Localization** just follow the guide on the [wiki](https://github.com/mauriciotogneri/firebase-localization/wiki).
+To install **Firebase Localization** just follow the guide on the [wiki](https://github.com/mauriciotogneri/firebase-localization/wiki/Installation).
 
 ## License
 
