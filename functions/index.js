@@ -99,9 +99,9 @@ exports.onSegmentCreated = functions.database.ref('segments/{segmentId}').onCrea
 	return trigger.onSegmentCreated(event)
 })
 
-exports.onTranslationUpdated = functions.database.ref('segments/{segmentId}/translations/{translationId}/value').onUpdate(event =>
+exports.onTranslationValueUpdated = functions.database.ref('segments/{segmentId}/translations/{translationId}/value').onUpdate(event =>
 {
-	return trigger.onTranslationUpdated(event)
+	return trigger.onTranslationValueUpdated(event)
 })
 
 exports.onLanguageAdded = functions.database.ref('languages/{languageId}').onCreate(event =>

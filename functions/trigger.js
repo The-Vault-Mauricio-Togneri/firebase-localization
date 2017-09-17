@@ -1,6 +1,6 @@
 function Trigger(database)
 {
-    this.onTranslationUpdated = function(event)
+    this.onTranslationValueUpdated = function(event)
 	{
 		const entry = {
 			value: event.data.previous.val(),
