@@ -24,12 +24,32 @@ function FormatAndroid()
 
 	function sanitizeValue(value)
 	{
-		var result = value
+		return escapeString(setParameters(value))
+	}
 
-		result = result.replace(/'/g, "\\'")
-		result = result.replace(/"/g, "\\\"")
+	function setParameters(value)
+	{
+		var result = value
+		var index  = 1
+		var REGEX  = /{{([^}}]*)}}/
+		var match  = null
+
+		while (match = REGEX.exec(result))
+		{
+			result = result.replace(REGEX, `%${index++}$${match[1]}`)
+
+			if (index > 100)
+			{
+				break
+			}
+		}
 
 		return result
+	}
+
+	function escapeString(value)
+	{
+		return value.replace(/'/g, "\\'").replace(/"/g, "\\\"")
 	}
 
 	this.fromFile = function(content)
