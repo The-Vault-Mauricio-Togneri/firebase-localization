@@ -16,10 +16,40 @@ function FormatIOS()
 				result += `/* ${translation.description} */\n`	
 			}
 			
-			result += `"${translation.key}" = "${translation.value}";`
+			result += `"${translation.key}" = "${sanitizeValue(translation.value)}";`
 		})
 	
 		return result
+	}
+
+	function sanitizeValue(value)
+	{
+		return escapeString(setParameters(value))
+	}
+
+	function setParameters(value)
+	{
+		var result = value
+		var index  = 1
+		var REGEX  = /{{([^}}]*)}}/
+		var match  = null
+
+		while (match = REGEX.exec(result))
+		{
+			result = result.replace(REGEX, `%${index++}$${match[1]}`)
+
+			if (index > 100)
+			{
+				break
+			}
+		}
+
+		return result
+	}
+
+	function escapeString(value)
+	{
+		return value // TODO
 	}
 
 	this.fromFile = function(content)
