@@ -87,12 +87,12 @@ app.put('/import/:language/yaml', (request, response) =>
 	return upload.process(request, response, formatYaml)
 })
 
-// =============================================================================
-
 const api = express()
 api.use('/api', app)
 
 exports.api = functions.https.onRequest(api)
+
+// =============================================================================
 
 exports.onSegmentCreated = functions.database.ref('segments/{segmentId}').onCreate(event =>
 {
