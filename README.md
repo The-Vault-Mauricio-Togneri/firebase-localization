@@ -13,46 +13,7 @@ If you want to try the online demo click [here](https://app-localization-2f645.f
 * Password: `demouser`
 
 ## Installation
-To install **Firebase Localization** just follow the guide in the [wiki](https://github.com/mauriciotogneri/firebase-localization/wiki).
-
-## API
-The backend exposes some end points in order to peform operations outside of the web tool. All the end points require the **API token** as a query parameter.
-
-### Import
-To upload content from a local file. Usually used to populate the database for the first time.
-
-`https://<PROJECT_ID>.firebaseapp.com/api/import/{language}/{format}?replace=[true|false]&token=[xxx]`
-
-The body of the request must contain the content of the file to be uploaded.
-
-### Export
-To download a localization file in a particular format for a specific language.
-
-`https://<PROJECT_ID>.firebaseapp.com/api/export/{language}/{format}?token=[xxx]`
-
-#### Languages
-Languages are described using:
-
-* Two letter code using [ISO 639-1](https://en.wikipedia.org/wiki/ISO_639-1) to represent the language
-* Two letter code using [ISO 3166-1](https://en.wikipedia.org/wiki/ISO_3166-1) to represent the region
-
-For example:
-* `en_US`: English, United States
-* `es_ES`: Spanish, Spain
-* `fr_CA`: French, Canada
-
-#### Available Formats
-
-* `android` ([docs](https://developer.android.com/guide/topics/resources/string-resource.html))
-* `ios` ([docs](https://developer.apple.com/library/content/documentation/MacOSX/Conceptual/BPInternational/MaintaingYourOwnStringsFiles/MaintaingYourOwnStringsFiles.html))
-* `xliff` 1.2 ([docs](https://en.wikipedia.org/wiki/XLIFF))
-* `json`
-* `yaml`
-
-### Backup
-Used to perform a backup of the full database. The file will be stored in the **Cloud Storage for Firebase**. The name of the file will be a string representing the given date in the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format according to universal time.
-
-`https://<PROJECT_ID>.firebaseapp.com/api/backup?token=[xxx]`
+To install **Firebase Localization** just follow the guide on the [wiki](https://github.com/mauriciotogneri/firebase-localization/wiki).
 
 ## License
 
