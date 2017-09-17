@@ -12,7 +12,14 @@ app.service('databaseSegment', function(database)
 	{
 		database.ref('segments').once('value', snap =>
 		{	
-			callback(fromSnap(snap))
+			var segments = []
+			
+			snap.forEach(function(entry)
+			{
+				segments.push(new Segment(entry.key, entry.val()))
+			})
+	
+			callback(segments)
 		})
 	}
 
@@ -39,18 +46,6 @@ app.service('databaseSegment', function(database)
 	}
 
 	// =========================================================================
-
-	function fromSnap(snap)
-	{
-		var segments = []
-
-		snap.forEach(function(entry)
-		{
-			segments.push(new Segment(entry.key, entry.val()))
-		})
-
-		return segments
-	}
 
 	function segmentPath(segmentId)
 	{

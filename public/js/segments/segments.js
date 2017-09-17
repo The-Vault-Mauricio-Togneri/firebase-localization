@@ -2,7 +2,7 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 {
 	$scope.languages = []
 
-	$scope.segments = {}
+	$scope.segments = []
 
 	$scope.loading = true
 
@@ -37,12 +37,10 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 			{
 				$scope.segments = segments
 
-				for (const index in $scope.segments)
+				segments.forEach(segment =>
 				{
-					const segment = $scope.segments[index]
-
 					listenSegmentChanges(segment.id)
-				}
+				})
 
 				$scope.loading = false
 
@@ -68,6 +66,9 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 				input.alt = segment.key
 				databaseSegment.updateKey(segment.id, segment.key)
 				$scope.orderSegments()
+
+				console.log($scope.segments)
+				// TODO
 			}
 			else
 			{
@@ -204,26 +205,6 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 		window.open(url, '_blank')
 	}
 
-	function segmentById(id)
-	{
-		const index = segmentIndexById(id)
-
-		return (index) ? $scope.segments[index] : null
-	}
-
-	function segmentIndexById(id)
-	{
-		for (const index in $scope.segments)
-		{
-			if ($scope.segments[index].id == id)
-			{
-				return index
-			}
-		}
-
-		return null
-	}
-
 	$scope.orderSegments = function()
 	{
 		if ($scope.order == 'az')
@@ -254,6 +235,41 @@ app.controller(CONTROLLER_SEGMENTS, function($scope, database, databaseLanguage,
 				return (a.created < b.created) ? -1 : (a.created > b.created)
 			})
 		}
+	}
+
+	// =========================================================================
+
+	function segmentById(id)
+	{
+		const index = segmentIndexById(id)
+
+		return (index) ? $scope.segments[index] : null
+	}
+
+	function segmentIndexById(id)
+	{
+		for (const index in $scope.segments)
+		{
+			if ($scope.segments[index].id == id)
+			{
+				return index
+			}
+		}
+
+		return null
+	}
+
+	function segmentByKey(key)
+	{
+		for (const index in $scope.segments)
+		{
+			if ($scope.segments[index].key == key)
+			{
+				return index
+			}
+		}
+
+		return null
 	}
 
 	function listenSegmentChanges(segmentId)
