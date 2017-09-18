@@ -54,7 +54,37 @@ function FormatIOS()
 
 	this.fromFile = function(content)
 	{
-		return []
+		var result = null
+
+		try
+		{
+			content.split("\n").forEach(line =>
+			{
+				var input = line.trim()
+
+				if ((!input.startsWith("/*")) && input.startsWith("\""))
+				{
+					const parts = input.split("=")
+					const key   = parts[0].trim().substr(1).slice(0, -1)
+					const value = parts[1].trim().substr(1).slice(0, -2)
+
+					if (result == null)
+					{
+						result = {}
+					}
+
+					result[key] = value
+				}
+			})
+		}
+		catch(e)
+		{
+			console.log(e)
+
+			result = null
+		}
+
+		return result
 	}
 }
 
