@@ -7,8 +7,8 @@
 
 
 
-  <img align="left"  src="https://i.imgur.com/8wKBooY.png" width="50%" />
-  <img align="right" src="https://i.imgur.com/8wKBooY.png" width="50%" />
+  <img align="left"  src="https://i.imgur.com/8wKBooY.png" width="45%" />
+  <img align="right" src="https://i.imgur.com/8wKBooY.png" width="45%" />
 
 
 ## Demo
