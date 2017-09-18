@@ -28,12 +28,14 @@ app.controller(DIALOG_IMPORT, function($scope, $http, ui)
 
 		$scope.languages = languages
 
+		document.getElementById('input-browse').value= null;
+
 		ui.openDialog(DIALOG_IMPORT)
 	}
 
-	$scope.onFileSelected = function(event)
+	$scope.onFileSelected = function(input)
 	{
-		const file = event.files[0]
+		const file = input.files[0]
 
 		$scope.form.fileName = file.name
 		$scope.$applyAsync()
