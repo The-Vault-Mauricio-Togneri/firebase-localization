@@ -17,6 +17,11 @@ function DatabaseLanguage(database)
 			callback(result)
 		})
 	}
+
+	this.root = function(callback)
+	{
+		return database.ref('languages').once('value', callback)
+	}
 }
 
 module.exports = DatabaseLanguage

@@ -2,10 +2,7 @@ app.service('databaseSegment', function(database)
 {
 	this.refLive = function(id, callback)
 	{
-		database.ref(`segments/${id}`).on('value', snap =>
-		{	
-			callback(snap)
-		})
+		database.ref(`segments/${id}`).on('value', callback)
 	}
 
 	this.rootStatic = function(callback)

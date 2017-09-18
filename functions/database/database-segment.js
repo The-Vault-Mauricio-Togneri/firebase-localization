@@ -2,10 +2,7 @@ function DatabaseSegment(database)
 {
 	this.root = function(callback)
 	{
-		return database.ref('segments').once('value', snap =>
-		{
-			callback(snap)
-		})
+		return database.ref('segments').once('value', callback)
 	}
 
 	this.byLanguage = function(languageKey, callback)
@@ -25,10 +22,13 @@ function DatabaseSegment(database)
 				})
 			})
 
-			result = result.sort(function(a, b)
+			if (result.length > 0)
 			{
-				return (a.key < b.key) ? -1 : (a.key > b.key)
-			})
+				result = result.sort(function(a, b)
+				{
+					return (a.key < b.key) ? -1 : (a.key > b.key)
+				})
+			}
 	
 			callback(result)
 		})

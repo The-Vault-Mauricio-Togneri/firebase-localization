@@ -54,7 +54,7 @@ function FormatAndroid()
 
 	this.fromFile = function(content)
 	{
-		var result = []
+		var result = null
 
 		try
 		{
@@ -62,12 +62,19 @@ function FormatAndroid()
 
 			parsed.forEach(entry =>
 			{
+				if (result == null)
+				{
+					result = {}
+				}
+
 				result[entry.name] = entry._Data
 			})
 		}
 		catch(e)
 		{
 			console.log(e)
+
+			result = null
 		}
 
 		return result

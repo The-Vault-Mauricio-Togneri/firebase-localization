@@ -11,42 +11,45 @@ function Upload(database)
 				const replace = request.query.replace === true
 				const translations = importer.fromFile(request.body)
 				
-				if (translations && translations.length)
+				if (translations)
 				{
 					return database.language.byCode(languageCode, language =>
 					{
 						if (language)
 						{
-							return database.segment.root(segments =>
+							return database.language.root(languages =>
 							{
-								if (segments)
+								return database.segment.root(segments =>
 								{
-									for (const key in translations)
+									if (segments.hasChildren())
 									{
-										const value = translations[key]
-
-										segments.forEach(segment =>
+										for (const key in translations)
 										{
-											if (segment)
+											const value = translations[key]
+	
+											segments.forEach(segment =>
 											{
-												// TODO
-											}
-											else
-											{
-												// TODO: create segment
-											}
-										})
+												if (segment)
+												{
+													// TODO
+												}
+												else
+												{
+													// TODO: create segment
+												}
+											})
+										}
 									}
-								}
-								else
-								{
-									for (const key in translations)
+									else
 									{
-										const value = translations[key]
-
-										// TODO: create segment
+										for (const key in translations)
+										{
+											createSegment(key, translations[key], language.key, languages)
+										}
 									}
-								}
+
+									response.status(200).send()
+								})
 							})
 						}
 						else
@@ -65,6 +68,29 @@ function Upload(database)
 				response.status(400).send()
 			}
 		})
+	}
+
+	function createSegment(key, value, languageKey, languages)
+	{
+		const entry = {
+			description: '',
+			isArray: false,
+			isPlural: false,
+			key: key,
+			maxLength: '',
+			screenshot: '',
+			translations: {}
+		}
+
+		languages.forEach(language =>
+		{
+			entry.translations[language.key] = {
+				validated: false,
+				value: ((language.key == languageKey) ? value : '')
+			}
+		})
+
+		console.log(entry)
 	}
 }
 

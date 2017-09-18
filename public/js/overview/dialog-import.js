@@ -55,6 +55,8 @@ app.controller(DIALOG_IMPORT, function($scope, $http, ui)
 
 	$scope.onImport = function(form)
 	{
+		$scope.loading = true
+
 		const config = {
 			headers : {
 				'Content-Type': 'text/plain'
@@ -76,7 +78,5 @@ app.controller(DIALOG_IMPORT, function($scope, $http, ui)
 
 			$scope.loading = false
 		})
-
-		$scope.loading = true
 	}
 })
