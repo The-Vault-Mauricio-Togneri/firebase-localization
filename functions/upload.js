@@ -8,7 +8,7 @@ function Upload(database)
 		{
 			if (token === request.query.token)
 			{
-				const replace = request.query.replace === true
+				const replace = (request.query.replace == 'true')
 				const translations = importer.fromFile(request.body)
 				
 				if (translations)
@@ -21,35 +21,31 @@ function Upload(database)
 							{
 								return database.segment.root(segments =>
 								{
-									if (segments.hasChildren())
+									for (const key in translations)
 									{
-										for (const key in translations)
-										{
-											var segmentFound = false
-											const value = translations[key]
-	
-											segments.forEach(segmentSnap =>
-											{
-												const segment = segmentSnap.val()
+										var segmentFound = false
+										const value = translations[key]
 
-												if (segment.key == key)
+										segments.forEach(segmentSnap =>
+										{
+											const segment = segmentSnap.val()
+
+											if (segment.key == key)
+											{
+												segmentFound = true
+
+												if (replace)
 												{
-													// TODO
-													segmentFound = true
+													database.translation.ref(segmentSnap.key, language.key).update({
+														value: value
+													})
 												}
-											})
-
-											if (!segmentFound)
-											{
-												createSegment(key, value, language.key, languages)
 											}
-										}
-									}
-									else
-									{
-										for (const key in translations)
+										})
+
+										if (!segmentFound)
 										{
-											createSegment(key, translations[key], language.key, languages)
+											createSegment(key, value, language.key, languages)
 										}
 									}
 

@@ -67,15 +67,13 @@ app.controller(DIALOG_IMPORT, function($scope, $http, ui)
 		.then(function(response)
 		{
 			ui.showSuccess('Import successful')
-			console.log(response)
 
 			ui.closeDialog(DIALOG_IMPORT)
 		}, 
 		function(response)
 		{
 			ui.showError('Error importing file')
-			console.log(response)
-
+			
 			$scope.loading = false
 		})
 	}
