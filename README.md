@@ -5,9 +5,8 @@
 
 **Firebase Localization** is a web based localization management tool specially design for mobile and web projects. The project is design to run on a **Firebase** instance. Simply check out the project, configure it with your settings and deploy it.
 
-<img align="left"  src="https://i.imgur.com/8wKBooY.png" width="47%" />
-<img align="right" src="https://i.imgur.com/8wKBooY.png" width="47%" />
-<br/><br/>
+![alt-text-1](https://i.imgur.com/8wKBooY.png "title-1") ![alt-text-2](https://i.imgur.com/8wKBooY.png "title-2")
+
 
 ## Demo
 If you want to try the online demo click [here](https://app-localization-2f645.firebaseapp.com).
