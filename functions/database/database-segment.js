@@ -5,6 +5,11 @@ function DatabaseSegment(database)
 		return database.ref('segments').once('value', callback)
 	}
 
+	this.push = function(segment)
+	{
+		return database.ref('segments').push(segment)
+	}
+
 	this.byLanguage = function(languageKey, callback)
 	{
 		return this.root(segments =>

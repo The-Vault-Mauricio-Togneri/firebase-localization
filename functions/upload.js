@@ -25,19 +25,24 @@ function Upload(database)
 									{
 										for (const key in translations)
 										{
+											var segmentFound = false
 											const value = translations[key]
 	
-											segments.forEach(segment =>
+											segments.forEach(segmentSnap =>
 											{
-												if (segment)
+												const segment = segmentSnap.val()
+
+												if (segment.key == key)
 												{
 													// TODO
-												}
-												else
-												{
-													// TODO: create segment
+													segmentFound = true
 												}
 											})
+
+											if (!segmentFound)
+											{
+												createSegment(key, value, language.key, languages)
+											}
 										}
 									}
 									else
@@ -90,7 +95,7 @@ function Upload(database)
 			}
 		})
 
-		console.log(entry)
+		database.segment.push(entry)
 	}
 }
 
