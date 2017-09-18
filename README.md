@@ -7,7 +7,7 @@
 
 <img align="left"  src="https://i.imgur.com/8wKBooY.png" width="47%" />
 <img align="right" src="https://i.imgur.com/8wKBooY.png" width="47%" />
-<br/>
+<br/><br/>
 
 ## Demo
 If you want to try the online demo click [here](https://app-localization-2f645.firebaseapp.com).
