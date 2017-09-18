@@ -49,7 +49,7 @@ function FormatIOS()
 
 	function escapeString(value)
 	{
-		return value // TODO
+		return value.replace(/"/g, "\\\"")
 	}
 
 	this.fromFile = function(content)
