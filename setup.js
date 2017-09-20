@@ -1,18 +1,18 @@
 const readline = require('readline')
 
-const rl = readline.createInterface(
+const reader = readline.createInterface(
 {
 	input: process.stdin,
 	output: process.stdout
 })
 
-rl.question('Project ID: ', id =>
+reader.question('Project ID: ', id =>
 {
-	rl.question('API Key: ', key =>
+	reader.question('API Key: ', key =>
 	{
 		generateFiles(id, key)
 	
-		rl.close()
+		reader.close()
 	})
 })
 
