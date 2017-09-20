@@ -1,4 +1,5 @@
 const readline = require('readline')
+const files = require('fs')
 
 const reader = readline.createInterface(
 {
@@ -22,9 +23,9 @@ function generateFiles(projectId, apiKey)
 	var front = frontend(projectId, apiKey)
 	var back  = backend(projectId)
 
-	console.log(rc)
-	console.log(front)
-	console.log(back)
+	files.writeFileSync('.firebaserc', rc)
+	files.writeFileSync('./public/js/common/config.js', front)
+	files.writeFileSync('./functions/config.js', back)
 }
 
 function firebaserc(projectId)
