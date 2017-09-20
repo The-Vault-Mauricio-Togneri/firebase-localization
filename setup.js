@@ -26,6 +26,8 @@ function generateFiles(projectId, apiKey)
 	files.writeFileSync('.firebaserc', rc)
 	files.writeFileSync('./public/js/common/config.js', front)
 	files.writeFileSync('./functions/config.js', back)
+
+	console.log('Setup completed!')
 }
 
 function firebaserc(projectId)
