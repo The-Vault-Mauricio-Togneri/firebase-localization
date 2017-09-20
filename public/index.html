@@ -53,7 +53,7 @@
 			<div class="form-group">
 				<input class="form-control" placeholder="Password" ng-keydown="($event.keyCode === 13) && login(form.email, form.password)" ng-disabled="form.loading" ng-model="form.password" type="password">
 			</div>
-			<button type="button" class="btn btn-primary btn-block" ng-disabled="form.loading" ng-click="login(form.email, form.password)">
+			<button type="button" class="btn btn-primary btn-block" ng-disabled="form.loading || !form.email || !form.password" ng-click="login(form.email, form.password)">
 				<i ng-show="!form.loading" class="fa fa-sign-in"></i>
 				<i ng-show="form.loading" class="fa fa-circle-o-notch fa-spin"></i>
 				Login
