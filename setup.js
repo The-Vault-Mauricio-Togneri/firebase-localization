@@ -6,19 +6,24 @@ const rl = readline.createInterface(
 	output: process.stdout
 })
 
-rl.question('Project ID: ', value =>
+rl.question('Project ID: ', id =>
 {
-	onProjectId(value)
-
-	rl.close()
+	rl.question('API Key: ', key =>
+	{
+		generateFiles(id, key)
+	
+		rl.close()
+	})
 })
 
-function onProjectId(projectId)
+function generateFiles(projectId, apiKey)
 {
 	var rc    = firebaserc(projectId)
-	var front = frontend(projectId, '123', '456')
+	var front = frontend(projectId, apiKey)
 	var back  = backend(projectId)
 
+	console.log(rc)
+	console.log(front)
 	console.log(back)
 }
 
@@ -27,7 +32,7 @@ function firebaserc(projectId)
 	return `{\n\t"projects": {\n\t\t"default": "${projectId}"\n\t}\n}`
 }
 
-function frontend(projectId, apiKey, senderId)
+function frontend(projectId, apiKey)
 {
 	var result = 'const FIREBASE_CONFIG = {\n'
 	result += `\tapiKey: '${apiKey}',\n`
@@ -35,7 +40,7 @@ function frontend(projectId, apiKey, senderId)
 	result += `\tdatabaseURL: 'https://${projectId}.firebaseio.com',\n`
 	result += `\tprojectId: '${projectId}',\n`
 	result += `\tstorageBucket: '${projectId}.appspot.com',\n`
-	result += `\tmessagingSenderId: '${senderId}'\n`
+	result += `\tmessagingSenderId: ''\n`
 	result += '}'
 
 	return result
