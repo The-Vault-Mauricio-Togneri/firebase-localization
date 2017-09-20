@@ -5,7 +5,7 @@
 
 **Firebase Localization** is a web based localization management tool design to run on a [Firebase](https://firebase.google.com) instance. You can integrate it into your existing **Firebase** project or create a separate one. The **Spark Plan** in **Firebase** (free) is more than enough to support the tool.
 
-Although the tool is specially design for mobile and web projects, you can use it for any other purpose. Simply check out the project, configure it with your settings and deploy it.
+Although the tool is specially design for mobile and web projects, you can use it for any other purpose. Simply check out the project, configure it and deploy it.
 
 | ![](https://i.imgur.com/UbMfGef.png) | ![](https://i.imgur.com/AYvClZp.png) |
 |:---:|:---:|
