@@ -7,9 +7,9 @@ const reader = readline.createInterface(
 	output: process.stdout
 })
 
-reader.question('Project ID: ', id =>
+reader.question('API Key: ', key =>
 {
-	reader.question('API Key: ', key =>
+	reader.question('Project ID: ', id =>
 	{
 		generateFiles(id, key)
 	
