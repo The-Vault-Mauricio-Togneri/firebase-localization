@@ -84,7 +84,7 @@
 			<i class="fa fa-plus" style="font-size:1.6em"></i>
 		</button>
 
-		<div class="card filter-card">
+		<div class="card filter-card" ng-show="segments.length > 0">
 			<div class="card-header filter-header" style="padding:0.4em 0 0 1em;height:2.5em" data-toggle="collapse" href="#collapse-filter">
 				<div>
 					<i class="fa fa-filter"></i> Filter
@@ -143,7 +143,7 @@
 			</div>
 		</div>
 
-		<div class="card filter-card">
+		<div class="card filter-card" ng-show="segments.length > 0">
 			<div class="card-header filter-header" style="padding:0.4em 0 0 1em;height:2.5em" data-toggle="collapse" href="#collapse-order">
 				<div>
 					<i class="fa fa-sort-amount-desc"></i> Order
@@ -181,7 +181,7 @@
 		</div>
 
 		<table class="table table-sm table-hover table-striped">
-			<thead class="thead-default">
+			<thead class="thead-default" ng-show="segments.length > 0">
 				<tr>
 					<th style="padding-left:10px;width:20em">Key</th>
 					<th ng-repeat="language in languages" ng-show="filter.language[language.id]" style="padding-left:10px">
@@ -213,6 +213,10 @@
 				</tr>
 			</tbody>
 		</table>
+
+		<center>
+			<div class="empty-label" ng-show="segments.length == 0">Segment list empty</div>
+		</center>
 
 		<div ng-include="'html/segments/dialog-segment.html'"></div>
 

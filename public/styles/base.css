@@ -83,6 +83,13 @@ html, body
 	width: 20%;
 }
 
+.empty-label
+{
+	margin-top: 20em;
+	color: #AAAAAA;
+	font-size: 1.5em;
+}
+
 .button-action
 {
 	cursor: pointer;
