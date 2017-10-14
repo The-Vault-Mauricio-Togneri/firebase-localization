@@ -13,7 +13,7 @@ app.controller(CONTROLLER_LOGIN, function($scope)
 		{
 			if (user)
 			{
-				window.location.href = '/overview'
+				window.location.href = '/languages'
 			}
 			else
 			{

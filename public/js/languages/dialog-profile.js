@@ -22,12 +22,12 @@ app.controller(DIALOG_PROFILE, function($scope, ui)
 		input.focus()
 		input.val(input.val())
 
-		ui.showSuccess('Token copied')
+		ui.showSuccess('API token copied')
 	}
 
 	$scope.onUpdatePassword = function(password)
 	{
-		controller(CONTROLLER_OVERVIEW).updateProfile(password)
+		controller(CONTROLLER_LANGUAGES).updateProfile(password)
 
 		ui.closeDialog(DIALOG_PROFILE)
 	}

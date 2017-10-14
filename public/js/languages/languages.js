@@ -3,7 +3,7 @@ function onLanguageSelected()
 	controller(DIALOG_LANGUAGE).onLanguageSelected()
 }
 
-app.controller(CONTROLLER_OVERVIEW, function($scope, database, databaseApi, databaseLanguage, databaseSegment, ui)
+app.controller(CONTROLLER_LANGUAGES, function($scope, database, databaseApi, databaseLanguage, databaseSegment, ui)
 {
 	$scope.apiToken = ''
 

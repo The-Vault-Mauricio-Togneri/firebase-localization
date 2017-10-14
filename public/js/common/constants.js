@@ -15,5 +15,5 @@ const DIALOG_TRANSLATION_HISTORY = 'dialogTranslationHistory'
 const DIALOG_MESSAGE = 'dialogMessage'
 
 const CONTROLLER_LOGIN = 'login'
-const CONTROLLER_OVERVIEW = 'overview'
+const CONTROLLER_LANGUAGES = 'languages'
 const CONTROLLER_SEGMENTS = 'segments'

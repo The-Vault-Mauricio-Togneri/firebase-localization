@@ -15,7 +15,7 @@ app.controller(DIALOG_DELETE_LANGUAGE, function($scope, database, ui)
 
 	$scope.onDelete = function(id)
 	{
-		controller(CONTROLLER_OVERVIEW).deleteLanguage(id)
+		controller(CONTROLLER_LANGUAGES).deleteLanguage(id)
 
 		ui.closeDialog(DIALOG_DELETE_LANGUAGE)
 	}

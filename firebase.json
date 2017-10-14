@@ -19,8 +19,8 @@
 				"destination": "/login.html"
 			},
 			{
-				"source": "/overview",
-				"destination": "/overview.html"
+				"source": "/languages",
+				"destination": "/languages.html"
 			},
 			{
 				"source": "/segments",

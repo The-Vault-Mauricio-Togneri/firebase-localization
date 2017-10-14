@@ -7,7 +7,7 @@ app.controller(DIALOG_LOGOUT, function($scope, ui)
 
 	$scope.onLogout = function(id)
 	{
-		controller(CONTROLLER_OVERVIEW).logout()
+		controller(CONTROLLER_LANGUAGES).logout()
 
 		ui.closeDialog(DIALOG_LOGOUT)
 	}

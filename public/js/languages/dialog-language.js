@@ -57,14 +57,14 @@ app.controller(DIALOG_LANGUAGE, function($scope, database, ui)
 
 	$scope.onAdd = function()
 	{
-		controller(CONTROLLER_OVERVIEW).addLanguage($scope.select().val())
+		controller(CONTROLLER_LANGUAGES).addLanguage($scope.select().val())
 
 		ui.closeDialog(DIALOG_LANGUAGE)
 	}
 
 	$scope.onEdit = function(form)
 	{
-		controller(CONTROLLER_OVERVIEW).editLanguage(form.id, $scope.select().val())
+		controller(CONTROLLER_LANGUAGES).editLanguage(form.id, $scope.select().val())
 
 		ui.closeDialog(DIALOG_LANGUAGE)
 	}
