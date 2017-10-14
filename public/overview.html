@@ -95,7 +95,7 @@
 		</button>		
 
 		<table class="table table-sm table-striped">
-			<thead class="thead-default">
+			<thead class="thead-default" ng-show="languages.length > 0">
 				<tr>
 					<th style="padding-left:1em;width:30em">Language</th>
 					<th>Translated</th>
@@ -168,6 +168,10 @@
 				</tr>
 			</tbody>
 		</table>
+
+		<center>
+			<div class="empty-label" ng-show="languages.length == 0">Language list empty</div>
+		</center>
 
 		<div ng-include="'html/overview/dialog-import.html'"></div>
 
