@@ -7,7 +7,7 @@
 
 Although the tool is specially design for mobile and web projects, you can use it for any other purpose. Simply check out the source code, configure it and deploy it.
 
-| ![](https://i.imgur.com/UbMfGef.png) | ![](https://i.imgur.com/AYvClZp.png) |
+| ![](https://i.imgur.com/iEASWUU.png) | ![](https://i.imgur.com/ECH3c7b.png) |
 |:---:|:---:|
 
 ## Demo
