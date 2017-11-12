@@ -16,14 +16,14 @@ If you want to try the online demo click [here](https://demolocalization.firebas
 * User: `demouser@email.com`
 * Password: `demouser`
 
-### Formats supported
+## Formats supported
 * Android (.xml)
 * iOS (.strings)
 * XLIFF (v1.2)
 * JSON
 * YAML
 
-#### Future formats to be supported
+### Future formats to be supported
 * JSON nested
 * yaml nested
 * INI
