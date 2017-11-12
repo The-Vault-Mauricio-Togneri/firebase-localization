@@ -11,10 +11,27 @@ Although the tool is specially design for mobile and web projects, you can use i
 |:---:|:---:|
 
 ## Demo
-If you want to try the online demo click [here](https://app-localization-2f645.firebaseapp.com).
+If you want to try the online demo click [here](https://demolocalization.firebaseapp.com).
 
-* User: `demo@email.com`
+* User: `demouser@email.com`
 * Password: `demouser`
+
+### Formats supported
+* Android (.xml)
+* iOS (.strings)
+* XLIFF (v1.2)
+* JSON
+* YAML
+
+#### Future formats to be supported
+* JSON nested
+* yaml nested
+* INI
+* Properties
+* PHP array
+* Angular translate
+* Gettext po
+* Twine
 
 ## Installation
 To install **Firebase Localization** just follow the guide on the [wiki](https://github.com/mauriciotogneri/firebase-localization/wiki/Installation).
