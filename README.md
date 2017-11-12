@@ -20,12 +20,12 @@ If you want to try the online demo click [here](https://demolocalization.firebas
 * Android (.xml)
 * iOS (.strings)
 * XLIFF (v1.2)
-* JSON
-* YAML
+* JSON (plain)
+* YAML (plain)
 
 ### Future formats to be supported
-* JSON nested
-* yaml nested
+* JSON (nested)
+* yaml (nested)
 * INI
 * Properties
 * PHP array
