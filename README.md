@@ -25,12 +25,12 @@ If you want to try the online demo click [here](https://demolocalization.firebas
 
 ### Future formats to be supported
 * JSON (nested)
-* yaml (nested)
+* YAML (nested)
 * INI
 * Properties
 * PHP array
 * Angular translate
-* Gettext po
+* Gettext
 * Twine
 
 ## Installation
