@@ -3,9 +3,9 @@
 	"description": "Firebase Localization",
 	"version": "1.0.0",
 	"dependencies": {
-		"express": "^4.16.2",
-		"firebase-admin": "^5.5.0",
-		"firebase-functions": "^0.7.3",
+		"express": "^4.16.4",
+		"firebase-admin": "^6.2.0",
+		"firebase-functions": "^2.1.0",
 		"pixl-xml": "^1.0.13"
 	},
 	"private": true

@@ -9,6 +9,7 @@ functions/package-lock.json
 firebase-debug.log
 
 #config
+.firebase
 .firebaserc
 public/js/common/config.js
 functions/config.js
