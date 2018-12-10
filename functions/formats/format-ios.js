@@ -30,18 +30,12 @@ function FormatIOS()
 	function setParameters(value)
 	{
 		var result = value
-		var index  = 1
-		var REGEX  = /{{([^}}]*)}}/
+		var REGEX  = /{{([0-9]+)\$([sdfx])}}/
 		var match  = null
 
 		while (match = REGEX.exec(result))
 		{
-			result = result.replace(REGEX, `%${index++}$${match[1]}`)
-
-			if (index > 100)
-			{
-				break
-			}
+			result = result.replace(REGEX, `%${match[1]}$@`)
 		}
 
 		return result
