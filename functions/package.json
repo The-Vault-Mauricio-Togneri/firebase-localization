@@ -4,8 +4,9 @@
 	"version": "1.0.0",
 	"dependencies": {
 		"express": "^4.16.4",
-		"firebase-admin": "^6.2.0",
+		"firebase-admin": "^6.3.0",
 		"firebase-functions": "^2.1.0",
+		"firebase-tools": "^6.1.2",
 		"pixl-xml": "^1.0.13"
 	},
 	"private": true
