@@ -71,9 +71,9 @@ function FormatIOS()
 				}
 			})
 		}
-		catch(e)
+		catch(error)
 		{
-			console.log(e)
+			console.log(error)
 
 			result = null
 		}

@@ -23,7 +23,8 @@ function DatabaseSegment(database)
 				result.push({
 					key: segment.key,
 					value: segment.translations[languageKey].value,
-					description: segment.description
+					description: segment.description,
+					tags: segment.tags ? segment.tags : []
 				})
 			})
 

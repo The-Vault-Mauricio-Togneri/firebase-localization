@@ -48,7 +48,7 @@
 						</div>
 						<div class="form-group">
 							<label>Tags</label>
-							<input class="form-control" type="text" ng-model="form.newTag" ng-keypress="($event.keyCode === 13) && addTag(form.newTag)" >
+							<input class="form-control" type="text" ng-model="form.newTag" onkeypress="return event.keyCode != 44" ng-keypress="($event.keyCode === 13) && addTag(form.newTag)" >
 							<div>
 								<span class="badge segment-tag" ng-repeat="tag in form.tags">
 									{{tag}}

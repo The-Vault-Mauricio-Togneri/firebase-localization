@@ -64,9 +64,9 @@ function FormatAndroid()
 				result[entry.name] = entry._Data
 			})
 		}
-		catch(e)
+		catch(error)
 		{
-			console.log(e)
+			console.log(error)
 
 			result = null
 		}

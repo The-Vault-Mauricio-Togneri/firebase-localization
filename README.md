@@ -36,6 +36,11 @@ If you want to try the online demo click [here](https://demolocalization.firebas
 ## Installation
 To install **Firebase Localization** just follow the guide on the [wiki](https://github.com/mauriciotogneri/firebase-localization/wiki/Installation).
 
+## TODO
+Upload:
+    - define tags
+    - define flag to mark as validated
+
 ## License
 
     MIT License
